@@ -51,7 +51,7 @@
     integrity="sha512-BdHyGtczsUoFcEma+MfXc71KJLv/cd+sUsUaYYf2mXpfG/PtBjNXsPo78+rxWjscxUYN2Qr2+DbeGGiJx81ifg=="
     crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<body data-mobile-nav-style="full-screen-menu" data-mobile-nav-bg-color="#232323"
+<body data-mobile-nav-style="full-screen-menu" class="background-position-center-top custom-cursor" data-mobile-nav-bg-color="#232323"
     class="background-position-center-top background-repeat custom-cursor"
     style="background-image: url(images/vertical-line-bg-small-medium-gray.svg)">
 
@@ -167,6 +167,10 @@
     <script type="text/javascript" src="{{asset("js/vendors.min.js")}}"></script>
 
     <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
+
+    <script data-cfasync="false" src="{{ asset('js/email-decode.min.js') }}"></script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXbrQhbrrdjSTVaPzJeILiZP_asMgUIrw&callback=initMap"></script>
 
 </body>
 

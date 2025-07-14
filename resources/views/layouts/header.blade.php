@@ -47,7 +47,7 @@
 
                             <li class="nav-item"><a href="{{route('home')}}" class="nav-link">Home</a></li>
 
-                            <li class="nav-item"><a href="demo-scattered-portfolio-about.html"
+                            <li class="nav-item"><a href="{{route('about')}}"
                                     class="nav-link">About</a></li>
 
                             <li class="nav-item"><a href="{{route('channel')}}"
@@ -61,7 +61,7 @@
                             <li class="nav-item"><a href="demo-scattered-portfolio-work.html" class="nav-link">Election-Campaign</a>
                             </li>
 
-                            <li class="nav-item"><a href="demo-scattered-portfolio-contact.html"
+                            <li class="nav-item"><a href="{{route('contact')}}"
                                     class="nav-link">contact</a></li>
 
                                     <li class="nav-item"><a href="demo-scattered-portfolio-contact.html"
