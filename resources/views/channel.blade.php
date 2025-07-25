@@ -45,7 +45,7 @@
     <section class="position-relative overflow-hidden">
         <div class="skrollr-parallax magic-cursor round-cursor mx-auto" data-bottom-top="width: 54%"
             data-center-top="width: 86%;" data-parallax-background-ratio="0.5"
-            style="background-image: url('images/demo-scattered-portfolio-expertise-04.jpg')">
+            style="background-image: url('images/6.jpg')">
             <div class="container">
                 <div class="row one-third-screen md-h-600px sm-h-350px">
                     <div class="col-xl-6"></div>
@@ -87,7 +87,7 @@
                 </div>
                 <div class="col-xxl-4 offset-xxl-1 col-lg-5"
                     data-anime='{ "effect": "slide", "color": "#ffea00", "direction":"rl", "easing": "easeOutQuad", "delay":50}'>
-                    <img src="images/demo-scattered-portfolio-expertise-01.jpg" alt="" />
+                    <img src="images/3.jpg" alt="" />
                 </div>
             </div>
             <div class="row mb-7 sm-mb-50px">
@@ -120,7 +120,7 @@
                 </div>
                 <div class="col-xxl-4 offset-xxl-1 col-lg-5"
                     data-anime='{ "effect": "slide", "color": "#ffea00", "direction":"lr", "easing": "easeOutQuad", "delay":50}'>
-                    <img src="images/demo-scattered-portfolio-expertise-02.jpg" alt="" />
+                    <img src="images/2.jpg" alt="" />
                 </div>
             </div>
             <div class="row mb-7 sm-mb-50px">
@@ -154,7 +154,7 @@
                 </div>
                 <div class="col-xxl-4 offset-xxl-1 col-lg-5"
                     data-anime='{ "effect": "slide", "color": "#ffea00", "direction":"rl", "easing": "easeOutQuad", "delay":50}'>
-                    <img src="images/demo-scattered-portfolio-expertise-03.jpg" alt="" />
+                    <img src="images/4.jpg" alt="" />
                 </div>
             </div>
             <div class="row mb-7 sm-mb-50px">
@@ -189,7 +189,7 @@
                 </div>
                 <div class="col-xxl-4 offset-xxl-1 col-lg-5"
                     data-anime='{ "effect": "slide", "color": "#ffea00", "direction":"rl", "easing": "easeOutQuad", "delay":50}'>
-                    <img src="images/demo-scattered-portfolio-expertise-03.jpg" alt="" />
+                    <img src="images/5.jpg" alt="" />
                 </div>
             </div>
             <div class="row mb-7 sm-mb-50px">
