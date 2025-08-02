@@ -53,16 +53,16 @@
                             <li class="nav-item"><a href="{{route('channel')}}"
                                     class="nav-link">Channel</a></li>
 
-                            <li class="nav-item"><a href="demo-scattered-portfolio-work.html" class="nav-link">Industries Solution</a>
+                            <li class="nav-item"><a href="{{route('industry-solution')}}" class="nav-link">Industries Solution</a>
                             </li>
 
 
 
-                            <li class="nav-item"><a href="demo-scattered-portfolio-work.html" class="nav-link">Election-Campaign</a>
+                            <li class="nav-item"><a href="{{route('election-campaign')}}" class="nav-link">Election-Campaign</a>
                             </li>
 
                             <li class="nav-item"><a href="{{route('contact')}}"
-                                    class="nav-link">contact</a></li>
+                                    class="nav-link">Contact</a></li>
 
                                     <li class="nav-item"><a href="demo-scattered-portfolio-contact.html"
 

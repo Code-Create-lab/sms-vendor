@@ -93,51 +93,7 @@
                     <span class="fs-70 xl-fs-65 lg-fs-60 fw-700 text-black ls-minus-3px">Let us help you get <span
                             class="alt-font font-style-italic">your project started.</span></span>
                 </div>
-                <div class="col-xxl-6 col-lg-7 offset-xxl-1">
-                    <form action="email-templates/contact-form.php" method="post" class="contact-form-style-03">
-                        <div class="row"
-                            data-anime='{ "el": "childs", "translateX": [30, 0], "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                            <div class="col-md-6 mb-35px sm-mb-20px">
-                                <div class="position-relative form-group">
-                                    <span class="form-icon"><i
-                                            class="bi bi-person icon-extra-medium text-dark-gray"></i></span>
-                                    <input
-                                        class="fw-500 ps-0 border-radius-0px border-color-dark-gray bg-transparent form-control required"
-                                        type="text" name="name" placeholder="What's your good name?*" />
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-35px sm-mb-20px">
-                                <div class="position-relative form-group">
-                                    <span class="form-icon"><i
-                                            class="bi bi-envelope icon-extra-medium text-dark-gray"></i></span>
-                                    <input
-                                        class="fw-500 ps-0 border-radius-0px border-color-dark-gray bg-transparent form-control required"
-                                        type="email" name="email" placeholder="Enter your email address*" />
-                                </div>
-                            </div>
-                            <div class="col-12 mb-50px">
-                                <div class="position-relative form-group form-textarea mb-0">
-                                    <span class="form-icon"><i
-                                            class="bi bi-chat-square-dots icon-extra-medium text-dark-gray"></i></span>
-                                    <textarea class="fw-500 ps-0 border-radius-0px border-color-dark-gray bg-transparent form-control" name="comment"
-                                        placeholder="Enter your message" rows="4"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-7 sm-mb-20px">
-                                <p class="fs-14 lh-24 mb-0">We are committed to protecting your privacy. We will never
-                                    collect information about you without your explicit consent.</p>
-                            </div>
-                            <div class="col-md-5 text-start text-md-end">
-                                <input type="hidden" name="redirect" value="">
-                                <button class="btn btn-large btn-expand-ltr text-black text-black-hover btn-rounded submit"
-                                    type="submit"><span class="bg-base-color"></span>Send message</button>
-                            </div>
-                            <div class="col-12 text-center">
-                                <div class="form-results mt-20px d-none"></div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                @livewire('contact-form')
             </div>
         </div>
     </section>

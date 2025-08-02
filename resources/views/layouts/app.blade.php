@@ -283,6 +283,24 @@
         });
     </script>
 
+        <script>
+        document.querySelector('form').addEventListener('submit', function() {
+            console.log('Native submit event fired');
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Run only once on page load
+            anime({
+                targets: '.form-control',
+                opacity: [0, 1],
+                translateX: [40, 0],
+                delay: anime.stagger(100),
+                duration: 800,
+                easing: 'easeOutExpo'
+            });
+        });
+    </script>
+
 
 </body>
 

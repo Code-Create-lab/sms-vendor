@@ -13,9 +13,9 @@
                     <div
                         class="fw-800 text-black fs-160 md-fs-130 sm-fs-110 xs-fs-70 ls-minus-4px md-ls-minus-2px text-uppercase">
                         <div data-bottom-top="transform: translate3d(-50px, 0px, 0px);"
-                            data-top-bottom="transform: translate3d(50px, 0px, 0px);">Channels</div>
+                            data-top-bottom="transform: translate3d(50px, 0px, 0px);">Election</div>
                         <div class="ms-10 xs-ms-0" data-bottom-top="transform: translate3d(50px, 0px, 0px);"
-                            data-top-bottom="transform: translate3d(-50px, 0px, 0px);"></div>
+                            data-top-bottom="transform: translate3d(-50px, 0px, 0px);">Campaign</div>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
         <div class="container">
             <div class="row mb-7 sm-mb-50px">
                 <div class="col-12">
-                    <span class="text-black fw-700 text-uppercase mb-10px d-block fs-15">RCS RCS Business Messaging ( Pending Content )</span>
+                    <span class="text-black fw-700 text-uppercase mb-10px d-block fs-15">Social Media Management</span>
                     <div class="position-relative">
                         <h5 class="text-black fw-700 mb-0 me-25px absolute-middle-right ls-minus-2px">01</h5>
                         <div class="separator-line-1px w-100 d-block bg-black"></div>
@@ -92,7 +92,7 @@
             </div>
             <div class="row mb-7 sm-mb-50px">
                 <div class="col-12">
-                    <span class="text-black fw-700 text-uppercase mb-10px d-block fs-15">Bulk SMS</span>
+                    <span class="text-black fw-700 text-uppercase mb-10px d-block fs-15">Research & Survey</span>
                     <div class="position-relative">
                         <h5 class="text-black fw-700 mb-0 me-25px absolute-middle-right ls-minus-2px">02</h5>
                         <div class="separator-line-1px w-100 d-block bg-black"></div>
@@ -125,7 +125,7 @@
             </div>
             <div class="row mb-7 sm-mb-50px">
                 <div class="col-12">
-                    <span class="text-black fw-700 text-uppercase mb-10px d-block fs-15">Voice SMS</span>
+                    <span class="text-black fw-700 text-uppercase mb-10px d-block fs-15">Information & Communication Technology</span>
                     <div class="position-relative">
                         <h5 class="text-black fw-700 mb-0 me-25px absolute-middle-right ls-minus-2px">03</h5>
                         <div class="separator-line-1px w-100 d-block bg-black"></div>
@@ -159,7 +159,7 @@
             </div>
             <div class="row mb-7 sm-mb-50px">
                 <div class="col-12">
-                    <span class="text-black fw-700 text-uppercase mb-10px d-block fs-15">WhatsApp Business API</span>
+                    <span class="text-black fw-700 text-uppercase mb-10px d-block fs-15">Mass Awareness & Grassroots Mobilization</span>
                     <div class="position-relative">
                         <h5 class="text-black fw-700 mb-0 me-25px absolute-middle-right ls-minus-2px">04</h5>
                         <div class="separator-line-1px w-100 d-block bg-black"></div>
@@ -194,7 +194,77 @@
             </div>
             <div class="row mb-7 sm-mb-50px">
                 <div class="col-12">
-                    <span class="text-black fw-700 text-uppercase mb-10px d-block fs-15">Digital-Marketing</span>
+                    <span class="text-black fw-700 text-uppercase mb-10px d-block fs-15">Influencer & Media Management</span>
+                    <div class="position-relative">
+                        <h5 class="text-black fw-700 mb-0 me-25px absolute-middle-right ls-minus-2px">05</h5>
+                        <div class="separator-line-1px w-100 d-block bg-black"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 md-mb-7 last-paragraph-no-margin"
+                    data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                    <p>We are excited for our work and how it positively impacts clients. With over 12 years of experience
+                        we have been constantly providing excellent web solutions services.</p>
+                </div>
+                <div class="col-xxl-2 offset-xxl-1 col-lg-3 md-mb-7">
+                    <ul class="p-0 m-0 list-style-01"
+                        data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                        <li class="border-color-black pb-10px fs-16 lh-28 fw-500 text-black">Custom development</li>
+                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">E-commerce migration
+                        </li>
+                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">Custom E-commerce</li>
+                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">E-commerce integrations
+                        </li>
+                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">Back-end development
+                        </li>
+                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">E-commerce applications
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xxl-4 offset-xxl-1 col-lg-5"
+                    data-anime='{ "effect": "slide", "color": "#ffea00", "direction":"rl", "easing": "easeOutQuad", "delay":50}'>
+                    <img src="images/demo-scattered-portfolio-expertise-03.jpg" alt="" />
+                </div>
+            </div>
+            <div class="row mb-7 sm-mb-50px">
+                <div class="col-12">
+                    <span class="text-black fw-700 text-uppercase mb-10px d-block fs-15">On Ground Intelligence</span>
+                    <div class="position-relative">
+                        <h5 class="text-black fw-700 mb-0 me-25px absolute-middle-right ls-minus-2px">05</h5>
+                        <div class="separator-line-1px w-100 d-block bg-black"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 md-mb-7 last-paragraph-no-margin"
+                    data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                    <p>We are excited for our work and how it positively impacts clients. With over 12 years of experience
+                        we have been constantly providing excellent web solutions services.</p>
+                </div>
+                <div class="col-xxl-2 offset-xxl-1 col-lg-3 md-mb-7">
+                    <ul class="p-0 m-0 list-style-01"
+                        data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                        <li class="border-color-black pb-10px fs-16 lh-28 fw-500 text-black">Custom development</li>
+                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">E-commerce migration
+                        </li>
+                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">Custom E-commerce</li>
+                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">E-commerce integrations
+                        </li>
+                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">Back-end development
+                        </li>
+                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">E-commerce applications
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xxl-4 offset-xxl-1 col-lg-5"
+                    data-anime='{ "effect": "slide", "color": "#ffea00", "direction":"rl", "easing": "easeOutQuad", "delay":50}'>
+                    <img src="images/demo-scattered-portfolio-expertise-03.jpg" alt="" />
+                </div>
+            </div>
+            <div class="row mb-7 sm-mb-50px">
+                <div class="col-12">
+                    <span class="text-black fw-700 text-uppercase mb-10px d-block fs-15">Campaign Management Support</span>
                     <div class="position-relative">
                         <h5 class="text-black fw-700 mb-0 me-25px absolute-middle-right ls-minus-2px">05</h5>
                         <div class="separator-line-1px w-100 d-block bg-black"></div>

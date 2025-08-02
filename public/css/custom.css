@@ -7,3 +7,9 @@
     font-weight: 400;
     color: #000;
 }
+
+
+span.error {
+    color: red;
+    font-size: 15px;
+}
