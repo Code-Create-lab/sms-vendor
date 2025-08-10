@@ -48,7 +48,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
-     @livewireStyles
+     {{-- @livewireStyles --}}
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"
     integrity="sha512-BdHyGtczsUoFcEma+MfXc71KJLv/cd+sUsUaYYf2mXpfG/PtBjNXsPo78+rxWjscxUYN2Qr2+DbeGGiJx81ifg=="
@@ -57,7 +57,7 @@
 
 <body data-mobile-nav-style="full-screen-menu" class="background-position-center-top custom-cursor"
     data-mobile-nav-bg-color="#232323" class="background-position-center-top background-repeat custom-cursor"
-    style="background-image: url(images/vertical-line-bg-small-medium-gray.svg)">
+    style="background-image: url(images/vertical-line-bg-small-medium-gray.svg);background-color:#ffe900" style="background-color:#ffe900">
 
     <!-- start cursor -->
 
@@ -85,7 +85,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
-    @livewireScripts
+
 
     <!-- start sticky elements -->
 
@@ -95,23 +95,11 @@
 
             <ul class="fs-14">
 
-                <li class="me-30px"><a class="facebook" href="https://www.facebook.com/" target="_blank">
+                <li class="me-30px"><a class="facebook" href="{{route('home')}}">
 
-                        <i class="fa-brands fa-facebook-f me-10px"></i>
+                        {{-- <i class="fa-brands fa-facebook-f me-10px"></i> --}}
 
-                        <span class="fw-600">Facebook</span>
-
-                    </a>
-
-                </li>
-
-                <li class="me-30px">
-
-                    <a class="dribbble" href="http://www.dribbble.com" target="_blank">
-
-                        <i class="fa-brands fa-dribbble me-10px"></i>
-
-                        <span class="fw-600">Dribbble</span>
+                        <span class="fw-600">Home</span>
 
                     </a>
 
@@ -119,23 +107,57 @@
 
                 <li class="me-30px">
 
-                    <a class="twitter" href="https://www.twitter.com" target="_blank">
+                    <a class="dribbble" href="{{route('about')}}">
 
-                        <i class="fa-brands fa-twitter me-10px"></i>
+                        {{-- <i class="fa-brands fa-dribbble me-10px"></i> --}}
 
-                        <span class="fw-600">Twitter</span>
+                        <span class="fw-600">About</span>
 
                     </a>
 
                 </li>
 
+                <li class="me-30px">
+
+                    <a class="twitter" href="{{route('channel')}}">
+
+                        {{-- <i class="fa-brands fa-twitter me-10px"></i> --}}
+
+                        <span class="fw-600">Channel</span>
+
+                    </a>
+
+                </li>
+
+                <li class="me-30px">
+
+                    <a class="instagram" href="{{route('industry-solution')}}">
+
+                        {{-- <i class="fa-brands fa-instagram me-10px"></i> --}}
+
+                        <span class="fw-600">Industries Solution</span>
+
+                    </a>
+
+                </li>
+                <li class="me-30px">
+
+                    <a class="instagram" href="{{route('industry-solution')}}">
+
+                        {{-- <i class="fa-brands fa-instagram me-10px"></i> --}}
+
+                        <span class="fw-600">Contact</span>
+
+                    </a>
+
+                </li>
                 <li>
 
-                    <a class="instagram" href="https://www.instagram.com" target="_blank">
+                    <a class="instagram" href="{{route('industry-solution')}}">
 
-                        <i class="fa-brands fa-instagram me-10px"></i>
+                        {{-- <i class="fa-brands fa-instagram me-10px"></i> --}}
 
-                        <span class="fw-600">Instagram</span>
+                        <span class="fw-600">Payment</span>
 
                     </a>
 
@@ -284,23 +306,23 @@
     </script>
 
         <script>
-        document.querySelector('form').addEventListener('submit', function() {
-            console.log('Native submit event fired');
-        });
+        // document.querySelector('form').addEventListener('submit', function() {
+        //     console.log('Native submit event fired');
+        // });
 
-        document.addEventListener('DOMContentLoaded', function() {
-            // Run only once on page load
-            anime({
-                targets: '.form-control',
-                opacity: [0, 1],
-                translateX: [40, 0],
-                delay: anime.stagger(100),
-                duration: 800,
-                easing: 'easeOutExpo'
-            });
-        });
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     // Run only once on page load
+        //     anime({
+        //         targets: '.form-control',
+        //         opacity: [0, 1],
+        //         translateX: [40, 0],
+        //         delay: anime.stagger(100),
+        //         duration: 800,
+        //         easing: 'easeOutExpo'
+        //     });
+        // });
     </script>
-
+ {{-- @livewireScripts --}}
 
 </body>
 

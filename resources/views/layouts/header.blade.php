@@ -12,8 +12,8 @@
                     <a class="navbar-brand" href="{{route('home')}}">
 
                       {{-- <h3 class="default-logo">LOGO</h3> --}}
-                         <img src="{{asset('images/logo.png')}}"
-                            data-at2x="images/demo-scattered-portfolio-logo-black@2x.png" alt="" class="default-logo">
+                         {{-- <img src="{{asset('images/logo.png')}}"
+                            data-at2x="images/demo-scattered-portfolio-logo-black@2x.png" alt="" class="default-logo"> --}}
 
                         {{-- <img src="images/demo-scattered-portfolio-logo-black.png"
                             data-at2x="images/demo-scattered-portfolio-logo-black@2x.png" alt="" class="alt-logo">
@@ -45,28 +45,28 @@
 
                         <ul class="navbar-nav">
 
-                            <li class="nav-item"><a href="{{route('home')}}" class="nav-link">Home</a></li>
+                            {{-- <li class="nav-item"><a href="{{route('home')}}" class="nav-link">Home</a></li> --}}
 
-                            <li class="nav-item"><a href="{{route('about')}}"
+                            {{-- <li class="nav-item"><a href="{{route('about')}}"
                                     class="nav-link">About</a></li>
 
                             <li class="nav-item"><a href="{{route('channel')}}"
                                     class="nav-link">Channel</a></li>
 
                             <li class="nav-item"><a href="{{route('industry-solution')}}" class="nav-link">Industries Solution</a>
+                            </li> --}}
+
+
+
+                            <li class="nav-item"><a href="{{route('election-campaign')}}" class="nav-link elec-camp">Election-Campaign</a>
                             </li>
 
-
-
-                            <li class="nav-item"><a href="{{route('election-campaign')}}" class="nav-link">Election-Campaign</a>
-                            </li>
-
-                            <li class="nav-item"><a href="{{route('contact')}}"
+                            {{-- <li class="nav-item"><a href="{{route('contact')}}"
                                     class="nav-link">Contact</a></li>
 
                                     <li class="nav-item"><a href="demo-scattered-portfolio-contact.html"
 
-                                    class="nav-link">Payment</a></li>
+                                    class="nav-link">Payment</a></li> --}}
 
                         </ul>
 

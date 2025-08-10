@@ -13,3 +13,11 @@ span.error {
     color: red;
     font-size: 15px;
 }
+
+.elec-camp{
+    background-color: #b93927 !important;
+    padding: 40px !important;
+    border-radius: 50px;
+    margin-top: 10px;
+}
+
