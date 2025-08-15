@@ -21,3 +21,9 @@ span.error {
     margin-top: 10px;
 }
 
+.footer_section {
+    padding-top: 35px !important;
+    padding-bottom: 0px !important;
+    background-color: #000;
+    color: white;
+}

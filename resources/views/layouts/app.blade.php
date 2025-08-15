@@ -57,7 +57,7 @@
 
 <body data-mobile-nav-style="full-screen-menu" class="background-position-center-top custom-cursor"
     data-mobile-nav-bg-color="#232323" class="background-position-center-top background-repeat custom-cursor"
-    style="background-image: url(images/vertical-line-bg-small-medium-gray.svg);background-color:#ffe900" style="background-color:#ffe900">
+    style="background-image: url(images/vertical-line-bg-small-medium-gray.svg);background-color:#f3eb9b" style="background-color:#ffe900">
 
     <!-- start cursor -->
 
