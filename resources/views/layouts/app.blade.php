@@ -95,21 +95,21 @@
 
             <ul class="fs-14">
 
-                <li class="me-30px"><a class="facebook" href="{{route('home')}}">
+                <li class="me-30px"><a class="facebook elec-camp" href="{{route('home')}}">
 
                         {{-- <i class="fa-brands fa-facebook-f me-10px"></i> --}}
 
-                        <span class="fw-600">Home</span>
+                        <span class="fw-600">Election-Campaign</span>
 
                     </a>
 
                 </li>
 
-                <li class="me-30px">
+                {{-- <li class="me-30px">
 
                     <a class="dribbble" href="{{route('about')}}">
 
-                        {{-- <i class="fa-brands fa-dribbble me-10px"></i> --}}
+                        <i class="fa-brands fa-dribbble me-10px"></i>
 
                         <span class="fw-600">About</span>
 
@@ -121,7 +121,7 @@
 
                     <a class="twitter" href="{{route('channel')}}">
 
-                        {{-- <i class="fa-brands fa-twitter me-10px"></i> --}}
+                        <i class="fa-brands fa-twitter me-10px"></i>
 
                         <span class="fw-600">Channel</span>
 
@@ -133,7 +133,7 @@
 
                     <a class="instagram" href="{{route('industry-solution')}}">
 
-                        {{-- <i class="fa-brands fa-instagram me-10px"></i> --}}
+                        <i class="fa-brands fa-instagram me-10px"></i>
 
                         <span class="fw-600">Industries Solution</span>
 
@@ -144,7 +144,7 @@
 
                     <a class="instagram" href="{{route('industry-solution')}}">
 
-                        {{-- <i class="fa-brands fa-instagram me-10px"></i> --}}
+                        <i class="fa-brands fa-instagram me-10px"></i>
 
                         <span class="fw-600">Contact</span>
 
@@ -155,13 +155,13 @@
 
                     <a class="instagram" href="{{route('industry-solution')}}">
 
-                        {{-- <i class="fa-brands fa-instagram me-10px"></i> --}}
+                        <i class="fa-brands fa-instagram me-10px"></i>
 
                         <span class="fw-600">Payment</span>
 
                     </a>
 
-                </li>
+                </li> --}}
 
             </ul>
 

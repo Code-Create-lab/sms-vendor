@@ -50,7 +50,7 @@
                         <div class="col-lg-7">
 
                             <div class="fs-80 sm-fs-50 text-black fw-200">- <span
-                                    class="fs-170 lg-fs-140 md-fs-120 sm-fs-110 ls-minus-6px font-style-italic alt-font fw-500">Ad Magister</span>
+                                    class="fs-170 lg-fs-140 md-fs-120 sm-fs-110 ls-minus-6px font-style-italic alt-font fw-500">SRS</span>
                             </div>
 
                         </div>
