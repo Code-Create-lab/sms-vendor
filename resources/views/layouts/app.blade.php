@@ -105,6 +105,17 @@
 
                 </li>
 
+
+                <li class="me-30px"><a class="facebook elec-camp" href="{{route('home')}}">
+
+                        {{-- <i class="fa-brands fa-facebook-f me-10px"></i> --}}
+
+                        <span class="fw-600">DLT Registration</span>
+
+                    </a>
+
+                </li>
+
                 {{-- <li class="me-30px">
 
                     <a class="dribbble" href="{{route('about')}}">

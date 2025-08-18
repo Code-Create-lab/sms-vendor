@@ -63,7 +63,7 @@
 
 
 
-                            <li class="nav-item"><a href="{{route('election-campaign')}}" class="nav-link ">DLT Registration</a>
+                            {{-- <li class="nav-item"><a href="{{route('election-campaign')}}" class="nav-link ">DLT Registration</a> --}}
                             </li>
 
                             <li class="nav-item"><a href="{{route('contact')}}"
