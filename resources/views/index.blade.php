@@ -4,7 +4,7 @@
 {{-- https://craftohtml.themezaa.com/demo-scattered-portfolio-contact.html --}}
    <!-- start section -->
 
-    <section
+    {{-- <section
         class="full-screen magic-cursor round-cursor position-relative top-space-margin lg-h-auto p-0 overflow-hidden">
 
         <div id="particles-style-01" class="position-absolute h-100 top-0 left-0 w-100" data-particle="true"
@@ -63,7 +63,18 @@
 
         </div>
 
-    </section>
+    </section> --}}
+
+<section class="mainVideoContainer">
+    <div class="video-section">
+  <div class="video-container">
+    <video autoplay muted loop playsinline class="video-element">
+      <source src="{{asset('video/homeVideoLatest.mp4')}}" type="video/mp4">
+    </video>
+  </div>
+</div>
+</section>
+
 
     <!-- end section -->
 
@@ -614,5 +625,16 @@
     </section>
 
     <!-- end section -->
+    <script>
+        window.addEventListener("scroll", () => {
+          const scrollY = window.scrollY;
+          const videoContainer = document.querySelector(".video-container");
 
+          // When user scrolls, increase width gradually up to 100%
+          let newWidth = 50 + scrollY / 10; // adjust speed here
+          if (newWidth > 100) newWidth = 100;
+
+          videoContainer.style.width = newWidth + "%";
+        });
+      </script>
 @endsection
