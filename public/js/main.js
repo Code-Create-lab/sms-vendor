@@ -133,11 +133,11 @@
                     $('.navbar-show-modern-bg').css('background', '');
                 }, 600);
             }
-            if ($('.navbar-full-screen-menu-inner').length) {
-                setTimeout(function () {
-                    $('.navbar-full-screen-menu-inner').css('background', '');
-                }, 600);
-            }
+            // if ($('.navbar-full-screen-menu-inner').length) {
+            //     setTimeout(function () {
+            //         $('.navbar-full-screen-menu-inner').css('background', '');
+            //     }, 600);
+            // }
         }
         var headerHeight = getHeaderHeight();
         var windowHeight = getWindowHeight();
@@ -3501,11 +3501,11 @@
 
     function scrollIndicator() {
         var scrollTop = document.documentElement.scrollTop;
-        if (scrollTop > 200) {
-            $('.scroll-progress').addClass('visible');
-        } else {
-            $('.scroll-progress').removeClass('visible');
-        }
+        // if (scrollTop > 200) {
+        //     $('.scroll-progress').addClass('visible');
+        // } else {
+        //     $('.scroll-progress').removeClass('visible');
+        // }
 
         var scrollHeight = document.documentElement.scrollHeight;
         var windowHeight = document.documentElement.clientHeight;

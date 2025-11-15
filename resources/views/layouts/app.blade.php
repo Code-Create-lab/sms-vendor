@@ -48,7 +48,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
-     {{-- @livewireStyles --}}
+    {{-- @livewireStyles --}}
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"
     integrity="sha512-BdHyGtczsUoFcEma+MfXc71KJLv/cd+sUsUaYYf2mXpfG/PtBjNXsPo78+rxWjscxUYN2Qr2+DbeGGiJx81ifg=="
@@ -57,7 +57,8 @@
 
 <body data-mobile-nav-style="full-screen-menu" class="background-position-center-top custom-cursor"
     data-mobile-nav-bg-color="#232323" class="background-position-center-top background-repeat custom-cursor"
-    style="background-image: url(images/vertical-line-bg-small-medium-gray.svg);background-color:#f0df20" style="background-color:#ffe900">
+    style="background-image: url(images/vertical-line-bg-small-medium-gray.svg);background-color:#f0df20"
+    style="background-color:#ffe900">
 
     <!-- start cursor -->
 
@@ -77,7 +78,7 @@
     @include('layouts.header')
     @yield('content')
     @include('layouts.footer')
-     {{-- @include('cookie-consent::index') --}}
+    {{-- @include('cookie-consent::index') --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 
@@ -95,7 +96,7 @@
 
             <ul class="fs-14">
 
-                <li class="me-30px"><a class="facebook elec-camp" href="{{route('home')}}">
+                <li class="me-30px"><a class="facebook elec-camp" href="{{ route('home') }}">
 
                         {{-- <i class="fa-brands fa-facebook-f me-10px"></i> --}}
 
@@ -106,7 +107,7 @@
                 </li>
 
 
-                <li class="me-30px"><a class="facebook elec-camp" href="{{route('home')}}">
+                <li class="me-30px"><a class="facebook elec-camp" href="{{ route('home') }}">
 
                         {{-- <i class="fa-brands fa-facebook-f me-10px"></i> --}}
 
@@ -316,7 +317,7 @@
         });
     </script>
 
-        <script>
+    <script>
         // document.querySelector('form').addEventListener('submit', function() {
         //     console.log('Native submit event fired');
         // });
@@ -333,7 +334,7 @@
         //     });
         // });
     </script>
- {{-- @livewireScripts --}}
+    {{-- @livewireScripts --}}
 
 </body>
 

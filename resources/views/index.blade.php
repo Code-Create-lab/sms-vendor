@@ -104,7 +104,7 @@
 
                                     <a href="demo-scattered-portfolio-single-project-creative.html">
 
-                                        <img src="images/demo-scattered-portfolio-01.jpg" alt="" />
+                                        <img src="images\website-img\bulk-sms.png" alt="" />
 
                                     </a>
 
@@ -113,12 +113,12 @@
                                 <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
 
                                     <a href="demo-scattered-portfolio-single-project-creative.html"
-                                        class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Tailoring</a>
+                                        class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Bulk</a>
 
                                     <span
                                         class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
 
-                                    <div class="d-inline-block">Branding</div>
+                                    <div class="d-inline-block">SMS</div>
 
                                 </div>
 
@@ -150,7 +150,7 @@
 
                                     <a href="demo-scattered-portfolio-single-project-creative.html">
 
-                                        <img src="images/demo-scattered-portfolio-02.jpg" alt="" />
+                                        <img src="images\website-img\voice-sms.png" alt="" />
 
                                     </a>
 
@@ -159,12 +159,12 @@
                                 <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
 
                                     <a href="demo-scattered-portfolio-single-project-creative.html"
-                                        class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Designblast</a>
+                                        class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Voice</a>
 
                                     <span
                                         class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
 
-                                    <div class="d-inline-block">Photography</div>
+                                    <div class="d-inline-block">SMS</div>
 
                                 </div>
 
@@ -196,7 +196,7 @@
 
                                     <a href="demo-scattered-portfolio-single-project-creative.html">
 
-                                        <img src="images/demo-scattered-portfolio-03.jpg" alt="" />
+                                        <img src="images\website-img\missed-call.png" alt="" />
 
                                     </a>
 
@@ -205,12 +205,12 @@
                                 <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
 
                                     <a href="demo-scattered-portfolio-single-project-creative.html"
-                                        class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Outward</a>
+                                        class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Missed</a>
 
                                     <span
                                         class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
 
-                                    <div class="d-inline-block">Identity</div>
+                                    <div class="d-inline-block">Call</div>
 
                                 </div>
 
@@ -242,7 +242,7 @@
 
                                     <a href="demo-scattered-portfolio-single-project-creative.html">
 
-                                        <img src="images/demo-scattered-portfolio-04.jpg" alt="" />
+                                        <img src="images\website-img\digital-marketing.png" alt="" />
 
                                     </a>
 
@@ -251,7 +251,7 @@
                                 <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
 
                                     <a href="demo-scattered-portfolio-single-project-creative.html"
-                                        class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Violator</a>
+                                        class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Digital</a>
 
                                     <span
                                         class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
@@ -288,7 +288,7 @@
 
                                     <a href="demo-scattered-portfolio-single-project-creative.html">
 
-                                        <img src="images/demo-scattered-portfolio-05.jpg" alt="" />
+                                        <img src="images\website-img\web-development.png" alt="" />
 
                                     </a>
 
@@ -297,12 +297,12 @@
                                 <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
 
                                     <a href="demo-scattered-portfolio-single-project-creative.html"
-                                        class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Potato</a>
+                                        class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Web</a>
 
                                     <span
                                         class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
 
-                                    <div class="d-inline-block">Branding</div>
+                                    <div class="d-inline-block">Development</div>
 
                                 </div>
 
