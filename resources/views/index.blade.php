@@ -1,5 +1,159 @@
 @extends('layouts.app')
 @section('content')
+<!-- === REPLACE STYLE START === -->
+<style>
+:root{
+  --sr-radius:14px;
+  --sr-accent:#c0262e; /* red accent similar to your topbar */
+  --sr-ink:#0b1220;
+  --banner-heading: "Make your customer conversations count";
+  --banner-sub: "Omni-channel messaging — SMS, Voice, RCS, WhatsApp & more";
+}
+
+/* ---------- Banner / video improvements ---------- */
+.mainVideoContainer {
+  position: relative;
+  padding: 36px 0 56px; /* more vertical space so banner breathes */
+  background: linear-gradient(180deg, #fafafa 0%, #f4f6f8 60%);
+  overflow: hidden;
+}
+
+/* Decorative blurred shapes behind video to add visual weight */
+.mainVideoContainer::before,
+.mainVideoContainer::after{
+  content: "";
+  position: absolute;
+  z-index: 0;
+  filter: blur(80px) saturate(1.05);
+  opacity: 0.28;
+  pointer-events: none;
+  transform: translate3d(0,0,0);
+}
+.mainVideoContainer::before{
+  width: 520px; height: 420px;
+  right: -120px; top: -60px;
+  background: radial-gradient(circle at 30% 30%, #ffd7d7, transparent 35%);
+}
+.mainVideoContainer::after{
+  width: 680px; height: 460px;
+  left: -180px; bottom: -40px;
+  background: radial-gradient(circle at 70% 70%, #e6f2ff, transparent 30%);
+}
+
+/* Video wrapper updated so it feels like a proper hero/banner */
+.video-section { display:flex; justify-content:center; align-items:center; }
+.video-container {
+    position: relative;
+    z-index: 2;
+    min-width: 80%;
+    width: 85%;
+    max-width: 1180px;
+    height: auto;
+    border-radius: 50px;
+    overflow: hidden;
+    transform-origin: center center;
+    transition: transform 360ms cubic-bezier(.2,.9,.2,1), box-shadow 300ms ease;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
+    /* box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px !important; */
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    /* background-color: #848688; */
+}
+
+/* video should cover, but we keep natural proportions */
+.video-element {
+    padding: 40px;
+    width: 100%;
+    border-radius: 60px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    transform-origin: center center;
+    transition: transform 420ms cubic-bezier(.2,.9,.2,1);
+    will-change: transform;
+}
+
+/* subtle dark vignette over bottom to increase contrast for any overlay text */
+.mainVideoContainer .video-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(6,8,10,0.48) 100%);
+  mix-blend-mode: multiply;
+  z-index: 3;
+}
+
+/* Decorative glass card overlay centered on the banner (CSS-generated content so no HTML change) */
+.mainVideoContainer::marker { /* fallback to avoid odd rendering in some browsers */ }
+.mainVideoContainer .sr-banner-badge { /* created purely via CSS below as pseudo-element */ }
+
+/* Centered textual CTA created with a pseudo element for quick editable text:
+   You can change the text by editing the --banner-heading and --banner-sub variables above. */
+.mainVideoContainer .video-section::before {
+    content: var(--banner-heading);
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    top: 15%;
+    transform: translateX(-50%);
+    font-weight: 700;
+    font-size: clamp(20px, 3.4vw, 36px);
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: -0.2px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    /* background: #ffffff; */
+    box-shadow: 0 8px 30px rgba(2,6,23,0.4);
+    backdrop-filter: blur(6px) saturate(1.02);
+    max-width: 88%;
+    line-height: 1.05;
+    background-color: #264a9f;
+}
+.mainVideoContainer .video-section::after {
+  content: var(--banner-sub);
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: calc(16% + 56px);
+  transform: translateX(-50%);
+  font-weight: 500;
+  font-size: clamp(13px, 1.5vw, 16px);
+  color: rgba(255,255,255,0.92);
+  text-align: center;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.18);
+  backdrop-filter: blur(4px);
+  max-width: min(780px, 86%);
+}
+
+/* make sure pseudo-elements collapse on tiny screens */
+@media (max-width: 768px){
+  .mainVideoContainer .video-section::before { top:22%; font-size: clamp(18px, 6vw, 24px); padding:8px 12px; }
+  .mainVideoContainer .video-section::after { top: calc(22% + 44px); font-size: 13px; padding:6px 10px; }
+  .mainVideoContainer { padding: 18px 0 36px; }
+  .video-container { width: 96%; max-width: 1000px; }
+}
+
+/* small-screen fallback: remove heavy blur & shapes */
+@media (max-width: 420px) {
+  .mainVideoContainer::before, .mainVideoContainer::after { display:none; }
+  .video-container { box-shadow: 0 8px 24px rgba(2,6,23,0.12); border-radius:10px; }
+}
+
+/* Preserve preference reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .video-container, .video-element { transition: none !important; animation: none !important; transform: none !important; }
+  .mainVideoContainer .video-section::before,
+  .mainVideoContainer .video-section::after { transition: none !important; }
+}
+
+/* Keep rest of sr-portfolio styles you had (to avoid breaking anything) */
+/* If you have previously defined .sr-portfolio-* styles, keep them below (we assume they exist). */
+</style>
+<!-- === REPLACE STYLE END === -->
 
 {{-- https://craftohtml.themezaa.com/demo-scattered-portfolio-contact.html --}}
    <!-- start section -->
@@ -80,247 +234,306 @@
 
     <!-- start section -->
 
-    <section class="pb-0">
-
-        <div class="container">
-
-            <div class="row">
-
-                <div class="col-xl-4 col-lg-5 filter-content">
-
-                    <ul
-                        class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center">
-
-                        <li class="grid-sizer"></li>
-
-                        <!-- start portfolio item -->
-
-                        <li class="grid-item grid-item-single transition-inner-all">
-
-                            <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);"
-                                data-top-bottom="transform: translate3d(0px, -50px, 0px);">
-
-                                <div class="portfolio-image bg-base-color">
-
-                                    <a href="demo-scattered-portfolio-single-project-creative.html">
-
-                                        <img src="images\website-img\bulk-sms.png" alt="" />
-
-                                    </a>
-
-                                </div>
-
-                                <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
-
-                                    <a href="demo-scattered-portfolio-single-project-creative.html"
-                                        class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Bulk</a>
-
-                                    <span
-                                        class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-
-                                    <div class="d-inline-block">SMS</div>
-
-                                </div>
-
-                            </div>
-
-                        </li>
-
-                        <!-- end portfolio item -->
-
-                    </ul>
-
-                </div>
-
-                <div class="col-xl-7 col-lg-7 filter-content offset-xl-1">
-
-                    <ul
-                        class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center">
-
-                        <li class="grid-sizer"></li>
-
-                        <!-- start portfolio item -->
-
-                        <li class="grid-item grid-item-single transition-inner-all">
-
-                            <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 100px, 0px)"
-                                data-top-bottom="transform: translate3d(0px, 180px, 0px);">
-
-                                <div class="portfolio-image bg-base-color">
-
-                                    <a href="demo-scattered-portfolio-single-project-creative.html">
-
-                                        <img src="images\website-img\voice-sms.png" alt="" />
-
-                                    </a>
-
-                                </div>
-
-                                <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
-
-                                    <a href="demo-scattered-portfolio-single-project-creative.html"
-                                        class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Voice</a>
-
-                                    <span
-                                        class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-
-                                    <div class="d-inline-block">SMS</div>
-
-                                </div>
-
-                            </div>
-
-                        </li>
-
-                        <!-- end portfolio item -->
-
-                    </ul>
-
-                </div>
-
-                <div class="col-12 filter-content mt-20 mb-5 lg-mt-0 lg-mb-0">
-
-                    <ul
-                        class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center">
-
-                        <li class="grid-sizer"></li>
-
-                        <!-- start portfolio item -->
-
-                        <li class="grid-item grid-item-single transition-inner-all">
-
-                            <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, -80px, 0px);"
-                                data-top-bottom="transform: translate3d(0px, 80px, 0px);">
-
-                                <div class="portfolio-image bg-base-color">
-
-                                    <a href="demo-scattered-portfolio-single-project-creative.html">
-
-                                        <img src="images\website-img\missed-call.png" alt="" />
-
-                                    </a>
-
-                                </div>
-
-                                <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
-
-                                    <a href="demo-scattered-portfolio-single-project-creative.html"
-                                        class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Missed</a>
-
-                                    <span
-                                        class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-
-                                    <div class="d-inline-block">Call</div>
-
-                                </div>
-
-                            </div>
-
-                        </li>
-
-                        <!-- end portfolio item -->
-
-                    </ul>
-
-                </div>
-
-                <div class="col-xl-7 col-lg-7 filter-content xl-mt-5 lg-mt-0">
-
-                    <ul
-                        class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center">
-
-                        <li class="grid-sizer"></li>
-
-                        <!-- start portfolio item -->
-
-                        <li class="grid-item grid-item-single transition-inner-all">
-
-                            <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);"
-                                data-top-bottom="transform: translate3d(0px, -50px, 0px);">
-
-                                <div class="portfolio-image bg-base-color">
-
-                                    <a href="demo-scattered-portfolio-single-project-creative.html">
-
-                                        <img src="images\website-img\digital-marketing.png" alt="" />
-
-                                    </a>
-
-                                </div>
-
-                                <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
-
-                                    <a href="demo-scattered-portfolio-single-project-creative.html"
-                                        class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Digital</a>
-
-                                    <span
-                                        class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-
-                                    <div class="d-inline-block">Marketing</div>
-
-                                </div>
-
-                            </div>
-
-                        </li>
-
-                        <!-- end portfolio item -->
-
-                    </ul>
-
-                </div>
-
-                <div class="col-xl-4 col-lg-5 filter-content offset-xl-1 xl-mt-3 lg-mt-0">
-
-                    <ul
-                        class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center">
-
-                        <li class="grid-sizer"></li>
-
-                        <!-- start portfolio item -->
-
-                        <li class="grid-item grid-item-single transition-inner-all">
-
-                            <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, -50px, 0px);"
-                                data-top-bottom="transform: translate3d(0px, 50px, 0px);">
-
-                                <div class="portfolio-image bg-base-color">
-
-                                    <a href="demo-scattered-portfolio-single-project-creative.html">
-
-                                        <img src="images\website-img\web-development.png" alt="" />
-
-                                    </a>
-
-                                </div>
-
-                                <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
-
-                                    <a href="demo-scattered-portfolio-single-project-creative.html"
-                                        class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Web</a>
-
-                                    <span
-                                        class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-
-                                    <div class="d-inline-block">Development</div>
-
-                                </div>
-
-                            </div>
-
-                        </li>
-
-                        <!-- end portfolio item -->
-
-                    </ul>
-
-                </div>
-
+ <!-- Redesigned portfolio section with unique classes (sr- prefix) -->
+<section class="sr-portfolio-section pb-0">
+
+  <div class="container">
+    <div class="row gx-4 gy-4 sr-portfolio-row">
+
+           <!-- RCS -->
+      <article class="col-xl-5 col-lg-7 sr-portfolio-col" id="voice-sms-article">
+        <a href="demo-scattered-portfolio-single-project-creative.html"
+           class="sr-portfolio-item"
+           aria-labelledby="sr-p2-title"
+           role="group">
+          <img class="sr-portfolio-img" src="images/3.jpg" alt="RCS">
+          <div class="sr-portfolio-overlay" aria-hidden="true">
+            <div class="sr-overlay-content">
+              <h3 id="sr-p2-title" class="sr-overlay-title">RCS</h3>
+              <p class="sr-overlay-text">
+                Personalised voice broadcast and IVR-based communications for high-impact campaigns.
+              </p>
+              <span class="sr-overlay-cta">Learn more →</span>
             </div>
+          </div>
+        </a>
+      </article>
 
-        </div>
+      <!-- Voice SMS -->
+      <article class="col-xl-3 col-lg-7 sr-portfolio-col" id="voice-sms-article">
+        <a href="demo-scattered-portfolio-single-project-creative.html"
+           class="sr-portfolio-item"
+           aria-labelledby="sr-p2-title"
+           role="group">
+          <img class="sr-portfolio-img" src="images/website-img/voice-sms.jpg" alt="Voice SMS">
+          <div class="sr-portfolio-overlay" aria-hidden="true">
+            <div class="sr-overlay-content">
+              <h3 id="sr-p2-title" class="sr-overlay-title">Voice SMS</h3>
+              <p class="sr-overlay-text">
+                Personalised voice broadcast and IVR-based communications for high-impact campaigns.
+              </p>
+              <span class="sr-overlay-cta">Learn more →</span>
+            </div>
+          </div>
+        </a>
+      </article>
 
-    </section>
+       <!-- Bulk SMS -->
+      <article class="col-xl-4 col-lg-5 sr-portfolio-col" id="bulk-sms-article">
+        <a href="demo-scattered-portfolio-single-project-creative.html"
+           class="sr-portfolio-item"
+           aria-labelledby="sr-p1-title"
+           role="group">
+          <img class="sr-portfolio-img" src="images/website-img/bulk-sms.jpg" alt="Bulk SMS service">
+          <div class="sr-portfolio-overlay" aria-hidden="true">
+            <div class="sr-overlay-content">
+              <h3 id="sr-p1-title" class="sr-overlay-title">Bulk SMS</h3>
+              <p class="sr-overlay-text">
+                Fast, reliable bulk messaging for marketing, alerts and transactional notifications.
+              </p>
+              <span class="sr-overlay-cta">Learn more →</span>
+            </div>
+          </div>
+        </a>
+      </article>
+
+
+      <!-- Whataapp API (full width) -->
+      <article class="col-6 sr-portfolio-col" id="missed-call-article">
+        <a href="demo-scattered-portfolio-single-project-creative.html"
+           class="sr-portfolio-item"
+           aria-labelledby="sr-p3-title"
+           role="group">
+          <img class="sr-portfolio-img" src="images/5.jpg" alt="Whataapp API Service">
+          <div class="sr-portfolio-overlay" aria-hidden="true">
+            <div class="sr-overlay-content">
+              <h3 id="sr-p3-title" class="sr-overlay-title">Whataapp API</h3>
+              <p class="sr-overlay-text">
+                Simple missed-call based user engagement and lead capture solutions.
+              </p>
+              <span class="sr-overlay-cta">Learn more →</span>
+            </div>
+          </div>
+        </a>
+      </article>
+      <!-- Missed Call (full width) -->
+      <article class="col-6 sr-portfolio-col" id="missed-call-article">
+        <a href="demo-scattered-portfolio-single-project-creative.html"
+           class="sr-portfolio-item"
+           aria-labelledby="sr-p3-title"
+           role="group">
+          <img class="sr-portfolio-img" src="images/website-img/missed-call.png" alt="Missed Call Service">
+          <div class="sr-portfolio-overlay" aria-hidden="true">
+            <div class="sr-overlay-content">
+              <h3 id="sr-p3-title" class="sr-overlay-title">Missed Call</h3>
+              <p class="sr-overlay-text">
+                Simple missed-call based user engagement and lead capture solutions.
+              </p>
+              <span class="sr-overlay-cta">Learn more →</span>
+            </div>
+          </div>
+        </a>
+      </article>
+
+      <!-- OTP SMS -->
+      <article class="col-xl-4 col-lg-7 sr-portfolio-col" id="digital-marketing-article">
+        <a href="demo-scattered-portfolio-single-project-creative.html"
+           class="sr-portfolio-item"
+           aria-labelledby="sr-p4-title"
+           role="group">
+          <img class="sr-portfolio-img" src="images/2.jpg" alt="OTP SMS">
+          <div class="sr-portfolio-overlay" aria-hidden="true">
+            <div class="sr-overlay-content">
+              <h3 id="sr-p4-title" class="sr-overlay-title">OTP SMS</h3>
+              <p class="sr-overlay-text">
+                End-to-end digital campaigns: SEO, social ads, content strategy and analytics to grow conversions.
+              </p>
+              <span class="sr-overlay-cta">View services →</span>
+            </div>
+          </div>
+        </a>
+      </article>
+     
+      <!-- Digital Marketing -->
+      <article class="col-xl-3 col-lg-7 sr-portfolio-col" id="digital-marketing-article">
+        <a href="demo-scattered-portfolio-single-project-creative.html"
+           class="sr-portfolio-item"
+           aria-labelledby="sr-p4-title"
+           role="group">
+          <img class="sr-portfolio-img" src="images/website-img/digital-marketing.jpg" alt="Digital Marketing">
+          <div class="sr-portfolio-overlay" aria-hidden="true">
+            <div class="sr-overlay-content">
+              <h3 id="sr-p4-title" class="sr-overlay-title">Digital Marketing</h3>
+              <p class="sr-overlay-text">
+                End-to-end digital campaigns: SEO, social ads, content strategy and analytics to grow conversions.
+              </p>
+              <span class="sr-overlay-cta">View services →</span>
+            </div>
+          </div>
+        </a>
+      </article>
+
+      <!-- Web Development -->
+      <article class="col-xl-5 col-lg-5 sr-portfolio-col" id="web-development-article">
+        <a href="demo-scattered-portfolio-single-project-creative.html"
+           class="sr-portfolio-item"
+           aria-labelledby="sr-p5-title"
+           role="group">
+          <img class="sr-portfolio-img" src="images/website-img/web-development.jpg" alt="Web Development">
+          <div class="sr-portfolio-overlay" aria-hidden="true">
+            <div class="sr-overlay-content">
+              <h3 id="sr-p5-title" class="sr-overlay-title">Web Development</h3>
+              <p class="sr-overlay-text">
+                Modern responsive websites, eCommerce, and web apps built with performance and accessibility in mind.
+              </p>
+              <span class="sr-overlay-cta">See projects →</span>
+            </div>
+          </div>
+        </a>
+      </article>
+
+      <!-- (Add more items by copying one article block and changing ids/images/text) -->
+
+    </div>
+  </div>
+</section>
+
+<!-- Scoped CSS for the sr- prefixed classes -->
+<style>
+/* Layout helpers */
+.sr-portfolio-section .sr-portfolio-row { align-items: stretch; }
+
+/* Root item */
+.sr-portfolio-item {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* Image */
+.sr-portfolio-img {
+  display: block;
+  width: 100%;
+  height: 320px;              /* adjust per design */
+  object-fit: cover;
+  transition: transform 400ms cubic-bezier(.2,.9,.2,1), filter 400ms;
+  will-change: transform, filter;
+}
+
+/* Overlay */
+.sr-portfolio-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.0) 30%, rgba(10,12,16,0.62) 100%);
+  transform: translateY(18%);
+  opacity: 0;
+  transition: opacity 300ms ease, transform 400ms cubic-bezier(.2,.9,.2,1);
+  pointer-events: none;
+}
+
+/* Content card inside overlay */
+.sr-overlay-content {
+  width: 100%;
+  max-width: 720px;
+  color: #fff;
+  backdrop-filter: blur(6px) saturate(1.03);
+  padding: 18px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+  transform: translateY(10px);
+  transition: transform 320ms ease;
+}
+
+/* Typography / small details */
+.sr-overlay-title { margin: 0 0 6px 0; font-size: 20px; font-weight: 700; }
+.sr-overlay-text { margin: 0 0 12px 0; font-size: 14px; line-height: 1.45; color: rgba(255,255,255,0.95); }
+.sr-overlay-cta { font-weight: 600; font-size: 13px; opacity: 0.95; }
+
+/* Hover & focus */
+.sr-portfolio-item:focus .sr-portfolio-img,
+.sr-portfolio-item:hover .sr-portfolio-img {
+  transform: scale(1.06);
+  filter: saturate(1.05) contrast(1.03);
+}
+
+.sr-portfolio-item:focus .sr-portfolio-overlay,
+.sr-portfolio-item:hover .sr-portfolio-overlay {
+  opacity: 1;
+  transform: translateY(0%);
+  pointer-events: auto;
+}
+
+.sr-portfolio-item:focus .sr-overlay-content,
+.sr-portfolio-item:hover .sr-overlay-content {
+  transform: translateY(0px);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .sr-portfolio-img { height: 260px; }
+  .sr-overlay-content { padding: 14px; }
+}
+@media (max-width: 576px) {
+  .sr-portfolio-img { height: 200px; }
+  .sr-overlay-text { display: none; } /* keep compact on small screens */
+}
+
+/* Visible focus outline (accessibility) */
+.sr-portfolio-item:focus { outline: 3px solid rgba(99, 102, 241, 0.12); outline-offset: 4px; border-radius: 12px; }
+</style>
+
+<!-- Touch JS: tap-to-toggle overlay (only on touch devices) -->
+<script>
+(function () {
+  if (!('ontouchstart' in window)) return;
+
+  document.querySelectorAll('.sr-portfolio-item').forEach(function (item) {
+    item.addEventListener('click', function (e) {
+      if (item.classList.contains('sr-tapped')) {
+        // second tap: allow link navigation
+        return true;
+      }
+      // first tap: show overlay, prevent navigation
+      e.preventDefault();
+
+      // close other tapped items
+      document.querySelectorAll('.sr-portfolio-item.sr-tapped').forEach(function (other) {
+        if (other !== item) {
+          other.classList.remove('sr-tapped');
+          var ov = other.querySelector('.sr-portfolio-overlay');
+          if (ov) { ov.style.opacity = ''; ov.style.transform = ''; }
+          var im = other.querySelector('.sr-portfolio-img'); if (im) im.style.transform = '';
+        }
+      });
+
+      item.classList.add('sr-tapped');
+      var overlay = item.querySelector('.sr-portfolio-overlay');
+      if (overlay) { overlay.style.opacity = '1'; overlay.style.transform = 'translateY(0%)'; }
+      var img = item.querySelector('.sr-portfolio-img'); if (img) img.style.transform = 'scale(1.06)';
+    });
+  });
+
+  // close tapped overlays when tapping outside
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.sr-portfolio-item')) {
+      document.querySelectorAll('.sr-portfolio-item.sr-tapped').forEach(function (it) {
+        it.classList.remove('sr-tapped');
+        var overlay = it.querySelector('.sr-portfolio-overlay');
+        if (overlay) { overlay.style.opacity = ''; overlay.style.transform = ''; }
+        var img = it.querySelector('.sr-portfolio-img'); if (img) img.style.transform = '';
+      });
+    }
+  });
+})();
+</script>
 
     <!-- end section -->
 
@@ -637,4 +850,57 @@
           videoContainer.style.width = newWidth + "%";
         });
       </script>
+      <!-- === REPLACE SCRIPT START === -->
+<script>
+(function(){
+  // Smooth anchor scrolling for in-page links (keeps previous behavior)
+  document.addEventListener('click', function(e){
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const hash = a.getAttribute('href');
+    if (!hash || hash === '#') return;
+    const target = document.querySelector(hash);
+    if (!target) return;
+    e.preventDefault();
+    const y = target.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({ top: y - 90, behavior: 'smooth' });
+  });
+
+  // Smooth and performant video scale on scroll using requestAnimationFrame
+  const videoContainer = document.querySelector('.video-container');
+  const videoEl = document.querySelector('.video-element');
+  if (videoContainer && videoEl) {
+    let latestScroll = 0;
+    let ticking = false;
+    function updateTransform(scrollY) {
+      // start at slightly zoomed (0.98) and scale up to 1.02 depending on scroll
+      const start = 0.98;
+      const end = 1.02;
+      const factor = Math.min(1, Math.max(0, scrollY / 800));
+      const scale = start + (end - start) * factor;
+      // apply subtle X + Y scaling for cinematic feel
+      videoContainer.style.transform = 'scale(' + scale + ')';
+      videoEl.style.transform = 'scale(' + (1 + (scale - 1) * 0.28) + ')';
+    }
+    function onScroll() {
+      latestScroll = window.scrollY || window.pageYOffset;
+      if (!ticking) {
+        window.requestAnimationFrame(function(){
+          updateTransform(latestScroll);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+    // init and add listener
+    updateTransform(window.scrollY || window.pageYOffset);
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  // Keep existing touch/keyboard "tap-to-toggle" behavior for portfolio items if present
+  // (we don't reimplement it here — leave your prior script intact if you have one).
+})();
+</script>
+<!-- === REPLACE SCRIPT END === -->
+
 @endsection

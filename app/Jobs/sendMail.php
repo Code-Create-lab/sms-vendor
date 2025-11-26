@@ -19,13 +19,15 @@ class sendMail implements ShouldQueue
 
     public $name;
     public $email;
-    public $message;
+    public $phone;
+    public $service;
 
     public function __construct(Contact $contact)
     {
         $this->name = $contact->name;
         $this->email = $contact->email;
-        $this->message = $contact->message;
+        $this->phone = $contact->phone;
+        $this->service = $contact->services;
     }
 
     /**
@@ -35,14 +37,14 @@ class sendMail implements ShouldQueue
     {
 
 
-    //          Mail::raw('This is a test message', function ($message) {
-    //     $message->to('rajbansh.snehal@gmail.com')
+    //          Mail::raw('This is a test phone', function ($phone) {
+    //     $phone->to('rajbansh.snehal@gmail.com')
     //             ->subject('Test Email');
     // });
 
-        // dd($this->name, $this->email, $this->message);
+        // dd($this->name, $this->email, $this->phone);
         Mail::to('rajbansh.snehal@gmail.com')
             ->bcc('snhlrj5@gmail.com') // <- fixed
-            ->queue(new ContactFormMail($this->name, $this->email, $this->message));
+            ->queue(new ContactFormMail($this->name, $this->email, $this->phone, $this->service));
     }
 }

@@ -1,69 +1,109 @@
 <div class="col-xxl-6 col-lg-7 offset-xxl-1">
-    <form class="contact-form-style-03 js-manual-form" wire:submit.prevent="save" {{-- ✅ Use Livewire's submit --}} id="myForm">
+    <form class="sr-tata-form js-manual-form" wire:submit.prevent="save" id="myForm">
 
-        <div class="row fade-once">
+        <div class="row sr-neumorph-card">
 
-            {{-- ✅ DO NOT use wire:ignore here --}}
-
-            <div class="col-md-6 mb-35px sm-mb-20px">
-                <div class="position-relative form-group">
-                    <span class="form-icon"><i class="bi bi-person icon-extra-medium text-dark-gray"></i></span>
-                    <input wire:model="name"
-                        class="fw-500 ps-0 border-radius-0px border-color-dark-gray bg-transparent form-control required"
-                        type="text" name="name" placeholder="What's your good name?*" />
-                    @error('name')
-                        <span class="error">{{ $message }}</span>
-                    @enderror
+            <div class="col-md-6 mb-4">
+                <label class="sr-label">Full Name</label>
+                <div class="sr-input-wrap">
+                    <i class="bi bi-person sr-input-icon"></i>
+                    <input wire:model="name" type="text" placeholder="Enter your name" class="sr-input" />
                 </div>
+                @error('name')
+                    <span class="sr-error">{{ $message }}</span>
+                @enderror
             </div>
 
-            <div class="col-md-6 mb-35px sm-mb-20px">
-                <div class="position-relative form-group">
-                    <span class="form-icon"><i class="bi bi-envelope icon-extra-medium text-dark-gray"></i></span>
-                    <input wire:model="email"
-                        class="fw-500 ps-0 border-radius-0px border-color-dark-gray bg-transparent form-control required"
-                        type="email" name="email" placeholder="Enter your email address*" />
-                    @error('email')
-                        <span class="error">{{ $message }}</span>
-                    @enderror
+            <div class="col-md-6 mb-4">
+                <label class="sr-label">Email Address</label>
+                <div class="sr-input-wrap">
+                    <i class="bi bi-envelope sr-input-icon"></i>
+                    <input wire:model="email" type="email" placeholder="Enter your email" class="sr-input" />
                 </div>
+                @error('email')
+                    <span class="sr-error">{{ $message }}</span>
+                @enderror
             </div>
 
-            <div class="col-12 mb-50px">
-                <div class="position-relative form-group form-textarea mb-0">
-                    <span class="form-icon"><i
-                            class="bi bi-chat-square-dots icon-extra-medium text-dark-gray"></i></span>
-                    <textarea wire:model="message" class="fw-500 ps-0 border-radius-0px border-color-dark-gray bg-transparent form-control"
-                        name="comment" placeholder="Enter your message" rows="4"></textarea>
-                    @error('message')
-                        <span class="error">{{ $message }}</span>
-                    @enderror
+            <div class="col-12 mb-4">
+                <label class="sr-label">Phone No</label>
+                <div class="sr-input-wrap sr-textarea-wrap">
+                    <i class="bi bi-phone sr-input-icon"></i>
+                     <input wire:model="phone" type="text" placeholder="Enter your Phone No" class="sr-input" />
+                    {{-- <textarea wire:model="message" rows="4" placeholder="Write your message" class="sr-input sr-textarea"></textarea> --}}
                 </div>
+                @error('message')
+                    <span class="sr-error">{{ $message }}</span>
+                @enderror
+            </div>
+            <!-- ========== Lines of Business (Multi Select Chips) ========== -->
+            <div class="col-12 mb-4">
+                <label class="sr-label mb-2">Lines of business (select one or more)</label>
+
+                <div class="sr-chip-container">
+
+                    <!-- Motor -->
+                    <div wire:click="toggleLOB('Motor')"
+                        class="sr-chip {{ in_array('Motor', $selectedLOB ?? []) ? 'sr-chip-selected' : '' }}">
+                        @if (in_array('Motor', $selectedLOB ?? []))
+                            <i class="bi bi-check-circle-fill sr-chip-check"></i>
+                        @endif
+                        Motor
+                    </div>
+
+                    <!-- Travel -->
+                    <div wire:click="toggleLOB('Travel')"
+                        class="sr-chip {{ in_array('Travel', $selectedLOB ?? []) ? 'sr-chip-selected' : '' }}">
+                        @if (in_array('Travel', $selectedLOB ?? []))
+                            <i class="bi bi-check-circle-fill sr-chip-check"></i>
+                        @endif
+                        Travel
+                    </div>
+
+                    <!-- Health -->
+                    <div wire:click="toggleLOB('Health')"
+                        class="sr-chip {{ in_array('Health', $selectedLOB ?? []) ? 'sr-chip-selected' : '' }}">
+                        @if (in_array('Health', $selectedLOB ?? []))
+                            <i class="bi bi-check-circle-fill sr-chip-check"></i>
+                        @endif
+                        Health
+                    </div>
+
+                    <!-- Commercial -->
+                    <div wire:click="toggleLOB('Commercial')"
+                        class="sr-chip {{ in_array('Commercial', $selectedLOB ?? []) ? 'sr-chip-selected' : '' }}">
+                        @if (in_array('Commercial', $selectedLOB ?? []))
+                            <i class="bi bi-check-circle-fill sr-chip-check"></i>
+                        @endif
+                        Commercial
+                    </div>
+
+                </div>
+
+                @error('selectedLOB')
+                    <span class="sr-error">{{ $message }}</span>
+                @enderror
             </div>
 
-            <div class="col-md-7 sm-mb-20px">
-                <p class="fs-14 lh-24 mb-0">We are committed to protecting your privacy...</p>
+
+            <div class="col-md-7 mb-3">
+                <p class="sr-small-text">We are committed to protecting your privacy...</p>
             </div>
 
             <div class="col-md-5 text-start text-md-end">
-                <button type="submit" wire:click="save"
-                    class="btn btn-large btn-expand-ltr text-black text-black-hover btn-rounded submit">
-                    <span class="bg-base-color"></span>Send message
+                <button type="submit" class="sr-submit-btn">
+                    Send Message
                 </button>
             </div>
 
             <div class="col-12">
                 @if (session()->has('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <div class="alert alert-success mt-3">
                         {{ session('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
             </div>
 
-            <div class="col-12 text-center">
-                <div class="form-results mt-20px d-none"></div>
-            </div>
         </div>
     </form>
 </div>

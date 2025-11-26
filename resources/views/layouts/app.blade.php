@@ -34,8 +34,8 @@
 
     <!-- style sheets and font icons  -->
 
-    <link rel="stylesheet" href="{{ asset('css/custom.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/vendors.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}" />
 
     <link rel="stylesheet" href="{{ asset('css/icon.min.css') }}" />
 
@@ -57,8 +57,8 @@
 
 <body data-mobile-nav-style="full-screen-menu" class="background-position-center-top custom-cursor"
     data-mobile-nav-bg-color="#232323" class="background-position-center-top background-repeat custom-cursor"
-    style="background-image: url(images/vertical-line-bg-small-medium-gray.svg);background-color:#f0df20"
-    style="background-color:#ffe900">
+    style="background-image: url(images/vertical-line-bg-small-medium-gray.svg);"
+    >
 
     <!-- start cursor -->
 
@@ -96,9 +96,9 @@
 
             <ul class="fs-14">
 
-                <li class="me-30px"><a class="facebook elec-camp" href="{{ route('home') }}">
+                {{-- <li class="me-30px"><a class="facebook elec-camp" href="{{ route('home') }}">
 
-                        {{-- <i class="fa-brands fa-facebook-f me-10px"></i> --}}
+                     
 
                         <span class="fw-600">Election-Campaign</span>
 
@@ -109,13 +109,13 @@
 
                 <li class="me-30px"><a class="facebook elec-camp" href="{{ route('home') }}">
 
-                        {{-- <i class="fa-brands fa-facebook-f me-10px"></i> --}}
+                      
 
                         <span class="fw-600">DLT Registration</span>
 
                     </a>
 
-                </li>
+                </li> --}}
 
                 {{-- <li class="me-30px">
 

@@ -1,3 +1,18 @@
+
+html {
+  scroll-behavior: smooth;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #f5f5f5 !important;
+}
+
+.header-light .header-icon .icon>a, .header-light .navbar-nav .nav-link {
+    color: #264a9f !important;
+}
 .fs-170 {
     font-size: 9.625rem !important;
 }
@@ -5,7 +20,7 @@
 .para-bold{
 
     font-weight: 400;
-    color: #000;
+    color: #264a9f;
 }
 
 
@@ -24,15 +39,127 @@ span.error {
 .footer_section {
     padding-top: 35px !important;
     padding-bottom: 0px !important;
-    background-color: #000;
+    background-color: #18478b;
     color: white;
 }
+
+/* Outer Card */
+.sr-neumorph-card {
+    background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
+    border-radius: 18px;
+    padding: 35px;
+    box-shadow:
+        6px 6px 12px rgba(0,0,0,0.12),
+        -6px -6px 12px rgba(255,255,255,0.8);
+}
+
+/* Labels */
+.sr-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #617091;
+    margin-bottom: 6px;
+    display: block;
+}
+
+/* Input wrapper */
+.sr-input-wrap {
+    position: relative;
+       background: #f4f7ff;
+    border-radius: 75px;
+    box-shadow:
+        inset 2px 2px 6px rgba(0,0,0,0.08),
+        inset -2px -2px 6px rgba(255,255,255,0.9);
+}
+
+input.sr-input::placeholder {
+    color: #4a4a4a !important;
+}
+
+textarea.sr-input.sr-textarea::placeholder {
+    color: #4a4a4a !important;
+}
+
+/* Icon */
+.sr-input-icon {
+    position: absolute;
+    top: 50%;
+    left: 18px;
+    transform: translateY(-50%);
+    color: #7b7b7b;
+    font-size: 18px;
+}
+
+/* Input Fields */
+.sr-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 14px 20px 14px 48px;
+    font-size: 15px;
+    color: #4a4a4a;
+        border-radius: 60px;
+    color: #071e54;
+    opacity: .8;
+    -webkit-appearance: none;
+    -webkit-box-shadow: inset 3px 3px 6px #bfc3cf, inset -3px -3px 6px #fff;
+    -moz-box-shadow: inset 3px 3px 6px #bfc3cf,inset -3px -3px 6px #fff;
+    box-shadow: inset 3px 3px 6px #bfc3cf, inset -3px -3px 6px #fff;
+    /* font-weight: 600; */
+}
+
+.sr-input::placeholder {
+    color: #9ea1ad;
+}
+
+/* Textarea */
+.sr-textarea-wrap textarea {
+    padding-top: 18px;
+}
+.sr-textarea {
+    min-height: 120px;
+    resize: none;
+}
+
+/* Button */
+.sr-submit-btn {
+    background: linear-gradient(90deg, #35d3e1 -45%, #264a9f 110%, #195dff 140%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow:
+        3px 3px 10px rgba(0,0,0,0.2),
+        -3px -3px 10px rgba(255,255,255,0.7);
+}
+
+.sr-submit-btn:hover {
+    background: #0066c2;
+}
+
+/* Error Message */
+.sr-error {
+    color: red;
+    font-size: 13px;
+}
+
+/* Small description text */
+.sr-small-text {
+    font-size: 14px;
+    color: #6d6d6d;
+}
+
 .video-section {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 350px; /* Start 100px from top */
+    padding-top: 200px; /* Start 100px from top */
   }
 
   .video-container {
@@ -63,7 +190,7 @@ body {
     width: 35px;
     height: 28px;
     cursor: pointer;
-    z-index: 2000;
+    z-index: 999999;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -73,7 +200,7 @@ body {
     display: block;
     height: 3px;
     width: 100%;
-    background: #000;
+    background: #264a9f;
     border-radius: 3px;
     transition: all 0.4s ease-in-out;
     transform-origin: center;
@@ -128,17 +255,22 @@ body {
   .menu-left img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    /* object-fit: cover; */
   }
 
   .menu-right {
-    color: #000;
+    color: #546280;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 50px;
+    background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
   }
 
+
+  .btn-link.text-black, .text-black, a.text-black-hover:hover {
+    color: #264a9f !important;
+}
   .menu-right ul {
     list-style: none;
     padding: 0;
@@ -149,7 +281,7 @@ body {
   }
 
   .menu-right ul li a {
-    color: #000;
+    color: #264a9f;
     text-decoration: none;
     font-size: 1.5rem;
     transition: color 0.3s ease;
@@ -163,3 +295,98 @@ body {
   body.no-scroll {
     overflow: hidden;
   }
+
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(179deg,rgba(13,53,148,.9) -102%,#35d3e1 162%);
+    min-height: 100px;
+}
+
+
+/* Chip container */
+.sr-chip-container {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 16px;
+    /* background: #f4f6fb; */
+    border-radius: 16px;
+    box-shadow:
+        inset 3px 3px 8px rgba(0,0,0,0.08),
+        inset -3px -3px 8px rgba(255,255,255,0.9);
+}
+
+/* Chip base */
+.sr-chip {
+    padding: 10px 22px;
+    background: #eff0f3;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+       color: #546280;
+    box-shadow:
+        3px 3px 8px rgba(0,0,0,0.10),
+        -3px -3px 8px rgba(255,255,255,0.95);
+    transition: all 0.25s ease;
+    border: 1.5px solid transparent;
+}
+
+.sr-chip:hover {
+    transform: translateY(-2px);
+}
+
+/* Chip when selected */
+.sr-chip-selected {
+    background: #E9F2FF;
+    border-color: #0B63C5;
+    color: #0B63C5;
+    box-shadow:
+        2px 2px 8px rgba(0,0,0,0.12),
+        -2px -2px 10px rgba(255,255,255,1);
+}
+
+/* Tick icon */
+.sr-chip-check {
+    margin-right: 8px;
+    font-size: 18px;
+    color: #0B63C5;
+}
+
+.header-chip-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    background: #eff0f3;
+    box-shadow: -2px -2px 4px 0 #fff, 2px 2px 4px 0 #bfc3cf;
+    font-size: 14px !important;
+    font-weight: 500;
+    padding: 8px 20px !important;
+    padding: 8px 24px;
+    color: #546280 !important;
+}
+
+.socialMediaIcon a {
+    color: #fff;
+    background-image: linear-gradient(90deg,#35d3e1 -45%,#264a9f 110%,#195dff 140%);
+    border: 1px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.smIcons {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    box-shadow: 3px 3px 6px #bfc3cf,-3px -3px 6px #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 10px;
+}

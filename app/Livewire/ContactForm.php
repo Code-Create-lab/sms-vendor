@@ -17,18 +17,32 @@ class ContactForm extends Component
     #[Validate('required')]
     public $email;
     #[Validate('required')]
-    public $message;
+    public $phone;
+
+    public $selectedLOB = [];
+
+
+    public function toggleLOB($item)
+    {
+        if (in_array($item, $this->selectedLOB)) {
+            $this->selectedLOB = array_diff($this->selectedLOB, [$item]);
+        } else {
+            $this->selectedLOB[] = $item;
+        }
+    }
 
     public function save()
     {
 
+        // dd();
         $validated =  $this->validate();
 
         // Save to DB
         $contact = Contact::create([
             'name'    => $validated['name'],
             'email'   => $validated['email'],
-            'message' => $validated['message'],
+            'phone' => $validated['phone'],
+            'services' => json_encode($this->selectedLOB),
         ]);
 
 

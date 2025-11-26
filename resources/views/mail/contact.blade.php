@@ -34,9 +34,14 @@
                                     <td style="padding: 10px 0;">{{ $email }}</td>
                                 </tr>
                                 <tr>
-                                    <td style="font-weight: bold; padding: 10px 0;">Message:</td>
+                                    <td style="font-weight: bold; padding: 10px 0;">Phone:</td>
                                     {{-- @dd($message_form) --}}
-                                    <td style="padding: 10px 0; white-space: pre-line;">{{ $message_form }}</td>
+                                    <td style="padding: 10px 0; white-space: pre-line;">{{ $phone }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold; padding: 10px 0;">Service:</td>
+                                    {{-- @dd($message_form) --}}
+                                    <td style="padding: 10px 0; white-space: pre-line;">{{ $service }}</td>
                                 </tr>
                             </table>
 
