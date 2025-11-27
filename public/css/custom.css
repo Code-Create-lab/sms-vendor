@@ -390,3 +390,17 @@ body {
     cursor: pointer;
     margin-right: 10px;
 }
+
+@media (max-width: 768px) {
+   .video-element {
+    padding: 8px !important;
+    width: 100%;
+    border-radius: 18px !important;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    transform-origin: center center;
+    transition: transform 420ms cubic-bezier(.2,.9,.2,1);
+    will-change: transform;
+}
+}

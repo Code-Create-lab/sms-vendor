@@ -116,7 +116,7 @@
   position: absolute;
   z-index: 4;
   left: 50%;
-  top: calc(16% + 56px);
+  top: calc(14% + 56px);
   transform: translateX(-50%);
   font-weight: 500;
   font-size: clamp(13px, 1.5vw, 16px);
@@ -131,8 +131,8 @@
 
 /* make sure pseudo-elements collapse on tiny screens */
 @media (max-width: 768px){
-  .mainVideoContainer .video-section::before { top:22%; font-size: clamp(18px, 6vw, 24px); padding:8px 12px; }
-  .mainVideoContainer .video-section::after { top: calc(22% + 44px); font-size: 13px; padding:6px 10px; }
+  .mainVideoContainer .video-section::before { top:35%; width: 100%; font-size: clamp(18px, 6vw, 24px); padding:8px 12px; font-size: 16px; }
+  .mainVideoContainer .video-section::after { top: calc(31% + 44px); font-size: 9px; padding:0px 10px; width: 75%; }
   .mainVideoContainer { padding: 18px 0 36px; }
   .video-container { width: 96%; max-width: 1000px; }
 }
