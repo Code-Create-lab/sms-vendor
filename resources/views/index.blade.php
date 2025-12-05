@@ -353,7 +353,7 @@
           </div>
         </a>
       </article>
-     
+
       <!-- Digital Marketing -->
       <article class="col-xl-3 col-lg-7 sr-portfolio-col" id="digital-marketing-article">
         <a href="demo-scattered-portfolio-single-project-creative.html"
@@ -834,6 +834,147 @@
             </div>
 
         </div>
+
+
+
+
+
+
+{{-------------------------------------------------------------------------------------------------  --}}
+
+
+<div class="container">
+    <div class="row" style="gap: 43px 0; padding: 82px 0 50px;">
+        <div class="col-xl-4 col-lg-5 filter-content">
+            <ul class="portfolio-simple portfolio-wrapper grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center" style="position: relative; height: 640px;">
+                <li class="grid-sizer"></li>
+                <!-- start portfolio item -->
+                <li class="grid-item grid-item-single transition-inner-all" style="position: absolute; left: 0%; top: 0px;">
+                    <div class="portfolio-box skrollable skrollable-after" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);" style="transform: translate3d(0px, -50px, 0px);">
+                        <div class="portfolio-image bg-base-color">
+                            <a href="demo-scattered-portfolio-single-project-creative.html">
+                                <img src="images/demo-scattered-portfolio-01.jpg" alt="" data-no-retina="">
+                            </a>
+                        </div>
+                        <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
+                            <a href="demo-scattered-portfolio-single-project-creative.html" class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Tailoring</a>
+                            <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                            <div class="d-inline-block" style="color: #fff;">Branding</div>
+                        </div>
+                    </div>
+                </li>
+                <!-- end portfolio item -->
+            </ul>
+        </div>
+        <div class="col-xl-4 col-lg-5 filter-content">
+            <ul class="portfolio-simple portfolio-wrapper grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center" style="position: relative; height: 640px;">
+                <li class="grid-sizer"></li>
+                <!-- start portfolio item -->
+                <li class="grid-item grid-item-single transition-inner-all" style="position: absolute; left: 0%; top: 0px;">
+                    <div class="portfolio-box skrollable skrollable-after" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);" style="transform: translate3d(0px, -50px, 0px);">
+                        <div class="portfolio-image bg-base-color">
+                            <a href="demo-scattered-portfolio-single-project-creative.html">
+                                <img src="images/demo-scattered-portfolio-01.jpg" alt="" data-no-retina="">
+                            </a>
+                        </div>
+                        <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
+                            <a href="demo-scattered-portfolio-single-project-creative.html" class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Tailoring</a>
+                            <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                            <div class="d-inline-block" style="color: #fff;">Branding</div>
+                        </div>
+                    </div>
+                </li>
+                <!-- end portfolio item -->
+            </ul>
+        </div>
+        <div class="col-xl-4 col-lg-5 filter-content">
+            <ul class="portfolio-simple portfolio-wrapper grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center" style="position: relative; height: 640px;">
+                <li class="grid-sizer"></li>
+                <!-- start portfolio item -->
+                <li class="grid-item grid-item-single transition-inner-all" style="position: absolute; left: 0%; top: 0px;">
+                    <div class="portfolio-box skrollable skrollable-after" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);" style="transform: translate3d(0px, -50px, 0px);">
+                        <div class="portfolio-image bg-base-color">
+                            <a href="demo-scattered-portfolio-single-project-creative.html">
+                                <img src="images/demo-scattered-portfolio-01.jpg" alt="" data-no-retina="">
+                            </a>
+                        </div>
+                        <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
+                            <a href="demo-scattered-portfolio-single-project-creative.html" class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Tailoring</a>
+                            <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                            <div class="d-inline-block" style="color: #fff;">Branding</div>
+                        </div>
+                    </div>
+                </li>
+                <!-- end portfolio item -->
+            </ul>
+        </div>
+        <div class="col-xl-4 col-lg-5 filter-content">
+            <ul class="portfolio-simple portfolio-wrapper grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center" style="position: relative; height: 640px;">
+                <li class="grid-sizer"></li>
+                <!-- start portfolio item -->
+                <li class="grid-item grid-item-single transition-inner-all" style="position: absolute; left: 0%; top: 0px;">
+                    <div class="portfolio-box skrollable skrollable-after" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);" style="transform: translate3d(0px, -50px, 0px);">
+                        <div class="portfolio-image bg-base-color">
+                            <a href="demo-scattered-portfolio-single-project-creative.html">
+                                <img src="images/demo-scattered-portfolio-01.jpg" alt="" data-no-retina="">
+                            </a>
+                        </div>
+                        <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
+                            <a href="demo-scattered-portfolio-single-project-creative.html" class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Tailoring</a>
+                            <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                            <div class="d-inline-block" style="color: #fff;">Branding</div>
+                        </div>
+                    </div>
+                </li>
+                <!-- end portfolio item -->
+            </ul>
+        </div>
+        <div class="col-xl-4 col-lg-5 filter-content">
+            <ul class="portfolio-simple portfolio-wrapper grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center" style="position: relative; height: 640px;">
+                <li class="grid-sizer"></li>
+                <!-- start portfolio item -->
+                <li class="grid-item grid-item-single transition-inner-all" style="position: absolute; left: 0%; top: 0px;">
+                    <div class="portfolio-box skrollable skrollable-after" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);" style="transform: translate3d(0px, -50px, 0px);">
+                        <div class="portfolio-image bg-base-color">
+                            <a href="demo-scattered-portfolio-single-project-creative.html">
+                                <img src="images/demo-scattered-portfolio-01.jpg" alt="" data-no-retina="">
+                            </a>
+                        </div>
+                        <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
+                            <a href="demo-scattered-portfolio-single-project-creative.html" class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Tailoring</a>
+                            <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                            <div class="d-inline-block" style="color: #fff;">Branding</div>
+                        </div>
+                    </div>
+                </li>
+                <!-- end portfolio item -->
+            </ul>
+        </div>
+        <div class="col-xl-4 col-lg-5 filter-content">
+            <ul class="portfolio-simple portfolio-wrapper grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center" style="position: relative; height: 640px;">
+                <li class="grid-sizer"></li>
+                <!-- start portfolio item -->
+                <li class="grid-item grid-item-single transition-inner-all" style="position: absolute; left: 0%; top: 0px;">
+                    <div class="portfolio-box skrollable skrollable-after" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);" style="transform: translate3d(0px, -50px, 0px);">
+                        <div class="portfolio-image bg-base-color">
+                            <a href="demo-scattered-portfolio-single-project-creative.html">
+                                <img src="images/demo-scattered-portfolio-01.jpg" alt="" data-no-retina="">
+                            </a>
+                        </div>
+                        <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
+                            <a href="demo-scattered-portfolio-single-project-creative.html" class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Tailoring</a>
+                            <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                            <div class="d-inline-block" style="color: #fff;">Branding</div>
+                        </div>
+                    </div>
+                </li>
+                <!-- end portfolio item -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+{{-- ----------------------------------------------------------------------------------------------------------------- --}}
 
     </section>
 

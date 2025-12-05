@@ -1,3 +1,100 @@
+.portfolio-box {
+    position: relative;
+}
+.portfolio-box .portfolio-caption {
+    display: none;
+    transition: 0.8s ease all;
+}
+.portfolio-box:hover .portfolio-caption {
+    position: absolute;
+    top: 0;
+    padding: 20px;
+    background: #000000c2;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cookie-popup {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 24%;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 10px 35px rgba(0,0,0,0.20);
+    padding: 8px 13px;
+    font-family: "Inter", Arial, sans-serif;
+    z-index: 999999;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+.cookie-popup.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.cookie-content h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #222;
+}
+
+.cookie-content p {
+    font-size: 14px;
+    color: #555;
+    line-height: 17px;
+}
+
+.cookie-buttons {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cookie-accept {
+    background: #0073ff;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.cookie-decline {
+    background: #f1f1f1;
+    color: #333;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.cookie-accept:hover {
+    background: #005ed1;
+}
+
+.cookie-decline:hover {
+    background: #e2e2e2;
+}
+
+/* Responsive */
+@media(max-width: 480px){
+    .cookie-popup {
+        width: 90%;
+        right: 5%;
+        bottom: 20px;
+    }
+}
 
 html {
   scroll-behavior: smooth;
@@ -233,7 +330,11 @@ body {
     align-items: center;
     z-index: 1999;
   }
-
+  .sr-chip-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
   .fullscreen-menu.show {
     display: flex;
     animation: fadeIn 0.5s ease;
@@ -247,7 +348,7 @@ body {
   /* Layout for 2 columns */
   .menu-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     width: 100%;
     height: 100%;
   }
@@ -262,8 +363,8 @@ body {
     color: #546280;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 50px;
+    justify-content: start;
+    padding: 80px 50px 50px 50px;
     background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
   }
 
@@ -306,9 +407,6 @@ body {
 
 /* Chip container */
 .sr-chip-container {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
     padding: 16px;
     /* background: #f4f6fb; */
     border-radius: 16px;

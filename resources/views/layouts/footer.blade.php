@@ -111,7 +111,7 @@
             <div class="col-12 col-xl-4 text-center text-sm-end">
                 <h5 class="fw-700 text-white mb-3">Follow Us</h5>
                 <div class="elements-social social-text-style-01">
-                    <ul class="small-icon light  fw-700 icon-with-animation">
+                    <ul class="small-icon light  fw-700 icon-with-animation d-flex justify-content-end">
                         <li><a class="facebook" href="https://www.facebook.com/" target="_blank">Fb.</a></li>
                         <li><a class="twitter" href="https://www.twitter.com" target="_blank">Tw.</a></li>
                         <li><a class="linkedin" href="http://www.linkedin.com" target="_blank">In.</a></li>
@@ -128,5 +128,40 @@
         </div>
 
     </div>
+    <div class="cookie-popup" id="cookiePopup">
+        <div class="cookie-content">
+            <h4>🍪 We Value Your Privacy</h4>
+            <p>
+                We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic.
+                By clicking “Accept”, you consent to our use of cookies.
+            </p>
+
+            <div class="cookie-buttons">
+                <button id="acceptCookie" class="cookie-accept">Accept</button>
+                <button id="declineCookie" class="cookie-decline">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let cookieBox = document.getElementById("cookiePopup");
+
+            if (!localStorage.getItem("cookieConsent")) {
+                cookieBox.classList.add("show");
+            }
+
+            document.getElementById("acceptCookie").addEventListener("click", function () {
+                localStorage.setItem("cookieConsent", "accepted");
+                cookieBox.classList.remove("show");
+            });
+
+            document.getElementById("declineCookie").addEventListener("click", function () {
+                localStorage.setItem("cookieConsent", "declined");
+                cookieBox.classList.remove("show");
+            });
+        });
+        </script>
+
 
 </footer>
