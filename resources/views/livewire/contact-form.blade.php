@@ -1,9 +1,9 @@
-<div class="col-xxl-6 col-lg-7 offset-xxl-1">
+<div class="col-xxl-5 col-lg-7 offset-xxl-1">
     <form class="sr-tata-form js-manual-form" wire:submit.prevent="save" id="myForm">
 
         <div class="row sr-neumorph-card">
 
-            <div class="col-md-6 mb-4">
+            <div class="col-md-12 mb-4">
                 <label class="sr-label">Full Name</label>
                 <div class="sr-input-wrap">
                     <i class="bi bi-person sr-input-icon"></i>
@@ -14,7 +14,7 @@
                 @enderror
             </div>
 
-            <div class="col-md-6 mb-4">
+            <div class="col-md-12 mb-4">
                 <label class="sr-label">Email Address</label>
                 <div class="sr-input-wrap">
                     <i class="bi bi-envelope sr-input-icon"></i>
@@ -86,11 +86,11 @@
             </div>
 
 
-            <div class="col-md-7 mb-3">
+            <div class="col-md-12 mb-3">
                 <p class="sr-small-text">We are committed to protecting your privacy...</p>
             </div>
 
-            <div class="col-md-5 text-start text-md-end">
+            <div class="col-md-12 text-center text-md-center">
                 <button type="submit" class="sr-submit-btn">
                     Send Message
                 </button>
