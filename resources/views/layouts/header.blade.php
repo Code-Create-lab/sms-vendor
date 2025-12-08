@@ -47,8 +47,19 @@
                         <li class="nav-item"><a href="{{ route('home') }}" class="nav-link">Home</a></li>
 
                         <li class="nav-item"><a href="{{ route('about') }}" class="nav-link">About</a></li>
+                            <li class="has-submenu">
+                                <a href="{{ route('channel') }}" class="nav-link">Channel ▾</a>
 
-                        <li class="nav-item"><a href="{{ route('channel') }}" class="nav-link">Channel</a></li>
+                                <ul class="submenu">
+                                    <li><a href="#faqs">FAQs</a></li>
+                                    <li><a href="#documentation">Documentation</a></li>
+                                    <li><a href="#guides">User Guides</a></li>
+                                    <li><a href="#tickets">Raise a Ticket</a></li>
+                                </ul>
+                            </li>
+
+
+                        </li>
 
                         <li class="nav-item"><a href="{{ route('industry-solution') }}" class="nav-link">Industries
                                 Solution</a>
@@ -95,14 +106,22 @@
                     <div class="menu-right">
                         <div class="rughtMainMenu rughtMainMenu sr-chip-container" style=" margin: 0 auto; width: 100%;text-align: center;">
                             <div class="d-flex justify-content-between mb-5" style="gap: 15px;width: 100%;">
-                                <ul style="width: 100%;">
-                                    <li><a class="header-chip-btn "  href="{{route('home')}}#bulk-sms-article">Product</a></li>
-                                    <li><a class="header-chip-btn " href="{{route('home')}}#voice-sms-article">Solution</a></li>
-                                    <li><a class="header-chip-btn " href="{{route('home')}}#voice-sms-article">Support</a></li>
-                                    <li><a class="header-chip-btn " href="{{route('home')}}#voice-sms-article">Contact</a></li>
-                                    <li><a class="header-chip-btn " href="{{route('home')}}#voice-sms-article">Cookies</a></li>
+                                <ul class="header-menu toggleMenu">
+                                    <li><a class="header-chip-btn" href="{{route('home')}}#bulk-sms-article">Product</a></li>
 
+                                    <li><a class="header-chip-btn" href="{{route('home')}}#voice-sms-article">Solution</a></li>
+
+                                    <!-- Support with dropdown submenu -->
+                                    <li>
+                                        <a class="header-chip-btn" href="{{route('home')}}#voice-sms-article">Support</a>
+
+
+                                    </li>
+
+                                    <li><a class="header-chip-btn" href="{{route('home')}}#voice-sms-article">Contact</a></li>
+                                    <li><a class="header-chip-btn" href="{{route('home')}}#voice-sms-article">Cookies</a></li>
                                 </ul>
+
 
                             </div>
                             <p>UGF- 6, Antariksh Bhawan, KG Marg, New Delhi-110001</p>

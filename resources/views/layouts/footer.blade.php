@@ -130,15 +130,13 @@
     </div>
     <div class="cookie-popup" id="cookiePopup">
         <div class="cookie-content">
-            <h4>🍪 We Value Your Privacy</h4>
             <p>
-                We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic.
-                By clicking “Accept”, you consent to our use of cookies.
+                By clicking ‘Accept’, you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts. View our Privacy Policy for more information.
             </p>
 
-            <div class="cookie-buttons">
+            <div class="cookie-buttons d-flex justify-content-between">
+                <button id="declineCookie" class="cookie-decline">Deny</button>
                 <button id="acceptCookie" class="cookie-accept">Accept</button>
-                <button id="declineCookie" class="cookie-decline">Decline</button>
             </div>
         </div>
     </div>
