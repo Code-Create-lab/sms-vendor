@@ -87,7 +87,7 @@
     <!-- start section -->
     <section>
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-between">
                 <div class="col-lg-5 md-mb-30px"
                     data-anime='{ "translateY": [-15, 0], "perspective": [1200,1200], "scale": [1.1, 1], "rotateX": [50, 0], "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
                     <span class="fs-70 xl-fs-65 lg-fs-60 fw-700 text-black ls-minus-3px">Let us help you get <span

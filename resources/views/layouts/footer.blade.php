@@ -111,7 +111,7 @@
             <div class="col-12 col-xl-4 text-center text-sm-end">
                 <h5 class="fw-700 text-white mb-3">Follow Us</h5>
                 <div class="elements-social social-text-style-01">
-                    <ul class="small-icon light  fw-700 icon-with-animation">
+                    <ul class="small-icon light  fw-700 icon-with-animation d-flex justify-content-end">
                         <li><a class="facebook" href="https://www.facebook.com/" target="_blank">Fb.</a></li>
                         <li><a class="twitter" href="https://www.twitter.com" target="_blank">Tw.</a></li>
                         <li><a class="linkedin" href="http://www.linkedin.com" target="_blank">In.</a></li>
@@ -128,5 +128,38 @@
         </div>
 
     </div>
+    <div class="cookie-popup" id="cookiePopup">
+        <div class="cookie-content">
+            <p>
+                By clicking ‘Accept’, you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts. View our Privacy Policy for more information.
+            </p>
+
+            <div class="cookie-buttons d-flex justify-content-between">
+                <button id="declineCookie" class="cookie-decline">Deny</button>
+                <button id="acceptCookie" class="cookie-accept">Accept</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let cookieBox = document.getElementById("cookiePopup");
+
+            if (!localStorage.getItem("cookieConsent")) {
+                cookieBox.classList.add("show");
+            }
+
+            document.getElementById("acceptCookie").addEventListener("click", function () {
+                localStorage.setItem("cookieConsent", "accepted");
+                cookieBox.classList.remove("show");
+            });
+
+            document.getElementById("declineCookie").addEventListener("click", function () {
+                localStorage.setItem("cookieConsent", "declined");
+                cookieBox.classList.remove("show");
+            });
+        });
+        </script>
+
 
 </footer>
