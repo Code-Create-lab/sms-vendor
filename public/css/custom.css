@@ -59,6 +59,7 @@ ul.submenu li a {
     font-size: 18px;
     font-weight: 700;
     font-family: 'Manrope';
+    white-space: nowrap;
 }
 /* Submenu box */
 .submenu {
@@ -69,7 +70,7 @@ ul.submenu li a {
     background: #fff;
     border-radius: 12px;
     padding: 10px 0;
-    width: 180px;
+    width: fit-content;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     opacity: 0;
     visibility: hidden;
@@ -222,18 +223,25 @@ span.error {
     color: red;
     font-size: 15px;
 }
-
+.quickLinks {
+    padding: 0;
+}
+.quickLinks li a {
+    color: #000;
+}
 .elec-camp{
     background-color: #b93927 !important;
     padding: 10px !important;
     border-radius: 50px;
     margin-top: 10px;
 }
-
+.textMains {
+    color: #000 !important;
+}
 .footer_section {
     padding-top: 35px !important;
     padding-bottom: 0px !important;
-    background-color: #18478b;
+    background-color: #e8e9ed;
     color: white;
 }
 
@@ -445,7 +453,7 @@ body {
   /* Layout for 2 columns */
   .menu-content {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     width: 100%;
     height: 100%;
   }

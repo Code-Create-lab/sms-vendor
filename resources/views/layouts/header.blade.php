@@ -44,41 +44,35 @@
 
                     <ul class="navbar-nav">
 
-                        <li class="nav-item"><a href="{{ route('home') }}" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
 
-                        <li class="nav-item"><a href="{{ route('about') }}" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Solutions</a></li>
+
                             <li class="has-submenu">
-                                <a href="{{ route('channel') }}" class="nav-link">Channel ▾</a>
+                                <a href="#" class="nav-link">Channels ▾</a>
 
                                 <ul class="submenu">
-                                    <li><a href="#faqs">FAQs</a></li>
-                                    <li><a href="#documentation">Documentation</a></li>
-                                    <li><a href="#guides">User Guides</a></li>
-                                    <li><a href="#tickets">Raise a Ticket</a></li>
+                                    <li><a href="#">RCS RCS Business Messaging</a></li>
+                                    <li><a href="#">Bulk SMS</a></li>
+                                    <li><a href="#">Voice SMS</a></li>
+                                    <li><a href="#">WhatsApp Business API</a></li>
+                                    <li><a href="#">Digital-Marketing</a></li>
+                                </ul>
+                            </li>
+
+
+                        <li class="nav-item"><a href="#" class="nav-link">Resources</a></li>
+                            <li class="has-submenu">
+                                <a href="#" class="nav-link">Company ▾</a>
+
+                                <ul class="submenu">
+                                    <li><a href="/">Home</a></li>
+                                    <li><a href="{{ route('about') }}">About Us</a></li>
                                 </ul>
                             </li>
 
 
                         </li>
-
-                        <li class="nav-item"><a href="{{ route('industry-solution') }}" class="nav-link">Industries
-                                Solution</a>
-                        </li>
-
-
-
-                        {{-- <li class="nav-item"><a href="{{route('election-campaign')}}" class="nav-link ">Election-Campaign</a> --}}
-                        </li>
-
-
-
-                        {{-- <li class="nav-item"><a href="{{route('election-campaign')}}" class="nav-link ">DLT Registration</a> --}}
-                        </li>
-
-                        <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>
-
-                        <li class="nav-item"><a href="demo-scattered-portfolio-contact.html"
-                                class="nav-link">Payment</a></li>
 
                     </ul>
 
@@ -118,20 +112,12 @@
 
                                     </li>
 
-                                    <li><a class="header-chip-btn" href="{{route('home')}}#voice-sms-article">Contact</a></li>
-                                    <li><a class="header-chip-btn" href="{{route('home')}}#voice-sms-article">Cookies</a></li>
+                                    <li><a class="header-chip-btn" href="{{ route('contact') }}">Contact</a></li>
                                 </ul>
 
 
                             </div>
-                            <p>UGF- 6, Antariksh Bhawan, KG Marg, New Delhi-110001</p>
-                            <p>info@spj-group.com | +91 - 9055290552</p>
-                            <div class="d-flex gap-4 socialMediaIcon justify-content-center">
-                                <a class="smIcons facebook " href="https://www.facebook.com/" target="_blank">Fb.</a>
-                                <a class="smIcons twitter" href="https://www.twitter.com" target="_blank">Tw.</a>
-                                <a class="smIcons linkedin" href="http://www.linkedin.com" target="_blank">In.</a>
-                                <a class="smIcons instagram" href="http://www.instagram.com" target="_blank">Ig.</a>
-                            </div>
+
                         </div>
                     </div>
                 </div>
