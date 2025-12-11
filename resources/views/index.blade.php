@@ -13,7 +13,7 @@
 /* ---------- Banner / video improvements ---------- */
 .mainVideoContainer {
   position: relative;
-  padding: 36px 0 56px; /* more vertical space so banner breathes */
+  padding: 89px 0 56px; /* more vertical space so banner breathes */
   background: linear-gradient(180deg, #fafafa 0%, #f4f6f8 60%);
   overflow: hidden;
 }
@@ -153,76 +153,12 @@
 /* Keep rest of sr-portfolio styles you had (to avoid breaking anything) */
 /* If you have previously defined .sr-portfolio-* styles, keep them below (we assume they exist). */
 </style>
-<!-- === REPLACE STYLE END === -->
 
-{{-- https://craftohtml.themezaa.com/demo-scattered-portfolio-contact.html --}}
-   <!-- start section -->
-
-    {{-- <section
-        class="full-screen magic-cursor round-cursor position-relative top-space-margin lg-h-auto p-0 overflow-hidden">
-
-        <div id="particles-style-01" class="position-absolute h-100 top-0 left-0 w-100" data-particle="true"
-            data-particle-options='{"particles":{"number":{"value":5,"density":{"enable":true,"value_area":800}},"color":{"value":"#000000"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":1,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":4,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":false,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":6,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true}'>
-        </div>
-
-        <div class="container h-100">
-
-            <div class="row h-100 align-items-center text-sm-start text-center position-relative">
-
-                <div class="col-12 md-mb-70px sm-mb-50px xs-mb-20px">
-
-                    <div class="fw-800 text-black fs-220 ls-minus-8px xs-ls-minus-5px text-uppercase overflow-hidden">
-
-                        <div data-bottom-top="transform: translate3d(-80px, 0px, 0px);"
-                            data-top-bottom="transform: translate3d(80px, 0px, 0px);">Digital</div>
-
-                        <div class="ms-8 xs-ms-0 fancy-text-style-4"
-                            data-bottom-top="transform: translate3d(80px, 0px, 0px);"
-                            data-top-bottom="transform: translate3d(-80px, 0px, 0px);"> <span
-                                data-fancy-text='{ "effect": "rubber-band", "direction": "left", "string": ["agency", "studio"], "speed": 100, "duration": 3000 }'></span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col-12 mb-auto">
-
-                    <div class="row align-items-end"
-                        data-anime='{ "el": "childs", "translateX": [-15, 0], "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
-
-                        <div class="col-xl-4 col-lg-5 offset-xl-1 md-mb-15px">
-
-                            <div class="fs-19 fw-600 text-black">We believe in the power of brand.</div>
-
-                            <span class="d-block">Specialize in bringing digital identities.</span>
-
-                            <span class="d-block opacity-6">Build brands for the digital.</span>
-
-                        </div>
-
-                        <div class="col-lg-7">
-
-                            <div class="fs-80 sm-fs-50 text-black fw-200">- <span
-                                    class="fs-170 lg-fs-140 md-fs-120 sm-fs-110 ls-minus-6px font-style-italic alt-font fw-500">SRS</span>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section> --}}
 
 <section class="mainVideoContainer">
-    <div class="video-section">
-  <div class="video-container">
-    <video autoplay muted loop playsinline class="video-element">
+    <div class="video-sections">
+  <div>
+    <video autoplay muted loop playsinline>
       <source src="{{asset('video/homeVideoLatest.mp4')}}" type="video/mp4">
     </video>
   </div>
@@ -235,168 +171,122 @@
     <!-- start section -->
 
  <!-- Redesigned portfolio section with unique classes (sr- prefix) -->
-<section class="sr-portfolio-section pb-0">
+{{-------------------------------------------------------------------------------------------------  --}}
 
-  <div class="container">
-    <div class="row gx-4 gy-4 sr-portfolio-row">
 
-           <!-- RCS -->
-      <article class="col-xl-5 col-lg-7 sr-portfolio-col" id="voice-sms-article">
-        <a href="demo-scattered-portfolio-single-project-creative.html"
-           class="sr-portfolio-item"
-           aria-labelledby="sr-p2-title"
-           role="group">
-          <img class="sr-portfolio-img" src="images/3.jpg" alt="RCS">
-          <div class="sr-portfolio-overlay" aria-hidden="true">
-            <div class="sr-overlay-content">
-              <h3 id="sr-p2-title" class="sr-overlay-title">RCS</h3>
-              <p class="sr-overlay-text">
-                Personalised voice broadcast and IVR-based communications for high-impact campaigns.
-              </p>
-              <span class="sr-overlay-cta">Learn more →</span>
+<section class="pb-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-lg-5 filter-content">
+                <ul class="portfolio-simple portfolio-wrapper grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center" style="position: relative; height: 640px;">
+                    <li class="grid-sizer"></li>
+                    <!-- start portfolio item -->
+                    <li class="grid-item grid-item-single transition-inner-all" style="position: absolute; left: 0%; top: 0px;">
+                        <div class="portfolio-box skrollable skrollable-between" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);" style="transform: translate3d(0px, 19.7619px, 0px);">
+                            <div class="portfolio-image bg-base-color">
+                                <a href="demo-scattered-portfolio-single-project-creative.html">
+                                    <img src="images/demo-scattered-portfolio-01.jpg" alt="" data-no-retina="">
+                                </a>
+                            </div>
+                            <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
+                                <a href="demo-scattered-portfolio-single-project-creative.html" class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Tailoring</a>
+                                <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                                <div class="d-inline-block">Branding</div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- end portfolio item -->
+                </ul>
             </div>
-          </div>
-        </a>
-      </article>
-
-      <!-- Voice SMS -->
-      <article class="col-xl-3 col-lg-7 sr-portfolio-col" id="voice-sms-article">
-        <a href="demo-scattered-portfolio-single-project-creative.html"
-           class="sr-portfolio-item"
-           aria-labelledby="sr-p2-title"
-           role="group">
-          <img class="sr-portfolio-img" src="images/website-img/voice-sms.jpg" alt="Voice SMS">
-          <div class="sr-portfolio-overlay" aria-hidden="true">
-            <div class="sr-overlay-content">
-              <h3 id="sr-p2-title" class="sr-overlay-title">Voice SMS</h3>
-              <p class="sr-overlay-text">
-                Personalised voice broadcast and IVR-based communications for high-impact campaigns.
-              </p>
-              <span class="sr-overlay-cta">Learn more →</span>
+            <div class="col-xl-7 col-lg-7 filter-content offset-xl-1">
+                <ul class="portfolio-simple portfolio-wrapper grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center" style="position: relative; height: 791.797px;">
+                    <li class="grid-sizer"></li>
+                    <!-- start portfolio item -->
+                    <li class="grid-item grid-item-single transition-inner-all" style="position: absolute; left: 0%; top: 0px;">
+                        <div class="portfolio-box skrollable skrollable-between" data-bottom-top="transform: translate3d(0px, 100px, 0px)" data-top-bottom="transform: translate3d(0px, 180px, 0px);" style="transform: translate3d(0px, 115.637px, 0px);">
+                            <div class="portfolio-image bg-base-color">
+                                <a href="demo-scattered-portfolio-single-project-creative.html">
+                                    <img src="images/demo-scattered-portfolio-02.jpg" alt="" data-no-retina="">
+                                </a>
+                            </div>
+                            <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
+                                <a href="demo-scattered-portfolio-single-project-creative.html" class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Designblast</a>
+                                <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                                <div class="d-inline-block">Photography</div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- end portfolio item -->
+                </ul>
             </div>
-          </div>
-        </a>
-      </article>
-
-       <!-- Bulk SMS -->
-      <article class="col-xl-4 col-lg-5 sr-portfolio-col" id="bulk-sms-article">
-        <a href="demo-scattered-portfolio-single-project-creative.html"
-           class="sr-portfolio-item"
-           aria-labelledby="sr-p1-title"
-           role="group">
-          <img class="sr-portfolio-img" src="images/website-img/bulk-sms.jpg" alt="Bulk SMS service">
-          <div class="sr-portfolio-overlay" aria-hidden="true">
-            <div class="sr-overlay-content">
-              <h3 id="sr-p1-title" class="sr-overlay-title">Bulk SMS</h3>
-              <p class="sr-overlay-text">
-                Fast, reliable bulk messaging for marketing, alerts and transactional notifications.
-              </p>
-              <span class="sr-overlay-cta">Learn more →</span>
+            <div class="col-12 filter-content mt-20 mb-5 lg-mt-0 lg-mb-0">
+                <ul class="portfolio-simple portfolio-wrapper grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center" style="position: relative; height: 962.766px;">
+                    <li class="grid-sizer"></li>
+                    <!-- start portfolio item -->
+                    <li class="grid-item grid-item-single transition-inner-all" style="position: absolute; left: 0%; top: 0px;">
+                        <div class="portfolio-box skrollable skrollable-before" data-bottom-top="transform: translate3d(0px, -80px, 0px);" data-top-bottom="transform: translate3d(0px, 80px, 0px);" style="transform: translate3d(0px, -80px, 0px);">
+                            <div class="portfolio-image bg-base-color">
+                                <a href="demo-scattered-portfolio-single-project-creative.html">
+                                    <img src="images/demo-scattered-portfolio-03.jpg" alt="" data-no-retina="">
+                                </a>
+                            </div>
+                            <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
+                                <a href="demo-scattered-portfolio-single-project-creative.html" class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Outward</a>
+                                <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                                <div class="d-inline-block">Identity</div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- end portfolio item -->
+                </ul>
             </div>
-          </div>
-        </a>
-      </article>
-
-
-      <!-- Whataapp API (full width) -->
-      <article class="col-6 sr-portfolio-col" id="missed-call-article">
-        <a href="demo-scattered-portfolio-single-project-creative.html"
-           class="sr-portfolio-item"
-           aria-labelledby="sr-p3-title"
-           role="group">
-          <img class="sr-portfolio-img" src="images/5.jpg" alt="Whataapp API Service">
-          <div class="sr-portfolio-overlay" aria-hidden="true">
-            <div class="sr-overlay-content">
-              <h3 id="sr-p3-title" class="sr-overlay-title">Whataapp API</h3>
-              <p class="sr-overlay-text">
-                Simple missed-call based user engagement and lead capture solutions.
-              </p>
-              <span class="sr-overlay-cta">Learn more →</span>
+            <div class="col-xl-7 col-lg-7 filter-content xl-mt-5 lg-mt-0">
+                <ul class="portfolio-simple portfolio-wrapper grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center" style="position: relative; height: 781px;">
+                    <li class="grid-sizer"></li>
+                    <!-- start portfolio item -->
+                    <li class="grid-item grid-item-single transition-inner-all" style="position: absolute; left: 0%; top: 0px;">
+                        <div class="portfolio-box skrollable skrollable-before" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);" style="transform: translate3d(0px, 50px, 0px);">
+                            <div class="portfolio-image bg-base-color">
+                                <a href="demo-scattered-portfolio-single-project-creative.html">
+                                    <img src="images/demo-scattered-portfolio-04.jpg" alt="" data-no-retina="">
+                                </a>
+                            </div>
+                            <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
+                                <a href="demo-scattered-portfolio-single-project-creative.html" class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Violator</a>
+                                <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                                <div class="d-inline-block">Marketing</div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- end portfolio item -->
+                </ul>
             </div>
-          </div>
-        </a>
-      </article>
-      <!-- Missed Call (full width) -->
-      <article class="col-6 sr-portfolio-col" id="missed-call-article">
-        <a href="demo-scattered-portfolio-single-project-creative.html"
-           class="sr-portfolio-item"
-           aria-labelledby="sr-p3-title"
-           role="group">
-          <img class="sr-portfolio-img" src="images/website-img/missed-call.png" alt="Missed Call Service">
-          <div class="sr-portfolio-overlay" aria-hidden="true">
-            <div class="sr-overlay-content">
-              <h3 id="sr-p3-title" class="sr-overlay-title">Missed Call</h3>
-              <p class="sr-overlay-text">
-                Simple missed-call based user engagement and lead capture solutions.
-              </p>
-              <span class="sr-overlay-cta">Learn more →</span>
+            <div class="col-xl-4 col-lg-5 filter-content offset-xl-1 xl-mt-3 lg-mt-0">
+                <ul class="portfolio-simple portfolio-wrapper grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center" style="position: relative; height: 640px;">
+                    <li class="grid-sizer"></li>
+                    <!-- start portfolio item -->
+                    <li class="grid-item grid-item-single transition-inner-all" style="position: absolute; left: 0%; top: 0px;">
+                        <div class="portfolio-box skrollable skrollable-before" data-bottom-top="transform: translate3d(0px, -50px, 0px);" data-top-bottom="transform: translate3d(0px, 50px, 0px);" style="transform: translate3d(0px, -50px, 0px);">
+                            <div class="portfolio-image bg-base-color">
+                                <a href="demo-scattered-portfolio-single-project-creative.html">
+                                    <img src="images/demo-scattered-portfolio-05.jpg" alt="" data-no-retina="">
+                                </a>
+                            </div>
+                            <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
+                                <a href="demo-scattered-portfolio-single-project-creative.html" class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Potato</a>
+                                <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                                <div class="d-inline-block">Branding</div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- end portfolio item -->
+                </ul>
             </div>
-          </div>
-        </a>
-      </article>
-
-      <!-- OTP SMS -->
-      <article class="col-xl-4 col-lg-7 sr-portfolio-col" id="digital-marketing-article">
-        <a href="demo-scattered-portfolio-single-project-creative.html"
-           class="sr-portfolio-item"
-           aria-labelledby="sr-p4-title"
-           role="group">
-          <img class="sr-portfolio-img" src="images/2.jpg" alt="OTP SMS">
-          <div class="sr-portfolio-overlay" aria-hidden="true">
-            <div class="sr-overlay-content">
-              <h3 id="sr-p4-title" class="sr-overlay-title">OTP SMS</h3>
-              <p class="sr-overlay-text">
-                End-to-end digital campaigns: SEO, social ads, content strategy and analytics to grow conversions.
-              </p>
-              <span class="sr-overlay-cta">View services →</span>
-            </div>
-          </div>
-        </a>
-      </article>
-
-      <!-- Digital Marketing -->
-      <article class="col-xl-3 col-lg-7 sr-portfolio-col" id="digital-marketing-article">
-        <a href="demo-scattered-portfolio-single-project-creative.html"
-           class="sr-portfolio-item"
-           aria-labelledby="sr-p4-title"
-           role="group">
-          <img class="sr-portfolio-img" src="images/website-img/digital-marketing.jpg" alt="Digital Marketing">
-          <div class="sr-portfolio-overlay" aria-hidden="true">
-            <div class="sr-overlay-content">
-              <h3 id="sr-p4-title" class="sr-overlay-title">Digital Marketing</h3>
-              <p class="sr-overlay-text">
-                End-to-end digital campaigns: SEO, social ads, content strategy and analytics to grow conversions.
-              </p>
-              <span class="sr-overlay-cta">View services →</span>
-            </div>
-          </div>
-        </a>
-      </article>
-
-      <!-- Web Development -->
-      <article class="col-xl-5 col-lg-5 sr-portfolio-col" id="web-development-article">
-        <a href="demo-scattered-portfolio-single-project-creative.html"
-           class="sr-portfolio-item"
-           aria-labelledby="sr-p5-title"
-           role="group">
-          <img class="sr-portfolio-img" src="images/website-img/web-development.jpg" alt="Web Development">
-          <div class="sr-portfolio-overlay" aria-hidden="true">
-            <div class="sr-overlay-content">
-              <h3 id="sr-p5-title" class="sr-overlay-title">Web Development</h3>
-              <p class="sr-overlay-text">
-                Modern responsive websites, eCommerce, and web apps built with performance and accessibility in mind.
-              </p>
-              <span class="sr-overlay-cta">See projects →</span>
-            </div>
-          </div>
-        </a>
-      </article>
-
-      <!-- (Add more items by copying one article block and changing ids/images/text) -->
-
+        </div>
     </div>
-  </div>
 </section>
+
+{{-- ----------------------------------------------------------------------------------------------------------------- --}}
 
 <!-- Scoped CSS for the sr- prefixed classes -->
 <style>
@@ -840,122 +730,7 @@
 
 
 
-{{-------------------------------------------------------------------------------------------------  --}}
 
-
-<section class="pb-0">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-4 col-lg-5 filter-content">
-                <ul class="portfolio-simple portfolio-wrapper grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center" style="position: relative; height: 640px;">
-                    <li class="grid-sizer"></li>
-                    <!-- start portfolio item -->
-                    <li class="grid-item grid-item-single transition-inner-all" style="position: absolute; left: 0%; top: 0px;">
-                        <div class="portfolio-box skrollable skrollable-between" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);" style="transform: translate3d(0px, 19.7619px, 0px);">
-                            <div class="portfolio-image bg-base-color">
-                                <a href="demo-scattered-portfolio-single-project-creative.html">
-                                    <img src="images/demo-scattered-portfolio-01.jpg" alt="" data-no-retina="">
-                                </a>
-                            </div>
-                            <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
-                                <a href="demo-scattered-portfolio-single-project-creative.html" class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Tailoring</a>
-                                <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                <div class="d-inline-block">Branding</div>
-                            </div>
-                        </div>
-                    </li>
-                    <!-- end portfolio item -->
-                </ul>
-            </div>
-            <div class="col-xl-7 col-lg-7 filter-content offset-xl-1">
-                <ul class="portfolio-simple portfolio-wrapper grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center" style="position: relative; height: 791.797px;">
-                    <li class="grid-sizer"></li>
-                    <!-- start portfolio item -->
-                    <li class="grid-item grid-item-single transition-inner-all" style="position: absolute; left: 0%; top: 0px;">
-                        <div class="portfolio-box skrollable skrollable-between" data-bottom-top="transform: translate3d(0px, 100px, 0px)" data-top-bottom="transform: translate3d(0px, 180px, 0px);" style="transform: translate3d(0px, 115.637px, 0px);">
-                            <div class="portfolio-image bg-base-color">
-                                <a href="demo-scattered-portfolio-single-project-creative.html">
-                                    <img src="images/demo-scattered-portfolio-02.jpg" alt="" data-no-retina="">
-                                </a>
-                            </div>
-                            <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
-                                <a href="demo-scattered-portfolio-single-project-creative.html" class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Designblast</a>
-                                <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                <div class="d-inline-block">Photography</div>
-                            </div>
-                        </div>
-                    </li>
-                    <!-- end portfolio item -->
-                </ul>
-            </div>
-            <div class="col-12 filter-content mt-20 mb-5 lg-mt-0 lg-mb-0">
-                <ul class="portfolio-simple portfolio-wrapper grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center" style="position: relative; height: 962.766px;">
-                    <li class="grid-sizer"></li>
-                    <!-- start portfolio item -->
-                    <li class="grid-item grid-item-single transition-inner-all" style="position: absolute; left: 0%; top: 0px;">
-                        <div class="portfolio-box skrollable skrollable-before" data-bottom-top="transform: translate3d(0px, -80px, 0px);" data-top-bottom="transform: translate3d(0px, 80px, 0px);" style="transform: translate3d(0px, -80px, 0px);">
-                            <div class="portfolio-image bg-base-color">
-                                <a href="demo-scattered-portfolio-single-project-creative.html">
-                                    <img src="images/demo-scattered-portfolio-03.jpg" alt="" data-no-retina="">
-                                </a>
-                            </div>
-                            <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
-                                <a href="demo-scattered-portfolio-single-project-creative.html" class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Outward</a>
-                                <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                <div class="d-inline-block">Identity</div>
-                            </div>
-                        </div>
-                    </li>
-                    <!-- end portfolio item -->
-                </ul>
-            </div>
-            <div class="col-xl-7 col-lg-7 filter-content xl-mt-5 lg-mt-0">
-                <ul class="portfolio-simple portfolio-wrapper grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center" style="position: relative; height: 781px;">
-                    <li class="grid-sizer"></li>
-                    <!-- start portfolio item -->
-                    <li class="grid-item grid-item-single transition-inner-all" style="position: absolute; left: 0%; top: 0px;">
-                        <div class="portfolio-box skrollable skrollable-before" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);" style="transform: translate3d(0px, 50px, 0px);">
-                            <div class="portfolio-image bg-base-color">
-                                <a href="demo-scattered-portfolio-single-project-creative.html">
-                                    <img src="images/demo-scattered-portfolio-04.jpg" alt="" data-no-retina="">
-                                </a>
-                            </div>
-                            <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
-                                <a href="demo-scattered-portfolio-single-project-creative.html" class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Violator</a>
-                                <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                <div class="d-inline-block">Marketing</div>
-                            </div>
-                        </div>
-                    </li>
-                    <!-- end portfolio item -->
-                </ul>
-            </div>
-            <div class="col-xl-4 col-lg-5 filter-content offset-xl-1 xl-mt-3 lg-mt-0">
-                <ul class="portfolio-simple portfolio-wrapper grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col text-center" style="position: relative; height: 640px;">
-                    <li class="grid-sizer"></li>
-                    <!-- start portfolio item -->
-                    <li class="grid-item grid-item-single transition-inner-all" style="position: absolute; left: 0%; top: 0px;">
-                        <div class="portfolio-box skrollable skrollable-before" data-bottom-top="transform: translate3d(0px, -50px, 0px);" data-top-bottom="transform: translate3d(0px, 50px, 0px);" style="transform: translate3d(0px, -50px, 0px);">
-                            <div class="portfolio-image bg-base-color">
-                                <a href="demo-scattered-portfolio-single-project-creative.html">
-                                    <img src="images/demo-scattered-portfolio-05.jpg" alt="" data-no-retina="">
-                                </a>
-                            </div>
-                            <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-20px">
-                                <a href="demo-scattered-portfolio-single-project-creative.html" class="text-black text-black-hover fw-600 fs-24 alt-font font-style-italic">Potato</a>
-                                <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                <div class="d-inline-block">Branding</div>
-                            </div>
-                        </div>
-                    </li>
-                    <!-- end portfolio item -->
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-{{-- ----------------------------------------------------------------------------------------------------------------- --}}
 
     </section>
 
