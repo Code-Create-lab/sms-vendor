@@ -1,0 +1,556 @@
+/*
+|--------------------------------------------------------------------------
+| Homepage design system  (namespace: .da)
+|--------------------------------------------------------------------------
+| Scoped deliberately under `.da` so nothing here leaks into the Bootstrap
+| theme used by the other pages. No global resets, no element selectors
+| outside the namespace.
+*/
+
+/* Inter is loaded via <link> in the page head, not @import, so the font
+   request runs in parallel with this stylesheet instead of after it. */
+
+.da {
+    /* ---- brand ---------------------------------------------------- */
+    --da-brand: #264a9f;          /* existing brand navy */
+    --da-brand-dark: #1b3671;
+    --da-brand-bright: #195dff;   /* interactive / CTA  (5.18:1 on white) */
+    --da-accent: #35d3e1;         /* decorative only, never text on light */
+
+    /* ---- ink & surface -------------------------------------------- */
+    --da-ink: #0b1220;            /* 18:1 on white  */
+    --da-ink-2: #1e293b;
+    --da-muted: #64748b;          /* 4.76:1 on white — AA body */
+    --da-surface: #ffffff;
+    --da-surface-2: #f8fafc;
+    --da-surface-3: #f1f5f9;
+    --da-border: #e2e8f0;
+    --da-border-strong: #cbd5e1;
+
+    /* ---- spacing: 4px grid ---------------------------------------- */
+    --da-s1: 4px;   --da-s2: 8px;   --da-s3: 12px;  --da-s4: 16px;
+    --da-s5: 20px;  --da-s6: 24px;  --da-s8: 32px;  --da-s10: 40px;
+    --da-s12: 48px; --da-s16: 64px; --da-s20: 80px; --da-s28: 112px;
+
+    /* ---- radius / elevation --------------------------------------- */
+    --da-r-sm: 8px;
+    --da-r-md: 14px;
+    --da-r-lg: 20px;
+    --da-r-xl: 28px;
+    --da-e1: 0 1px 2px rgba(11, 18, 32, .06), 0 1px 3px rgba(11, 18, 32, .04);
+    --da-e2: 0 4px 6px -2px rgba(11, 18, 32, .05), 0 12px 20px -8px rgba(11, 18, 32, .10);
+    --da-e3: 0 12px 24px -8px rgba(11, 18, 32, .12), 0 32px 56px -24px rgba(11, 18, 32, .22);
+
+    /* ---- motion tokens (shared with home.js) ----------------------- */
+    --da-dur-fast: 150ms;
+    --da-dur: 220ms;
+    --da-ease: cubic-bezier(.16, 1, .3, 1);
+
+    /* ---- type ------------------------------------------------------ */
+    --da-font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+    font-family: var(--da-font);
+    color: var(--da-ink-2);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    background: var(--da-surface);
+}
+
+.da *,
+.da *::before,
+.da *::after { box-sizing: border-box; }
+
+.da p { margin: 0 0 var(--da-s4); }
+.da p:last-child { margin-bottom: 0; }
+
+.da h1, .da h2, .da h3, .da h4 {
+    margin: 0;
+    color: var(--da-ink);
+    font-weight: 700;
+    letter-spacing: -.022em;
+    line-height: 1.1;
+    text-wrap: balance;
+}
+
+/* :where() keeps this reset at (0,1,0) instead of (0,1,1). A plain `.da a`
+   selector outranks every single-class component below it, which silently
+   forced .da-btn and .da-link back to the inherited colour. */
+.da :where(a) { color: inherit; text-decoration: none; }
+
+/* Visible focus for keyboard users — never removed. */
+.da a:focus-visible,
+.da button:focus-visible {
+    outline: 3px solid var(--da-brand-bright);
+    outline-offset: 3px;
+    border-radius: var(--da-r-sm);
+}
+
+/* ==================================================================
+   Layout primitives
+   ================================================================== */
+.da-shell {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: var(--da-s6);
+}
+
+@media (min-width: 768px) { .da-shell { padding-inline: var(--da-s10); } }
+
+.da-section { padding-block: clamp(56px, 7vw, 112px); }
+.da-section--tight { padding-block: clamp(40px, 5vw, 72px); }
+.da-section--alt { background: var(--da-surface-2); }
+
+.da-head { max-width: 60ch; margin-bottom: var(--da-s12); }
+.da-head--center { margin-inline: auto; text-align: center; }
+
+.da-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--da-s2);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--da-brand);
+    margin-bottom: var(--da-s4);
+}
+
+.da-eyebrow::before {
+    content: "";
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--da-accent);
+}
+
+.da-head--center .da-eyebrow::before { display: none; }
+
+.da-h2 { font-size: clamp(2rem, 1.4rem + 2.4vw, 3.15rem); }
+.da-h3 { font-size: clamp(1.15rem, 1.06rem + .45vw, 1.375rem); letter-spacing: -.014em; }
+
+.da-lede {
+    font-size: clamp(1.0625rem, 1rem + .35vw, 1.1875rem);
+    color: var(--da-muted);
+    max-width: 62ch;
+    margin-top: var(--da-s5);
+}
+
+/* ==================================================================
+   Buttons — 48px min height clears the 44px touch target floor
+   ================================================================== */
+.da-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--da-s2);
+    min-height: 48px;
+    padding: 0 var(--da-s6);
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font: 600 15px/1 var(--da-font);
+    letter-spacing: -.005em;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color var(--da-dur) var(--da-ease),
+                border-color var(--da-dur) var(--da-ease),
+                color var(--da-dur) var(--da-ease),
+                box-shadow var(--da-dur) var(--da-ease);
+}
+
+.da-btn svg { width: 16px; height: 16px; flex: none; }
+
+.da-btn--primary {
+    background: var(--da-brand-bright);
+    color: #fff;
+    box-shadow: var(--da-e2);
+}
+.da-btn--primary:hover { background: #0d4ae0; }
+.da-btn--primary:active { background: #0b3fbd; }
+
+.da-btn--ghost {
+    background: var(--da-surface);
+    color: var(--da-ink);
+    border-color: var(--da-border-strong);
+}
+.da-btn--ghost:hover { border-color: var(--da-ink); background: var(--da-surface-2); }
+
+.da-btn--onDark {
+    background: #fff;
+    color: var(--da-ink);
+}
+.da-btn--onDark:hover { background: #e8eefc; }
+
+.da-btn--outlineDark {
+    background: transparent;
+    color: #fff;
+    border-color: rgba(255, 255, 255, .38);
+}
+.da-btn--outlineDark:hover { border-color: #fff; background: rgba(255, 255, 255, .08); }
+
+.da-btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--da-s3);
+    margin-top: var(--da-s8);
+}
+
+/* Text link with a moving chevron */
+.da-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--da-s2);
+    min-height: 24px;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--da-brand-bright);
+}
+.da-link svg { width: 15px; height: 15px; transition: transform var(--da-dur) var(--da-ease); }
+.da-link:hover svg { transform: translateX(4px); }
+
+/* ==================================================================
+   Hero
+   ================================================================== */
+.da-hero {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(48px, 6vw, 96px) clamp(56px, 6vw, 96px);
+    background:
+        radial-gradient(58% 46% at 78% 6%, rgba(53, 211, 225, .16), transparent 62%),
+        radial-gradient(52% 44% at 10% 0%, rgba(38, 74, 159, .14), transparent 60%),
+        linear-gradient(180deg, var(--da-surface-2) 0%, var(--da-surface) 62%);
+}
+
+/* hairline grid, sits behind everything */
+.da-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(to right, rgba(11, 18, 32, .045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(11, 18, 32, .045) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(circle at 50% 12%, #000 0%, transparent 72%);
+    -webkit-mask-image: radial-gradient(circle at 50% 12%, #000 0%, transparent 72%);
+    pointer-events: none;
+}
+
+.da-hero > * { position: relative; z-index: 1; }
+
+.da-hero-copy { max-width: 780px; }
+
+.da-hero h1 {
+    font-size: clamp(2.5rem, 1.55rem + 4vw, 4.25rem);
+    letter-spacing: -.032em;
+    line-height: 1.04;
+}
+
+.da-hero h1 em {
+    font-style: normal;
+    background: linear-gradient(96deg, var(--da-brand) 8%, var(--da-brand-bright) 92%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.da-hero .da-lede { max-width: 56ch; }
+
+/* channel pills under the headline */
+.da-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--da-s2);
+    margin-top: var(--da-s6);
+    padding: 0;
+    list-style: none;
+}
+
+.da-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--da-s2);
+    padding: 7px var(--da-s4);
+    border: 1px solid var(--da-border);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .8);
+    backdrop-filter: blur(6px);
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--da-ink-2);
+}
+
+.da-chip::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--da-accent);
+    flex: none;
+}
+
+/* --- video frame ------------------------------------------------- */
+.da-hero-media {
+    position: relative;
+    margin-top: clamp(40px, 5vw, 72px);
+    border-radius: var(--da-r-xl);
+    padding: clamp(8px, 1vw, 14px);
+    background: linear-gradient(150deg, rgba(38, 74, 159, .22), rgba(53, 211, 225, .18) 55%, rgba(38, 74, 159, .12));
+    box-shadow: var(--da-e3);
+}
+
+/* The inner panel owns the scroll-linked scale, so it never fights the
+   entrance animation running on the outer frame. */
+.da-hero-media__inner {
+    position: relative;
+    border-radius: calc(var(--da-r-xl) - 8px);
+    overflow: hidden;
+    background: var(--da-ink);
+    /* reserved ratio prevents layout shift while the video loads (CLS) */
+    aspect-ratio: 16 / 9;
+    will-change: transform;
+}
+
+.da-hero-media video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.da-hero-media__badge {
+    position: absolute;
+    left: var(--da-s5);
+    bottom: var(--da-s5);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--da-s2);
+    padding: var(--da-s2) var(--da-s4);
+    border-radius: 999px;
+    background: rgba(11, 18, 32, .74);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.da-hero-media__badge span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #35d3e1;
+    box-shadow: 0 0 0 4px rgba(53, 211, 225, .22);
+}
+
+@media (max-width: 575px) {
+    .da-hero-media__badge { left: var(--da-s3); bottom: var(--da-s3); font-size: 12px; }
+}
+
+/* ==================================================================
+   Stat band
+   ================================================================== */
+.da-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--da-border);
+    border: 1px solid var(--da-border);
+    border-radius: var(--da-r-lg);
+    overflow: hidden;
+}
+
+@media (min-width: 900px) { .da-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+.da-stat {
+    background: var(--da-surface);
+    padding: var(--da-s8) var(--da-s6);
+}
+
+.da-stat__num {
+    display: block;
+    font-size: clamp(1.85rem, 1.5rem + 1.4vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -.03em;
+    line-height: 1;
+    color: var(--da-ink);
+    /* tabular figures stop the count-up from jittering the layout */
+    font-variant-numeric: tabular-nums;
+}
+
+.da-stat__label {
+    display: block;
+    margin-top: var(--da-s3);
+    font-size: 14px;
+    color: var(--da-muted);
+}
+
+/* ==================================================================
+   Channel cards
+   ================================================================== */
+.da-grid {
+    display: grid;
+    gap: var(--da-s5);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 288px), 1fr));
+}
+
+.da-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: var(--da-s8);
+    border: 1px solid var(--da-border);
+    border-radius: var(--da-r-lg);
+    background: var(--da-surface);
+    box-shadow: var(--da-e1);
+    /* colour/shadow only — the lift is a transform driven by home.js */
+    transition: border-color var(--da-dur) var(--da-ease),
+                box-shadow var(--da-dur) var(--da-ease);
+    will-change: transform;
+}
+
+.da-card:hover,
+.da-card:focus-within {
+    border-color: var(--da-brand-bright);
+    box-shadow: var(--da-e2);
+}
+
+.da-card__icon {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    margin-bottom: var(--da-s6);
+    border-radius: var(--da-r-md);
+    background: linear-gradient(140deg, rgba(38, 74, 159, .10), rgba(53, 211, 225, .16));
+    color: var(--da-brand);
+}
+
+.da-card__icon svg { width: 22px; height: 22px; }
+
+.da-card p {
+    margin-top: var(--da-s3);
+    font-size: 15px;
+    color: var(--da-muted);
+}
+
+.da-card .da-link { margin-top: auto; padding-top: var(--da-s6); }
+
+/* The whole card is clickable, but only the link is a real tab stop. */
+.da-card__stretch::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+}
+
+/* ==================================================================
+   Industries
+   ================================================================== */
+.da-inds {
+    display: grid;
+    gap: var(--da-s3);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.da-ind {
+    display: flex;
+    align-items: center;
+    gap: var(--da-s4);
+    min-height: 76px;
+    padding: var(--da-s5);
+    border: 1px solid var(--da-border);
+    border-radius: var(--da-r-md);
+    background: var(--da-surface);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--da-ink);
+    transition: border-color var(--da-dur) var(--da-ease), background var(--da-dur) var(--da-ease);
+}
+
+.da-ind:hover { border-color: var(--da-brand-bright); background: var(--da-surface-2); }
+.da-ind svg { width: 20px; height: 20px; flex: none; color: var(--da-brand); }
+
+/* ==================================================================
+   Platform / capability split
+   ================================================================== */
+.da-split {
+    display: grid;
+    gap: clamp(32px, 4vw, 72px);
+    align-items: start;
+}
+
+@media (min-width: 992px) { .da-split { grid-template-columns: 1fr 1.05fr; } }
+
+.da-feats { padding: 0; margin: 0; list-style: none; }
+
+.da-feat {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: var(--da-s5);
+    padding-block: var(--da-s6);
+    border-top: 1px solid var(--da-border);
+}
+
+.da-feat:last-child { border-bottom: 1px solid var(--da-border); }
+
+.da-feat__icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--da-r-sm);
+    background: var(--da-surface-3);
+    color: var(--da-brand);
+}
+
+.da-feat__icon svg { width: 20px; height: 20px; }
+.da-feat h3 { font-size: 1rem; letter-spacing: -.01em; }
+.da-feat p { margin-top: var(--da-s2); font-size: 15px; color: var(--da-muted); }
+
+/* ==================================================================
+   Closing CTA
+   ================================================================== */
+.da-cta {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--da-r-xl);
+    padding: clamp(40px, 5vw, 80px);
+    background:
+        radial-gradient(70% 130% at 88% 6%, rgba(53, 211, 225, .30), transparent 60%),
+        linear-gradient(140deg, var(--da-brand-dark) 0%, var(--da-brand) 58%, #14295c 100%);
+    color: rgba(255, 255, 255, .82);
+    text-align: center;
+}
+
+.da-cta h2 { color: #fff; font-size: clamp(1.85rem, 1.35rem + 2.1vw, 2.85rem); }
+.da-cta .da-lede { color: rgba(255, 255, 255, .82); margin-inline: auto; }
+.da-cta .da-btn-row { justify-content: center; }
+.da-cta .da-eyebrow { color: var(--da-accent); }
+
+/* ==================================================================
+   Reveal-on-scroll
+   ------------------------------------------------------------------
+   `da-js` is set by an inline script only when JS is alive, and is
+   force-removed by a watchdog if home.js never boots — so the content
+   can never be permanently stuck at opacity 0.
+   ================================================================== */
+.da-js [data-da-reveal],
+.da-js [data-da-hero] {
+    opacity: 0;
+    transform: translateY(18px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .da-js [data-da-reveal],
+    .da-js [data-da-hero] { opacity: 1; transform: none; }
+
+    .da *,
+    .da *::before,
+    .da *::after {
+        animation-duration: .001ms !important;
+        transition-duration: .001ms !important;
+    }
+}

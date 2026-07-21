@@ -82,42 +82,69 @@
 
 
             <!-- 🔹 Toggle Button -->
-            <!-- 🔹 Toggle Button -->
-            <div class="menu-toggle" id="menuToggle">
+            <button class="menu-toggle" id="menuToggle" type="button"
+                    aria-controls="fullscreenMenu" aria-expanded="false" aria-label="Open menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
-            </div>
+            </button>
 
-            <!-- 🔹 Fullscreen Menu -->
-            <div class="fullscreen-menu" id="fullscreenMenu">
+            <!-- 🔹 Navigation overlay -->
+            <div class="fullscreen-menu" id="fullscreenMenu" role="dialog" aria-modal="true"
+                 aria-label="Site navigation">
                 <div class="menu-content">
-                    <!-- Left column -->
+
+                    <!-- Left column: brand visual -->
                     <div class="menu-left">
-                        <img src="{{ asset('images/services.png') }}" alt="Menu Image">
+                        <img src="{{ asset('images/services.png') }}" alt="" aria-hidden="true">
+                        <div class="nav-visual">
+                            <strong>Every channel your customer already uses.</strong>
+                            <span>SMS &middot; RCS &middot; Voice &middot; WhatsApp Business API</span>
+                        </div>
                     </div>
-                    <!-- Right column -->
+
+                    <!-- Right column: navigation -->
                     <div class="menu-right">
-                        <div class="rughtMainMenu rughtMainMenu sr-chip-container" style=" margin: 0 auto; width: 100%;text-align: center;">
-                            <div class="d-flex justify-content-between mb-5" style="gap: 15px;width: 100%;">
-                                <ul class="header-menu toggleMenu">
-                                    <li><a class="header-chip-btn" href="{{route('home')}}#bulk-sms-article">Product</a></li>
+                        <button class="nav-close" id="menuClose" type="button" aria-label="Close menu">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round" aria-hidden="true">
+                                <path d="M6 6l12 12M18 6L6 18" />
+                            </svg>
+                        </button>
 
-                                    <li><a class="header-chip-btn" href="{{route('home')}}#voice-sms-article">Solution</a></li>
+                        <p class="nav-eyebrow">Menu</p>
 
-                                    <!-- Support with dropdown submenu -->
-                                    <li>
-                                        <a class="header-chip-btn" href="{{route('home')}}#voice-sms-article">Support</a>
+                        @php
+                            $navItems = [
+                                ['route' => 'home',              'label' => 'Home'],
+                                ['route' => 'channel',           'label' => 'Channels'],
+                                ['route' => 'industry-solution', 'label' => 'Industries'],
+                                ['route' => 'election-campaign', 'label' => 'Election campaigns'],
+                                ['route' => 'about',             'label' => 'About us'],
+                                ['route' => 'contact',           'label' => 'Contact'],
+                            ];
+                        @endphp
 
+                        <ul class="nav-list">
+                            @foreach ($navItems as $i => $item)
+                                <li>
+                                    <a class="nav-link" href="{{ route($item['route']) }}"
+                                       @if (request()->routeIs($item['route'])) aria-current="page" @endif>
+                                        <span class="nav-link__idx">{{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}</span>
+                                        <span class="nav-link__label">{{ $item['label'] }}</span>
+                                        <svg class="nav-link__arrow" viewBox="0 0 24 24" fill="none"
+                                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                             stroke-linejoin="round" aria-hidden="true">
+                                            <path d="M5 12h14M13 6l6 6-6 6" />
+                                        </svg>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
 
-                                    </li>
-
-                                    <li><a class="header-chip-btn" href="{{ route('contact') }}">Contact</a></li>
-                                </ul>
-
-
-                            </div>
-
+                        <div class="nav-foot">
+                            <a href="mailto:info@admagister.com">info@admagister.com</a>
+                            <p>Ad Magister Pvt. Ltd. &middot; Gurugram 122002</p>
                         </div>
                     </div>
                 </div>
@@ -129,16 +156,83 @@
 
     <!-- end navigation -->
     <script>
-        const menuToggle = document.getElementById("menuToggle");
-        const fullscreenMenu = document.getElementById("fullscreenMenu");
+        (function () {
+            const menuToggle = document.getElementById("menuToggle");
+            const menuClose = document.getElementById("menuClose");
+            const fullscreenMenu = document.getElementById("fullscreenMenu");
 
-        menuToggle.addEventListener("click", () => {
-            fullscreenMenu.classList.toggle("show");
-            document.body.classList.toggle("no-scroll");
+            if (!menuToggle || !fullscreenMenu) return;
 
-            // 🔹 toggle the animated hamburger -> cross
-            menuToggle.classList.toggle("active");
-        });
+            const FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
+            let lastFocused = null;
+
+            function isOpen() {
+                return fullscreenMenu.classList.contains("show");
+            }
+
+            function openMenu() {
+                lastFocused = document.activeElement;
+                fullscreenMenu.classList.add("show");
+                document.body.classList.add("no-scroll");
+                menuToggle.classList.add("active");
+                menuToggle.setAttribute("aria-expanded", "true");
+                menuToggle.setAttribute("aria-label", "Close menu");
+
+                // Move focus into the panel so the keyboard doesn't stay
+                // stranded on the page behind it.
+                const first = fullscreenMenu.querySelector(FOCUSABLE);
+                if (first) first.focus();
+            }
+
+            function closeMenu() {
+                fullscreenMenu.classList.remove("show");
+                document.body.classList.remove("no-scroll");
+                menuToggle.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Open menu");
+
+                if (lastFocused) lastFocused.focus();
+            }
+
+            menuToggle.addEventListener("click", function () {
+                isOpen() ? closeMenu() : openMenu();
+            });
+
+            if (menuClose) menuClose.addEventListener("click", closeMenu);
+
+            // Close on navigation so returning via the back button doesn't
+            // land on a page with the overlay still up.
+            fullscreenMenu.querySelectorAll(".nav-link").forEach(function (link) {
+                link.addEventListener("click", closeMenu);
+            });
+
+            document.addEventListener("keydown", function (e) {
+                if (!isOpen()) return;
+
+                if (e.key === "Escape") {
+                    closeMenu();
+                    return;
+                }
+
+                // Keep Tab cycling inside the dialog while it is open.
+                if (e.key !== "Tab") return;
+
+                const items = Array.from(fullscreenMenu.querySelectorAll(FOCUSABLE))
+                    .filter(function (el) { return el.offsetParent !== null; });
+                if (!items.length) return;
+
+                const first = items[0];
+                const last = items[items.length - 1];
+
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            });
+        })();
 
             document.addEventListener('DOMContentLoaded', function() {
                 const headerOffset = 70; // set to height of your fixed header (0 if none)

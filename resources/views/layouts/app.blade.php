@@ -32,6 +32,10 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    {{-- Inter powers the navigation overlay on every page, and the homepage bundle. --}}
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- style sheets and font icons  -->
 
     <link rel="stylesheet" href="{{ asset('css/vendors.min.css') }}" />
@@ -49,6 +53,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
     {{-- @livewireStyles --}}
+
+    @stack('styles')
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"
     integrity="sha512-BdHyGtczsUoFcEma+MfXc71KJLv/cd+sUsUaYYf2mXpfG/PtBjNXsPo78+rxWjscxUYN2Qr2+DbeGGiJx81ifg=="
@@ -335,6 +341,8 @@
         // });
     </script>
     {{-- @livewireScripts --}}
+
+    @stack('scripts')
 
 </body>
 

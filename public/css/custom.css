@@ -389,13 +389,22 @@ body {
 
   /* 🔹 Toggle Button (hamburger) */
 .menu-toggle {
-    width: 35px;
-    height: 28px;
+    width: 48px;              /* 48px keeps the tap target above the 44px floor */
+    height: 48px;
+    padding: 10px 6px;
+    border: 0;
+    background: none;
     cursor: pointer;
     z-index: 999999;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  }
+
+  .menu-toggle:focus-visible {
+    outline: 3px solid #195dff;
+    outline-offset: 2px;
+    border-radius: 8px;
   }
 
   #menuToggle .bar {
@@ -422,79 +431,268 @@ body {
     transform: rotate(-45deg) translate(5px, -6px);
   }
 
-  /* 🔹 Fullscreen Menu */
+/* ==================================================================
+   Navigation overlay  (#fullscreenMenu)
+   ------------------------------------------------------------------
+   Shares the token values used by the homepage bundle so the two read
+   as one system. Transitions are plain CSS on purpose: this panel is on
+   every page, and shipping the Motion runtime sitewide just to slide one
+   drawer would cost more than it buys. Same easing curve either way.
+   ================================================================== */
   .fullscreen-menu {
+    --nav-ink: #0b1220;
+    --nav-brand: #264a9f;
+    --nav-bright: #195dff;
+    --nav-accent: #35d3e1;
+    --nav-muted: #546280;
+    --nav-line: #e2e8f0;
+    --nav-ease: cubic-bezier(.16, 1, .3, 1);
+
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    display: none;
-    justify-content: center;
-    align-items: center;
+    inset: 0;
     z-index: 1999;
+    background: #fff;
+    /* visibility (not display) so the panel can animate on the way out too */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity .32s var(--nav-ease),
+                transform .32s var(--nav-ease),
+                visibility 0s linear .32s;
   }
-  .sr-chip-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-}
+
   .fullscreen-menu.show {
-    display: flex;
-    animation: fadeIn 0.5s ease;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: opacity .32s var(--nav-ease),
+                transform .32s var(--nav-ease),
+                visibility 0s linear 0s;
   }
 
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
-
-  /* Layout for 2 columns */
+  /* Layout: visual panel + nav. Collapses to nav-only on small screens. */
   .menu-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
     width: 100%;
     height: 100%;
+  }
+
+  @media (max-width: 900px) {
+    .menu-content { grid-template-columns: 1fr; }
+    .menu-left { display: none; }
+  }
+
+  /* ---- left visual ---- */
+  .menu-left {
+    position: relative;
+    overflow: hidden;
+    background: var(--nav-ink);
   }
 
   .menu-left img {
     width: 100%;
     height: 100%;
-    /* object-fit: cover; */
+    object-fit: cover;         /* was commented out — the image was stretching */
+    display: block;
   }
 
+  .menu-left::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(190deg, rgba(38, 74, 159, .30) 0%, rgba(11, 18, 32, .78) 100%);
+  }
+
+  .nav-visual {
+    position: absolute;
+    left: clamp(28px, 4vw, 56px);
+    right: clamp(28px, 4vw, 56px);
+    bottom: clamp(32px, 4vw, 56px);
+    z-index: 1;
+    color: #fff;
+  }
+
+  .nav-visual strong {
+    display: block;
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+    font-weight: 700;
+    letter-spacing: -.02em;
+    line-height: 1.2;
+  }
+
+  .nav-visual span {
+    display: block;
+    margin-top: 10px;
+    font-size: 15px;
+    color: rgba(255, 255, 255, .82);
+  }
+
+  /* ---- right nav ---- */
   .menu-right {
-    color: #546280;
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    padding: 80px 50px 50px 50px;
-    background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
+    padding: clamp(80px, 8vw, 104px) clamp(24px, 5vw, 72px) clamp(28px, 4vw, 48px);
+    background: linear-gradient(160deg, #ffffff 0%, #f4f6fb 100%);
+    color: var(--nav-muted);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .nav-close {
+    position: absolute;
+    top: clamp(20px, 3vw, 32px);
+    right: clamp(20px, 3vw, 32px);
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--nav-line);
+    border-radius: 50%;
+    background: #fff;
+    color: var(--nav-ink);
+    cursor: pointer;
+    transition: background .2s var(--nav-ease), border-color .2s var(--nav-ease);
+  }
+
+  .nav-close:hover { background: #f1f5f9; border-color: #cbd5e1; }
+  .nav-close:focus-visible { outline: 3px solid var(--nav-bright); outline-offset: 3px; }
+  .nav-close svg { width: 20px; height: 20px; }
+
+  .nav-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--nav-muted);
+    margin-bottom: 8px;
   }
 
 
   .btn-link.text-black, .text-black, a.text-black-hover:hover {
     color: #264a9f !important;
 }
-  .menu-right ul {
+  /* ---- nav list ---- */
+  .nav-list {
     list-style: none;
+    margin: 0 0 auto;
     padding: 0;
+    border-top: 1px solid var(--nav-line);
   }
 
-  .menu-right ul li {
-    margin: 15px 0;
-  }
+  .nav-list li { border-bottom: 1px solid var(--nav-line); }
 
-  .menu-right ul li a {
-    color: #264a9f;
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-height: 68px;          /* comfortably past the 44px touch minimum */
+    padding: 12px 4px;
+    color: var(--nav-ink);
     text-decoration: none;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    font-size: clamp(1.3rem, .95rem + 1.5vw, 2rem);
+    letter-spacing: -.022em;
+    line-height: 1.15;
+    transition: color .22s var(--nav-ease);
   }
 
-  .menu-right ul li a:hover {
-    color: #f39c12;
+  .nav-link__idx {
+    flex: none;
+    width: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    color: var(--nav-muted);
+    transition: color .22s var(--nav-ease);
+  }
+
+  /* Transform, not padding — nudging padding would relayout the whole list. */
+  .nav-link__label { transition: transform .28s var(--nav-ease); }
+
+  .nav-link__arrow {
+    margin-left: auto;
+    width: 22px;
+    height: 22px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity .22s var(--nav-ease), transform .28s var(--nav-ease);
+  }
+
+  .nav-link:hover,
+  .nav-link:focus-visible { color: var(--nav-bright); }
+  .nav-link:hover .nav-link__label,
+  .nav-link:focus-visible .nav-link__label { transform: translateX(10px); }
+  .nav-link:hover .nav-link__arrow,
+  .nav-link:focus-visible .nav-link__arrow { opacity: 1; transform: none; }
+  .nav-link:focus-visible { outline: 3px solid var(--nav-bright); outline-offset: 2px; }
+
+  /* Current page — colour alone is never the only signal, so the index
+     digit switches to a filled dot as well. */
+  .nav-link[aria-current="page"] { color: var(--nav-brand); }
+  .nav-link[aria-current="page"] .nav-link__idx { color: var(--nav-bright); }
+  .nav-link[aria-current="page"] .nav-link__label::after {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-left: 12px;
+    border-radius: 50%;
+    background: var(--nav-accent);
+    vertical-align: middle;
+  }
+
+  /* staggered entrance, driven purely by .show */
+  .fullscreen-menu .nav-list li,
+  .fullscreen-menu .nav-foot {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity .42s var(--nav-ease), transform .42s var(--nav-ease);
+  }
+
+  .fullscreen-menu.show .nav-list li,
+  .fullscreen-menu.show .nav-foot { opacity: 1; transform: none; }
+
+  .fullscreen-menu.show .nav-list li:nth-child(1) { transition-delay: .10s; }
+  .fullscreen-menu.show .nav-list li:nth-child(2) { transition-delay: .15s; }
+  .fullscreen-menu.show .nav-list li:nth-child(3) { transition-delay: .20s; }
+  .fullscreen-menu.show .nav-list li:nth-child(4) { transition-delay: .25s; }
+  .fullscreen-menu.show .nav-list li:nth-child(5) { transition-delay: .30s; }
+  .fullscreen-menu.show .nav-list li:nth-child(6) { transition-delay: .35s; }
+  .fullscreen-menu.show .nav-foot { transition-delay: .40s; }
+
+  /* ---- contact block ---- */
+  .nav-foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 40px;
+    margin-top: clamp(32px, 4vw, 56px);
+    padding-top: clamp(20px, 3vw, 28px);
+    border-top: 1px solid var(--nav-line);
+    font-size: 15px;
+  }
+
+  .nav-foot a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--nav-brand);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .nav-foot a:hover { color: var(--nav-bright); }
+  .nav-foot p { margin: 0; align-self: center; color: var(--nav-muted); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fullscreen-menu,
+    .fullscreen-menu * {
+      transition-duration: .001ms !important;
+      transition-delay: 0s !important;
+      animation-duration: .001ms !important;
+    }
   }
 
   /* 🔹 Prevent scroll when menu is open */
@@ -510,8 +708,13 @@ body {
 }
 
 
-/* Chip container */
+/* Chip container — used by the contact form. The flex properties below used
+   to live in a second, duplicate rule inside the nav block; folded in here
+   when that block was rewritten. */
 .sr-chip-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
     padding: 16px;
     /* background: #f4f6fb; */
     border-radius: 16px;
