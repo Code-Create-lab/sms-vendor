@@ -2,77 +2,84 @@
 
     <!-- start navigation -->
 
-    <nav class="navbar navbar-expand-lg header-light bg-transparent disable-fixed">
+    @php
+        // Every entry resolves to a real route. The previous menu pointed six
+        // links at "#" and two at #bulk-sms-article / #voice-sms-article, which
+        // are not IDs that exist in any view.
+        $megaMenu = [
+            [
+                'label' => 'Channels',
+                'match' => ['channel'],
+                'items' => [
+                    ['route' => 'channel', 'label' => 'RCS Business Messaging'],
+                    ['route' => 'channel', 'label' => 'Bulk SMS'],
+                    ['route' => 'channel', 'label' => 'Voice & IVR'],
+                    ['route' => 'channel', 'label' => 'WhatsApp Business API'],
+                    ['route' => 'channel', 'label' => 'Digital marketing'],
+                ],
+            ],
+            [
+                'label' => 'Solutions',
+                'match' => ['industry-solution', 'election-campaign'],
+                'items' => [
+                    ['route' => 'industry-solution', 'label' => 'Industry solutions'],
+                    ['route' => 'election-campaign', 'label' => 'Election campaigns'],
+                ],
+            ],
+            [
+                'label' => 'Company',
+                'match' => ['about', 'contact'],
+                'items' => [
+                    ['route' => 'about',   'label' => 'About us'],
+                    ['route' => 'contact', 'label' => 'Contact'],
+                ],
+            ],
+        ];
+    @endphp
 
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg header-light disable-fixed hdr">
 
-            <div class="">
+        <div class="container-fluid hdr-inner">
 
-                <a class="navbar-brand" href="{{ route('home') }}">
-
-                    {{-- <h3 class="default-logo">LOGO</h3> --}}
-                    {{-- <img src="{{asset('images/logo.png')}}"
-                            data-at2x="images/demo-scattered-portfolio-logo-black@2x.png" alt="" class="default-logo"> --}}
-
-                    {{-- <img src="images/demo-scattered-portfolio-logo-black.png"
-                            data-at2x="images/demo-scattered-portfolio-logo-black@2x.png" alt="" class="alt-logo">
-
-                        <img src="images/demo-scattered-portfolio-logo-black.png"
-                            data-at2x="images/demo-scattered-portfolio-logo-black@2x.png" alt="" class="mobile-logo">  --}}
-
-                </a>
-
-            </div>
+            <a class="navbar-brand hdr-brand" href="{{ route('home') }}">
+                <img src="{{ asset('images/logo.png') }}" alt="Ad Magister — home" class="hdr-logo">
+            </a>
 
             <div class="col-auto menu-order position-static">
 
-                <button class="navbar-toggler float-start" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                    aria-label="Toggle navigation">
-
-                    <span class="navbar-toggler-line"></span>
-
-                    <span class="navbar-toggler-line"></span>
-
-                    <span class="navbar-toggler-line"></span>
-
-                    <span class="navbar-toggler-line"></span>
-
-                </button>
-
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
 
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav hdr-nav">
 
-                        <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
-
-                        <li class="nav-item"><a href="#" class="nav-link">Solutions</a></li>
-
-                            <li class="has-submenu">
-                                <a href="#" class="nav-link">Channels ▾</a>
-
-                                <ul class="submenu">
-                                    <li><a href="#">RCS RCS Business Messaging</a></li>
-                                    <li><a href="#">Bulk SMS</a></li>
-                                    <li><a href="#">Voice SMS</a></li>
-                                    <li><a href="#">WhatsApp Business API</a></li>
-                                    <li><a href="#">Digital-Marketing</a></li>
-                                </ul>
-                            </li>
-
-
-                        <li class="nav-item"><a href="#" class="nav-link">Resources</a></li>
-                            <li class="has-submenu">
-                                <a href="#" class="nav-link">Company ▾</a>
-
-                                <ul class="submenu">
-                                    <li><a href="/">Home</a></li>
-                                    <li><a href="{{ route('about') }}">About Us</a></li>
-                                </ul>
-                            </li>
-
-
+                        <li class="nav-item">
+                            <a href="{{ route('home') }}" class="hdr-link"
+                               @if (request()->routeIs('home')) aria-current="page" @endif>Home</a>
                         </li>
+
+                        @foreach ($megaMenu as $mi => $group)
+                            @php $groupId = 'hdrMenu' . $mi; @endphp
+                            <li class="nav-item has-submenu">
+                                <button type="button" class="hdr-link hdr-trigger"
+                                        aria-expanded="false" aria-controls="{{ $groupId }}"
+                                        @if (request()->routeIs($group['match'])) aria-current="page" @endif>
+                                    {{ $group['label'] }}
+                                    <svg class="hdr-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                         stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+                                         aria-hidden="true">
+                                        <path d="M6 9l6 6 6-6" />
+                                    </svg>
+                                </button>
+
+                                <ul class="submenu" id="{{ $groupId }}">
+                                    @foreach ($group['items'] as $item)
+                                        <li>
+                                            <a href="{{ route($item['route']) }}"
+                                               @if (request()->routeIs($item['route'])) aria-current="page" @endif>{{ $item['label'] }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                        @endforeach
 
                     </ul>
 
@@ -80,16 +87,28 @@
 
             </div>
 
+            <div class="hdr-actions">
+                <a href="{{ route('contact') }}" class="hdr-cta">Talk to sales</a>
 
-            <!-- 🔹 Toggle Button -->
-            <button class="menu-toggle" id="menuToggle" type="button"
-                    aria-controls="fullscreenMenu" aria-expanded="false" aria-label="Open menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
+                <!-- 🔹 Toggle Button -->
+                <button class="menu-toggle" id="menuToggle" type="button"
+                        aria-controls="fullscreenMenu" aria-expanded="false" aria-label="Open menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
 
-            <!-- 🔹 Navigation overlay -->
+        </div>
+
+    </nav>
+
+    {{--
+        The overlay lives OUTSIDE <nav> deliberately. .hdr uses backdrop-filter,
+        which makes it a containing block for position:fixed descendants — nest
+        this back inside and the overlay gets clipped to the header bar.
+    --}}
+    <!-- 🔹 Navigation overlay -->
             <div class="fullscreen-menu" id="fullscreenMenu" role="dialog" aria-modal="true"
                  aria-label="Site navigation">
                 <div class="menu-content">
@@ -149,10 +168,6 @@
                     </div>
                 </div>
             </div>
-
-        </div>
-
-    </nav>
 
     <!-- end navigation -->
     <script>
@@ -232,6 +247,69 @@
                     first.focus();
                 }
             });
+        })();
+
+        /* ---- header dropdowns ------------------------------------------
+           The old menu opened on :hover only, which meant no keyboard access
+           and a first tap on touch that opened nothing. */
+        (function () {
+            const triggers = Array.from(document.querySelectorAll('.hdr-trigger'));
+            if (!triggers.length) return;
+
+            function closeAll(except) {
+                triggers.forEach(function (t) {
+                    if (t !== except) t.setAttribute('aria-expanded', 'false');
+                });
+            }
+
+            triggers.forEach(function (trigger) {
+                trigger.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const open = trigger.getAttribute('aria-expanded') === 'true';
+                    closeAll(trigger);
+                    trigger.setAttribute('aria-expanded', open ? 'false' : 'true');
+                });
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!e.target.closest('.has-submenu')) closeAll(null);
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key !== 'Escape') return;
+
+                const open = triggers.find(function (t) {
+                    return t.getAttribute('aria-expanded') === 'true';
+                });
+
+                if (open) {
+                    open.setAttribute('aria-expanded', 'false');
+                    open.focus();
+                }
+            });
+
+            // Closing on blur-out keeps the panel from lingering once focus
+            // has tabbed past the last item in it.
+            document.addEventListener('focusin', function (e) {
+                if (!e.target.closest('.has-submenu')) closeAll(null);
+            });
+        })();
+
+        /* ---- sticky header shadow -------------------------------------- */
+        (function () {
+            const header = document.querySelector('.hdr');
+            if (!header) return;
+
+            // A zero-height sentinel above the header is cheaper than a scroll
+            // listener: the observer only fires when the state actually flips.
+            const sentinel = document.createElement('div');
+            sentinel.setAttribute('aria-hidden', 'true');
+            sentinel.style.cssText = 'position:absolute;top:0;left:0;height:1px;width:1px;pointer-events:none;';
+            header.parentNode.insertBefore(sentinel, header);
+
+            new IntersectionObserver(function (entries) {
+                header.classList.toggle('is-stuck', !entries[0].isIntersecting);
+            }).observe(sentinel);
         })();
 
             document.addEventListener('DOMContentLoaded', function() {

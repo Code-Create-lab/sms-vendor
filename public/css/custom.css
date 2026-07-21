@@ -27,72 +27,209 @@
     color: #000;
 }
 
-/* Hover animation */
-li.has-submenu:hover {
-    background: #f3f3f3;
-    color: #000;
-    position: relative;
-}
-li.has-submenu {
-    background: #f3f3f3;
-    color: #000;
-    position: relative;
+/* ==================================================================
+   Header navigation  (.hdr)
+   ------------------------------------------------------------------
+   NOTE: backdrop-filter on .hdr makes it a containing block for fixed
+   descendants. #fullscreenMenu is therefore a SIBLING of <nav>, not a
+   child — moving it back inside would trap the overlay inside the bar.
+   ================================================================== */
+.hdr {
+    --hdr-ink: #0b1220;
+    --hdr-brand: #264a9f;
+    --hdr-bright: #195dff;
+    --hdr-accent: #35d3e1;
+    --hdr-line: #e2e8f0;
+    --hdr-font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --hdr-ease: cubic-bezier(.16, 1, .3, 1);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0;
+    background: rgba(255, 255, 255, .86);
+    backdrop-filter: blur(14px) saturate(1.4);
+    border-bottom: 1px solid rgba(11, 18, 32, .07);
+    transition: box-shadow .25s var(--hdr-ease), border-color .25s var(--hdr-ease);
 }
 
-/* Submenu container */
-.has-submenu:hover .submenu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0px);
+.hdr.is-stuck {
+    box-shadow: 0 8px 24px -14px rgba(11, 18, 32, .35);
+    border-bottom-color: rgba(11, 18, 32, .12);
 }
-ul.submenu li:hover {
-    background: #264a9f;
+
+.hdr-inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-height: 74px;
+    padding-inline: clamp(16px, 3vw, 40px);
 }
-ul.submenu li:hover a {
-    background: #264a9f;
-    color: #fff !important;
+
+.hdr-brand { display: flex; align-items: center; margin: 0; padding: 0; }
+.hdr-logo { display: block; height: 38px; width: auto; }
+
+/* The old markup shipped two mobile triggers — Bootstrap's collapse toggler
+   and the overlay hamburger. The overlay carries every link now, so the
+   collapse toggler is redundant and just confused the mobile header. */
+.hdr .navbar-toggler { display: none; }
+
+.hdr .menu-order { flex: 1 1 auto; }
+
+.hdr-nav {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
 }
-.toggleMenu {
-    width: 100%;
-}
-ul.submenu li a {
-    font-size: 18px;
-    font-weight: 700;
-    font-family: 'Manrope';
+
+.hdr-nav .has-submenu { position: relative; }
+
+.hdr-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 0 14px;
+    border: 0;
+    border-radius: 10px;
+    background: none;
+    color: var(--hdr-brand);
+    font-family: var(--hdr-font);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    line-height: 1;
     white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background .2s var(--hdr-ease), color .2s var(--hdr-ease);
 }
-/* Submenu box */
+
+.hdr-link:hover { background: rgba(38, 74, 159, .07); color: var(--hdr-bright); }
+.hdr-link:focus-visible { outline: 3px solid var(--hdr-bright); outline-offset: 2px; }
+
+/* Active page: colour plus an underline, so it never reads by colour alone. */
+.hdr-link[aria-current="page"] { color: var(--hdr-bright); }
+.hdr-link[aria-current="page"]::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 2px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--hdr-accent);
+}
+
+.hdr-caret {
+    width: 13px;
+    height: 13px;
+    flex: none;
+    transition: transform .22s var(--hdr-ease);
+}
+
+.hdr-trigger[aria-expanded="true"] { background: rgba(38, 74, 159, .07); }
+.hdr-trigger[aria-expanded="true"] .hdr-caret { transform: rotate(180deg); }
+
+/* ---- dropdown ---- */
 .submenu {
     list-style: none;
     position: absolute;
-    top: 45px;
+    top: calc(100% + 8px);
     left: 0;
+    min-width: 252px;
+    margin: 0;
+    padding: 8px;
     background: #fff;
-    border-radius: 12px;
-    padding: 10px 0;
-    width: fit-content;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border: 1px solid var(--hdr-line);
+    border-radius: 14px;
+    box-shadow: 0 22px 44px -18px rgba(11, 18, 32, .30);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(20px);
-    transition: 0.3s ease;
+    transform: translateY(8px);
+    transition: opacity .2s var(--hdr-ease),
+                transform .2s var(--hdr-ease),
+                visibility 0s linear .2s;
     z-index: 100;
 }
 
-/* Submenu Links */
-.submenu li a {
-    display: block;
-    padding: 12px 18px;
-    text-decoration: none;
-    color: #444;
-    font-size: 14px;
-    transition: 0.25s;
+.hdr-trigger[aria-expanded="true"] + .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: opacity .2s var(--hdr-ease),
+                transform .2s var(--hdr-ease),
+                visibility 0s linear 0s;
 }
 
-/* Submenu hover effect */
-.submenu li a:hover {
-    background: #f7f7f7;
-    color: #000;
+/* Hover-open is a convenience for mice only. On touch it would fire on the
+   first tap and fight the click handler, so it is gated behind a real pointer. */
+@media (hover: hover) and (pointer: fine) {
+    .has-submenu:hover .submenu {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition-delay: 0s;
+    }
+}
+
+.submenu li a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 8px 12px;
+    border-radius: 9px;
+    color: #1e293b;
+    font-family: var(--hdr-font);
+    font-size: 14.5px;
+    font-weight: 500;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: background .18s var(--hdr-ease), color .18s var(--hdr-ease);
+}
+
+.submenu li a:hover { background: #f1f5f9; color: var(--hdr-bright); }
+.submenu li a:focus-visible { outline: 3px solid var(--hdr-bright); outline-offset: -2px; }
+.submenu li a[aria-current="page"] { color: var(--hdr-bright); background: #eef4ff; }
+
+/* ---- right-hand actions ---- */
+.hdr-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.hdr-cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 20px;
+    border-radius: 999px;
+    background: var(--hdr-bright);
+    color: #fff;
+    font-family: var(--hdr-font);
+    font-size: 14.5px;
+    font-weight: 600;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: background .2s var(--hdr-ease);
+}
+
+.hdr-cta:hover { background: #0d4ae0; color: #fff; }
+.hdr-cta:focus-visible { outline: 3px solid var(--hdr-bright); outline-offset: 3px; }
+
+@media (max-width: 991px) {
+    .hdr-cta { display: none; }        /* the overlay carries the CTA on mobile */
+    .hdr-inner { min-height: 64px; }
+    .hdr-logo { height: 32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hdr, .hdr * { transition-duration: .001ms !important; }
 }
 .cookie-popup {
     position: fixed;
@@ -573,17 +710,20 @@ body {
   .btn-link.text-black, .text-black, a.text-black-hover:hover {
     color: #264a9f !important;
 }
-  /* ---- nav list ---- */
-  .nav-list {
+  /* ---- nav list ----
+     Every selector here is scoped to .fullscreen-menu on purpose: `.nav-link`
+     is also Bootstrap's class for the header navbar links, so an unscoped
+     rule leaks 68px rows and 2rem type into the top nav on every page. */
+  .fullscreen-menu .nav-list {
     list-style: none;
     margin: 0 0 auto;
     padding: 0;
     border-top: 1px solid var(--nav-line);
   }
 
-  .nav-list li { border-bottom: 1px solid var(--nav-line); }
+  .fullscreen-menu .nav-list li { border-bottom: 1px solid var(--nav-line); }
 
-  .nav-link {
+  .fullscreen-menu .nav-link {
     display: flex;
     align-items: center;
     gap: 18px;
@@ -599,7 +739,7 @@ body {
     transition: color .22s var(--nav-ease);
   }
 
-  .nav-link__idx {
+  .fullscreen-menu .nav-link__idx {
     flex: none;
     width: 30px;
     font-size: 12px;
@@ -610,9 +750,9 @@ body {
   }
 
   /* Transform, not padding — nudging padding would relayout the whole list. */
-  .nav-link__label { transition: transform .28s var(--nav-ease); }
+  .fullscreen-menu .nav-link__label { transition: transform .28s var(--nav-ease); }
 
-  .nav-link__arrow {
+  .fullscreen-menu .nav-link__arrow {
     margin-left: auto;
     width: 22px;
     height: 22px;
@@ -621,19 +761,19 @@ body {
     transition: opacity .22s var(--nav-ease), transform .28s var(--nav-ease);
   }
 
-  .nav-link:hover,
-  .nav-link:focus-visible { color: var(--nav-bright); }
-  .nav-link:hover .nav-link__label,
-  .nav-link:focus-visible .nav-link__label { transform: translateX(10px); }
-  .nav-link:hover .nav-link__arrow,
-  .nav-link:focus-visible .nav-link__arrow { opacity: 1; transform: none; }
-  .nav-link:focus-visible { outline: 3px solid var(--nav-bright); outline-offset: 2px; }
+  .fullscreen-menu .nav-link:hover,
+  .fullscreen-menu .nav-link:focus-visible { color: var(--nav-bright); }
+  .fullscreen-menu .nav-link:hover .nav-link__label,
+  .fullscreen-menu .nav-link:focus-visible .nav-link__label { transform: translateX(10px); }
+  .fullscreen-menu .nav-link:hover .nav-link__arrow,
+  .fullscreen-menu .nav-link:focus-visible .nav-link__arrow { opacity: 1; transform: none; }
+  .fullscreen-menu .nav-link:focus-visible { outline: 3px solid var(--nav-bright); outline-offset: 2px; }
 
   /* Current page — colour alone is never the only signal, so the index
      digit switches to a filled dot as well. */
-  .nav-link[aria-current="page"] { color: var(--nav-brand); }
-  .nav-link[aria-current="page"] .nav-link__idx { color: var(--nav-bright); }
-  .nav-link[aria-current="page"] .nav-link__label::after {
+  .fullscreen-menu .nav-link[aria-current="page"] { color: var(--nav-brand); }
+  .fullscreen-menu .nav-link[aria-current="page"] .nav-link__idx { color: var(--nav-bright); }
+  .fullscreen-menu .nav-link[aria-current="page"] .nav-link__label::after {
     content: "";
     display: inline-block;
     width: 7px;
@@ -664,7 +804,7 @@ body {
   .fullscreen-menu.show .nav-foot { transition-delay: .40s; }
 
   /* ---- contact block ---- */
-  .nav-foot {
+  .fullscreen-menu .nav-foot {
     display: flex;
     flex-wrap: wrap;
     gap: 12px 40px;
@@ -674,7 +814,7 @@ body {
     font-size: 15px;
   }
 
-  .nav-foot a {
+  .fullscreen-menu .nav-foot a {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
@@ -683,8 +823,8 @@ body {
     text-decoration: none;
   }
 
-  .nav-foot a:hover { color: var(--nav-bright); }
-  .nav-foot p { margin: 0; align-self: center; color: var(--nav-muted); }
+  .fullscreen-menu .nav-foot a:hover { color: var(--nav-bright); }
+  .fullscreen-menu .nav-foot p { margin: 0; align-self: center; color: var(--nav-muted); }
 
   @media (prefers-reduced-motion: reduce) {
     .fullscreen-menu,
