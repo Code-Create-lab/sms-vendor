@@ -70,11 +70,18 @@
                                     </svg>
                                 </button>
 
+                                @php
+                                    // Several Channels entries are sections of one page. Only claim
+                                    // aria-current when an item is the sole owner of its route,
+                                    // otherwise five links all announce themselves as "current page".
+                                    $routeCounts = array_count_values(array_column($group['items'], 'route'));
+                                @endphp
+
                                 <ul class="submenu" id="{{ $groupId }}">
                                     @foreach ($group['items'] as $item)
                                         <li>
                                             <a href="{{ route($item['route']) }}"
-                                               @if (request()->routeIs($item['route'])) aria-current="page" @endif>{{ $item['label'] }}</a>
+                                               @if ($routeCounts[$item['route']] === 1 && request()->routeIs($item['route'])) aria-current="page" @endif>{{ $item['label'] }}</a>
                                         </li>
                                     @endforeach
                                 </ul>

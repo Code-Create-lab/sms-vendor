@@ -62,12 +62,12 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    min-height: 74px;
+    min-height: 60px;
     padding-inline: clamp(16px, 3vw, 40px);
 }
 
 .hdr-brand { display: flex; align-items: center; margin: 0; padding: 0; }
-.hdr-logo { display: block; height: 38px; width: auto; }
+.hdr-logo { display: block; height: 30px; width: auto; }
 
 /* The old markup shipped two mobile triggers — Bootstrap's collapse toggler
    and the overlay hamburger. The overlay carries every link now, so the
@@ -91,8 +91,8 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    min-height: 44px;
-    padding: 0 14px;
+    min-height: 40px;
+    padding: 0 13px;
     border: 0;
     border-radius: 10px;
     background: none;
@@ -206,8 +206,8 @@
 .hdr-cta {
     display: inline-flex;
     align-items: center;
-    min-height: 44px;
-    padding: 0 20px;
+    min-height: 40px;
+    padding: 0 18px;
     border-radius: 999px;
     background: var(--hdr-bright);
     color: #fff;
@@ -222,10 +222,13 @@
 .hdr-cta:hover { background: #0d4ae0; color: #fff; }
 .hdr-cta:focus-visible { outline: 3px solid var(--hdr-bright); outline-offset: 3px; }
 
+/* 40px rows are fine here because the inline nav and CTA are desktop-only —
+   below 992px both are hidden and the overlay takes over with 68px rows.
+   .menu-toggle stays 48px since it is the one control touch users get. */
 @media (max-width: 991px) {
     .hdr-cta { display: none; }        /* the overlay carries the CTA on mobile */
-    .hdr-inner { min-height: 64px; }
-    .hdr-logo { height: 32px; }
+    .hdr-inner { min-height: 54px; }
+    .hdr-logo { height: 26px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

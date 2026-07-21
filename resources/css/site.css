@@ -347,6 +347,52 @@
 }
 
 /* ==================================================================
+   Page header (interior pages)
+   ================================================================== */
+.da-pagehead {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(48px, 6vw, 88px) clamp(40px, 5vw, 72px);
+    background:
+        radial-gradient(56% 50% at 84% 0%, rgba(53, 211, 225, .15), transparent 62%),
+        linear-gradient(180deg, var(--da-surface-2) 0%, var(--da-surface) 70%);
+    border-bottom: 1px solid var(--da-border);
+}
+
+.da-pagehead h1 {
+    font-size: clamp(2.25rem, 1.5rem + 3.2vw, 3.75rem);
+    letter-spacing: -.03em;
+    max-width: 18ch;
+}
+
+.da-pagehead .da-lede { max-width: 60ch; }
+
+/* Two-column prose block with a heading that parks while the copy scrolls. */
+.da-prose {
+    display: grid;
+    gap: clamp(28px, 4vw, 64px);
+    align-items: start;
+}
+
+@media (min-width: 992px) { .da-prose { grid-template-columns: 1fr 1fr; } }
+
+.da-prose__sticky h2 { max-width: 16ch; }
+
+@media (min-width: 992px) {
+    .da-prose__sticky { position: sticky; top: 96px; }
+}
+
+.da-prose__body > * + * { margin-top: var(--da-s8); }
+
+.da-prose__body h3 {
+    font-size: 1.0625rem;
+    letter-spacing: -.008em;
+    margin-bottom: var(--da-s3);
+}
+
+.da-prose__body p { color: var(--da-muted); }
+
+/* ==================================================================
    Stat band
    ================================================================== */
 .da-stats {

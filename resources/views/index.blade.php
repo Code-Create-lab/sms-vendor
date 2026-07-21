@@ -2,7 +2,7 @@
 
 @push('styles')
     {{-- Inter is loaded in the layout head — the nav overlay needs it too. --}}
-    @vite(['resources/css/home.css', 'resources/js/home.js'])
+    @vite(['resources/css/site.css', 'resources/js/site.js'])
 
     <script>
         // Hide reveal targets only while JS is alive to animate them back in.
