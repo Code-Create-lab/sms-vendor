@@ -8,11 +8,11 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
-                // Homepage-only bundle. Kept separate from app.css on purpose:
-                // app.css pulls in Tailwind's preflight, which would reset the
-                // Bootstrap theme every other page depends on.
-                'resources/css/home.css',
-                'resources/js/home.js',
+                // Shared design-system bundle for redesigned pages. Kept separate
+                // from app.css on purpose: app.css pulls in Tailwind's preflight,
+                // which would reset the Bootstrap theme the other pages rely on.
+                'resources/css/site.css',
+                'resources/js/site.js',
             ],
             refresh: true,
         }),
