@@ -557,6 +557,303 @@
 .da-feat p { margin-top: var(--da-s2); font-size: 15px; color: var(--da-muted); }
 
 /* ==================================================================
+   Trust band
+   ------------------------------------------------------------------
+   Same hairline-grid treatment as .da-stats so the two read as one
+   family, but with room for an icon + heading + body per cell.
+   ================================================================== */
+.da-trust {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: 1fr;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    background: var(--da-border);
+    border: 1px solid var(--da-border);
+    border-radius: var(--da-r-lg);
+    overflow: hidden;
+}
+
+@media (min-width: 860px) { .da-trust { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* ---- dotted world map backdrop ----------------------------------- */
+.da-trust-sec {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: linear-gradient(180deg, var(--da-surface) 0%, var(--da-surface-2) 100%);
+}
+
+.da-worldmap {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+}
+
+.da-worldmap__inner {
+    position: relative;
+    /* Matches the generated SVG viewBox (864x336) so the pin below can be
+       placed by percentage and still land on Gurugram. */
+    aspect-ratio: 864 / 336;
+    width: min(1320px, 132%);
+}
+
+/* The map is painted by the pseudo-element, not the box itself, so the
+   pin stays at full strength while the dots sit back at 22%. */
+.da-worldmap__inner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--da-map);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    opacity: .22;
+    /* Fade the map out before it reaches the section edges — a hard crop
+       reads as a broken image, a fade reads as texture. */
+    -webkit-mask-image: radial-gradient(78% 88% at 50% 46%, #000 52%, transparent 100%);
+    mask-image: radial-gradient(78% 88% at 50% 46%, #000 52%, transparent 100%);
+}
+
+/* Gurugram (77.03E, 28.46N) on the generated grid — tools/gen-worldmap.js
+   prints these two percentages alongside the SVG. */
+.da-worldmap__pin {
+    position: absolute;
+    left: 71.40%;
+    top: 39.24%;
+    width: 9px;
+    height: 9px;
+    margin: -4.5px 0 0 -4.5px;
+    border-radius: 50%;
+    background: var(--da-brand-bright);
+}
+
+.da-worldmap__pin::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 2px solid var(--da-brand-bright);
+    animation: da-ping 2.8s var(--da-ease) infinite;
+}
+
+@keyframes da-ping {
+    0%   { transform: scale(.7); opacity: .75; }
+    70%  { transform: scale(2.6); opacity: 0; }
+    100% { transform: scale(2.6); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .da-worldmap__pin::after { animation: none; opacity: .5; }
+}
+
+.da-trust__item {
+    /* Translucent so the dot map reads through the cards instead of being
+       punched out by three solid white rectangles. */
+    background: rgba(255, 255, 255, .86);
+    backdrop-filter: blur(6px);
+    padding: var(--da-s8) var(--da-s6);
+}
+
+.da-trust__icon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    margin-bottom: var(--da-s5);
+    border-radius: var(--da-r-md);
+    background: linear-gradient(140deg, rgba(38, 74, 159, .10), rgba(53, 211, 225, .16));
+    color: var(--da-brand);
+}
+
+.da-trust__icon svg { width: 21px; height: 21px; }
+
+.da-trust__item h3 {
+    font-size: 1.0625rem;
+    letter-spacing: -.01em;
+    color: var(--da-ink);
+}
+
+.da-trust__item p {
+    margin-top: var(--da-s3);
+    font-size: 15px;
+    color: var(--da-muted);
+}
+
+/* ---- client logo strip (only rendered when real logos exist) ------ */
+.da-logos { margin-top: var(--da-s12); text-align: center; }
+
+.da-logos__title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--da-muted);
+    margin-bottom: var(--da-s6);
+}
+
+.da-logos__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--da-s10);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/* Greyscale at rest keeps mismatched client marks from fighting the
+   brand palette; colour returns on hover for the one being looked at. */
+.da-logos__row img {
+    display: block;
+    max-width: 132px;
+    max-height: 40px;
+    width: auto;
+    height: auto;
+    filter: grayscale(1);
+    opacity: .62;
+    transition: filter var(--da-dur) var(--da-ease), opacity var(--da-dur) var(--da-ease);
+}
+
+.da-logos__row li:hover img { filter: none; opacity: 1; }
+
+/* ==================================================================
+   Location / map
+   ================================================================== */
+.da-map {
+    display: grid;
+    gap: clamp(28px, 3.5vw, 56px);
+    align-items: center;
+}
+
+@media (min-width: 992px) { .da-map { grid-template-columns: 1fr 1.15fr; } }
+
+.da-map__panel .da-lede { margin-bottom: var(--da-s8); }
+.da-map__panel .da-h2 { margin-bottom: var(--da-s4); }
+
+.da-contacts {
+    padding: 0;
+    margin: 0 0 var(--da-s8);
+    list-style: none;
+}
+
+.da-contact {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: var(--da-s5);
+    padding-block: var(--da-s5);
+    border-top: 1px solid var(--da-border-strong);
+}
+
+.da-contact:last-child { border-bottom: 1px solid var(--da-border-strong); }
+
+.da-contact__icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--da-r-sm);
+    background: var(--da-surface);
+    border: 1px solid var(--da-border);
+    color: var(--da-brand);
+}
+
+.da-contact__icon svg { width: 19px; height: 19px; }
+
+.da-contact h3 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--da-muted);
+}
+
+.da-contact p {
+    margin-top: var(--da-s1);
+    font-size: 15px;
+    color: var(--da-ink-2);
+}
+
+/* Contact rows are data, not calls to action — no arrow, no brand blue
+   shouting over the address block. Underline on hover carries the affordance. */
+.da-link--plain { color: inherit; font-weight: 500; }
+.da-link--plain:hover { color: var(--da-brand-bright); text-decoration: underline; }
+
+/* ---- the map itself ---------------------------------------------- */
+.da-map__frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--da-r-xl);
+    border: 1px solid var(--da-border);
+    box-shadow: var(--da-e3);
+    background: var(--da-surface-3);
+    /* Aspect ratio instead of a fixed height so the tile crop stays sane
+       from 360px up to the 1200px shell. */
+    aspect-ratio: 4 / 3;
+}
+
+/* On desktop the frame matches the height of the contact panel beside it —
+   a short map floating next to a tall column reads as an afterthought. */
+@media (min-width: 992px) {
+    .da-map { align-items: stretch; }
+    .da-map__frame { aspect-ratio: auto; min-height: 100%; }
+}
+
+.da-map__frame iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    /* Google's default tile palette is louder than the rest of the page;
+       pulling saturation back lets the brand pin and the panel lead. */
+    filter: saturate(.78) contrast(1.02);
+}
+
+/* Inner hairline over the tiles — a border alone sits under the iframe
+   edge on some zoom levels and reads as a broken corner. */
+.da-map__frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(11, 18, 32, .07);
+    pointer-events: none;
+}
+
+.da-map__pin {
+    position: absolute;
+    left: var(--da-s5);
+    bottom: var(--da-s5);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--da-s2);
+    padding: var(--da-s2) var(--da-s4);
+    border-radius: 999px;
+    background: rgba(11, 18, 32, .78);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.da-map__pin span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--da-accent);
+    box-shadow: 0 0 0 4px rgba(53, 211, 225, .22);
+}
+
+@media (max-width: 575px) {
+    .da-map__pin { left: var(--da-s3); bottom: var(--da-s3); font-size: 12px; }
+}
+
+/* ==================================================================
    Closing CTA
    ================================================================== */
 .da-cta {

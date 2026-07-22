@@ -58,16 +58,36 @@
     border-bottom-color: rgba(11, 18, 32, .12);
 }
 
-.hdr-inner {
+/* Selectors here are .navbar.hdr, not plain .hdr, on purpose: custom.css is
+   loaded second of five, so style.min.css and responsive.min.css come after
+   it and win any tie. responsive.min.css sets .navbar > .container-fluid
+   padding at (0,2,0), which was already beating a bare .hdr-inner rule. */
+.navbar.hdr > .hdr-inner {
     display: flex;
     align-items: center;
-    gap: 20px;
-    min-height: 60px;
-    padding-inline: clamp(16px, 3vw, 40px);
+    gap: 16px;
+    min-height: 52px;
+    padding-block: 0;
+    padding-inline: clamp(16px, 3vw, 36px);
 }
 
-.hdr-brand { display: flex; align-items: center; margin: 0; padding: 0; }
-.hdr-logo { display: block; height: 30px; width: auto; }
+.navbar.hdr .hdr-brand { display: flex; align-items: center; }
+.navbar.hdr .hdr-logo { display: block; height: 26px; width: auto; }
+
+/* !important is load order, not laziness. responsive.min.css is linked after
+   custom.css and hard-sets `.navbar-brand{padding:22px 0}` (44px of vertical
+   padding) and `.navbar-nav{padding:15px 15px 28px}`. Those were what made
+   the bar tall — no min-height here could win against them. Raising
+   specificity alone is not enough either: one of those selectors is
+   `header.sticky .disable-fixed .navbar-brand`, at (0,3,1).
+   The alternative is re-ordering the <link> tags in app.blade.php, which
+   would let every other legacy rule in this file start overriding the theme
+   on pages that have not been redesigned yet. This is the contained option. */
+.navbar.hdr .hdr-brand,
+.navbar.hdr .hdr-nav {
+    padding: 0 !important;
+    margin: 0 !important;
+}
 
 /* The old markup shipped two mobile triggers — Bootstrap's collapse toggler
    and the overlay hamburger. The overlay carries every link now, so the
@@ -76,29 +96,28 @@
 
 .hdr .menu-order { flex: 1 1 auto; }
 
-.hdr-nav {
+.navbar.hdr .hdr-nav {
     display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 2px;
-    margin: 0;
-    padding: 0;
 }
 
 .hdr-nav .has-submenu { position: relative; }
 
-.hdr-link {
+.navbar.hdr .hdr-link {
     position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    min-height: 40px;
-    padding: 0 13px;
+    gap: 5px;
+    min-height: 34px;
+    padding: 0 11px;
     border: 0;
-    border-radius: 10px;
+    border-radius: 8px;
     background: none;
     color: var(--hdr-brand);
     font-family: var(--hdr-font);
-    font-size: 15px;
+    font-size: 14.5px;
     font-weight: 600;
     letter-spacing: -.01em;
     line-height: 1;
@@ -108,17 +127,20 @@
     transition: background .2s var(--hdr-ease), color .2s var(--hdr-ease);
 }
 
-.hdr-link:hover { background: rgba(38, 74, 159, .07); color: var(--hdr-bright); }
-.hdr-link:focus-visible { outline: 3px solid var(--hdr-bright); outline-offset: 2px; }
+/* These carry the same .navbar.hdr prefix as the base rule above. Without it
+   the base sits at (0,2,0) and outranks a bare :hover at (0,1,1), so the
+   hover colour would silently never apply. */
+.navbar.hdr .hdr-link:hover { background: rgba(38, 74, 159, .07); color: var(--hdr-bright); }
+.navbar.hdr .hdr-link:focus-visible { outline: 3px solid var(--hdr-bright); outline-offset: 2px; }
 
 /* Active page: colour plus an underline, so it never reads by colour alone. */
-.hdr-link[aria-current="page"] { color: var(--hdr-bright); }
-.hdr-link[aria-current="page"]::after {
+.navbar.hdr .hdr-link[aria-current="page"] { color: var(--hdr-bright); }
+.navbar.hdr .hdr-link[aria-current="page"]::after {
     content: "";
     position: absolute;
-    left: 14px;
-    right: 14px;
-    bottom: 2px;
+    left: 11px;                /* tracks .hdr-link padding-inline */
+    right: 11px;
+    bottom: 1px;
     height: 2px;
     border-radius: 2px;
     background: var(--hdr-accent);
@@ -131,7 +153,7 @@
     transition: transform .22s var(--hdr-ease);
 }
 
-.hdr-trigger[aria-expanded="true"] { background: rgba(38, 74, 159, .07); }
+.navbar.hdr .hdr-trigger[aria-expanded="true"] { background: rgba(38, 74, 159, .07); }
 .hdr-trigger[aria-expanded="true"] .hdr-caret { transform: rotate(180deg); }
 
 /* ---- dropdown ---- */
@@ -203,32 +225,32 @@
     margin-left: auto;
 }
 
-.hdr-cta {
+.navbar.hdr .hdr-cta {
     display: inline-flex;
     align-items: center;
-    min-height: 40px;
-    padding: 0 18px;
+    min-height: 36px;
+    padding: 0 16px;
     border-radius: 999px;
     background: var(--hdr-bright);
     color: #fff;
     font-family: var(--hdr-font);
-    font-size: 14.5px;
+    font-size: 14px;
     font-weight: 600;
     white-space: nowrap;
     text-decoration: none;
     transition: background .2s var(--hdr-ease);
 }
 
-.hdr-cta:hover { background: #0d4ae0; color: #fff; }
-.hdr-cta:focus-visible { outline: 3px solid var(--hdr-bright); outline-offset: 3px; }
+.navbar.hdr .hdr-cta:hover { background: #0d4ae0; color: #fff; }
+.navbar.hdr .hdr-cta:focus-visible { outline: 3px solid var(--hdr-bright); outline-offset: 3px; }
 
 /* 40px rows are fine here because the inline nav and CTA are desktop-only —
    below 992px both are hidden and the overlay takes over with 68px rows.
    .menu-toggle stays 48px since it is the one control touch users get. */
 @media (max-width: 991px) {
-    .hdr-cta { display: none; }        /* the overlay carries the CTA on mobile */
-    .hdr-inner { min-height: 54px; }
-    .hdr-logo { height: 26px; }
+    .navbar.hdr .hdr-cta { display: none; }   /* the overlay carries the CTA on mobile */
+    .navbar.hdr > .hdr-inner { min-height: 52px; }
+    .navbar.hdr .hdr-logo { height: 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -529,9 +551,9 @@ body {
 
   /* 🔹 Toggle Button (hamburger) */
 .menu-toggle {
-    width: 48px;              /* 48px keeps the tap target above the 44px floor */
-    height: 48px;
-    padding: 10px 6px;
+    width: 44px;              /* the touch-target floor; the bar is only 52px tall */
+    height: 44px;
+    padding: 8px 6px;         /* leaves the 28px bar stack the X transform expects */
     border: 0;
     background: none;
     cursor: pointer;

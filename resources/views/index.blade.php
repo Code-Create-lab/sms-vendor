@@ -403,6 +403,206 @@
         </div>
     </section>
 
+    {{-- ============================= TRUST ============================= --}}
+    @php
+        /*
+         * Client logos for the strip below. Each entry: ['name' => ..., 'file' => ...]
+         * where `file` lives in public/images/clients/.
+         *
+         * Deliberately empty: the strip renders nothing until real, permitted
+         * client marks are added. Do not pad this with logos we have no consent
+         * to display — the fabricated award/logo strip was removed from this
+         * site on purpose.
+         */
+        $daClients = [];
+    @endphp
+
+    <section class="da-section da-section--tight da-trust-sec" id="trust">
+
+        {{-- Decorative dotted world map. Generated at 5-degree resolution —
+             it is a texture behind the copy, not a reference map, so it is
+             hidden from assistive tech and never carries meaning on its own. --}}
+        <div class="da-worldmap" aria-hidden="true">
+            <div class="da-worldmap__inner"
+                 style="--da-map:url('{{ asset('images/world-dots.svg') }}')">
+                <span class="da-worldmap__pin"></span>
+            </div>
+        </div>
+
+        <div class="da-shell">
+
+            <header class="da-head da-head--center" data-da-reveal="trust-head">
+                <span class="da-eyebrow">Trusted by</span>
+                <h2 class="da-h2">Trusted by businesses across Gurgaon &amp; India</h2>
+            </header>
+
+            <ul class="da-trust" data-da-reveal="trust">
+                <li class="da-trust__item">
+                    <span class="da-trust__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                             stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 21V4a1 1 0 0 1 1-1h10l-1.5 3.5L15 10H5M4 21h4" />
+                        </svg>
+                    </span>
+                    <h3>Recognised by industry partners</h3>
+                    <p>
+                        Operator connects and an official WhatsApp Business API account
+                        &mdash; the partnerships that actually gate delivery.
+                    </p>
+                </li>
+
+                <li class="da-trust__item">
+                    <span class="da-trust__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                             stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 20a5 5 0 0 0-10 0M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM21 19a4 4 0 0 0-3-3.9M18.5 11.8a3 3 0 0 0 0-5.6" />
+                        </svg>
+                    </span>
+                    <h3>Trusted by growing brands across industries</h3>
+                    <p>
+                        Banking, e-commerce, healthcare, education, real estate and
+                        political campaigns run on the same platform, tuned per sector.
+                    </p>
+                </li>
+
+                <li class="da-trust__item">
+                    <span class="da-trust__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                             stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 3v18h18M7 14l4-4 3 3 5-6" />
+                            <path d="M15 7h4v4" />
+                        </svg>
+                    </span>
+                    <h3>Proven results through delivery you can audit</h3>
+                    <p>
+                        Per-message receipts, failure reasons and spend exported to CSV,
+                        so the result is a report and not a claim.
+                    </p>
+                </li>
+            </ul>
+
+            @if (count($daClients))
+                <div class="da-logos" data-da-reveal="trust-logos">
+                    <h3 class="da-logos__title">Brands we deliver for</h3>
+                    <ul class="da-logos__row">
+                        @foreach ($daClients as $client)
+                            <li>
+                                <img src="{{ asset('images/clients/' . $client['file']) }}"
+                                     alt="{{ $client['name'] }}" loading="lazy" decoding="async">
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+        </div>
+    </section>
+
+    {{-- ============================ LOCATION =========================== --}}
+    @php
+        /*
+         * One source of truth for the pin, the "Get directions" link and the
+         * printed address, so they can never drift apart.
+         *
+         * TODO — +91 98765 43210 is the template placeholder carried over from
+         * the footer. Replace with the real switchboard number.
+         */
+        $daAddress = 'Office No. 305, 3rd Floor, Vashisht Commercial Complex, '
+                   . 'Opp. Pillar No. 52, MG Road, Sikandarpur, Gurugram 122002, Haryana';
+        /* Google drops a marker for a short, geocodable place string; fed the
+           full postal address it silently falls back to an unmarked area view. */
+        $daMapQuery = urlencode('Vashisht Commercial Complex, MG Road, Sikanderpur, Gurugram');
+    @endphp
+
+    <section class="da-section da-section--alt" id="location">
+        <div class="da-shell">
+
+            <div class="da-map">
+
+                <div class="da-map__panel" data-da-reveal="map-panel">
+                    <span class="da-eyebrow">Find us</span>
+                    <h2 class="da-h2">On MG Road, Gurugram &mdash; and on call across India.</h2>
+                    <p class="da-lede">
+                        Campaign reviews happen over a desk as often as over a call.
+                        Drop in, or start the conversation from wherever you are.
+                    </p>
+
+                    <ul class="da-contacts">
+                        <li class="da-contact">
+                            <span class="da-contact__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                     stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                            </span>
+                            <div>
+                                <h3>Office</h3>
+                                <p>{{ $daAddress }}</p>
+                            </div>
+                        </li>
+
+                        <li class="da-contact">
+                            <span class="da-contact__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                     stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" />
+                                </svg>
+                            </span>
+                            <div>
+                                <h3>Sales &amp; support</h3>
+                                <p><a href="tel:+919876543210" class="da-link da-link--plain">+91 98765 43210</a></p>
+                            </div>
+                        </li>
+
+                        <li class="da-contact">
+                            <span class="da-contact__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                     stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z" />
+                                    <path d="M3.4 6.3 12 12.5l8.6-6.2" />
+                                </svg>
+                            </span>
+                            <div>
+                                <h3>Email</h3>
+                                <p><a href="mailto:info@admagister.com" class="da-link da-link--plain">info@admagister.com</a></p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="da-btn-row">
+                        <a href="https://www.google.com/maps/search/?api=1&amp;query={{ $daMapQuery }}"
+                           class="da-btn da-btn--primary" target="_blank" rel="noopener noreferrer">
+                            Get directions
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 12h14M13 6l6 6-6 6" />
+                            </svg>
+                        </a>
+                        <a href="{{ route('contact') }}" class="da-btn da-btn--ghost">Book a call</a>
+                    </div>
+                </div>
+
+                <div class="da-map__frame" data-da-reveal="map-frame">
+                    {{-- Keyless embed: no Maps JS API bill, no API key in the page source.
+                         loading="lazy" keeps the ~600 KB tile payload off first paint. --}}
+                    <iframe
+                        src="https://www.google.com/maps?q={{ $daMapQuery }}&amp;z=16&amp;output=embed"
+                        title="Map showing the Ad Magister office on MG Road, Gurugram"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allowfullscreen></iframe>
+
+                    <p class="da-map__pin">
+                        <span aria-hidden="true"></span>
+                        Sikandarpur, MG Road &middot; Gurugram
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     {{-- ============================== CTA ============================== --}}
     <section class="da-section">
         <div class="da-shell">
