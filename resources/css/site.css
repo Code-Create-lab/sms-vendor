@@ -874,6 +874,289 @@
 .da-cta .da-eyebrow { color: var(--da-accent); }
 
 /* ==================================================================
+   Hero — floating "live" cards over the video (gif-like micro-motion)
+   ------------------------------------------------------------------
+   Pure-CSS bob so nothing extra loads. They sit half-outside the media
+   frame on desktop and are hidden on small screens where they'd overlap.
+   ================================================================== */
+.da-hero-media__float {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: var(--da-s3);
+    padding: var(--da-s3) var(--da-s4);
+    border-radius: var(--da-r-md);
+    background: rgba(255, 255, 255, .92);
+    border: 1px solid var(--da-border);
+    box-shadow: var(--da-e3);
+    backdrop-filter: blur(10px);
+    will-change: transform;
+}
+
+.da-hero-media__float svg { width: 18px; height: 18px; }
+
+.da-hero-media__float strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--da-ink);
+    letter-spacing: -.01em;
+}
+.da-hero-media__float span { font-size: 12px; color: var(--da-muted); }
+
+.da-hero-media__float--tl {
+    top: -18px;
+    left: -22px;
+    animation: da-bob 5.5s var(--da-ease) infinite;
+}
+.da-hero-media__float--br {
+    right: -18px;
+    bottom: 64px;
+    animation: da-bob 6.5s var(--da-ease) infinite;
+    animation-delay: -1.5s;
+}
+
+.da-float__icon {
+    display: grid;
+    place-items: center;
+    width: 34px; height: 34px;
+    border-radius: 10px;
+    flex: none;
+}
+.da-float__icon--sms { background: rgba(25, 93, 255, .12); color: var(--da-brand-bright); }
+.da-float__icon--wa  { background: rgba(37, 211, 102, .16); color: #1faa53; }
+
+/* typing dots — the "live" tell */
+.da-typing { display: inline-flex; gap: 4px; align-items: center; }
+.da-typing i {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--da-brand-bright);
+    animation: da-typing 1.2s ease-in-out infinite;
+}
+.da-typing i:nth-child(2) { animation-delay: .18s; }
+.da-typing i:nth-child(3) { animation-delay: .36s; }
+
+@keyframes da-bob {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-9px); }
+}
+@keyframes da-typing {
+    0%, 60%, 100% { transform: translateY(0); opacity: .45; }
+    30%           { transform: translateY(-4px); opacity: 1; }
+}
+
+@media (max-width: 767px) {
+    .da-hero-media__float { display: none; }
+}
+
+/* ==================================================================
+   Marquee — infinite scrolling capability ticker
+   ------------------------------------------------------------------
+   Track holds the item list twice; translating by -50% loops seamlessly.
+   ================================================================== */
+.da-marquee {
+    position: relative;
+    overflow: hidden;
+    padding-block: var(--da-s4);
+    border-block: 1px solid var(--da-border);
+    background: var(--da-surface);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.da-marquee__track {
+    display: flex;
+    width: max-content;
+    gap: var(--da-s10);
+    padding-left: var(--da-s10);
+    animation: da-scroll 34s linear infinite;
+}
+.da-marquee:hover .da-marquee__track { animation-play-state: paused; }
+
+.da-marquee__item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--da-s3);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--da-ink-2);
+    white-space: nowrap;
+}
+.da-marquee__item::before {
+    content: "";
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--da-accent), var(--da-brand-bright));
+    flex: none;
+}
+
+@keyframes da-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+/* ==================================================================
+   Channel cards — media image on top (+ icon as overlay badge)
+   ================================================================== */
+.da-card--media { padding-top: 0; overflow: hidden; }
+
+.da-card__media {
+    position: relative;
+    margin: 0 calc(-1 * var(--da-s8)) var(--da-s6);
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--da-surface-3);
+}
+.da-card__media img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .5s var(--da-ease);
+}
+.da-card:hover .da-card__media img,
+.da-card:focus-within .da-card__media img { transform: scale(1.06); }
+
+/* gradient wash so the overlay icon stays legible on any image */
+.da-card__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 45%, rgba(11, 18, 32, .28));
+    pointer-events: none;
+}
+
+.da-card--media .da-card__icon {
+    position: absolute;
+    left: var(--da-s5);
+    bottom: var(--da-s5);
+    z-index: 2;
+    margin: 0;
+    background: rgba(255, 255, 255, .92);
+    box-shadow: var(--da-e1);
+    backdrop-filter: blur(6px);
+}
+
+/* ==================================================================
+   How it works — numbered steps with a connecting rail
+   ================================================================== */
+.da-steps {
+    display: grid;
+    gap: var(--da-s6);
+    grid-template-columns: 1fr;
+    counter-reset: da-step;
+}
+@media (min-width: 620px) { .da-steps { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 980px) { .da-steps { grid-template-columns: repeat(4, 1fr); } }
+
+.da-step {
+    position: relative;
+    padding: var(--da-s6);
+    border: 1px solid var(--da-border);
+    border-radius: var(--da-r-lg);
+    background: var(--da-surface);
+    box-shadow: var(--da-e1);
+    transition: border-color var(--da-dur) var(--da-ease), box-shadow var(--da-dur) var(--da-ease), transform var(--da-dur) var(--da-ease);
+}
+.da-step:hover { border-color: var(--da-brand-bright); box-shadow: var(--da-e2); transform: translateY(-4px); }
+
+.da-step__num {
+    counter-increment: da-step;
+    display: grid;
+    place-items: center;
+    width: 44px; height: 44px;
+    margin-bottom: var(--da-s5);
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #fff;
+    background: linear-gradient(135deg, var(--da-brand), var(--da-brand-bright));
+    box-shadow: 0 0 0 6px rgba(25, 93, 255, .1);
+}
+.da-step__num::before { content: counter(da-step, decimal-leading-zero); }
+
+/* connecting rail between step nodes on wide screens */
+@media (min-width: 980px) {
+    .da-step:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        top: calc(var(--da-s6) + 22px);
+        left: calc(var(--da-s6) + 44px);
+        width: calc(100% - var(--da-s6) - 44px + var(--da-s6));
+        height: 2px;
+        background: repeating-linear-gradient(90deg, var(--da-border-strong) 0 8px, transparent 8px 16px);
+    }
+}
+
+.da-step h3 { font-size: 1.0625rem; letter-spacing: -.01em; }
+.da-step p { margin-top: var(--da-s2); font-size: 14.5px; color: var(--da-muted); }
+
+/* ==================================================================
+   Showcase — bento of product visuals
+   ================================================================== */
+.da-showcase {
+    display: grid;
+    gap: var(--da-s4);
+    grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 900px) {
+    .da-showcase {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 210px;
+        grid-auto-flow: dense;
+    }
+}
+
+.da-show {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    border-radius: var(--da-r-lg);
+    border: 1px solid var(--da-border);
+    background: var(--da-surface-3);
+    min-height: 180px;
+    box-shadow: var(--da-e1);
+}
+.da-show figcaption { margin: 0; }
+@media (min-width: 900px) {
+    .da-show { min-height: 0; }
+    .da-show--wide { grid-column: span 2; }
+    .da-show--tall { grid-row: span 2; }
+}
+
+.da-show img {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform .6s var(--da-ease);
+}
+.da-show:hover img { transform: scale(1.07); }
+
+.da-show::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(11, 18, 32, .72));
+}
+
+.da-show__label {
+    position: absolute;
+    left: var(--da-s5);
+    right: var(--da-s5);
+    bottom: var(--da-s5);
+    z-index: 1;
+    color: #fff;
+}
+.da-show__label strong {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -.01em;
+}
+.da-show__label span { font-size: 13px; color: rgba(255, 255, 255, .82); }
+
+/* ==================================================================
    Reveal-on-scroll
    ------------------------------------------------------------------
    `da-js` is set by an inline script only when JS is alive, and is

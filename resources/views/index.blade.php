@@ -87,6 +87,28 @@
                     <span aria-hidden="true"></span>
                     Live delivery across India
                 </p>
+
+                {{-- Floating "live" cards — CSS-only bob, hidden on mobile. --}}
+                <div class="da-hero-media__float da-hero-media__float--tl" aria-hidden="true">
+                    <span class="da-float__icon da-float__icon--sms">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.3 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.1A8.38 8.38 0 0 1 4 11.5a8.5 8.5 0 0 1 8.5-8.5 8.38 8.38 0 0 1 8.5 8.5z"/></svg>
+                    </span>
+                    <span>
+                        <strong>SMS delivered</strong>
+                        <span>DLT route &middot; 0.8s</span>
+                    </span>
+                </div>
+
+                <div class="da-hero-media__float da-hero-media__float--br" aria-hidden="true">
+                    <span class="da-float__icon da-float__icon--wa">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.9 5-1.3A10 10 0 1 0 12 2z"/></svg>
+                    </span>
+                    <span>
+                        <strong>WhatsApp reply</strong>
+                        <span class="da-typing"><i></i><i></i><i></i></span>
+                    </span>
+                </div>
             </div>
 
         </div>
@@ -116,6 +138,23 @@
         </div>
     </section>
 
+    {{-- ============================ MARQUEE ============================ --}}
+    {{-- Decorative ticker — the same capabilities are listed accessibly in the
+         channels grid below, so this is hidden from assistive tech. --}}
+    <div class="da-marquee" aria-hidden="true">
+        @php
+            $daTicker = ['Bulk SMS', 'RCS Business Messaging', 'Voice &amp; IVR',
+                'WhatsApp Business API', 'Digital marketing', 'DLT-compliant routes',
+                'Real-time delivery reports', 'REST API in an afternoon'];
+        @endphp
+        <div class="da-marquee__track">
+            {{-- listed twice so the -50% translate loops seamlessly --}}
+            @foreach (array_merge($daTicker, $daTicker) as $item)
+                <span class="da-marquee__item">{!! $item !!}</span>
+            @endforeach
+        </div>
+    </div>
+
     {{-- =========================== CHANNELS =========================== --}}
     <section class="da-section da-section--alt" id="channels">
         <div class="da-shell">
@@ -131,12 +170,15 @@
 
             <div class="da-grid">
 
-                <article class="da-card" data-da-reveal="chan" data-da-lift>
-                    <div class="da-card__icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                             stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 11.5a8.38 8.38 0 0 1-9 8.3 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.1A8.38 8.38 0 0 1 4 11.5a8.5 8.5 0 0 1 8.5-8.5 8.38 8.38 0 0 1 8.5 8.5z" />
-                        </svg>
+                <article class="da-card da-card--media" data-da-reveal="chan" data-da-lift>
+                    <div class="da-card__media">
+                        <img src="{{ asset('images/website-img/bulk-sms.jpg') }}" alt="" loading="lazy" decoding="async">
+                        <div class="da-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                 stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-9 8.3 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.1A8.38 8.38 0 0 1 4 11.5a8.5 8.5 0 0 1 8.5-8.5 8.38 8.38 0 0 1 8.5 8.5z" />
+                            </svg>
+                        </div>
                     </div>
                     <h3 class="da-h3">Bulk SMS</h3>
                     <p>
@@ -152,13 +194,16 @@
                     </a>
                 </article>
 
-                <article class="da-card" data-da-reveal="chan" data-da-lift>
-                    <div class="da-card__icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                             stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z" />
-                            <path d="M18 15l.8 2.2 2.2.8-2.2.8L18 21l-.8-2.2-2.2-.8 2.2-.8z" />
-                        </svg>
+                <article class="da-card da-card--media" data-da-reveal="chan" data-da-lift>
+                    <div class="da-card__media">
+                        <img src="{{ asset('images/website-img/voice-sms.jpg') }}" alt="" loading="lazy" decoding="async">
+                        <div class="da-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                 stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z" />
+                                <path d="M18 15l.8 2.2 2.2.8-2.2.8L18 21l-.8-2.2-2.2-.8 2.2-.8z" />
+                            </svg>
+                        </div>
                     </div>
                     <h3 class="da-h3">RCS Business Messaging</h3>
                     <p>
@@ -174,12 +219,15 @@
                     </a>
                 </article>
 
-                <article class="da-card" data-da-reveal="chan" data-da-lift>
-                    <div class="da-card__icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                             stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" />
-                        </svg>
+                <article class="da-card da-card--media" data-da-reveal="chan" data-da-lift>
+                    <div class="da-card__media">
+                        <img src="{{ asset('images/website-img/missed-call.png') }}" alt="" loading="lazy" decoding="async">
+                        <div class="da-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                 stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" />
+                            </svg>
+                        </div>
                     </div>
                     <h3 class="da-h3">Voice &amp; IVR</h3>
                     <p>
@@ -195,13 +243,16 @@
                     </a>
                 </article>
 
-                <article class="da-card" data-da-reveal="chan2" data-da-lift>
-                    <div class="da-card__icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                             stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 20l1.4-4.1A8 8 0 1 1 8.6 19z" />
-                            <path d="M8.5 10.5c.6 2 2 3.4 4 4l1.2-1.2 2.3 1v1.4c-2.9.5-6.7-3.3-6.2-6.2h1.4l1 2.3z" />
-                        </svg>
+                <article class="da-card da-card--media" data-da-reveal="chan2" data-da-lift>
+                    <div class="da-card__media">
+                        <img src="{{ asset('images/website-img/IMG-20251118-WA0008.jpg') }}" alt="" loading="lazy" decoding="async">
+                        <div class="da-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                 stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 20l1.4-4.1A8 8 0 1 1 8.6 19z" />
+                                <path d="M8.5 10.5c.6 2 2 3.4 4 4l1.2-1.2 2.3 1v1.4c-2.9.5-6.7-3.3-6.2-6.2h1.4l1 2.3z" />
+                            </svg>
+                        </div>
                     </div>
                     <h3 class="da-h3">WhatsApp Business API</h3>
                     <p>
@@ -217,13 +268,16 @@
                     </a>
                 </article>
 
-                <article class="da-card" data-da-reveal="chan2" data-da-lift>
-                    <div class="da-card__icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                             stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 11v2a1 1 0 0 0 1 1h2l4.6 3.7a1 1 0 0 0 1.6-.8V6.1a1 1 0 0 0-1.6-.8L6 9H4a1 1 0 0 0-1 1z" />
-                            <path d="M17 8.5a5 5 0 0 1 0 7M20 6a9 9 0 0 1 0 12" />
-                        </svg>
+                <article class="da-card da-card--media" data-da-reveal="chan2" data-da-lift>
+                    <div class="da-card__media">
+                        <img src="{{ asset('images/website-img/digital-marketing.jpg') }}" alt="" loading="lazy" decoding="async">
+                        <div class="da-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                 stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 11v2a1 1 0 0 0 1 1h2l4.6 3.7a1 1 0 0 0 1.6-.8V6.1a1 1 0 0 0-1.6-.8L6 9H4a1 1 0 0 0-1 1z" />
+                                <path d="M17 8.5a5 5 0 0 1 0 7M20 6a9 9 0 0 1 0 12" />
+                            </svg>
+                        </div>
                     </div>
                     <h3 class="da-h3">Digital marketing</h3>
                     <p>
@@ -239,6 +293,44 @@
                     </a>
                 </article>
 
+            </div>
+        </div>
+    </section>
+
+    {{-- =========================== HOW IT WORKS ======================== --}}
+    <section class="da-section" id="how">
+        <div class="da-shell">
+
+            <header class="da-head da-head--center" data-da-reveal="how-head">
+                <span class="da-eyebrow">How it works</span>
+                <h2 class="da-h2">From brief to first delivery in four steps.</h2>
+                <p class="da-lede" style="margin-inline:auto">
+                    No long onboarding. Most accounts send their first compliant
+                    campaign inside the first week.
+                </p>
+            </header>
+
+            <div class="da-steps" data-da-reveal="how">
+                <div class="da-step">
+                    <div class="da-step__num" aria-hidden="true"></div>
+                    <h3>Tell us the use case</h3>
+                    <p>Channels, monthly volumes and your sector &mdash; so we size the right routing from day one.</p>
+                </div>
+                <div class="da-step">
+                    <div class="da-step__num" aria-hidden="true"></div>
+                    <h3>We handle compliance</h3>
+                    <p>DLT header and template registration, scrubbing and consent records set up for you.</p>
+                </div>
+                <div class="da-step">
+                    <div class="da-step__num" aria-hidden="true"></div>
+                    <h3>Integrate the API</h3>
+                    <p>One endpoint per channel, predictable JSON and webhooks. Sandbox keys on request.</p>
+                </div>
+                <div class="da-step">
+                    <div class="da-step__num" aria-hidden="true"></div>
+                    <h3>Go live &amp; track</h3>
+                    <p>Per-message delivery receipts, failure reasons and spend exported straight to CSV.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -399,6 +491,63 @@
                     </li>
                 </ul>
 
+            </div>
+        </div>
+    </section>
+
+    {{-- ============================ SHOWCASE =========================== --}}
+    <section class="da-section da-section--alt" id="showcase">
+        <div class="da-shell">
+
+            <header class="da-head da-head--center" data-da-reveal="show-head">
+                <span class="da-eyebrow">In action</span>
+                <h2 class="da-h2">One platform, every conversation.</h2>
+                <p class="da-lede" style="margin-inline:auto">
+                    The same account moves an OTP, a WhatsApp reply and a campaign
+                    report &mdash; without re-integrating for each channel.
+                </p>
+            </header>
+
+            <div class="da-showcase" data-da-reveal="show">
+                <figure class="da-show da-show--wide">
+                    <img src="{{ asset('images/website-img/web-development.jpg') }}" alt="Unified messaging dashboard" loading="lazy" decoding="async">
+                    <figcaption class="da-show__label">
+                        <strong>One dashboard</strong>
+                        <span>Every channel, one login, one invoice</span>
+                    </figcaption>
+                </figure>
+
+                <figure class="da-show da-show--tall">
+                    <img src="{{ asset('images/website-img/IMG-20251118-WA0008.jpg') }}" alt="WhatsApp Business conversations" loading="lazy" decoding="async">
+                    <figcaption class="da-show__label">
+                        <strong>WhatsApp journeys</strong>
+                        <span>Two-way conversations on the official API</span>
+                    </figcaption>
+                </figure>
+
+                <figure class="da-show">
+                    <img src="{{ asset('images/website-img/bulk-sms.jpg') }}" alt="Bulk SMS delivery" loading="lazy" decoding="async">
+                    <figcaption class="da-show__label">
+                        <strong>Bulk SMS</strong>
+                        <span>OTP &amp; alerts on DLT routes</span>
+                    </figcaption>
+                </figure>
+
+                <figure class="da-show">
+                    <img src="{{ asset('images/website-img/voice-sms.jpg') }}" alt="RCS rich messaging" loading="lazy" decoding="async">
+                    <figcaption class="da-show__label">
+                        <strong>RCS rich cards</strong>
+                        <span>Branded, verified, native inbox</span>
+                    </figcaption>
+                </figure>
+
+                <figure class="da-show da-show--wide">
+                    <img src="{{ asset('images/website-img/digital-marketing.jpg') }}" alt="Campaign performance reporting" loading="lazy" decoding="async">
+                    <figcaption class="da-show__label">
+                        <strong>Reporting you can audit</strong>
+                        <span>Delivery, failures &amp; spend to CSV</span>
+                    </figcaption>
+                </figure>
             </div>
         </div>
     </section>
