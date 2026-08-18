@@ -19,6 +19,9 @@ class ContactForm extends Component
     #[Validate('required')]
     public $phone;
 
+    #[Validate('accepted', message: 'Please authorize to receive notifications.')]
+    public $consent = false;
+
     public $selectedLOB = [];
 
 

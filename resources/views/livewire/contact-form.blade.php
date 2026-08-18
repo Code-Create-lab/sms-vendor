@@ -90,6 +90,18 @@
                 <p class="sr-small-text">We are committed to protecting your privacy...</p>
             </div>
 
+            <div class="col-md-12 mb-3">
+                <div class="sr-consent-wrap">
+                    <input wire:model="consent" type="checkbox" id="consent" class="sr-consent-check" />
+                    <label for="consent" class="sr-consent-label">
+                        I hereby authorize to send notifications on SMS/ RCS Messages/ Promotional/ Informational messages.
+                    </label>
+                </div>
+                @error('consent')
+                    <span class="sr-error">{{ $message }}</span>
+                @enderror
+            </div>
+
             <div class="col-md-12 text-center text-md-center">
                 <button type="submit" class="sr-submit-btn">
                     Send Message
