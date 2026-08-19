@@ -293,6 +293,33 @@
                     </a>
                 </article>
 
+                <article class="da-card da-card--media" data-da-reveal="chan" data-da-lift>
+                    <div class="da-card__media">
+                        <img src="{{ asset('images/website-img/election-campaign.png') }}" alt="" loading="lazy" decoding="async">
+                        <div class="da-card__icon" aria-hidden="true">
+                            {{-- megaphone on a stand --}}
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                                 stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 11v2a1 1 0 0 0 1 1h2l5 3.5V6.5L6 10H4a1 1 0 0 0-1 1z" />
+                                <path d="M14 6.5v11l6 2.5V4z" />
+                                <path d="M6 14v4a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-2.5" />
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="da-h3">Election campaign</h3>
+                    <p>
+                        Voter outreach at constituency scale &mdash; SMS, voice and RCS on
+                        registered routes, inside the campaign window.
+                    </p>
+                    <a href="{{ route('election-campaign') }}" class="da-link da-card__stretch">
+                        See campaign tools
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                    </a>
+                </article>
+
             </div>
         </div>
     </section>
@@ -654,11 +681,10 @@
          * printed address, so they can never drift apart.
          *
          */
-        $daAddress = 'Office No. 305, 3rd Floor, Vashisht Commercial Complex, '
-                   . 'Opp. Pillar No. 52, MG Road, Sikandarpur, Gurugram 122002, Haryana';
+        $daAddress = '307, A-43, Sector-63, Noida-201301';
         /* Google drops a marker for a short, geocodable place string; fed the
            full postal address it silently falls back to an unmarked area view. */
-        $daMapQuery = urlencode('Vashisht Commercial Complex, MG Road, Sikanderpur, Gurugram');
+        $daMapQuery = urlencode('A-43, Sector 63, Noida, Uttar Pradesh 201301');
     @endphp
 
     <section class="da-section da-section--alt" id="location">
@@ -668,7 +694,7 @@
 
                 <div class="da-map__panel" data-da-reveal="map-panel">
                     <span class="da-eyebrow">Find us</span>
-                    <h2 class="da-h2">On MG Road, Gurugram &mdash; and on call across India.</h2>
+                    <h2 class="da-h2">In Sector 63, Noida &mdash; and on call across India.</h2>
                     <p class="da-lede">
                         Campaign reviews happen over a desk as often as over a call.
                         Drop in, or start the conversation from wherever you are.
@@ -735,14 +761,14 @@
                          loading="lazy" keeps the ~600 KB tile payload off first paint. --}}
                     <iframe
                         src="https://www.google.com/maps?q={{ $daMapQuery }}&amp;z=16&amp;output=embed"
-                        title="Map showing the Ad Magister office on MG Road, Gurugram"
+                        title="Map showing the Ad Magister office in Sector 63, Noida"
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
                         allowfullscreen></iframe>
 
                     <p class="da-map__pin">
                         <span aria-hidden="true"></span>
-                        Sikandarpur, MG Road &middot; Gurugram
+                        Sector 63 &middot; Noida
                     </p>
                 </div>
 
