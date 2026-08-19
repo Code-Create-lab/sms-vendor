@@ -36,7 +36,10 @@ Livewire::setScriptRoute(function($handle) {
     return Route::get('/'. env('FILAMENT_PATH') . '/livewire/livewire.js', $handle);
 });
 
+// Livewire POSTs component updates to this endpoint, so it must be registered
+// as POST — as Route::get it answered 405 and every component interaction
+// (contact form chips, validation and submit) silently failed.
 Livewire::setUpdateRoute(function($handle) {
-    return Route::get('/' . env('FILAMENT_PATH') . '/livewire/update', $handle);
+    return Route::post('/' . env('FILAMENT_PATH') . '/livewire/update', $handle);
 });
 
