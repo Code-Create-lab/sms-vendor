@@ -147,6 +147,7 @@
                                 ['route' => 'channel',           'label' => 'Channels'],
                                 ['route' => 'industry-solution', 'label' => 'Industries'],
                                 ['route' => 'election-campaign', 'label' => 'Election campaigns'],
+                                ['route' => 'dlt-registration',  'label' => 'DLT registration'],
                                 ['route' => 'about',             'label' => 'About us'],
                                 ['route' => 'contact',           'label' => 'Contact'],
                             ];
