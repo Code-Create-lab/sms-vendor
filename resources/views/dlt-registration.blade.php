@@ -17,9 +17,10 @@
          |
          | VERIFY BEFORE LAUNCH:
          |  - $dltTelemarketer number is reproduced from the live page.
-         |  - support@admagister.com / 9999238814 also come from that page and
-         |    differ from the info@admagister.com / +91 98765 43210 pair in
-         |    layouts/footer.blade.php. One of the two sets is stale.
+         |  - support@admagister.com / 9999238814 also come from that page. The
+         |    footer previously carried a placeholder number and has since been
+         |    corrected to 9999238814, so the two now agree; the sales/support
+         |    split of admagister.com addresses is still worth confirming.
          |  - The source page cited a 5 Feb 2020 registration deadline. That date
          |    is long past, so it is presented as background below rather than as
          |    a live deadline. No fees or turnaround times are stated anywhere on

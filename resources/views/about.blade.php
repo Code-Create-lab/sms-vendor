@@ -96,8 +96,8 @@
         // Kept in sync with layouts/footer.blade.php.
         $abtAddress = 'Office No. 305, 3rd Floor, Vashisht Commercial Complex, Opp. Pillar No. 52, '
                     . 'MG Road, Sikandarpur, Gurugram 122002, Haryana';
-        $abtPhone   = '+91 98765 43210';
-        $abtPhoneTel = '+919876543210';
+        $abtPhone   = '+91 9999238814';
+        $abtPhoneTel = '+919999238814';
         $abtEmail   = 'info@admagister.com';
     @endphp
 

@@ -14,9 +14,21 @@
      */
     $amfAddress = 'Office No. 305, 3rd Floor, Vashisht Commercial Complex, '
                 . 'Opp. Pillar No. 52, MG Road, Sikandarpur, Gurugram 122002, Haryana';
-    $amfPhone   = '+91 98765 43210';
-    $amfPhoneTel = '+919876543210';
+    $amfPhone   = '+91 9999238814';
+    $amfPhoneTel = '+919999238814';
     $amfEmail   = 'info@admagister.com';
+
+    // "Quick Links" mirrored from bulksmsdelhincr.com. These point at that
+    // domain, not at routes in this app, so they stay absolute and open in a
+    // new tab — same targets as the source footer.
+    $amfQuickLinks = [
+        ['label' => 'Bulk SMS Noida',     'url' => 'https://bulksmsdelhincr.com/bulk-sms-service-in-noida.php'],
+        ['label' => 'Bulk SMS Gurugram',  'url' => 'https://bulksmsdelhincr.com/bulk-sms-service-in-gurgaon.php'],
+        ['label' => 'Bulk SMS Mumbai',    'url' => 'https://bulksmsdelhincr.com/bulk-sms-mumbai.php'],
+        ['label' => 'Bulk SMS Lucknow',   'url' => 'https://bulksmsdelhincr.com/bulk-sms-lucknow.php'],
+        ['label' => 'Bulk SMS Bangalore', 'url' => 'https://bulksmsdelhincr.com/bulk-sms-service-in-bangalore.php'],
+        ['label' => 'Bulk SMS Faridabad', 'url' => 'https://bulksmsdelhincr.com/bulk-sms-faridabad.php'],
+    ];
 @endphp
 
 <footer class="amf" role="contentinfo">
@@ -153,7 +165,21 @@
                     <li><a href="{{ route('industry-solution') }}">Industry solutions</a></li>
                     <li><a href="{{ route('election-campaign') }}">Election campaigns</a></li>
                     <li><a href="{{ route('contact') }}">Contact</a></li>
-                    <li><a href="#">DLT registration</a></li>
+                    <li><a href="{{ route('dlt-registration') }}">DLT registration</a></li>
+                </ul>
+            </div>
+
+            {{-- Quick links (city bulk-SMS pages on bulksmsdelhincr.com) --}}
+            <div class="amf-col amf-reveal">
+                <h3 class="amf-col__title">Quick Links</h3>
+                <ul class="amf-links">
+                    @foreach ($amfQuickLinks as $link)
+                        <li>
+                            <a href="{{ $link['url'] }}" target="_blank" rel="noopener noreferrer">
+                                {{ $link['label'] }}
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
 

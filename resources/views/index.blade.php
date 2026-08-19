@@ -653,8 +653,6 @@
          * One source of truth for the pin, the "Get directions" link and the
          * printed address, so they can never drift apart.
          *
-         * TODO — +91 98765 43210 is the template placeholder carried over from
-         * the footer. Replace with the real switchboard number.
          */
         $daAddress = 'Office No. 305, 3rd Floor, Vashisht Commercial Complex, '
                    . 'Opp. Pillar No. 52, MG Road, Sikandarpur, Gurugram 122002, Haryana';
@@ -700,7 +698,7 @@
                             </span>
                             <div>
                                 <h3>Sales &amp; support</h3>
-                                <p><a href="tel:+919876543210" class="da-link da-link--plain">+91 98765 43210</a></p>
+                                <p><a href="tel:+919999238814" class="da-link da-link--plain">+91 9999238814</a></p>
                             </div>
                         </li>
 

@@ -1254,7 +1254,15 @@ body {
     border-bottom: 1px solid var(--amf-border);
 }
 @media (min-width: 640px) { .amf-cols { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 980px) { .amf-cols { grid-template-columns: 1.7fr 1.2fr 1fr 1fr; } }
+@media (min-width: 980px) {
+    .amf-cols {
+        /* 5 columns: the contact column carries the postal address, so it
+           gets the widest share after the brand blurb. */
+        grid-template-columns: 1.35fr 1.5fr 1fr 1fr 1.05fr;
+        gap: 40px;
+    }
+}
+@media (min-width: 640px) and (max-width: 979px) { .amf-cols { grid-template-columns: 1fr 1fr; } }
 
 .amf-brand {
     display: inline-block;
@@ -1366,6 +1374,7 @@ body {
 .amf-cols .amf-col:nth-child(2).is-in { transition-delay: .06s; }
 .amf-cols .amf-col:nth-child(3).is-in { transition-delay: .12s; }
 .amf-cols .amf-col:nth-child(4).is-in { transition-delay: .18s; }
+.amf-cols .amf-col:nth-child(5).is-in { transition-delay: .24s; }
 
 @media (prefers-reduced-motion: reduce) {
     .amf-reveal { opacity: 1; transform: none; transition: none; }
