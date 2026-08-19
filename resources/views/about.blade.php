@@ -1,272 +1,320 @@
 @extends('layouts.app')
 @section('content')
-    <!-- start page title -->
-    <section class="ipad-top-space-margin page-title-big-typography position-relative md-p-0 overflow-hidden">
-        <div id="particles-style-01" class="position-absolute h-100 top-0 left-0 w-100" data-particle="true"
-            data-particle-options='{"particles":{"number":{"value":5,"density":{"enable":true,"value_area":800}},"color":{"value":"#000000"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":1,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":4,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":false,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":6,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true}'>
-        </div>
-        <div class="container">
-            <div class="row align-items-lg-end align-items-center small-screen md-h-auto text-sm-start text-center">
-                <div class="col-12 position-relative page-title-extra-large md-mb-70px sm-mb-50px xs-mb-20px">
-                    <div
-                        class="fw-800 text-black fs-160 md-fs-130 sm-fs-110 xs-fs-70 ls-minus-4px md-ls-minus-2px text-uppercase">
-                        <div data-bottom-top="transform: translate3d(-50px, 0px, 0px);"
-                            data-top-bottom="transform: translate3d(50px, 0px, 0px);">About</div>
-                        <div class="ms-10 xs-ms-0" data-bottom-top="transform: translate3d(50px, 0px, 0px);"
-                            data-top-bottom="transform: translate3d(-50px, 0px, 0px);">agency</div>
+
+    @php
+        /*
+         |--------------------------------------------------------------------------
+         | About Ad Magister  (namespace: .abt-*)
+         |--------------------------------------------------------------------------
+         | Styling lives in public/css/custom.css, which ships on every page. The
+         | .abt-* tokens are aliased to the same navy/blue palette as the header
+         | (--hdr-*) and the industry page (--ind-*) so the site reads as one
+         | product rather than a stack of templates.
+         |
+         | Copy rule: every number on this page is one the site already publishes
+         | on the homepage (uptime target, support window, DLT coverage, channel
+         | count). Do NOT add client counts, volumes or certifications here unless
+         | Ad Magister can evidence them — see $abtStats below.
+         */
+
+        // Hero credibility strip. Sourced from the homepage claims.
+        $abtStats = [
+            ['value' => '4',      'label' => 'Channels on one platform', 'note' => 'SMS · RCS · Voice · WhatsApp'],
+            ['value' => '99.9%',  'label' => 'Platform uptime target',   'note' => 'Monitored round the clock'],
+            ['value' => '100%',   'label' => 'DLT-registered routes',    'note' => 'Entity, sender ID & templates'],
+            ['value' => '24×7',   'label' => 'Support coverage',         'note' => 'Named contact, not a queue'],
+        ];
+
+        // What we actually sell, in the order a buyer evaluates it.
+        $abtPillars = [
+            [
+                'title' => 'Routes we own the answer for',
+                'body'  => 'Operator-direct connectivity rather than resold aggregator hops, so when a
+                            message is late there is a delivery receipt that explains why — not a shrug.',
+            ],
+            [
+                'title' => 'Compliance handled end to end',
+                'body'  => 'DLT entity registration, sender IDs, header and template approvals are run by
+                            us. Campaigns do not sit blocked at the operator while paperwork catches up.',
+            ],
+            [
+                'title' => 'One platform, four channels',
+                'body'  => 'The same API, console and reporting drive Bulk SMS, RCS, Voice and WhatsApp,
+                            so switching channel is a parameter change, not a new integration.',
+            ],
+        ];
+
+        $abtValues = [
+            [
+                'icon'  => 'bi-broadcast-pin',
+                'title' => 'Delivery over volume',
+                'body'  => 'We would rather send fewer messages that land than bill for a blast that
+                            quietly failed. Route quality is reviewed per operator, every month.',
+            ],
+            [
+                'icon'  => 'bi-file-earmark-check',
+                'title' => 'Compliance is not optional',
+                'body'  => 'TRAI and DLT rules shape what we build. We will tell you when a campaign
+                            needs a different consent basis, even when that slows the launch down.',
+            ],
+            [
+                'icon'  => 'bi-graph-up-arrow',
+                'title' => 'Numbers you can audit',
+                'body'  => 'Per-message receipts, failure reasons and spend export to CSV. Nothing about
+                            your delivery performance is locked inside our dashboard.',
+            ],
+            [
+                'icon'  => 'bi-people',
+                'title' => 'A person, not a portal',
+                'body'  => 'Every account gets a named contact who knows your templates and your peak
+                            windows. Escalation is a phone call, not a ticket in a backlog.',
+            ],
+        ];
+
+        // Channel cards deep-link into the existing channel page.
+        $abtChannels = [
+            ['icon' => 'bi-chat-dots',      'name' => 'Bulk SMS', 'body' => 'Transactional and promotional SMS on DLT-registered headers.'],
+            ['icon' => 'bi-chat-square-text','name' => 'RCS',      'body' => 'Verified sender, rich cards and carousels inside native Messages.'],
+            ['icon' => 'bi-telephone',      'name' => 'Voice',    'body' => 'IVR, OBD and missed-call flows for reach beyond the smartphone.'],
+            ['icon' => 'bi-whatsapp',       'name' => 'WhatsApp', 'body' => 'Template messaging and two-way conversations on the Business API.'],
+        ];
+
+        $abtWorkflow = [
+            ['no' => '01', 'title' => 'We audit what you already send',   'body' => 'Every existing message is sorted into transactional, service or promotional — that classification decides the route and the consent basis.'],
+            ['no' => '02', 'title' => 'We register before we integrate',  'body' => 'Entity, sender IDs and templates go through DLT approval first, so the first live send is not the first time you meet a rejection.'],
+            ['no' => '03', 'title' => 'We connect to your stack',         'body' => 'REST API, SMPP or panel upload. Your CRM, ERP or order system keeps its own workflow; we fit around it.'],
+            ['no' => '04', 'title' => 'We review the delivery data',      'body' => 'Per-operator and per-template reports are read with you, and routes or send-windows are retuned on what they show.'],
+        ];
+
+        $abtCompliance = [
+            'DLT entity, header and template registration managed on your behalf',
+            'Operator-direct routes with per-message delivery receipts',
+            'Consent and opt-out handling built into every campaign flow',
+            'Delivery, failure-reason and spend data exportable to CSV at any time',
+        ];
+
+        // Kept in sync with layouts/footer.blade.php.
+        $abtAddress = 'Office No. 305, 3rd Floor, Vashisht Commercial Complex, Opp. Pillar No. 52, '
+                    . 'MG Road, Sikandarpur, Gurugram 122002, Haryana';
+        $abtPhone   = '+91 98765 43210';
+        $abtPhoneTel = '+919876543210';
+        $abtEmail   = 'info@admagister.com';
+    @endphp
+
+    {{-- ==================== HERO ==================== --}}
+    <section class="abt-hero ipad-top-space-margin position-relative overflow-hidden">
+        <div class="container position-relative">
+            <div class="row justify-content-center">
+                <div class="col-xl-9 col-lg-10 text-center">
+                    <span class="abt-eyebrow">About Ad Magister</span>
+                    <h1 class="abt-hero__title">
+                        We keep business messages
+                        <span class="abt-hero__accent">arriving, not just sending</span>
+                    </h1>
+                    <p class="abt-hero__lede">
+                        Ad Magister is an omni-channel business messaging company based in Gurugram. We run
+                        SMS, RCS, Voice and WhatsApp campaigns for Indian enterprises on DLT-registered,
+                        operator-direct routes — and we stay accountable for what happens after you press send.
+                    </p>
+                    <div class="abt-hero__actions">
+                        <a href="{{ route('contact') }}" class="abt-btn abt-btn--primary">Talk to our team</a>
+                        <a href="#abt-approach" class="abt-btn abt-btn--ghost">How we work</a>
                     </div>
                 </div>
             </div>
+
+            <dl class="abt-stats" aria-label="Ad Magister at a glance">
+                @foreach ($abtStats as $stat)
+                    <div class="abt-stat">
+                        <dt class="abt-stat__value">{{ $stat['value'] }}</dt>
+                        <dd class="abt-stat__label">
+                            {{ $stat['label'] }}
+                            <span class="abt-stat__note">{{ $stat['note'] }}</span>
+                        </dd>
+                    </div>
+                @endforeach
+            </dl>
         </div>
     </section>
-    <!-- start page title -->
-    <!-- start section -->
-    <section class="p-0">
+
+    {{-- ==================== WHO WE ARE ==================== --}}
+    <section class="abt-section">
         <div class="container">
-            <div class="row align-items-end text-center text-sm-start"
-                data-anime='{ "el": "childs", "translateX": [-15, 0], "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                <div class="col-xl-4 col-lg-5 offset-xl-1 md-mb-15px">
-                    <div class="fs-19 fw-600 text-black">Create impactful experience story.</div>
-                    <span class="w-70 xl-w-100 sm-w-70 xs-w-80 d-block xs-mx-auto">We are excited for our work and how it
-                        positively impacts clients.</span>
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <div class="abt-sticky">
+                        <span class="abt-kicker">Who we are</span>
+                        <h2 class="abt-section__title">
+                            A messaging partner that owns your delivery routes
+                        </h2>
+                        <p class="abt-section__sub">
+                            Most messaging problems are not creative problems. They are routing, registration
+                            and reporting problems. That is the part of the job we took on.
+                        </p>
+                        <a href="{{ route('channel') }}" class="abt-inline-link">
+                            Explore our channels
+                            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
                 </div>
+
                 <div class="col-lg-7">
-                    <div class="fs-80 sm-fs-50 text-black fw-200">- <span
-                            class="fs-130 lg-fs-110 xs-fs-75 ls-minus-4px md-ls-minus-2px font-style-italic alt-font fw-500">experience</span>
-                    </div>
+                    <ul class="abt-pillars">
+                        @foreach ($abtPillars as $pillar)
+                            <li class="abt-pillar">
+                                <h3 class="abt-pillar__title">{{ $pillar['title'] }}</h3>
+                                <p class="abt-pillar__body">{{ $pillar['body'] }}</p>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
-    <!-- end section -->
-    <!-- start section -->
-    <section class="position-relative overflow-hidden">
-        <div class="one-third-screen md-h-600px sm-h-350px skrollr-parallax magic-cursor round-cursor mx-auto"
-            data-bottom-top="width: 54%" data-center-top="width: 86%;" data-parallax-background-ratio="0.5"
-            style="background-image: url('images/demo-scattered-portfolio-about-06.jpg')"></div>
-    </section>
-    <!-- end section -->
-    <!-- start section -->
-    <section class="p-0">
+
+    {{-- ==================== VALUES ==================== --}}
+    <section class="abt-section abt-section--muted">
         <div class="container">
             <div class="row">
-                <div class="col-xxl-6 col-lg-7"
-                    data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                    <div class="position-sticky top-100px">
-                        <span
-                            class="fs-70 xl-fs-65 lg-fs-55 fw-700 mb-45px d-inline-block text-black ls-minus-3px xs-ls-minus-2px">We
-                            are committed to deliver unique <span class="alt-font font-style-italic">digital media
-                                solutions.</span></span>
-                    </div>
+                <div class="col-lg-8">
+                    <span class="abt-kicker">What we stand for</span>
+                    <h2 class="abt-section__title">Four commitments we are happy to be held to</h2>
+                    <p class="abt-section__sub">
+                        These are the rules we apply internally before a campaign goes live — and the ones
+                        you should hold any messaging vendor to.
+                    </p>
                 </div>
-                <div class="col-xxl-4 col-lg-5 offset-xxl-1"
-                    data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                    <div class="mb-60px sm-mb-30px last-paragraph-no-margin">
-                        <span class="d-inline-block fs-15 text-uppercase fw-700 text-black mb-5px">We drive positive
-                            change.</span>
-                        <p>We are excited for our work and how it positively impacts clients. With over 12 years of
-                            experience we have been constantly providing excellent web solutions services.</p>
-                    </div>
-                    <div class="mb-60px sm-mb-30px last-paragraph-no-margin">
-                        <span class="d-inline-block fs-15 text-uppercase fw-700 text-black mb-5px">We are rational
-                            together.</span>
-                        <p>We are excited for our work and how it positively impacts clients. With over 12 years of
-                            experience we have been constantly providing excellent web solutions services.</p>
-                    </div>
-                    <div class="last-paragraph-no-margin">
-                        <span class="d-inline-block fs-15 text-uppercase fw-700 text-black mb-5px">We are creative
-                            thinkers.</span>
-                        <p>We are excited for our work and how it positively impacts clients. With over 12 years of
-                            experience we have been constantly providing excellent web solutions services.</p>
-                    </div>
-                </div>
+            </div>
+
+            <div class="abt-grid">
+                @foreach ($abtValues as $value)
+                    <article class="abt-card">
+                        <span class="abt-card__icon" aria-hidden="true">
+                            <i class="bi {{ $value['icon'] }}"></i>
+                        </span>
+                        <h3 class="abt-card__title">{{ $value['title'] }}</h3>
+                        <p class="abt-card__body">{{ $value['body'] }}</p>
+                    </article>
+                @endforeach
             </div>
         </div>
     </section>
-    <!-- end section -->
-    <!-- start section -->
-    <section class="overflow-hidden big-section">
+
+    {{-- ==================== CHANNELS ==================== --}}
+    <section class="abt-section">
+        <div class="container">
+            <div class="row align-items-end">
+                <div class="col-lg-8">
+                    <span class="abt-kicker">What we run</span>
+                    <h2 class="abt-section__title">Four channels, one integration</h2>
+                    <p class="abt-section__sub">
+                        We match the channel to the intent instead of pushing every campaign down the same
+                        pipe. All four share the same API, console and delivery reporting.
+                    </p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="{{ route('channel') }}" class="abt-btn abt-btn--ghost">See all channels</a>
+                </div>
+            </div>
+
+            <div class="abt-channels">
+                @foreach ($abtChannels as $channel)
+                    <a class="abt-channel" href="{{ route('channel') }}">
+                        <span class="abt-channel__icon" aria-hidden="true">
+                            <i class="bi {{ $channel['icon'] }}"></i>
+                        </span>
+                        <span class="abt-channel__name">{{ $channel['name'] }}</span>
+                        <span class="abt-channel__body">{{ $channel['body'] }}</span>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    {{-- ==================== HOW WE WORK ==================== --}}
+    <section id="abt-approach" class="abt-section abt-section--muted">
         <div class="container">
             <div class="row">
-                <div class="col-12 position-relative">
-                    <div class="outside-box-right-25 xs-outside-box-right-0">
-                        <div class="swiper dark swiper-width-auto"
-                            data-slider-options='{ "slidesPerView": "auto", "spaceBetween": 30, "loop": true, "autoplay": { "delay": 2000, "disableOnInteraction": false }, "pagination": { "el": ".slider-four-slide-pagination-1", "clickable": true }, "navigation": { "nextEl": ".slider-one-slide-next-1", "prevEl": ".slider-one-slide-prev-1" }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "1200": { "spaceBetween": 80 }, "992": {"spaceBetween": 50 } }, "effect": "slide" }'>
-                            <div class="swiper-wrapper">
-                                <!-- start content carousal item -->
-                                <div class="swiper-slide">
-                                    <img src="images/demo-scattered-portfolio-about-02.jpg" class="md-h-400px sm-h-250px"
-                                        alt="" />
-                                </div>
-                                <!-- end content carousal item -->
-                                <!-- start content carousal item -->
-                                <div class="swiper-slide mt-60px sm-mt-0">
-                                    <img src="images/demo-scattered-portfolio-about-03.jpg" class="md-h-400px sm-h-250px"
-                                        alt="" />
-                                </div>
-                                <!-- end content carousal item -->
-                                <!-- start content carousal item -->
-                                <div class="swiper-slide">
-                                    <img src="images/demo-scattered-portfolio-about-04.jpg" class="md-h-400px sm-h-250px"
-                                        alt="" />
-                                </div>
-                                <!-- end content carousal item -->
-                                <!-- start content carousal item -->
-                                <div class="swiper-slide mt-60px sm-mt-0">
-                                    <img src="images/demo-scattered-portfolio-about-05.jpg" class="md-h-400px sm-h-250px"
-                                        alt="" />
-                                </div>
-                                <!-- end content carousal item -->
-                                <!-- start content carousal item -->
-                                <div class="swiper-slide">
-                                    <img src="images/demo-scattered-portfolio-about-02.jpg" class="md-h-400px sm-h-250px"
-                                        alt="" />
-                                </div>
-                                <!-- end content carousal item -->
-                                <!-- start content carousal item -->
-                                <div class="swiper-slide mt-60px sm-mt-0">
-                                    <img src="images/demo-scattered-portfolio-about-03.jpg" class="md-h-400px sm-h-250px"
-                                        alt="" />
-                                </div>
-                                <!-- end content carousal item -->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- start slider pagination -->
-                    <!--<div class="swiper-pagination slider-four-slide-pagination-1 swiper-pagination-style-2 swiper-pagination-clickable swiper-pagination-bullets"></div>-->
-                    <!-- end slider pagination -->
+                <div class="col-lg-8">
+                    <span class="abt-kicker">Our approach</span>
+                    <h2 class="abt-section__title">How an engagement actually runs</h2>
+                    <p class="abt-section__sub">
+                        No discovery theatre. Four steps between first call and a campaign you can measure.
+                    </p>
                 </div>
             </div>
+
+            <ol class="abt-timeline">
+                @foreach ($abtWorkflow as $step)
+                    <li class="abt-timeline__item">
+                        <span class="abt-timeline__no" aria-hidden="true">{{ $step['no'] }}</span>
+                        <div class="abt-timeline__content">
+                            <h3 class="abt-timeline__title">{{ $step['title'] }}</h3>
+                            <p class="abt-timeline__body">{{ $step['body'] }}</p>
+                        </div>
+                    </li>
+                @endforeach
+            </ol>
         </div>
     </section>
-    <!-- end section -->
-    <!-- start section -->
-    <section class="overflow-hidden big-section py-0">
+
+    {{-- ==================== COMPLIANCE ==================== --}}
+    <section class="abt-section">
         <div class="container">
-            <div class="row">
-                <div class="col-xl-4 lg-mb-45px xs-mb-30px text-sm-start text-center"
-                    data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                    <span class="fs-70 xs-fs-50 fw-700 text-dark-gray mb-0 ls-minus-2px">Hear from <span
-                            class="alt-font font-style-italic">clients.</span></span>
+            <div class="abt-trust">
+                <div class="abt-trust__intro">
+                    <span class="abt-kicker abt-kicker--invert">Compliance &amp; transparency</span>
+                    <h2 class="abt-section__title abt-section__title--invert">
+                        Built for regulated Indian messaging
+                    </h2>
+                    <p class="abt-section__sub abt-section__sub--invert">
+                        TRAI and DLT rules are not a checkbox at the end of the project. They decide the
+                        route, the header and the consent basis before a single message is queued.
+                    </p>
+                    <a href="{{ route('contact') }}" class="abt-btn abt-btn--invert">Request a compliance walkthrough</a>
                 </div>
-                <div class="col-xl-8"
-                    data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                    <div class="outside-box-right-40 sm-outside-box-right-0">
-                        <div class="swiper magic-cursor"
-                            data-slider-options='{ "slidesPerView": 1, "spaceBetween": 60, "loop": true, "parallax": true, "speed": 1200, "pagination": { "el": ".slider-one-slide-pagination", "clickable": true, "dynamicBullets": false }, "navigation": { "nextEl": ".slider-one-slide-next-2", "prevEl": ".slider-one-slide-prev-2" }, "autoplay": { "delay": 5000, "disableOnInteraction": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "992": { "slidesPerView": 4 }, "768": { "slidesPerView": 2 }, "320": { "slidesPerView": 1 } }, "effect": "slide" }'>
-                            <div class="swiper-wrapper testimonials-style-13">
-                                <!-- start review item -->
-                                <div class="swiper-slide text-sm-start text-center last-paragraph-no-margin"
-                                    data-swiper-parallax="700">
-                                    <span class="fs-15 fw-800 text-dark-gray text-uppercase mb-10px d-block ls-1px">@ Herman
-                                        miller</span>
-                                    <p class="fs-22 lh-36 text-dark-gray">From the day one, Themezaa has delivered all
-                                        possible outcomes as demanded. I must say that all the developers are dedicated.</p>
-                                </div>
-                                <!-- end review item -->
-                                <!-- start review item -->
-                                <div class="swiper-slide text-sm-start text-center last-paragraph-no-margin"
-                                    data-swiper-parallax="700">
-                                    <span class="fs-15 fw-800 text-dark-gray text-uppercase mb-10px d-block ls-1px">@ Shoko
-                                        mugikura</span>
-                                    <p class="fs-22 lh-36 text-dark-gray">Theme is beautiful, although it takes some time to
-                                        figure out where to edit what. But support is very quick and helpful theme.</p>
-                                </div>
-                                <!-- end review item -->
-                                <!-- start review item -->
-                                <div class="swiper-slide text-sm-start text-center last-paragraph-no-margin"
-                                    data-swiper-parallax="700">
-                                    <span class="fs-15 fw-800 text-dark-gray text-uppercase mb-10px d-block ls-1px">@
-                                        Matthew taylor</span>
-                                    <p class="fs-22 lh-36 text-dark-gray">They are very good with communication, addressing
-                                        the need and attentively making sure the customer is fully supported.</p>
-                                </div>
-                                <!-- end review item -->
-                                <!-- start review item -->
-                                <div class="swiper-slide text-sm-start text-center last-paragraph-no-margin"
-                                    data-swiper-parallax="700">
-                                    <span class="fs-15 fw-800 text-dark-gray text-uppercase mb-10px d-block ls-1px">@
-                                        Leonel mooney</span>
-                                    <p class="fs-22 lh-36 text-dark-gray">What an awesome theme and support team is very
-                                        kind. Every element is designed pixel perfect, so it is really a modern theme.</p>
-                                </div>
-                                <!-- end review item -->
-                                <!-- start review item -->
-                                <div class="swiper-slide text-sm-start text-center last-paragraph-no-margin"
-                                    data-swiper-parallax="700">
-                                    <span class="fs-15 fw-800 text-dark-gray text-uppercase mb-10px d-block ls-1px">@
-                                        Herman miller</span>
-                                    <p class="fs-22 lh-36 text-dark-gray">From the day one, Themezaa has delivered all
-                                        possible outcomes as demanded. I must say that all the developers are dedicated.</p>
-                                </div>
-                                <!-- end review item -->
-                                <!-- start review item -->
-                                <div class="swiper-slide text-sm-start text-center last-paragraph-no-margin"
-                                    data-swiper-parallax="700">
-                                    <span class="fs-15 fw-800 text-dark-gray text-uppercase mb-10px d-block ls-1px">@ Shoko
-                                        mugikura</span>
-                                    <p class="fs-22 lh-36 text-dark-gray">Theme is beautiful, although it takes some time
-                                        to figure out where to edit what. But support is very quick and helpful theme.</p>
-                                </div>
-                                <!-- end review item -->
-                                <!-- start review item -->
-                                <div class="swiper-slide text-sm-start text-center last-paragraph-no-margin"
-                                    data-swiper-parallax="700">
-                                    <span class="fs-15 fw-800 text-dark-gray text-uppercase mb-10px d-block ls-1px">@
-                                        Matthew taylor</span>
-                                    <p class="fs-22 lh-36 text-dark-gray">They are very good with communication, addressing
-                                        the need and attentively making sure the customer is fully supported.</p>
-                                </div>
-                                <!-- end review item -->
-                                <!-- start review item -->
-                                <div class="swiper-slide text-sm-start text-center last-paragraph-no-margin"
-                                    data-swiper-parallax="700">
-                                    <span class="fs-15 fw-800 text-dark-gray text-uppercase mb-10px d-block ls-1px">@
-                                        Leonel mooney</span>
-                                    <p class="fs-22 lh-36 text-dark-gray">What an awesome theme and support team is very
-                                        kind. Every element is designed pixel perfect, so it is really a modern theme.</p>
-                                </div>
-                                <!-- end review item -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div
-                                class="separator-line-5px w-100 bg-extra-medium-gray mt-45px mb-45px xs-mt-30px xs-mb-30px">
-                            </div>
-                        </div>
-                        <div class="col-sm-6 xs-mb-30px">
-                            <div class="d-flex justify-content-center justify-content-sm-start">
-                                <!-- start slider navigation -->
-                                <div class="slider-one-slide-prev-2 text-black swiper-button-prev slider-navigation-style-04 bg-base-color h-65px w-65px"
-                                    tabindex="0" role="button" aria-label="Previous slide"><i
-                                        class="fa-solid fa-arrow-left"></i></div>
-                                <div class="slider-one-slide-next-2 text-black swiper-button-next slider-navigation-style-04 bg-base-color h-65px w-65px"
-                                    tabindex="0" role="button" aria-label="Next slide"><i
-                                        class="fa-solid fa-arrow-right"></i></div>
-                                <!-- end slider navigation -->
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center justify-content-center justify-content-sm-end">
-                                <div class="fw-800 fs-70 text-dark-gray me-15px ls-minus-1px">4.82</div>
-                                <div class="text-center">
-                                    <div class="bg-black text-white border-radius-30px ps-20px pe-20px fs-13">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                    </div>
-                                    <span class="text-dark-gray fs-13 fw-700 text-uppercase">Clutch review</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+                <ul class="abt-trust__list">
+                    @foreach ($abtCompliance as $item)
+                        <li>
+                            <i class="bi bi-shield-check" aria-hidden="true"></i>
+                            <span>{{ $item }}</span>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
     </section>
-    <!-- end section -->
+
+    {{-- ==================== CTA + OFFICE ==================== --}}
+    <section class="abt-cta-wrap">
+        <div class="container">
+            <div class="abt-cta">
+                <div class="abt-cta__body">
+                    <h2 class="abt-cta__title">Tell us what you need to send, and to how many.</h2>
+                    <p class="abt-cta__sub">
+                        We will come back with the right channel mix, the registrations it needs and what it
+                        costs — before you commit to anything.
+                    </p>
+                    <div class="abt-hero__actions abt-hero__actions--start">
+                        <a href="{{ route('contact') }}" class="abt-btn abt-btn--primary">Contact sales</a>
+                        <a href="tel:{{ $abtPhoneTel }}" class="abt-btn abt-btn--ghost">{{ $abtPhone }}</a>
+                    </div>
+                </div>
+
+                <address class="abt-office">
+                    <span class="abt-office__label">Head office</span>
+                    <span class="abt-office__line">
+                        <i class="bi bi-geo-alt" aria-hidden="true"></i>
+                        <span>{{ $abtAddress }}</span>
+                    </span>
+                    <span class="abt-office__line">
+                        <i class="bi bi-envelope" aria-hidden="true"></i>
+                        <a href="mailto:{{ $abtEmail }}">{{ $abtEmail }}</a>
+                    </span>
+                </address>
+            </div>
+        </div>
+    </section>
+
 @endsection
