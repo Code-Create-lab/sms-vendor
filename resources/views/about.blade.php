@@ -94,8 +94,7 @@
         ];
 
         // Kept in sync with layouts/footer.blade.php.
-        $abtAddress = 'Office No. 305, 3rd Floor, Vashisht Commercial Complex, Opp. Pillar No. 52, '
-                    . 'MG Road, Sikandarpur, Gurugram 122002, Haryana';
+        $abtAddress = '307, A-43, Sector-63, Noida-201301';
         $abtPhone   = '+91 9999238814';
         $abtPhoneTel = '+919999238814';
         $abtEmail   = 'info@admagister.com';
@@ -112,7 +111,7 @@
                         <span class="abt-hero__accent">arriving, not just sending</span>
                     </h1>
                     <p class="abt-hero__lede">
-                        Ad Magister is an omni-channel business messaging company based in Gurugram. We run
+                        Ad Magister is an omni-channel business messaging company based in Noida. We run
                         SMS, RCS, Voice and WhatsApp campaigns for Indian enterprises on DLT-registered,
                         operator-direct routes — and we stay accountable for what happens after you press send.
                     </p>

@@ -172,7 +172,7 @@
 
                         <div class="nav-foot">
                             <a href="mailto:info@admagister.com">info@admagister.com</a>
-                            <p>Ad Magister Pvt. Ltd. &middot; Gurugram 122002</p>
+                            <p>Ad Magister Pvt. Ltd. &middot; Noida 201301</p>
                         </div>
                     </div>
                 </div>

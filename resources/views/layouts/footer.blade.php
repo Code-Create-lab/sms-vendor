@@ -12,8 +12,7 @@
      | Layout mirrors the "footer-elementor-inner" pattern: a big "Let's
      | collaborate" CTA on top, then link columns, then a bottom bar.
      */
-    $amfAddress = 'Office No. 305, 3rd Floor, Vashisht Commercial Complex, '
-                . 'Opp. Pillar No. 52, MG Road, Sikandarpur, Gurugram 122002, Haryana';
+    $amfAddress = '307, A-43, Sector-63, Noida-201301';
     $amfPhone   = '+91 9999238814';
     $amfPhoneTel = '+919999238814';
     $amfEmail   = 'info@admagister.com';

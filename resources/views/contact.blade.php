@@ -9,13 +9,14 @@
          | Styling lives in public/css/custom.css alongside the .abt-* / .ind-*
          | blocks and shares their token set, so Contact reads as the same product.
          |
-         | DATA IS UNCHANGED from the previous template revision — the three
-         | enquiry addresses, the office block and both Google Maps URLs are
-         | carried over verbatim. NOTE: several of these are still theme
-         | placeholders (help@/careers@digital.com, a London address, the
-         | 1-800 number) and they contradict the real Gurugram details in
-         | layouts/footer.blade.php. Swap $cntEnquiries and $cntOffice below when
-         | the real values are confirmed — nothing else needs to change.
+         | $cntOffice and the map now carry the real Noida office, phone and
+         | email, matching layouts/footer.blade.php.
+         |
+         | STILL PLACEHOLDERS: the three $cntEnquiries addresses
+         | (help@digital.com, careers@digital.com twice — note the duplicate is
+         | in the source too) are theme filler on the digital.com domain. Swap
+         | them when the real routing addresses are confirmed; nothing else on
+         | the page needs to change.
          */
 
         $cntEnquiries = [
@@ -25,15 +26,20 @@
         ];
 
         $cntOffice = [
-            'name'    => 'digital - London',
-            'address' => '401 Broadway, 24th floor, Orchard view, London, UK',
-            'phone'   => '1-800-222-000',
-            'phoneTel'=> '1800222000',
+            'name'    => 'Ad Magister &mdash; Noida',
+            'address' => '307, A-43, Sector-63, Noida-201301',
+            'phone'   => '+91 9999238814',
+            'phoneTel'=> '+919999238814',
+            'email'   => 'info@admagister.com',
         ];
 
-        // Kept as-is from the previous revision.
-        $cntMapsLink = 'https://maps.google.com/maps?ll=-37.805688,144.962312&z=17&t=m&hl=en-US&gl=IN&mapclient=embed&cid=13153204942596594449';
-        $cntMapEmbed = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d448194.82162352453!2d77.09323125!3d28.6440836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x37205b715389640!2sDelhi!5e0!3m2!1sen!2sin!4v1752521986168!5m2!1sen!2sin';
+        /* The previous revision pointed the "Show on google maps" link at a
+           Melbourne place id and embedded a Delhi-wide view — both theme
+           leftovers. Both now derive from one query string, so the pin, the
+           embed and the printed address cannot drift apart. */
+        $cntMapQuery = urlencode('A-43, Sector 63, Noida, Uttar Pradesh 201301');
+        $cntMapsLink = 'https://maps.google.com/maps?q=' . $cntMapQuery;
+        $cntMapEmbed = 'https://www.google.com/maps?q=' . $cntMapQuery . '&output=embed';
     @endphp
 
     {{-- ==================== HERO ==================== --}}
@@ -95,20 +101,18 @@
 
             <div class="cnt-location">
                 <address class="cnt-office">
-                    <span class="cnt-office__name">{{ $cntOffice['name'] }}</span>
+                    <span class="cnt-office__name">{!! $cntOffice['name'] !!}</span>
 
                     <span class="cnt-office__line">
                         <i class="bi bi-geo-alt" aria-hidden="true"></i>
                         <span>{{ $cntOffice['address'] }}</span>
                     </span>
 
-                    {{-- Address is Cloudflare-obfuscated in the source and decoded at
-                         runtime by js/email-decode.min.js — markup kept verbatim. --}}
+                    {{-- Was a Cloudflare-obfuscated address that decoded to the theme
+                         placeholder info@yourdomain.com. --}}
                     <span class="cnt-office__line">
                         <i class="bi bi-envelope" aria-hidden="true"></i>
-                        <a href="/cdn-cgi/l/email-protection#abc2c5cdc4ebd2c4ded9cfc4c6cac2c585c8c4c6"><span
-                                class="__cf_email__"
-                                data-cfemail="4c25222a230c3523393e2823212d2522622f2321">[email&#160;protected]</span></a>
+                        <a href="mailto:{{ $cntOffice['email'] }}">{{ $cntOffice['email'] }}</a>
                     </span>
 
                     <span class="cnt-office__line">
