@@ -1,235 +1,261 @@
 @extends('layouts.app')
 @section('content')
 
+    @php
+        /*
+         |--------------------------------------------------------------------------
+         | Channels  (namespace: .chn-*)
+         |--------------------------------------------------------------------------
+         | Styling lives in public/css/custom.css and shares the token set used by
+         | .abt-*, .cnt-*, .dlt-* and .ind-*.
+         |
+         | Copy provenance — the previous revision of this page had usable text for
+         | only two of the five channels:
+         |   - RCS was literally marked "( Pending Content )";
+         |   - WhatsApp and Digital marketing carried the same web-agency filler
+         |     ("We are excited for our work... 12 years of experience... web
+         |     solutions services") that was removed from the About page;
+         |   - Bulk SMS described "Bulk Email services", which is the wrong product
+         |     for that heading — treated as a copy-paste slip and rewritten for SMS;
+         |   - Voice was genuine and is carried over close to the original wording.
+         | Everything else is built from the channel copy the homepage already
+         | publishes, so the two pages agree. No pricing, volumes or SLAs are
+         | stated here because the site publishes none — do not invent them.
+         */
 
-    <!-- start page title -->
-    <section class="ipad-top-space-margin page-title-big-typography position-relative md-p-0 overflow-hidden">
-        <div id="particles-style-01" class="position-absolute h-100 top-0 left-0 w-100" data-particle="true"
-            data-particle-options='{"particles":{"number":{"value":5,"density":{"enable":true,"value_area":800}},"color":{"value":"#000000"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":1,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":4,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":false,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":6,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true}'>
-        </div>
-        <div class="video">
-            <div class="row align-items-lg-end align-items-center big-screen md-h-auto text-sm-start text-center">
-                <div class="col-12 position-relative page-title-extra-large md-mb-70px sm-mb-50px xs-mb-20px">
+        $chnChannels = [
+            [
+                'id'      => 'bulk-sms',
+                'no'      => '01',
+                'icon'    => 'bi-chat-dots',
+                'name'    => 'Bulk SMS',
+                'tag'     => 'Widest reach',
+                'summary' => 'Transactional, OTP and promotional traffic on DLT-registered headers,
+                              with per-message delivery receipts.',
+                'body'    => 'SMS still reaches every handset on every network without an app, a data
+                              connection or an opt-in to a platform. It is the channel we fall back to
+                              when a message simply has to arrive.',
+                'points'  => [
+                    'Separate transactional and promotional routes, so an OTP is never queued behind a campaign',
+                    'DLT entity, header and template registration handled for you',
+                    'Per-message delivery receipts with operator-level failure reasons',
+                    'REST API, SMPP or panel upload — whichever fits your stack',
+                ],
+            ],
+            [
+                'id'      => 'rcs',
+                'no'      => '02',
+                'icon'    => 'bi-chat-square-text',
+                'name'    => 'RCS Business Messaging',
+                'tag'     => 'Richest format',
+                'summary' => 'Verified sender, branded cards, carousels and quick-reply buttons —
+                              delivered inside the native Messages app.',
+                'body'    => 'RCS upgrades the SMS inbox rather than replacing it. Your brand name and
+                              logo are verified by the operator, so the customer can see who is writing
+                              before they open anything.',
+                'points'  => [
+                    'Verified sender profile with brand name, logo and colour',
+                    'Rich cards, image carousels and quick-reply buttons',
+                    'Read receipts and typing indicators for two-way flows',
+                    'Automatic SMS fallback when the handset does not support RCS',
+                ],
+            ],
+            [
+                'id'      => 'voice',
+                'no'      => '03',
+                'icon'    => 'bi-telephone',
+                'name'    => 'Voice &amp; IVR',
+                'tag'     => 'Beyond the smartphone',
+                'summary' => 'Outbound voice broadcasts, missed-call numbers and IVR trees for reach
+                              beyond the smartphone base.',
+                // Carried over from the previous revision, lightly tidied.
+                'body'    => 'Voice earns a higher response rate than standard mail while staying as fast
+                              and economical as messaging, and it opens a second line of communication
+                              into parts of your audience that text does not reach.',
+                'points'  => [
+                    'Outbound dialling (OBD) for announcements and reminders',
+                    'Missed-call numbers for opt-ins, verification and call-backs',
+                    'IVR trees that route callers without an agent',
+                    'Reaches feature phones and low-literacy audiences',
+                ],
+            ],
+            [
+                'id'      => 'whatsapp',
+                'no'      => '04',
+                'icon'    => 'bi-whatsapp',
+                'name'    => 'WhatsApp Business API',
+                'tag'     => 'Two-way conversations',
+                'summary' => 'Template notifications, two-way conversations and catalogue journeys on an
+                              official Business API account.',
+                'body'    => 'The Business API is the sanctioned route for messaging customers at scale on
+                              WhatsApp — a verified business profile, approved templates and a real
+                              conversation thread rather than a broadcast.',
+                'points'  => [
+                    'Verified business profile and green-tick application support',
+                    'Approved message templates for notifications and reminders',
+                    'Two-way threads that can hand off to your agents',
+                    'Catalogue and product journeys inside the chat',
+                ],
+            ],
+            [
+                'id'      => 'digital-marketing',
+                'no'      => '05',
+                'icon'    => 'bi-megaphone',
+                'name'    => 'Digital marketing',
+                'tag'     => 'Demand, not just delivery',
+                'summary' => 'Creative, targeting and performance reporting run by the same team that owns
+                              your delivery routes.',
+                'body'    => 'The messaging only works if the offer and the audience are right. The same
+                              team that runs your routes also runs the campaigns feeding them, so nothing
+                              is lost in a handover between vendors.',
+                'points'  => [
+                    'Campaign creative built for the channel it ships on',
+                    'Audience segmentation from your own customer data',
+                    'Landing pages and forms wired to the same reporting',
+                    'Performance reviewed against delivery data, not just clicks',
+                ],
+            ],
+        ];
 
-              <video style="margin-top: -113px;"   autoplay muted loop playsinline  class="h-full w-[100vw] object-cover"><source src="{{asset('video/homeVideoLatest.mp4')}}" type="video/mp4"></video>
-                    {{-- <div
-                        class="fw-800 text-black fs-160 md-fs-130 sm-fs-110 xs-fs-70 ls-minus-4px md-ls-minus-2px text-uppercase">
-                        <div data-bottom-top="transform: translate3d(-50px, 0px, 0px);"
-                            data-top-bottom="transform: translate3d(50px, 0px, 0px);">Channels</div>
-                        <div class="ms-10 xs-ms-0" data-bottom-top="transform: translate3d(50px, 0px, 0px);"
-                            data-top-bottom="transform: translate3d(-50px, 0px, 0px);"></div>
-                    </div> --}}
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- start page title -->
-    <!-- start section -->
-    <section class="p-0">
-        <div class="container">
-            <div class="row align-items-end text-center text-sm-start"
-                data-anime='{ "el": "childs", "translateX": [-15, 0], "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                <div class="col-xl-4 col-lg-5 offset-xl-1 md-mb-15px">
-                    <div class="fs-19 fw-600 text-black">We have a talented web developer.</div>
-                    <span class="w-70 xl-w-100 sm-w-70 xs-w-80 d-block xs-mx-auto">We are excited for our work and how it
-                        positively impacts clients.</span>
-                </div>
-                <div class="col-lg-7">
-                    <div class="fs-80 sm-fs-50 text-black fw-200">- <span
-                            class="fs-130 lg-fs-110 xs-fs-75 ls-minus-4px md-ls-minus-2px font-style-italic alt-font fw-500">Ad Magister</span>
+        // "Which channel when" — one row per channel, kept in the same order.
+        $chnCompare = [
+            ['channel' => 'Bulk SMS',   'best' => 'Alerts that must arrive',        'format' => 'Text, 160 chars',        'reach' => 'Every handset'],
+            ['channel' => 'RCS',        'best' => 'Branded, visual campaigns',      'format' => 'Cards, carousels, chips','reach' => 'RCS-capable Android'],
+            ['channel' => 'Voice',      'best' => 'Non-smartphone audiences',       'format' => 'Audio, IVR menus',       'reach' => 'Every phone'],
+            ['channel' => 'WhatsApp',   'best' => 'Conversations and support',      'format' => 'Templates, rich media',  'reach' => 'WhatsApp users'],
+            ['channel' => 'Digital',    'best' => 'Finding new audiences',          'format' => 'Ads, pages, creative',   'reach' => 'Paid and organic'],
+        ];
+    @endphp
+
+    {{-- ==================== HERO ==================== --}}
+    <section class="chn-hero ipad-top-space-margin position-relative overflow-hidden">
+        <div class="container position-relative">
+            <div class="row justify-content-center">
+                <div class="col-xl-9 col-lg-10 text-center">
+                    <span class="chn-eyebrow">Channels</span>
+                    <h1 class="chn-hero__title">
+                        Five channels,
+                        <span class="chn-hero__accent">one integration</span>
+                    </h1>
+                    <p class="chn-hero__lede">
+                        Start on the channel that fits the message, then add the rest without
+                        re-integrating. The same API, console and delivery reporting drive all of them.
+                    </p>
+                    <div class="chn-hero__actions">
+                        <a href="{{ route('contact') }}" class="chn-btn chn-btn--primary">Talk to sales</a>
+                        <a href="#chn-compare" class="chn-btn chn-btn--ghost">Compare channels</a>
                     </div>
                 </div>
             </div>
+
+            {{-- Jump nav: five long sections follow, so give them a shortcut. --}}
+            <nav class="chn-jump" aria-label="Jump to a channel">
+                @foreach ($chnChannels as $channel)
+                    <a class="chn-jump__link" href="#{{ $channel['id'] }}">
+                        <i class="bi {{ $channel['icon'] }}" aria-hidden="true"></i>
+                        <span>{!! $channel['name'] !!}</span>
+                    </a>
+                @endforeach
+            </nav>
         </div>
     </section>
-    <!-- end section -->
-    <!-- start section -->
-    <section class="position-relative overflow-hidden">
-        <div class="skrollr-parallax magic-cursor round-cursor mx-auto" data-bottom-top="width: 54%"
-            data-center-top="width: 86%;" data-parallax-background-ratio="0.5"
-            style="background-image: url('images/6.jpg')">
+
+    {{-- ==================== CHANNEL DETAIL ==================== --}}
+    @foreach ($chnChannels as $channel)
+        <section id="{{ $channel['id'] }}"
+                 class="chn-section {{ $loop->odd ? '' : 'chn-section--muted' }}"
+                 aria-labelledby="{{ $channel['id'] }}-title">
             <div class="container">
-                <div class="row one-third-screen md-h-600px sm-h-350px">
-                    <div class="col-xl-6"></div>
+                <div class="chn-detail {{ $loop->even ? 'chn-detail--flip' : '' }}">
+
+                    <div class="chn-detail__intro">
+                        <div class="chn-detail__head">
+                            <span class="chn-detail__no" aria-hidden="true">{{ $channel['no'] }}</span>
+                            <span class="chn-detail__icon" aria-hidden="true">
+                                <i class="bi {{ $channel['icon'] }}"></i>
+                            </span>
+                        </div>
+                        <span class="chn-tag">{{ $channel['tag'] }}</span>
+                        <h2 id="{{ $channel['id'] }}-title" class="chn-detail__title">{!! $channel['name'] !!}</h2>
+                        <p class="chn-detail__summary">{{ $channel['summary'] }}</p>
+                        <p class="chn-detail__body">{{ $channel['body'] }}</p>
+                        <a href="{{ route('contact') }}" class="chn-inline-link">
+                            Discuss {!! $channel['name'] !!}
+                            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <ul class="chn-points">
+                        @foreach ($channel['points'] as $point)
+                            <li class="chn-point">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                <span>{{ $point }}</span>
+                            </li>
+                        @endforeach
+                    </ul>
+
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- end section -->
-    <!-- start section -->
-    <section class="py-0 mb-4">
+        </section>
+    @endforeach
+
+    {{-- ==================== COMPARISON ==================== --}}
+    <section id="chn-compare" class="chn-section chn-section--muted">
         <div class="container">
-            <div class="row mb-7 sm-mb-50px">
-                <div class="col-12">
-                    <span class="text-black fw-700 text-uppercase mb-10px d-block fs-15">RCS RCS Business Messaging ( Pending Content )</span>
-                    <div class="position-relative">
-                        <h5 class="text-black fw-700 mb-0 me-25px absolute-middle-right ls-minus-2px">01</h5>
-                        <div class="separator-line-1px w-100 d-block bg-black"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-60px">
-                <div class="col-lg-7 md-mb-7 last-paragraph-no-margin"
-                    data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                    <p>We are excited for our work and how it positively impacts clients. With over 12 years of experience
-                        we have been constantly providing excellent web solutions services.</p>
-                </div>
-                {{-- <div class="col-xxl-2 offset-xxl-1 col-lg-3 md-mb-7">
-                    <ul class="p-0 m-0 list-style-01"
-                        data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                        <li class="border-color-black pb-10px fs-16 lh-28 fw-500 text-black">Website design</li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">UI/UX design</li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">Landing page design
-                        </li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">Email template design
-                        </li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">Re-design website</li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">Responsive design</li>
-                    </ul>
-                </div> --}}
-                <div class="col-xxl-4 offset-xxl-1 col-lg-5"
-                    data-anime='{ "effect": "slide", "color": "#ffea00", "direction":"rl", "easing": "easeOutQuad", "delay":50}'>
-                    <img src="images/3.jpg" alt="" />
-                </div>
-            </div>
-            <div class="row mb-7 sm-mb-50px">
-                <div class="col-12">
-                    <span class="text-black fw-700 text-uppercase mb-10px d-block fs-15">Bulk SMS</span>
-                    <div class="position-relative">
-                        <h5 class="text-black fw-700 mb-0 me-25px absolute-middle-right ls-minus-2px">02</h5>
-                        <div class="separator-line-1px w-100 d-block bg-black"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-60px">
-                <div class="col-lg-7 md-mb-7 last-paragraph-no-margin"
-                    data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                    <p><span class="para-bold"> Ad Magister </span> provides you best Bulk Email services in India. No matter who your customers are, we offer you the best services in the industry.</p>
-                </div>
-                {{-- <div class="col-xxl-2 offset-xxl-1 col-lg-3 md-mb-7">
-                    <ul class="p-0 m-0 list-style-01"
-                        data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                        <li class="border-color-black pb-10px fs-16 lh-28 fw-500 text-black">Web development</li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">Website maintenance
-                        </li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">Mobile app development
-                        </li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">Cloud app development
-                        </li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">VR app development</li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">Theme development</li>
-                    </ul>
-                </div> --}}
-                <div class="col-xxl-4 offset-xxl-1 col-lg-5"
-                    data-anime='{ "effect": "slide", "color": "#ffea00", "direction":"lr", "easing": "easeOutQuad", "delay":50}'>
-                    <img src="images/2.jpg" alt="" />
-                </div>
-            </div>
-            <div class="row mb-7 sm-mb-50px">
-                <div class="col-12">
-                    <span class="text-black fw-700 text-uppercase mb-10px d-block fs-15">Voice SMS</span>
-                    <div class="position-relative">
-                        <h5 class="text-black fw-700 mb-0 me-25px absolute-middle-right ls-minus-2px">03</h5>
-                        <div class="separator-line-1px w-100 d-block bg-black"></div>
-                    </div>
-                </div>
-            </div>
             <div class="row">
-                <div class="col-lg-7 md-mb-7 last-paragraph-no-margin"
-                    data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                    <p>Voice SMS empowers a higher reaction rate than utilizing standard mail, yet it is as quick and economical as sending messages. Furthermore, it very well may be utilized to fill different needs within your business by making another scaffold of correspondence.</p>
-                </div>
-                {{-- <div class="col-xxl-2 offset-xxl-1 col-lg-3 md-mb-7">
-                    <ul class="p-0 m-0 list-style-01"
-                        data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                        <li class="border-color-black pb-10px fs-16 lh-28 fw-500 text-black">Custom development</li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">E-commerce migration
-                        </li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">Custom E-commerce</li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">E-commerce integrations
-                        </li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">Back-end development
-                        </li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">E-commerce applications
-                        </li>
-                    </ul>
-                </div> --}}
-                <div class="col-xxl-4 offset-xxl-1 col-lg-5"
-                    data-anime='{ "effect": "slide", "color": "#ffea00", "direction":"rl", "easing": "easeOutQuad", "delay":50}'>
-                    <img src="images/4.jpg" alt="" />
+                <div class="col-lg-8">
+                    <span class="chn-kicker">Side by side</span>
+                    <h2 class="chn-section__title">Which channel, when</h2>
+                    <p class="chn-section__sub">
+                        Most accounts run two or three of these together — an alert channel, a campaign
+                        channel and something for conversations.
+                    </p>
                 </div>
             </div>
-            <div class="row mb-7 sm-mb-50px">
-                <div class="col-12">
-                    <span class="text-black fw-700 text-uppercase mb-10px d-block fs-15">WhatsApp Business API</span>
-                    <div class="position-relative">
-                        <h5 class="text-black fw-700 mb-0 me-25px absolute-middle-right ls-minus-2px">04</h5>
-                        <div class="separator-line-1px w-100 d-block bg-black"></div>
-                    </div>
-                </div>
+
+            {{-- Wide table scrolls inside its own container rather than the page. --}}
+            <div class="chn-table-wrap" tabindex="0" role="region" aria-label="Channel comparison table">
+                <table class="chn-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Channel</th>
+                            <th scope="col">Best for</th>
+                            <th scope="col">Format</th>
+                            <th scope="col">Reach</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($chnCompare as $row)
+                            <tr>
+                                <th scope="row">{{ $row['channel'] }}</th>
+                                <td>{{ $row['best'] }}</td>
+                                <td>{{ $row['format'] }}</td>
+                                <td>{{ $row['reach'] }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-            <div class="row">
-                <div class="col-lg-7 md-mb-7 last-paragraph-no-margin"
-                    data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                    <p>We are excited for our work and how it positively impacts clients. With over 12 years of experience
-                        we have been constantly providing excellent web solutions services.</p>
+        </div>
+    </section>
+
+    {{-- ==================== CTA ==================== --}}
+    <section class="chn-cta-wrap">
+        <div class="container">
+            <div class="chn-cta">
+                <div>
+                    <h2 class="chn-cta__title">Not sure which channel you need?</h2>
+                    <p class="chn-cta__sub">
+                        Tell us what you need to send and to how many, and we will come back with the
+                        right channel mix and the registrations it needs.
+                    </p>
                 </div>
-                {{-- <div class="col-xxl-2 offset-xxl-1 col-lg-3 md-mb-7">
-                    <ul class="p-0 m-0 list-style-01"
-                        data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                        <li class="border-color-black pb-10px fs-16 lh-28 fw-500 text-black">Custom development</li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">E-commerce migration
-                        </li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">Custom E-commerce</li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">E-commerce integrations
-                        </li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">Back-end development
-                        </li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">E-commerce applications
-                        </li>
-                    </ul>
-                </div> --}}
-                <div class="col-xxl-4 offset-xxl-1 col-lg-5"
-                    data-anime='{ "effect": "slide", "color": "#ffea00", "direction":"rl", "easing": "easeOutQuad", "delay":50}'>
-                    <img src="images/5.jpg" alt="" />
-                </div>
-            </div>
-            <div class="row mb-7 sm-mb-50px">
-                <div class="col-12">
-                    <span class="text-black fw-700 text-uppercase mb-10px d-block fs-15">Digital-Marketing</span>
-                    <div class="position-relative">
-                        <h5 class="text-black fw-700 mb-0 me-25px absolute-middle-right ls-minus-2px">05</h5>
-                        <div class="separator-line-1px w-100 d-block bg-black"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-7 md-mb-7 last-paragraph-no-margin"
-                    data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                    <p>We are excited for our work and how it positively impacts clients. With over 12 years of experience
-                        we have been constantly providing excellent web solutions services.</p>
-                </div>
-                {{-- <div class="col-xxl-2 offset-xxl-1 col-lg-3 md-mb-7">
-                    <ul class="p-0 m-0 list-style-01"
-                        data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                        <li class="border-color-black pb-10px fs-16 lh-28 fw-500 text-black">Custom development</li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">E-commerce migration
-                        </li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">Custom E-commerce</li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">E-commerce integrations
-                        </li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">Back-end development
-                        </li>
-                        <li class="border-color-black pt-10px pb-10px fs-16 lh-28 fw-500 text-black">E-commerce applications
-                        </li>
-                    </ul>
-                </div> --}}
-                <div class="col-xxl-4 offset-xxl-1 col-lg-5"
-                    data-anime='{ "effect": "slide", "color": "#ffea00", "direction":"rl", "easing": "easeOutQuad", "delay":50}'>
-                    <img src="images/demo-scattered-portfolio-expertise-03.jpg" alt="" />
+                <div class="chn-cta__actions">
+                    <a href="{{ route('contact') }}" class="chn-btn chn-btn--primary">Talk to sales</a>
+                    <a href="{{ route('dlt-registration') }}" class="chn-btn chn-btn--ghost">DLT registration</a>
                 </div>
             </div>
         </div>
     </section>
-    <!-- end section -->
-    @endsection
+
+@endsection
