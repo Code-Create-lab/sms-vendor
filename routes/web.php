@@ -27,6 +27,11 @@ Route::get('about-us', function () {
 })->name('about');
 
 
+Route::get('dlt-registration', function () {
+    return view('dlt-registration');
+})->name('dlt-registration');
+
+
 Route::get('contact', function () {
     return view('contact');
 })->name('contact');

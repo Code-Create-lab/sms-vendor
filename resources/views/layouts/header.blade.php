@@ -20,10 +20,11 @@
             ],
             [
                 'label' => 'Solutions',
-                'match' => ['industry-solution', 'election-campaign'],
+                'match' => ['industry-solution', 'election-campaign', 'dlt-registration'],
                 'items' => [
                     ['route' => 'industry-solution', 'label' => 'Industry solutions'],
                     ['route' => 'election-campaign', 'label' => 'Election campaigns'],
+                    ['route' => 'dlt-registration', 'label' => 'DLT registration'],
                 ],
             ],
             [
