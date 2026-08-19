@@ -20,6 +20,10 @@
     // "Quick Links" mirrored from bulksmsdelhincr.com. These point at that
     // domain, not at routes in this app, so they stay absolute and open in a
     // new tab — same targets as the source footer.
+    // Google Business Profile for the Noida office. Kept separate from
+    // $amfQuickLinks because it is a review CTA, not a service page.
+    $amfReviewUrl = 'https://www.google.com/maps/place/AdMagister/@28.4808734,77.0936662,17z/data=!3m1!4b1!4m6!3m5!1s0x390d1f1f64e497a9:0xba86a19b9c08ba17!8m2!3d28.4808734!4d77.0962411!16s%2Fg%2F11cnb5109f?entry=ttu&g_ep=EgoyMDI2MDgwNS4xIKXMDSoASAFQAw%3D%3D';
+
     $amfQuickLinks = [
         ['label' => 'Bulk SMS Noida',     'url' => 'https://bulksmsdelhincr.com/bulk-sms-service-in-noida.php'],
         ['label' => 'Bulk SMS Gurugram',  'url' => 'https://bulksmsdelhincr.com/bulk-sms-service-in-gurgaon.php'],
@@ -180,6 +184,20 @@
                         </li>
                     @endforeach
                 </ul>
+
+                <a class="amf-review" href="{{ $amfReviewUrl }}" target="_blank" rel="noopener noreferrer">
+                    <span class="amf-review__stars" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.6L12 17.4 6.1 20.5l1.2-6.6L2.5 9.3l6.6-.9z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.6L12 17.4 6.1 20.5l1.2-6.6L2.5 9.3l6.6-.9z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.6L12 17.4 6.1 20.5l1.2-6.6L2.5 9.3l6.6-.9z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.6L12 17.4 6.1 20.5l1.2-6.6L2.5 9.3l6.6-.9z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.6L12 17.4 6.1 20.5l1.2-6.6L2.5 9.3l6.6-.9z"/></svg>
+                    </span>
+                    <span class="amf-review__text">
+                        <strong>Google Review</strong>
+                        <span>Rate us on Google</span>
+                    </span>
+                </a>
             </div>
 
         </div>

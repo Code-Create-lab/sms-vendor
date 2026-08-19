@@ -1324,6 +1324,73 @@ body {
 .amf-links a:hover { color: var(--amf-ink); transform: translateX(2px); }
 .amf-links a:hover::before { width: 14px; }
 
+/* Google review CTA — a card rather than another list row, so the review
+   ask reads as an action and not a seventh Quick Link. */
+.amf-review {
+    /* the Quick Links column is narrow, so stack rather than sit side-by-side —
+       inline-flex here wrapped "Google Review" mid-word */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px 16px;
+    border: 1px solid var(--amf-border);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, .04);
+    text-decoration: none;
+    transition: border-color .2s var(--amf-ease), background .2s var(--amf-ease),
+                transform .2s var(--amf-ease);
+}
+
+.amf-review:hover,
+.amf-review:focus-visible {
+    border-color: var(--amf-accent);
+    background: rgba(255, 255, 255, .08);
+    transform: translateY(-2px);
+}
+
+.amf-review:focus-visible {
+    outline: 3px solid var(--amf-accent);
+    outline-offset: 3px;
+}
+
+.amf-review__stars {
+    display: inline-flex;
+    gap: 2px;
+    flex: 0 0 auto;
+}
+
+.amf-review__stars svg {
+    width: 13px;
+    height: 13px;
+    color: #fbbc04;
+}
+
+.amf-review__text {
+    display: grid;
+    gap: 2px;
+    line-height: 1.3;
+}
+
+.amf-review__text strong {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--amf-ink);
+    white-space: nowrap;
+}
+
+.amf-review__text span {
+    font-size: 12.5px;
+    color: var(--amf-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .amf-review { transition: none; }
+    .amf-review:hover { transform: none; }
+}
+
 .amf-contact { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
 .amf-contact li { display: grid; grid-template-columns: 20px 1fr; gap: 12px; font-size: 14.5px; }
 .amf-contact svg { width: 18px; height: 18px; margin-top: 2px; color: var(--amf-accent); }
