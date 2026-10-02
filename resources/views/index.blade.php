@@ -174,7 +174,7 @@
 
                 <article class="da-card da-card--media" data-da-reveal="chan" data-da-lift>
                     <div class="da-card__media">
-                        <img src="{{ asset('images/website-img/bulk-sms.jpg') }}" alt="" loading="lazy" decoding="async">
+                        <img src="{{ asset('images/channels/bulk-sms.svg') }}" alt="" loading="lazy" decoding="async">
                         <div class="da-card__icon" aria-hidden="true">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
                                  stroke-linecap="round" stroke-linejoin="round">
@@ -198,7 +198,7 @@
 
                 <article class="da-card da-card--media" data-da-reveal="chan" data-da-lift>
                     <div class="da-card__media">
-                        <img src="{{ asset('images/website-img/voice-sms.jpg') }}" alt="" loading="lazy" decoding="async">
+                        <img src="{{ asset('images/channels/rcs.svg') }}" alt="" loading="lazy" decoding="async">
                         <div class="da-card__icon" aria-hidden="true">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
                                  stroke-linecap="round" stroke-linejoin="round">
@@ -223,7 +223,7 @@
 
                 <article class="da-card da-card--media" data-da-reveal="chan" data-da-lift>
                     <div class="da-card__media">
-                        <img src="{{ asset('images/website-img/missed-call.png') }}" alt="" loading="lazy" decoding="async">
+                        <img src="{{ asset('images/channels/voice-ivr.svg') }}" alt="" loading="lazy" decoding="async">
                         <div class="da-card__icon" aria-hidden="true">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
                                  stroke-linecap="round" stroke-linejoin="round">
@@ -247,7 +247,7 @@
 
                 <article class="da-card da-card--media" data-da-reveal="chan2" data-da-lift>
                     <div class="da-card__media">
-                        <img src="{{ asset('images/website-img/IMG-20251118-WA0008.jpg') }}" alt="" loading="lazy" decoding="async">
+                        <img src="{{ asset('images/channels/whatsapp.svg') }}" alt="" loading="lazy" decoding="async">
                         <div class="da-card__icon" aria-hidden="true">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
                                  stroke-linecap="round" stroke-linejoin="round">
@@ -272,7 +272,7 @@
 
                 <article class="da-card da-card--media" data-da-reveal="chan2" data-da-lift>
                     <div class="da-card__media">
-                        <img src="{{ asset('images/website-img/digital-marketing.jpg') }}" alt="" loading="lazy" decoding="async">
+                        <img src="{{ asset('images/channels/digital-marketing.svg') }}" alt="" loading="lazy" decoding="async">
                         <div class="da-card__icon" aria-hidden="true">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
                                  stroke-linecap="round" stroke-linejoin="round">
