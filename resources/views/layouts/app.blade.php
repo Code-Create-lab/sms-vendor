@@ -62,11 +62,8 @@
 
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 
-    <link rel="apple-touch-icon" href="{{ asset('images/favicon.png') }}">
-
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('images/apple-touch-icon-72x72.png') }}">
-
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('images/apple-touch-icon-114x114.png') }}">
+    {{-- 180×180, the size iOS uses for home-screen icons; built from the logo mark. --}}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/apple-touch-icon.png') }}">
 
     <!-- google fonts preconnect -->
 
