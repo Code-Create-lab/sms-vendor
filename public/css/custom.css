@@ -1088,14 +1088,17 @@ body {
 | Self-contained: no dependency on the homepage .da tokens or site.css.
 */
 .amf {
-    --amf-bg: #0a0f1c;
+    /* Footer-only red gradient, built from the logo red (#930202). The rest
+       of the site keeps its navy/blue theme. */
+    --amf-bg: #4a0206;
+    --amf-gradient: linear-gradient(150deg, #a10d0d 0%, #930202 22%, #620308 58%, #2c0104 100%);
     --amf-panel: rgba(255, 255, 255, .04);
     --amf-border: rgba(255, 255, 255, .10);
     --amf-border-strong: rgba(255, 255, 255, .18);
     --amf-ink: #f1f5f9;
-    --amf-muted: #94a3b8;
-    --amf-brand: #195dff;
-    --amf-accent: #35d3e1;
+    --amf-muted: #f1c9c9;
+    --amf-brand: #ffe2c6;
+    --amf-accent: #ffc48a;
     --amf-ease: cubic-bezier(.16, 1, .3, 1);
 
     position: relative;
@@ -1104,6 +1107,7 @@ body {
     margin-top: 0;
     padding: clamp(56px, 7vw, 104px) 0 clamp(24px, 3vw, 40px);
     background: var(--amf-bg);
+    background: var(--amf-gradient);
     color: var(--amf-muted);
     font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
@@ -1127,12 +1131,12 @@ body {
 }
 .amf-bg__glow--1 {
     top: -12%; left: -6%;
-    background: radial-gradient(circle, rgba(25, 93, 255, .55), transparent 68%);
+    background: radial-gradient(circle, rgba(255, 86, 60, .45), transparent 68%);
     animation: amf-float-a 16s var(--amf-ease) infinite;
 }
 .amf-bg__glow--2 {
     bottom: -18%; right: -8%;
-    background: radial-gradient(circle, rgba(53, 211, 225, .42), transparent 68%);
+    background: radial-gradient(circle, rgba(255, 176, 96, .30), transparent 68%);
     animation: amf-float-b 20s var(--amf-ease) infinite;
 }
 
@@ -1282,7 +1286,7 @@ body {
     padding: 12px 14px;
     border: 1px solid var(--amf-border-strong);
     border-radius: 12px;
-    background: rgba(10, 15, 28, .55);
+    background: rgba(40, 0, 4, .35);
     color: var(--amf-ink);
     font: inherit;
     font-size: 15px;
@@ -1292,17 +1296,17 @@ body {
 /* style.min.css forces every placeholder to var(--medium-gray) !important,
    which is near-invisible on this dark panel — hence the !important here. */
 .amf-field input::placeholder,
-.amf-field textarea::placeholder { color: #94a3b8 !important; opacity: 1; }
+.amf-field textarea::placeholder { color: #e2a9a9 !important; opacity: 1; }
 .amf-field input::-webkit-input-placeholder,
-.amf-field textarea::-webkit-input-placeholder { color: #94a3b8 !important; }
+.amf-field textarea::-webkit-input-placeholder { color: #e2a9a9 !important; }
 .amf-field input::-moz-placeholder,
-.amf-field textarea::-moz-placeholder { color: #94a3b8 !important; opacity: 1; }
+.amf-field textarea::-moz-placeholder { color: #e2a9a9 !important; opacity: 1; }
 .amf-field input:focus,
 .amf-field textarea:focus {
     outline: none;
     border-color: var(--amf-accent);
-    background: rgba(10, 15, 28, .8);
-    box-shadow: 0 0 0 3px rgba(53, 211, 225, .18);
+    background: rgba(40, 0, 4, .55);
+    box-shadow: 0 0 0 3px rgba(255, 196, 138, .25);
 }
 
 .amf-submit {
@@ -1315,15 +1319,15 @@ body {
     padding: 0 26px;
     border: 0;
     border-radius: 999px;
-    background: linear-gradient(96deg, var(--amf-brand), #0d4ae0);
-    color: #fff;
+    background: linear-gradient(96deg, #ffffff, var(--amf-brand));
+    color: #930202;
     font: 600 15px/1 inherit;
     cursor: pointer;
-    box-shadow: 0 10px 24px -10px rgba(25, 93, 255, .8);
+    box-shadow: 0 10px 24px -10px rgba(20, 0, 2, .7);
     transition: transform .2s var(--amf-ease), box-shadow .2s var(--amf-ease), background .2s var(--amf-ease);
 }
 .amf-submit svg { width: 16px; height: 16px; transition: transform .2s var(--amf-ease); }
-.amf-submit:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -12px rgba(25, 93, 255, .9); }
+.amf-submit:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -12px rgba(20, 0, 2, .8); }
 .amf-submit:hover svg { transform: translateX(4px); }
 .amf-submit:active { transform: translateY(0); }
 .amf-form__hint { grid-column: 1 / -1; margin: 0; font-size: 13px; color: var(--amf-accent); min-height: 1em; }
@@ -1375,7 +1379,7 @@ body {
     transform: translateY(-4px);
     border-color: transparent;
     background: linear-gradient(135deg, var(--amf-accent), var(--amf-brand));
-    color: #fff;
+    color: #930202;
 }
 
 .amf-col__title {
