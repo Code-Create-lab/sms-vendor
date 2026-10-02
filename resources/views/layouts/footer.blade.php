@@ -221,27 +221,6 @@
 
     </div>
 
-    {{-- Floating WhatsApp chat. Pre-fills an opening line so the first
-         message we receive already says where it came from. --}}
-    <a class="amf-wa" href="https://wa.me/{{ ltrim($amfPhoneTel, '+') }}?text={{ rawurlencode('Hi Ad Magister, I found you on your website and would like to know more about your messaging services.') }}"
-       target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.9 5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 0 1 0 16 8 8 0 0 1-4-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 0 1 12 4zm4.4 9.6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8.9-.3.2-.5.05a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4c.05-.1 0-.3 0-.4l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.2 3.7c2.5 1 2.5.7 3 .6a2.5 2.5 0 0 0 1.6-1.2 2 2 0 0 0 .1-1.2c-.05-.1-.2-.15-.4-.25z"/></svg>
-        <span class="amf-wa__tip" aria-hidden="true">Chat with us</span>
-    </a>
-
-    {{-- Cookie consent (unchanged behaviour) --}}
-    <div class="cookie-popup" id="cookiePopup">
-        <div class="cookie-content">
-            <p>
-                By clicking &lsquo;Accept&rsquo;, you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts. View our Privacy Policy for more information.
-            </p>
-            <div class="cookie-buttons d-flex justify-content-between">
-                <button id="declineCookie" class="cookie-decline">Deny</button>
-                <button id="acceptCookie" class="cookie-accept">Accept</button>
-            </div>
-        </div>
-    </div>
-
     <script>
         (function () {
             /* ---- reveal-on-scroll (self-contained; site.js is homepage-only) ---- */
@@ -306,3 +285,27 @@
     </script>
 
 </footer>
+
+{{-- Fixed-position UI lives OUTSIDE <footer>: .amf uses isolation:isolate,
+     which traps descendants in the footer's stacking context, so a hero with
+     any z-index painted over the cookie popup no matter its own z-index. --}}
+{{-- Floating WhatsApp chat. Pre-fills an opening line so the first
+     message we receive already says where it came from. --}}
+<a class="amf-wa" href="https://wa.me/{{ ltrim($amfPhoneTel, '+') }}?text={{ rawurlencode('Hi Ad Magister, I found you on your website and would like to know more about your messaging services.') }}"
+   target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.9 5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 0 1 0 16 8 8 0 0 1-4-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 0 1 12 4zm4.4 9.6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8.9-.3.2-.5.05a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4c.05-.1 0-.3 0-.4l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.2 3.7c2.5 1 2.5.7 3 .6a2.5 2.5 0 0 0 1.6-1.2 2 2 0 0 0 .1-1.2c-.05-.1-.2-.15-.4-.25z"/></svg>
+    <span class="amf-wa__tip" aria-hidden="true">Chat with us</span>
+</a>
+
+{{-- Cookie consent (unchanged behaviour) --}}
+<div class="cookie-popup" id="cookiePopup">
+    <div class="cookie-content">
+        <p>
+            By clicking &lsquo;Accept&rsquo;, you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts. View our Privacy Policy for more information.
+        </p>
+        <div class="cookie-buttons d-flex justify-content-between">
+            <button id="declineCookie" class="cookie-decline">Deny</button>
+            <button id="acceptCookie" class="cookie-accept">Accept</button>
+        </div>
+    </div>
+</div>

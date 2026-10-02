@@ -6,18 +6,9 @@
         // Every entry resolves to a real route. The previous menu pointed six
         // links at "#" and two at #bulk-sms-article / #voice-sms-article, which
         // are not IDs that exist in any view.
+        // Channels is a plain link (every channel lives on the one /channel
+        // page), so only the groups that lead to several pages stay here.
         $megaMenu = [
-            [
-                'label' => 'Channels',
-                'match' => ['channel'],
-                'items' => [
-                    ['route' => 'channel', 'label' => 'RCS Business Messaging'],
-                    ['route' => 'channel', 'label' => 'Bulk SMS'],
-                    ['route' => 'channel', 'label' => 'Voice & IVR'],
-                    ['route' => 'channel', 'label' => 'WhatsApp Business API'],
-                    ['route' => 'channel', 'label' => 'Digital marketing'],
-                ],
-            ],
             [
                 'label' => 'Solutions',
                 'match' => ['industry-solution', 'election-campaign', 'dlt-registration'],
@@ -55,6 +46,11 @@
                         <li class="nav-item">
                             <a href="{{ route('home') }}" class="hdr-link"
                                @if (request()->routeIs('home')) aria-current="page" @endif>Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('channel') }}" class="hdr-link"
+                               @if (request()->routeIs('channel')) aria-current="page" @endif>Channels</a>
                         </li>
 
                         @foreach ($megaMenu as $mi => $group)
@@ -147,6 +143,13 @@
                         <a class="mnav__link" href="{{ route('home') }}"
                            @if (request()->routeIs('home')) aria-current="page" @endif>
                             Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="mnav__link" href="{{ route('channel') }}"
+                           @if (request()->routeIs('channel')) aria-current="page" @endif>
+                            Channels
                         </a>
                     </li>
 

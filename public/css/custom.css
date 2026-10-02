@@ -66,13 +66,13 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    min-height: 52px;
+    min-height: 64px;
     padding-block: 0;
     padding-inline: clamp(16px, 3vw, 36px);
 }
 
 .navbar.hdr .hdr-brand { display: flex; align-items: center; }
-.navbar.hdr .hdr-logo { display: block; height: 26px; width: auto; }
+.navbar.hdr .hdr-logo { display: block; height: 40px; width: auto; }
 
 /* !important is load order, not laziness. responsive.min.css is linked after
    custom.css and hard-sets `.navbar-brand{padding:22px 0}` (44px of vertical
@@ -249,8 +249,8 @@
    .menu-toggle stays 48px since it is the one control touch users get. */
 @media (max-width: 991px) {
     .navbar.hdr .hdr-cta { display: none; }   /* the overlay carries the CTA on mobile */
-    .navbar.hdr > .hdr-inner { min-height: 52px; }
-    .navbar.hdr .hdr-logo { height: 24px; }
+    .navbar.hdr > .hdr-inner { min-height: 58px; }
+    .navbar.hdr .hdr-logo { height: 34px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -945,7 +945,8 @@ body {
 .mnav.show .mnav__list > li:nth-child(2) { transition-delay: .12s; }
 .mnav.show .mnav__list > li:nth-child(3) { transition-delay: .16s; }
 .mnav.show .mnav__list > li:nth-child(4) { transition-delay: .20s; }
-.mnav.show .mnav__foot { transition-delay: .24s; }
+.mnav.show .mnav__list > li:nth-child(5) { transition-delay: .24s; }
+.mnav.show .mnav__foot { transition-delay: .28s; }
 
 @media (prefers-reduced-motion: reduce) {
     .mnav,
@@ -1284,8 +1285,14 @@ body {
     transition: border-color .2s var(--amf-ease), box-shadow .2s var(--amf-ease), background .2s var(--amf-ease);
 }
 .amf-field textarea { resize: vertical; min-height: 82px; }
+/* style.min.css forces every placeholder to var(--medium-gray) !important,
+   which is near-invisible on this dark panel — hence the !important here. */
 .amf-field input::placeholder,
-.amf-field textarea::placeholder { color: #94a3b8; opacity: 1; }
+.amf-field textarea::placeholder { color: #94a3b8 !important; opacity: 1; }
+.amf-field input::-webkit-input-placeholder,
+.amf-field textarea::-webkit-input-placeholder { color: #94a3b8 !important; }
+.amf-field input::-moz-placeholder,
+.amf-field textarea::-moz-placeholder { color: #94a3b8 !important; opacity: 1; }
 .amf-field input:focus,
 .amf-field textarea:focus {
     outline: none;
