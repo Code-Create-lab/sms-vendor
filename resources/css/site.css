@@ -222,6 +222,14 @@
         linear-gradient(180deg, var(--da-surface-2) 0%, var(--da-surface) 62%);
 }
 
+/* The theme pins the navbar (style.min.css: header .navbar{position:fixed}),
+   so the hero starts underneath it. On mobile the 58px bar ate most of the
+   48px top padding and the eyebrow sat against the bar. Clear the bar, then
+   leave a real gap. */
+@media (max-width: 991px) {
+    .da-hero { padding-top: calc(58px + 32px); }
+}
+
 /* hairline grid, sits behind everything */
 .da-hero::before {
     content: "";
