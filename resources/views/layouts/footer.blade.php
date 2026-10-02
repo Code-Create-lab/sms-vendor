@@ -27,8 +27,8 @@
     $amfQuickLinks = [
         ['label' => 'Bulk SMS Noida',     'url' => 'https://bulksmsdelhincr.com/bulk-sms-service-in-noida.php'],
         ['label' => 'Bulk SMS Gurugram',  'url' => 'https://bulksmsdelhincr.com/bulk-sms-service-in-gurgaon.php'],
-        ['label' => 'Bulk SMS Mumbai',    'url' => 'https://bulksmsdelhincr.com/bulk-sms-mumbai.php'],
-        ['label' => 'Bulk SMS Lucknow',   'url' => 'https://bulksmsdelhincr.com/bulk-sms-lucknow.php'],
+        ['label' => 'Bulk SMS Delhi NCR', 'url' => 'https://bulksmsdelhincr.com/'],
+        ['label' => 'Bulk SMS UP',        'url' => 'https://bulksmsdelhincr.com/bulk-sms-lucknow.php'],
         ['label' => 'Bulk SMS Bangalore', 'url' => 'https://bulksmsdelhincr.com/bulk-sms-service-in-bangalore.php'],
         ['label' => 'Bulk SMS Faridabad', 'url' => 'https://bulksmsdelhincr.com/bulk-sms-faridabad.php'],
     ];
