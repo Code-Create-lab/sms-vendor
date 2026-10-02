@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title', 'About Us')
+@section('description', 'Ad Magister is a Noida-based omni-channel messaging company running SMS, RCS, Voice and WhatsApp campaigns for Indian enterprises on DLT-registered routes.')
+@section('og_image', 'og/about.jpg')
 @section('content')
 
     @php

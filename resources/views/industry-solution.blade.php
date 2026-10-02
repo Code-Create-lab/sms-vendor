@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title', 'Industry Messaging Solutions')
+@section('description', 'SMS, RCS, Voice and WhatsApp on operator-direct routes, configured for the alerts, approvals and campaigns your industry actually sends.')
+@section('og_image', 'og/industry-solution.jpg')
 @section('content')
 
     @php

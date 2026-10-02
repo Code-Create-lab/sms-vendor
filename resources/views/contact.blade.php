@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title', 'Contact Us')
+@section('description', 'Talk to Ad Magister about bulk SMS, RCS, Voice or WhatsApp campaigns. Call +91 9999238814 or email info@admagister.com. Office in Sector 63, Noida.')
+@section('og_image', 'og/contact.jpg')
 @section('content')
 
     @php

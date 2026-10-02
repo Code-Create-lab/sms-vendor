@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title', 'Channels: Bulk SMS, RCS, Voice & WhatsApp')
+@section('description', 'Bulk SMS, RCS Business Messaging, Voice & IVR, WhatsApp Business API and digital marketing through one API, console and delivery report.')
+@section('og_image', 'og/channel.jpg')
 @section('content')
 
     @php

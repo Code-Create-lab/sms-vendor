@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title', 'DLT Registration for Bulk SMS')
+@section('description', 'TRAI makes DLT registration mandatory for commercial SMS in India. We register your entity, headers and templates end to end and map them to your account.')
+@section('og_image', 'og/dlt-registration.jpg')
 @section('content')
 
     @php

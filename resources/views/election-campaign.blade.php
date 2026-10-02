@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title', 'Bulk SMS for Election Campaigns')
+@section('description', 'Run election campaigns with bulk SMS that lands straight on voters\' phones. Reach your whole constituency with targeted, DLT-compliant messages.')
+@section('og_image', 'og/election-campaign.jpg')
 @section('content')
 
     @php

@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('description', 'Ad Magister runs SMS, RCS, Voice and WhatsApp Business API campaigns from one platform, on DLT-registered routes, live delivery reports and a simple API.')
+@section('og_image', 'og/home.jpg')
 
 @push('styles')
     {{-- Inter is loaded in the layout head — the nav overlay needs it too. --}}
