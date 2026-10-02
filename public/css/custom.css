@@ -249,6 +249,10 @@
    .menu-toggle stays 48px since it is the one control touch users get. */
 @media (max-width: 991px) {
     .navbar.hdr .hdr-cta { display: none; }   /* the overlay carries the CTA on mobile */
+    /* responsive.min.css sets .menu-order{order:5} here, which moved this
+       (empty, flex:1) column after the hamburger and shoved the hamburger
+       left beside the logo. The drawer carries the links on mobile. */
+    .navbar.hdr .menu-order { display: none; }
     .navbar.hdr > .hdr-inner { min-height: 58px; }
     .navbar.hdr .hdr-logo { height: 34px; }
 }
