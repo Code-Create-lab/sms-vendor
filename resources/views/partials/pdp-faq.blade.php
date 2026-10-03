@@ -7,7 +7,7 @@
                 <span class="chn-kicker">Questions</span>
                 <h2 id="pdp-faq-title" class="chn-section__title">Frequently asked</h2>
                 <p class="chn-section__sub">
-                    Can't find your answer? Call <a href="tel:+919999238814">+91 99992 38814</a>
+                    Can't find your answer? Call <a href="tel:+919718055559">+91 97180 55559</a>
                     or <a href="{{ route('contact') }}">send us a message</a>.
                 </p>
             </div>

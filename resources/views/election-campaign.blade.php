@@ -97,9 +97,9 @@
                     </p>
                     <div class="elc-hero__actions">
                         <a href="{{ route('contact') }}" class="elc-btn elc-btn--primary">Get a campaign quote</a>
-                        <a href="tel:+919999238814" class="elc-btn elc-btn--ghost">
+                        <a href="tel:+919718055559" class="elc-btn elc-btn--ghost">
                             <i class="bi bi-telephone" aria-hidden="true"></i>
-                            +91 9999238814
+                            +91 9718055559
                         </a>
                     </div>
                 </div>

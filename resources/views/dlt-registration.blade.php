@@ -20,9 +20,9 @@
          |
          | VERIFY BEFORE LAUNCH:
          |  - $dltTelemarketer number is reproduced from the live page.
-         |  - support@admagister.com / 9999238814 also come from that page. The
+         |  - support@admagister.com / 9718055559 also come from that page. The
          |    footer previously carried a placeholder number and has since been
-         |    corrected to 9999238814, so the two now agree; the sales/support
+         |    corrected to 9718055559, so the two now agree; the sales/support
          |    split of admagister.com addresses is still worth confirming.
          |  - The source page cited a 5 Feb 2020 registration deadline. That date
          |    is long past, so it is presented as background below rather than as
@@ -37,7 +37,7 @@
 
         $dltRegisterUrl = 'https://smartping.live/';
         $dltSupportEmail = 'support@admagister.com';
-        $dltSupportPhone = '9999238814';
+        $dltSupportPhone = '9718055559';
 
         // The four registration objects every sender needs on the DLT platform.
         $dltStages = [

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Contact Us')
-@section('description', 'Talk to Ad Magister about bulk SMS, RCS, Voice or WhatsApp campaigns. Call +91 9999238814 or email info@admagister.com. Office in Sector 63, Noida.')
+@section('description', 'Talk to Ad Magister about bulk SMS, RCS, Voice or WhatsApp campaigns. Call +91 9718055559 or email info@admagister.com. Office in Sector 63, Noida.')
 @section('og_image', 'og/contact.jpg')
 @section('content')
 
@@ -31,8 +31,8 @@
         $cntOffice = [
             'name'    => 'Ad Magister &mdash; Noida',
             'address' => '307, A-43, Sector-63, Noida-201301',
-            'phone'   => '+91 9999238814',
-            'phoneTel'=> '+919999238814',
+            'phone'   => '+91 9718055559',
+            'phoneTel'=> '+919718055559',
             'email'   => 'info@admagister.com',
         ];
 

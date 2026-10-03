@@ -98,8 +98,8 @@
 
         // Kept in sync with layouts/footer.blade.php.
         $abtAddress = '307, A-43, Sector-63, Noida-201301';
-        $abtPhone   = '+91 9999238814';
-        $abtPhoneTel = '+919999238814';
+        $abtPhone   = '+91 9718055559';
+        $abtPhoneTel = '+919718055559';
         $abtEmail   = 'info@admagister.com';
     @endphp
 

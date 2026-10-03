@@ -13,8 +13,8 @@
      | collaborate" CTA on top, then link columns, then a bottom bar.
      */
     $amfAddress = '307, A-43, Sector-63, Noida-201301';
-    $amfPhone   = '+91 9999238814';
-    $amfPhoneTel = '+919999238814';
+    $amfPhone   = '+91 9718055559';
+    $amfPhoneTel = '+919718055559';
     $amfEmail   = 'info@admagister.com';
 
     // "Quick Links" mirrored from bulksmsdelhincr.com. These point at that
