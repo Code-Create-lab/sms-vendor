@@ -17,15 +17,16 @@ class ContactFormMail extends Mailable
      * Create a new message instance.
      */
 
-    public $name, $email, $phone, $service;
+    public $name, $email, $phone, $service, $messageText;
 
-    public function __construct(string $name, string $email, string $phone, string $service)
+    public function __construct(string $name, string $email, string $phone, string $service, string $messageText = '')
     {
 
         $this->name = $name;
         $this->email = $email;
         $this->phone = $phone;
         $this->service = $service;
+        $this->messageText = $messageText;
     }
 
     /**
@@ -50,6 +51,7 @@ class ContactFormMail extends Mailable
                 'email' => $this->email,
                 'phone' => $this->phone,
                 'service' => $this->service,
+                'messageText' => $this->messageText,
             ]
         );
     }

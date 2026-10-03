@@ -39,9 +39,13 @@
                                     <td style="padding: 10px 0; white-space: pre-line;">{{ $phone }}</td>
                                 </tr>
                                 <tr>
-                                    <td style="font-weight: bold; padding: 10px 0;">Service:</td>
+                                    <td style="font-weight: bold; padding: 10px 0;">Products:</td>
                                     {{-- @dd($message_form) --}}
-                                    <td style="padding: 10px 0; white-space: pre-line;">{{ $service }}</td>
+                                    <td style="padding: 10px 0; white-space: pre-line;">{{ implode(', ', json_decode($service, true) ?: []) ?: '—' }}</td>
+                                </tr>
+                                <tr style="background-color: #f9f9f9;">
+                                    <td style="font-weight: bold; padding: 10px 0; vertical-align: top;">Message:</td>
+                                    <td style="padding: 10px 0; white-space: pre-line;">{{ $messageText !== '' ? $messageText : '—' }}</td>
                                 </tr>
                             </table>
 

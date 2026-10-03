@@ -15,17 +15,15 @@
          | $cntOffice and the map now carry the real Noida office, phone and
          | email, matching layouts/footer.blade.php.
          |
-         | STILL PLACEHOLDERS: the three $cntEnquiries addresses
-         | (help@digital.com, careers@digital.com twice — note the duplicate is
-         | in the source too) are theme filler on the digital.com domain. Swap
-         | them when the real routing addresses are confirmed; nothing else on
-         | the page needs to change.
+         | All three $cntEnquiries route to info@admagister.com for now (the
+         | theme shipped digital.com filler here). Give a row its own address
+         | once a dedicated inbox exists; nothing else on the page changes.
          */
 
         $cntEnquiries = [
-            ['label' => 'Have questions?',      'email' => 'help@digital.com',    'icon' => 'bi-question-circle'],
-            ['label' => 'Join our team?',       'email' => 'careers@digital.com', 'icon' => 'bi-person-plus'],
-            ['label' => 'Business inquiries?',  'email' => 'careers@digital.com', 'icon' => 'bi-briefcase'],
+            ['label' => 'Have questions?',      'email' => 'info@admagister.com', 'icon' => 'bi-question-circle'],
+            ['label' => 'Join our team?',       'email' => 'info@admagister.com', 'icon' => 'bi-person-plus'],
+            ['label' => 'Business inquiries?',  'email' => 'info@admagister.com', 'icon' => 'bi-briefcase'],
         ];
 
         $cntOffice = [

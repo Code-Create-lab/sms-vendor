@@ -35,7 +35,6 @@
                     <i class="bi bi-phone sr-input-icon" aria-hidden="true"></i>
                      <input wire:model="phone" id="cnt-phone" type="tel" inputmode="tel" autocomplete="tel"
                         placeholder="Enter your Phone No" class="sr-input" />
-                    {{-- <textarea wire:model="message" rows="4" placeholder="Write your message" class="sr-input sr-textarea"></textarea> --}}
                 </div>
                 {{-- Was @error('message') — a leftover from when this field was the
                      message textarea, so the required-phone error never rendered. --}}
@@ -43,15 +42,31 @@
                     <span class="sr-error">{{ $message }}</span>
                 @enderror
             </div>
-            <!-- ========== Lines of Business (Multi Select Chips) ========== -->
+
             <div class="col-12 mb-4">
-                <label class="sr-label mb-2">Lines of business (select one or more)</label>
+                <label class="sr-label" for="cnt-message">Message</label>
+                <div class="sr-input-wrap sr-textarea-wrap">
+                    <i class="bi bi-chat-left-text sr-input-icon" aria-hidden="true"></i>
+                    <textarea wire:model="message" id="cnt-message" rows="4" maxlength="2000"
+                        placeholder="Tell us what you want to send, to how many people, and when"
+                        class="sr-input sr-textarea"></textarea>
+                </div>
+                @error('message')
+                    <span class="sr-error">{{ $message }}</span>
+                @enderror
+            </div>
+            <!-- ========== Products of interest (Multi Select Chips) ========== -->
+            <div class="col-12 mb-4">
+                <label class="sr-label mb-2">Products you're interested in (select one or more)</label>
 
                 {{-- These were clickable <div>s, which the tab order skipped entirely.
                      Real <button type="button"> elements keep the same wire:click but
                      are reachable by keyboard, and aria-pressed announces the state. --}}
                 <div class="sr-chip-container">
-                    @foreach (['Motor', 'Travel', 'Health', 'Commercial'] as $lob)
+                    {{-- Chips come from config/products.php, so they always match the
+                         Products menu. (They used to be insurance filler: Motor,
+                         Travel, Health, Commercial.) --}}
+                    @foreach (array_column(config('products'), 'name') as $lob)
                         @php $lobSelected = in_array($lob, $selectedLOB ?? []); @endphp
                         <button type="button" wire:click="toggleLOB('{{ $lob }}')"
                             aria-pressed="{{ $lobSelected ? 'true' : 'false' }}"

@@ -19,6 +19,9 @@ class ContactForm extends Component
     #[Validate('required')]
     public $phone;
 
+    #[Validate('nullable|string|max:2000')]
+    public $message;
+
     #[Validate('accepted', message: 'Please authorize to receive notifications.')]
     public $consent = false;
 
@@ -45,7 +48,8 @@ class ContactForm extends Component
             'name'    => $validated['name'],
             'email'   => $validated['email'],
             'phone' => $validated['phone'],
-            'services' => json_encode($this->selectedLOB),
+            'services' => json_encode(array_values($this->selectedLOB)),
+            'message' => $validated['message'] ?? null,
         ]);
 
 
