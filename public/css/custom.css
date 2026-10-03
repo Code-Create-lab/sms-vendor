@@ -178,6 +178,25 @@
     z-index: 100;
 }
 
+/* Pointer triangle tying the panel to its trigger: a rotated square that
+   reuses the panel's fill and border, with only the two top edges drawn.
+   --arrow-x sits it under the trigger label; centred panels override it. */
+.submenu::before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    left: var(--arrow-x, 44px);
+    width: 14px;
+    height: 14px;
+    margin-left: -7px;
+    background: #fff;
+    border-top: 1px solid var(--hdr-line);
+    border-left: 1px solid var(--hdr-line);
+    border-top-left-radius: 3px;
+    transform: rotate(45deg);
+    pointer-events: none;
+}
+
 .hdr-trigger[aria-expanded="true"] + .submenu {
     opacity: 1;
     visibility: visible;
@@ -261,6 +280,7 @@
 /* Two-column panel for long lists (Solutions). Centred under its trigger
    with a negative margin, since transform is already used by the reveal. */
 .submenu--cols {
+    --arrow-x: 50%;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 4px;
