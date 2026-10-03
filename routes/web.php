@@ -49,6 +49,14 @@ Route::get('contact', function () {
 })->name('contact');
 
 
+// Legal and utility pages linked from the footer bottom bar.
+Route::view('terms', 'legal.terms')->name('terms');
+Route::view('privacy', 'legal.privacy')->name('privacy');
+Route::view('legal-notices', 'legal.legal-notices')->name('legal-notices');
+Route::view('faqs', 'legal.faqs')->name('faqs');
+Route::view('sitemap', 'legal.sitemap')->name('sitemap');
+
+
 Livewire::setScriptRoute(function($handle) {
     return Route::get('/'. env('FILAMENT_PATH') . '/livewire/livewire.js', $handle);
 });

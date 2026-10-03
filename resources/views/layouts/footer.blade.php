@@ -211,11 +211,11 @@
                 <span>&copy; {{ date('Y') }} Ad Magister. All rights reserved.</span>
             </div>
             <ul class="amf-legal">
-                <li><a href="#">Terms &amp; Conditions</a></li>
-                <li><a href="#">Privacy</a></li>
-                <li><a href="#">Legal notices</a></li>
-                <li><a href="#">Sitemap</a></li>
-                <li><a href="#">FAQs</a></li>
+                <li><a href="{{ route('terms') }}">Terms &amp; Conditions</a></li>
+                <li><a href="{{ route('privacy') }}">Privacy</a></li>
+                <li><a href="{{ route('legal-notices') }}">Legal notices</a></li>
+                <li><a href="{{ route('sitemap') }}">Sitemap</a></li>
+                <li><a href="{{ route('faqs') }}">FAQs</a></li>
             </ul>
         </div>
 
@@ -301,7 +301,7 @@
 <div class="cookie-popup" id="cookiePopup">
     <div class="cookie-content">
         <p>
-            By clicking &lsquo;Accept&rsquo;, you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts. View our Privacy Policy for more information.
+            By clicking &lsquo;Accept&rsquo;, you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts. View our <a href="{{ route('privacy') }}">Privacy Policy</a> for more information.
         </p>
         <div class="cookie-buttons d-flex justify-content-between">
             <button id="declineCookie" class="cookie-decline">Deny</button>
