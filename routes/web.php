@@ -12,6 +12,18 @@ Route::get('channel', function () {
 })->name('channel');
 
 
+// One page per product / industry, driven by config/products.php and
+// config/industries.php. whereIn() keeps unknown slugs a plain 404.
+Route::get('products/{slug}', function (string $slug) {
+    return view('product', ['slug' => $slug, 'product' => config("products.$slug")]);
+})->whereIn('slug', array_keys(config('products')))->name('product');
+
+
+Route::get('solutions/{slug}', function (string $slug) {
+    return view('industry', ['slug' => $slug, 'industry' => config("industries.$slug")]);
+})->whereIn('slug', array_keys(config('industries')))->name('industry');
+
+
 Route::get('industry-solution', function () {
     return view('industry-solution');
 })->name('industry-solution');

@@ -6,27 +6,54 @@
         // Every entry resolves to a real route. The previous menu pointed six
         // links at "#" and two at #bulk-sms-article / #voice-sms-article, which
         // are not IDs that exist in any view.
-        // Channels is a plain link (every channel lives on the one /channel
-        // page), so only the groups that lead to several pages stay here.
+        // Products and industries come from config/products.php and
+        // config/industries.php, so a new page there shows up here too.
+        // An entry with only 'heading' renders as a group label, not a link.
+        $productItems = collect(config('products'))
+            ->map(fn ($p, $slug) => ['route' => 'product', 'param' => $slug, 'icon' => $p['icon'], 'label' => $p['name']])
+            ->values()->all();
+
+        $industryItems = collect(config('industries'))
+            ->map(fn ($i, $slug) => ['route' => 'industry', 'param' => $slug, 'icon' => $i['icon'], 'label' => $i['short']])
+            ->values()->all();
+
         $megaMenu = [
             [
+                'label' => 'Products',
+                'match' => ['product', 'channel'],
+                'items' => array_merge(
+                    [['heading' => 'Channels']],
+                    $productItems,
+                    [['route' => 'channel', 'icon' => 'bi-grid', 'label' => 'Compare all channels']],
+                ),
+            ],
+            [
                 'label' => 'Solutions',
-                'match' => ['industry-solution', 'election-campaign', 'dlt-registration'],
-                'items' => [
-                    ['route' => 'industry-solution', 'label' => 'Industry solutions'],
-                    ['route' => 'election-campaign', 'label' => 'Election campaigns'],
-                    ['route' => 'dlt-registration', 'label' => 'DLT registration'],
-                ],
+                'match' => ['industry', 'industry-solution', 'election-campaign'],
+                'cols'  => true,
+                'items' => array_merge(
+                    [['heading' => 'Industry']],
+                    $industryItems,
+                    [['route' => 'election-campaign', 'icon' => 'bi-flag', 'label' => 'Election Campaign']],
+                ),
             ],
             [
                 'label' => 'Company',
-                'match' => ['about', 'contact'],
+                'match' => ['about', 'dlt-registration', 'contact'],
                 'items' => [
-                    ['route' => 'about',   'label' => 'About us'],
-                    ['route' => 'contact', 'label' => 'Contact'],
+                    ['route' => 'about',            'icon' => 'bi-info-circle',  'label' => 'About us'],
+                    ['route' => 'dlt-registration', 'icon' => 'bi-patch-check',  'label' => 'DLT registration'],
+                    ['route' => 'contact',          'icon' => 'bi-envelope',     'label' => 'Contact'],
                 ],
             ],
         ];
+
+        $menuHref = fn ($item) => route($item['route'], $item['param'] ?? []);
+
+        // aria-current: an item is "current" when its route matches and, for
+        // parameterised routes, the slug matches too.
+        $isCurrent = fn ($item) => request()->routeIs($item['route'])
+            && (!isset($item['param']) || request()->route('slug') === $item['param']);
     @endphp
 
     <nav class="navbar navbar-expand-lg header-light disable-fixed hdr">
@@ -48,11 +75,6 @@
                                @if (request()->routeIs('home')) aria-current="page" @endif>Home</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="{{ route('channel') }}" class="hdr-link"
-                               @if (request()->routeIs('channel')) aria-current="page" @endif>Channels</a>
-                        </li>
-
                         @foreach ($megaMenu as $mi => $group)
                             @php $groupId = 'hdrMenu' . $mi; @endphp
                             <li class="nav-item has-submenu">
@@ -67,18 +89,19 @@
                                     </svg>
                                 </button>
 
-                                @php
-                                    // Several Channels entries are sections of one page. Only claim
-                                    // aria-current when an item is the sole owner of its route,
-                                    // otherwise five links all announce themselves as "current page".
-                                    $routeCounts = array_count_values(array_column($group['items'], 'route'));
-                                @endphp
 
-                                <ul class="submenu" id="{{ $groupId }}">
+                                <ul class="submenu @if (!empty($group['cols'])) submenu--cols @endif" id="{{ $groupId }}">
                                     @foreach ($group['items'] as $item)
+                                        @if (isset($item['heading']))
+                                            <li class="submenu__heading" role="presentation">{{ $item['heading'] }}</li>
+                                            @continue
+                                        @endif
                                         <li>
-                                            <a href="{{ route($item['route']) }}"
-                                               @if ($routeCounts[$item['route']] === 1 && request()->routeIs($item['route'])) aria-current="page" @endif>{{ $item['label'] }}</a>
+                                            <a href="{{ $menuHref($item) }}"
+                                               @if ($isCurrent($item)) aria-current="page" @endif>
+                                                <span class="submenu__icon" aria-hidden="true"><i class="bi {{ $item['icon'] }}"></i></span>
+                                                {{ $item['label'] }}
+                                            </a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -146,16 +169,8 @@
                         </a>
                     </li>
 
-                    <li>
-                        <a class="mnav__link" href="{{ route('channel') }}"
-                           @if (request()->routeIs('channel')) aria-current="page" @endif>
-                            Channels
-                        </a>
-                    </li>
-
                     @foreach ($megaMenu as $group)
                         @php
-                            $routeCounts = array_count_values(array_column($group['items'], 'route'));
                             $groupActive = request()->routeIs($group['match']);
                         @endphp
                         <li>
@@ -172,9 +187,13 @@
                                 </summary>
                                 <ul class="mnav__sub">
                                     @foreach ($group['items'] as $item)
+                                        @continue(isset($item['heading']))
                                         <li>
-                                            <a href="{{ route($item['route']) }}"
-                                               @if ($routeCounts[$item['route']] === 1 && request()->routeIs($item['route'])) aria-current="page" @endif>{{ $item['label'] }}</a>
+                                            <a href="{{ $menuHref($item) }}"
+                                               @if ($isCurrent($item)) aria-current="page" @endif>
+                                                <i class="bi {{ $item['icon'] }}" aria-hidden="true"></i>
+                                                {{ $item['label'] }}
+                                            </a>
                                         </li>
                                     @endforeach
                                 </ul>

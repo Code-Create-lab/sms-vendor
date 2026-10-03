@@ -5,66 +5,10 @@
 @section('content')
 
     @php
-        // Industry cards. Icons come from Bootstrap Icons (loaded via css/icon.min.css),
-        // not emoji, so they inherit colour and scale with the type system.
-        $industries = [
-            [
-                'icon'      => 'bi-bank',
-                'name'      => 'Banking & Financial Services',
-                'summary'   => 'Time-critical alerts that have to land on the first attempt, on operator-direct routes.',
-                'uses'      => ['OTP & 2FA', 'Transaction alerts', 'EMI reminders', 'KYC follow-ups'],
-                'channels'  => 'SMS · RCS · Voice',
-            ],
-            [
-                'icon'      => 'bi-bag-check',
-                'name'      => 'Retail & E-commerce',
-                'summary'   => 'Rich cards and carousels that turn an order update into a second purchase.',
-                'uses'      => ['Order tracking', 'Abandoned cart', 'Offer carousels', 'Feedback requests'],
-                'channels'  => 'RCS · SMS · WhatsApp',
-            ],
-            [
-                'icon'      => 'bi-heart-pulse',
-                'name'      => 'Healthcare',
-                'summary'   => 'Reminders that cut no-shows, sent without exposing patient data in the message body.',
-                'uses'      => ['Appointment reminders', 'Report ready', 'Refill alerts', 'Camp invites'],
-                'channels'  => 'SMS · Voice · RCS',
-            ],
-            [
-                'icon'      => 'bi-buildings',
-                'name'      => 'Real Estate',
-                'summary'   => 'Project launches and site-visit invites with images, maps and a one-tap call back.',
-                'uses'      => ['Launch announcements', 'Site-visit invites', 'Payment milestones', 'Broker updates'],
-                'channels'  => 'RCS · SMS · Voice',
-            ],
-            [
-                'icon'      => 'bi-mortarboard',
-                'name'      => 'Education',
-                'summary'   => 'Admission cycles and fee calendars run on schedules, so the messaging does too.',
-                'uses'      => ['Admission alerts', 'Fee reminders', 'Result notifications', 'Attendance updates'],
-                'channels'  => 'SMS · Voice · RCS',
-            ],
-            [
-                'icon'      => 'bi-airplane',
-                'name'      => 'Travel & Hospitality',
-                'summary'   => 'Booking confirmations, boarding details and itinerary changes as they happen.',
-                'uses'      => ['Booking confirmations', 'Check-in reminders', 'Itinerary changes', 'Loyalty offers'],
-                'channels'  => 'RCS · SMS · WhatsApp',
-            ],
-            [
-                'icon'      => 'bi-shield-check',
-                'name'      => 'Public Sector',
-                'summary'   => 'High-volume citizen outreach with audit trails and per-campaign delivery reporting.',
-                'uses'      => ['Citizen advisories', 'Scheme awareness', 'Survey outreach', 'Emergency alerts'],
-                'channels'  => 'SMS · Voice · RCS',
-            ],
-            [
-                'icon'      => 'bi-truck',
-                'name'      => 'Logistics & Delivery',
-                'summary'   => 'Delivery windows, rider details and doorstep OTPs delivered at dispatch speed.',
-                'uses'      => ['Dispatch alerts', 'Live ETA', 'Doorstep OTP', 'Failed-delivery retry'],
-                'channels'  => 'SMS · RCS · Voice',
-            ],
-        ];
+        // Industry cards — shared with the header menu and the per-industry
+        // pages, so all three read config/industries.php. Icons come from
+        // Bootstrap Icons (loaded via css/icon.min.css).
+        $industries = config('industries');
 
         $steps = [
             [
@@ -146,8 +90,8 @@
             </div>
 
             <div class="ind-grid">
-                @foreach ($industries as $industry)
-                    <article class="ind-card">
+                @foreach ($industries as $slug => $industry)
+                    <article class="ind-card" id="{{ $slug }}">
                         <span class="ind-card__icon" aria-hidden="true">
                             <i class="bi {{ $industry['icon'] }}"></i>
                         </span>
@@ -162,8 +106,8 @@
 
                         <div class="ind-card__foot">
                             <span class="ind-card__channels">{{ $industry['channels'] }}</span>
-                            <a href="{{ route('contact') }}" class="ind-card__link">
-                                Discuss this setup
+                            <a href="{{ route('industry', $slug) }}" class="ind-card__link">
+                                Explore solution
                                 <i class="bi bi-arrow-right" aria-hidden="true"></i>
                                 <span class="visually-hidden">for {{ $industry['name'] }}</span>
                             </a>

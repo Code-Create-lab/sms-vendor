@@ -65,6 +65,7 @@
             ],
             [
                 'id'      => 'voice',
+                'product' => 'voice-ivr',
                 'no'      => '03',
                 'icon'    => 'bi-telephone',
                 'name'    => 'Voice &amp; IVR',
@@ -182,8 +183,8 @@
                         <h2 id="{{ $channel['id'] }}-title" class="chn-detail__title">{!! $channel['name'] !!}</h2>
                         <p class="chn-detail__summary">{{ $channel['summary'] }}</p>
                         <p class="chn-detail__body">{{ $channel['body'] }}</p>
-                        <a href="{{ route('contact') }}" class="chn-inline-link">
-                            Discuss {!! $channel['name'] !!}
+                        <a href="{{ route('product', $channel['product'] ?? $channel['id']) }}" class="chn-inline-link">
+                            Explore {!! $channel['name'] !!}
                             <i class="bi bi-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
