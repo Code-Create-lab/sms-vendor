@@ -25,7 +25,7 @@
                 'items' => array_merge(
                     [['heading' => 'Channels']],
                     $productItems,
-                    [['route' => 'channel', 'icon' => 'bi-grid', 'color' => '#0891b2', 'label' => 'Compare all channels']],
+                    [['route' => 'channel', 'icon' => 'bi-grid', 'color' => '#8b5cf6', 'label' => 'Compare all channels']],
                 ),
             ],
             [
@@ -42,9 +42,9 @@
                 'label' => 'Company',
                 'match' => ['about', 'dlt-registration', 'contact'],
                 'items' => [
-                    ['route' => 'about',            'icon' => 'bi-info-circle',  'color' => '#7c3aed', 'label' => 'About us'],
-                    ['route' => 'dlt-registration', 'icon' => 'bi-patch-check',  'color' => '#16a34a', 'label' => 'DLT registration'],
-                    ['route' => 'contact',          'icon' => 'bi-envelope',     'color' => '#f97316', 'label' => 'Contact'],
+                    ['route' => 'about',            'icon' => 'bi-info-circle',  'color' => '#2563eb', 'label' => 'About us'],
+                    ['route' => 'dlt-registration', 'icon' => 'bi-patch-check',  'color' => '#8b5cf6', 'label' => 'DLT registration'],
+                    ['route' => 'contact',          'icon' => 'bi-people',       'color' => '#ef4444', 'label' => 'Contact'],
                 ],
             ],
         ];
