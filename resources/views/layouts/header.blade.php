@@ -9,12 +9,13 @@
         // Products and industries come from config/products.php and
         // config/industries.php, so a new page there shows up here too.
         // An entry with only 'heading' renders as a group label, not a link.
+        // 'color' tints the item's icon tile (exposed to CSS as --tone).
         $productItems = collect(config('products'))
-            ->map(fn ($p, $slug) => ['route' => 'product', 'param' => $slug, 'icon' => $p['icon'], 'label' => $p['name']])
+            ->map(fn ($p, $slug) => ['route' => 'product', 'param' => $slug, 'icon' => $p['icon'], 'color' => $p['color'], 'label' => $p['name']])
             ->values()->all();
 
         $industryItems = collect(config('industries'))
-            ->map(fn ($i, $slug) => ['route' => 'industry', 'param' => $slug, 'icon' => $i['icon'], 'label' => $i['short']])
+            ->map(fn ($i, $slug) => ['route' => 'industry', 'param' => $slug, 'icon' => $i['icon'], 'color' => $i['color'], 'label' => $i['short']])
             ->values()->all();
 
         $megaMenu = [
@@ -24,7 +25,7 @@
                 'items' => array_merge(
                     [['heading' => 'Channels']],
                     $productItems,
-                    [['route' => 'channel', 'icon' => 'bi-grid', 'label' => 'Compare all channels']],
+                    [['route' => 'channel', 'icon' => 'bi-grid', 'color' => '#0891b2', 'label' => 'Compare all channels']],
                 ),
             ],
             [
@@ -34,16 +35,16 @@
                 'items' => array_merge(
                     [['heading' => 'Industry']],
                     $industryItems,
-                    [['route' => 'election-campaign', 'icon' => 'bi-flag', 'label' => 'Election Campaign']],
+                    [['route' => 'election-campaign', 'icon' => 'bi-flag', 'color' => '#2563eb', 'label' => 'Election Campaign']],
                 ),
             ],
             [
                 'label' => 'Company',
                 'match' => ['about', 'dlt-registration', 'contact'],
                 'items' => [
-                    ['route' => 'about',            'icon' => 'bi-info-circle',  'label' => 'About us'],
-                    ['route' => 'dlt-registration', 'icon' => 'bi-patch-check',  'label' => 'DLT registration'],
-                    ['route' => 'contact',          'icon' => 'bi-envelope',     'label' => 'Contact'],
+                    ['route' => 'about',            'icon' => 'bi-info-circle',  'color' => '#7c3aed', 'label' => 'About us'],
+                    ['route' => 'dlt-registration', 'icon' => 'bi-patch-check',  'color' => '#16a34a', 'label' => 'DLT registration'],
+                    ['route' => 'contact',          'icon' => 'bi-envelope',     'color' => '#f97316', 'label' => 'Contact'],
                 ],
             ],
         ];
@@ -97,7 +98,7 @@
                                             @continue
                                         @endif
                                         <li>
-                                            <a href="{{ $menuHref($item) }}"
+                                            <a href="{{ $menuHref($item) }}" style="--tone: {{ $item['color'] }}"
                                                @if ($isCurrent($item)) aria-current="page" @endif>
                                                 <span class="submenu__icon" aria-hidden="true"><i class="bi {{ $item['icon'] }}"></i></span>
                                                 {{ $item['label'] }}
@@ -189,7 +190,7 @@
                                     @foreach ($group['items'] as $item)
                                         @continue(isset($item['heading']))
                                         <li>
-                                            <a href="{{ $menuHref($item) }}"
+                                            <a href="{{ $menuHref($item) }}" style="--tone: {{ $item['color'] }}"
                                                @if ($isCurrent($item)) aria-current="page" @endif>
                                                 <i class="bi {{ $item['icon'] }}" aria-hidden="true"></i>
                                                 {{ $item['label'] }}

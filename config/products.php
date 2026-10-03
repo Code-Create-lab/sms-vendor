@@ -22,6 +22,7 @@ return [
 
     'bulk-sms' => [
         'icon'     => 'bi-chat-dots',
+        'color'    => '#f97316',
         'name'     => 'Bulk SMS',
         'title'    => 'Bulk SMS Service — Transactional, Promotional & OTP',
         'meta'     => 'Transactional, promotional and OTP SMS on DLT-registered headers, with an HTTP API, real-time delivery reports and DND reach for service messages.',
@@ -79,6 +80,7 @@ return [
 
     'rcs' => [
         'icon'     => 'bi-chat-square-text',
+        'color'    => '#2563eb',
         'name'     => 'RCS Business Messaging',
         'title'    => 'RCS Business Messaging — Rich, Verified SMS',
         'meta'     => 'Verified sender, branded cards, carousels and quick-reply buttons inside the native Messages app, with automatic SMS fallback.',
@@ -134,6 +136,7 @@ return [
 
     'whatsapp' => [
         'icon'     => 'bi-whatsapp',
+        'color'    => '#16a34a',
         'name'     => 'WhatsApp Business API',
         'title'    => 'WhatsApp Business API — Official Access',
         'meta'     => 'Official WhatsApp Business API: verified profile, approved templates, two-way conversations, rich media and catalogues.',
@@ -189,6 +192,7 @@ return [
 
     'voice-ivr' => [
         'icon'     => 'bi-telephone',
+        'color'    => '#7c3aed',
         'name'     => 'Voice & IVR',
         'title'    => 'Voice SMS, IVR & Missed Call Services',
         'meta'     => 'Bulk voice SMS broadcasts, custom IVR systems and missed-call numbers for alerts, support, lead capture, polls and feedback.',
@@ -238,6 +242,7 @@ return [
 
     'digital-marketing' => [
         'icon'     => 'bi-megaphone',
+        'color'    => '#e11d48',
         'name'     => 'Digital marketing',
         'title'    => 'Digital Marketing — SEO, Social Media & Paid Ads',
         'meta'     => 'SEO, social media marketing and Google Ads campaigns run by the same team that runs your messaging routes.',

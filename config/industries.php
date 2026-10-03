@@ -18,6 +18,7 @@ return [
 
     'banking-financial-services' => [
         'icon'     => 'bi-bank',
+        'color'    => '#4f46e5',
         'name'     => 'Banking & Financial Services',
         'short'    => 'Banking & Finance',
         'summary'  => 'Time-critical alerts that have to land on the first attempt, on operator-direct routes.',
@@ -41,6 +42,7 @@ return [
 
     'retail-e-commerce' => [
         'icon'     => 'bi-bag-check',
+        'color'    => '#db2777',
         'name'     => 'Retail & E-commerce',
         'short'    => 'Retail & E-commerce',
         'summary'  => 'Rich cards and carousels that turn an order update into a second purchase.',
@@ -64,6 +66,7 @@ return [
 
     'healthcare' => [
         'icon'     => 'bi-heart-pulse',
+        'color'    => '#e11d48',
         'name'     => 'Healthcare',
         'short'    => 'Healthcare',
         'summary'  => 'Reminders that cut no-shows, sent without exposing patient data in the message body.',
@@ -87,6 +90,7 @@ return [
 
     'real-estate' => [
         'icon'     => 'bi-buildings',
+        'color'    => '#d97706',
         'name'     => 'Real Estate',
         'short'    => 'Real Estate',
         'summary'  => 'Project launches and site-visit invites with images, maps and a one-tap call back.',
@@ -110,6 +114,7 @@ return [
 
     'education' => [
         'icon'     => 'bi-mortarboard',
+        'color'    => '#7c3aed',
         'name'     => 'Education',
         'short'    => 'Education',
         'summary'  => 'Admission cycles and fee calendars run on schedules, so the messaging does too.',
@@ -133,6 +138,7 @@ return [
 
     'travel-hospitality' => [
         'icon'     => 'bi-airplane',
+        'color'    => '#0891b2',
         'name'     => 'Travel & Hospitality',
         'short'    => 'Travel & Hospitality',
         'summary'  => 'Booking confirmations, boarding details and itinerary changes as they happen.',
@@ -156,6 +162,7 @@ return [
 
     'public-sector' => [
         'icon'     => 'bi-shield-check',
+        'color'    => '#16a34a',
         'name'     => 'Public Sector',
         'short'    => 'Public Sector',
         'summary'  => 'High-volume citizen outreach with audit trails and per-campaign delivery reporting.',
@@ -179,6 +186,7 @@ return [
 
     'logistics-delivery' => [
         'icon'     => 'bi-truck',
+        'color'    => '#f97316',
         'name'     => 'Logistics & Delivery',
         'short'    => 'Logistics & Delivery',
         'summary'  => 'Delivery windows, rider details and doorstep OTPs delivered at dispatch speed.',

@@ -223,16 +223,32 @@
     display: inline-grid;
     place-items: center;
     flex: none;
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    /* Each item sets --tone inline (from its 'color' in the menu data).
+       The flat #eef4ff is a fallback for browsers without color-mix(). */
     background: #eef4ff;
-    color: var(--hdr-bright);
-    font-size: 15px;
-    transition: background .18s var(--hdr-ease), color .18s var(--hdr-ease);
+    background: color-mix(in srgb, var(--tone, #195dff) 13%, #fff);
+    color: var(--tone, var(--hdr-bright));
+    font-size: 16px;
+    transition: background .18s var(--hdr-ease), color .18s var(--hdr-ease),
+                transform .18s var(--hdr-ease), box-shadow .18s var(--hdr-ease);
 }
 
-.submenu li a:hover .submenu__icon { background: var(--hdr-bright); color: #fff; }
+.submenu li a:hover .submenu__icon,
+.submenu li a:focus-visible .submenu__icon,
+.submenu li a[aria-current="page"] .submenu__icon {
+    background: var(--tone, var(--hdr-bright));
+    color: #fff;
+    box-shadow: 0 6px 14px -6px var(--tone, var(--hdr-bright));
+}
+
+.submenu li a:hover .submenu__icon { transform: scale(1.06); }
+
+@media (prefers-reduced-motion: reduce) {
+    .submenu li a:hover .submenu__icon { transform: none; }
+}
 
 .submenu__heading {
     padding: 8px 12px 6px;
@@ -261,7 +277,18 @@
 .ind-card { scroll-margin-top: 90px; }
 
 .mnav__sub a { gap: 10px; }
-.mnav__sub a .bi { font-size: 16px; color: var(--nav-bright); }
+.mnav__sub a .bi {
+    display: inline-grid;
+    place-items: center;
+    flex: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    font-size: 15px;
+    color: var(--tone, var(--nav-bright));
+    background: #eef4ff;
+    background: color-mix(in srgb, var(--tone, #195dff) 13%, #fff);
+}
 
 /* ---- right-hand actions ---- */
 .hdr-actions {
