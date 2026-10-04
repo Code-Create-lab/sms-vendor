@@ -2,51 +2,47 @@
 
 namespace App\Jobs;
 
-use App\Livewire\ContactForm;
 use App\Mail\ContactFormMail;
+use App\Mail\EnquiryReceivedMail;
 use App\Models\Contact;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Mail;
 
+/**
+ * Runs for every site form (footer enquiry and /contact): notifies the admin
+ * inbox and sends the visitor a thank-you.
+ */
 class sendMail implements ShouldQueue
 {
     use Queueable;
-
-    /**
-     * Create a new job instance.
-     */
 
     public $name;
     public $email;
     public $phone;
     public $service;
+    public $subject;
+    public $source;
     public $messageText;
 
     public function __construct(Contact $contact)
     {
         $this->name = $contact->name;
         $this->email = $contact->email;
-        $this->phone = $contact->phone;
-        $this->service = $contact->services;
+        $this->phone = (string) $contact->phone;
+        $this->service = (string) $contact->services;
+        $this->subject = (string) $contact->subject;
+        $this->source = (string) ($contact->source ?: 'contact');
         $this->messageText = (string) $contact->message;
     }
 
-    /**
-     * Execute the job.
-     */
     public function handle()
     {
-
-
-    //          Mail::raw('This is a test phone', function ($phone) {
-    //     $phone->to('rajbansh.snehal@gmail.com')
-    //             ->subject('Test Email');
-    // });
-
-        // dd($this->name, $this->email, $this->phone);
         Mail::to('admagisterglobal@gmail.com')
-            ->bcc('snhlrj5@gmail.com') // <- fixed
-            ->queue(new ContactFormMail($this->name, $this->email, $this->phone, $this->service, $this->messageText));
+            ->bcc('snhlrj5@gmail.com')
+            ->queue(new ContactFormMail($this->name, $this->email, $this->phone, $this->service, $this->messageText, $this->subject, $this->source));
+
+        Mail::to($this->email, $this->name)
+            ->queue(new EnquiryReceivedMail($this->name, $this->messageText));
     }
 }

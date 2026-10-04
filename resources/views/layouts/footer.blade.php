@@ -70,26 +70,33 @@
                 </a>
             </div>
 
-            {{-- No backend contact route exists (the /contact form is a disabled
-                 Livewire component), so this composes a real mail draft instead
-                 of POSTing into the void. --}}
+            {{-- Posts to EnquiryController: saves the row (source=footer), emails
+                 the admin inbox and sends the visitor a thank-you. The JS below
+                 submits via fetch and swaps in the thank-you; without JS it is a
+                 normal POST that redirects back with amf_status. --}}
             <form class="amf-form amf-reveal" data-amf-form
-                  action="mailto:{{ $amfEmail }}" method="post" enctype="text/plain">
+                  action="{{ route('enquiry.store') }}" method="post" novalidate>
+                @csrf
+                {{-- Honeypot: hidden from people, bots fill it. --}}
+                <div class="amf-hp" aria-hidden="true">
+                    <label for="amf-website">Website</label>
+                    <input type="text" id="amf-website" name="website" tabindex="-1" autocomplete="off">
+                </div>
                 <div class="amf-field amf-field--half">
                     <label for="amf-name">Name</label>
-                    <input type="text" id="amf-name" name="name" placeholder="Your name" required>
+                    <input type="text" id="amf-name" name="name" placeholder="Your name" maxlength="120" autocomplete="name" required>
                 </div>
                 <div class="amf-field amf-field--half">
                     <label for="amf-email">Email</label>
-                    <input type="email" id="amf-email" name="email" placeholder="you@company.com" required>
+                    <input type="email" id="amf-email" name="email" placeholder="you@company.com" maxlength="190" autocomplete="email" required>
                 </div>
                 <div class="amf-field">
                     <label for="amf-subject">Subject</label>
-                    <input type="text" id="amf-subject" name="subject" placeholder="What&rsquo;s this about?">
+                    <input type="text" id="amf-subject" name="subject" placeholder="What&rsquo;s this about?" maxlength="190">
                 </div>
                 <div class="amf-field">
                     <label for="amf-message">Message</label>
-                    <textarea id="amf-message" name="message" rows="3"
+                    <textarea id="amf-message" name="message" rows="3" maxlength="2000"
                               placeholder="Channels, volumes, timelines&hellip;" required></textarea>
                 </div>
                 <button type="submit" class="amf-submit">
@@ -99,7 +106,7 @@
                         <path d="M5 12h14M13 6l6 6-6 6" />
                     </svg>
                 </button>
-                <p class="amf-form__hint" data-amf-hint aria-live="polite"></p>
+                <p class="amf-form__hint" data-amf-hint aria-live="polite">{{ session('amf_status') }}</p>
             </form>
         </div>
 
@@ -241,27 +248,80 @@
                 items.forEach(function (el) { io.observe(el); });
             }
 
-            /* ---- CTA form → compose a real mail draft (no backend needed) ---- */
+            /* ---- CTA form → POST to /enquiry, then thank the visitor in place ---- */
             var form = document.querySelector('[data-amf-form]');
             if (form) {
                 var hint = form.querySelector('[data-amf-hint]');
+                var btn = form.querySelector('.amf-submit');
+                var setHint = function (text, isError) {
+                    if (!hint) return;
+                    hint.textContent = text;
+                    hint.classList.toggle('is-error', !!isError);
+                };
+
                 form.addEventListener('submit', function (e) {
                     e.preventDefault();
                     var get = function (n) { var f = form.querySelector('[name="' + n + '"]'); return f ? f.value.trim() : ''; };
-                    var name = get('name'), email = get('email'), subject = get('subject'), message = get('message');
+                    var email = get('email');
 
-                    if (!name || !email || !message) {
-                        if (hint) hint.textContent = 'Please add your name, email and a message.';
+                    if (!get('name') || !email || !get('message')) {
+                        setHint('Please add your name, email and a message.', true);
+                        return;
+                    }
+                    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                        setHint('Please enter a valid email address.', true);
                         return;
                     }
 
-                    var to = '{{ $amfEmail }}';
-                    var subj = subject || ('New enquiry from ' + name);
-                    var body = 'Name: ' + name + '\nEmail: ' + email + '\n\n' + message;
-                    if (hint) hint.textContent = 'Opening your email app…';
-                    window.location.href = 'mailto:' + to +
-                        '?subject=' + encodeURIComponent(subj) +
-                        '&body=' + encodeURIComponent(body);
+                    btn.disabled = true;
+                    form.setAttribute('aria-busy', 'true');
+                    setHint('Sending…');
+
+                    fetch(form.action, {
+                        method: 'POST',
+                        headers: { 'Accept': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+                        body: new FormData(form),
+                        credentials: 'same-origin'
+                    }).then(function (res) {
+                        return res.json().catch(function () { return {}; }).then(function (data) {
+                            return { ok: res.ok, status: res.status, data: data };
+                        });
+                    }).then(function (r) {
+                        if (r.ok) {
+                            var done = document.createElement('div');
+                            done.className = 'amf-thanks';
+                            done.setAttribute('role', 'status');
+                            done.setAttribute('tabindex', '-1');
+                            var h = document.createElement('p');
+                            h.className = 'amf-thanks__title';
+                            h.textContent = 'Message sent!';
+                            var p = document.createElement('p');
+                            p.className = 'amf-thanks__text';
+                            p.textContent = r.data.message || 'Thank you! We will get back to you shortly.';
+                            done.appendChild(h);
+                            done.appendChild(p);
+                            form.replaceWith(done);
+                            done.focus();
+                            return;
+                        }
+                        var msg = 'Something went wrong. Please try again, or email {{ $amfEmail }}.';
+                        if (r.status === 422 && r.data.errors) {
+                            var first = Object.keys(r.data.errors)[0];
+                            msg = r.data.errors[first][0];
+                        } else if (r.status === 429) {
+                            msg = 'Too many attempts. Please wait a minute and try again.';
+                        } else if (r.status === 419) {
+                            msg = 'Your session expired. Please refresh the page and try again.';
+                        }
+                        setHint(msg, true);
+                    }).catch(function () {
+                        setHint('Network error. Please check your connection and try again.', true);
+                    }).then(function () {
+                        if (form.isConnected) {
+                            btn.disabled = false;
+                            form.removeAttribute('aria-busy');
+                        }
+                    });
                 });
             }
 

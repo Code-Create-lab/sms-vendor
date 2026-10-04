@@ -3,20 +3,18 @@
 namespace App\Livewire;
 
 use App\Jobs\sendMail;
-use App\Mail\ContactFormMail;
 use App\Models\Contact;
-use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 
 class ContactForm extends Component
 {
 
-    #[Validate('required')]
+    #[Validate('required|string|max:120')]
     public $name;
-    #[Validate('required')]
+    #[Validate('required|email|max:190')]
     public $email;
-    #[Validate('required')]
+    #[Validate('required|string|max:20')]
     public $phone;
 
     #[Validate('nullable|string|max:2000')]
@@ -50,15 +48,14 @@ class ContactForm extends Component
             'phone' => $validated['phone'],
             'services' => json_encode(array_values($this->selectedLOB)),
             'message' => $validated['message'] ?? null,
+            'source'  => 'contact',
         ]);
 
 
-        // Mail::to('rajbansh.snehal@gmail.com')->send(new ContactFormMail($this->name, $this->email, $this->message));
-
-        // Dispatch the email job
+        // Emails the admin inbox and sends the visitor a thank-you.
         sendMail::dispatch($contact);
 
-        session()->flash('success', 'Your message has been sent!');
+        session()->flash('success', 'Thank you! Your message has reached our team and we have emailed you a confirmation.');
         $this->reset(); // Clear the form
     }
 

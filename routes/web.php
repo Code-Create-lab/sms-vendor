@@ -48,6 +48,11 @@ Route::get('contact', function () {
     return view('contact');
 })->name('contact');
 
+// Footer "Pitch us your idea" form (layouts/footer.blade.php).
+Route::post('enquiry', [\App\Http\Controllers\EnquiryController::class, 'store'])
+    ->middleware('throttle:5,1')
+    ->name('enquiry.store');
+
 
 // Legal and utility pages linked from the footer bottom bar.
 Route::view('terms', 'legal.terms')->name('terms');

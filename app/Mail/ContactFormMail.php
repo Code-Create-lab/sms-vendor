@@ -5,6 +5,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -17,9 +18,9 @@ class ContactFormMail extends Mailable
      * Create a new message instance.
      */
 
-    public $name, $email, $phone, $service, $messageText;
+    public $name, $email, $phone, $service, $messageText, $subjectLine, $source;
 
-    public function __construct(string $name, string $email, string $phone, string $service, string $messageText = '')
+    public function __construct(string $name, string $email, string $phone, string $service, string $messageText = '', string $subjectLine = '', string $source = 'contact')
     {
 
         $this->name = $name;
@@ -27,6 +28,8 @@ class ContactFormMail extends Mailable
         $this->phone = $phone;
         $this->service = $service;
         $this->messageText = $messageText;
+        $this->subjectLine = $subjectLine;
+        $this->source = $source;
     }
 
     /**
@@ -34,8 +37,11 @@ class ContactFormMail extends Mailable
      */
     public function envelope(): Envelope
     {
+        $form = $this->source === 'footer' ? 'Website enquiry' : 'Contact form';
+
         return new Envelope(
-            subject: 'New Contact Form Submission',
+            subject: $form . ': ' . ($this->subjectLine !== '' ? $this->subjectLine : $this->name),
+            replyTo: [new Address($this->email, $this->name)],
         );
     }
 
@@ -52,6 +58,8 @@ class ContactFormMail extends Mailable
                 'phone' => $this->phone,
                 'service' => $this->service,
                 'messageText' => $this->messageText,
+                'subjectLine' => $this->subjectLine,
+                'source' => $this->source,
             ]
         );
     }

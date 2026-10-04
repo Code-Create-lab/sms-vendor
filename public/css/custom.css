@@ -1422,6 +1422,33 @@ body {
 .amf-submit:hover svg { transform: translateX(4px); }
 .amf-submit:active { transform: translateY(0); }
 .amf-form__hint { grid-column: 1 / -1; margin: 0; font-size: 13px; color: var(--amf-accent); min-height: 1em; }
+.amf-form__hint.is-error { color: #fca5a5; }
+.amf-submit:disabled { opacity: .65; cursor: progress; transform: none; }
+
+/* Honeypot field — off-screen rather than display:none, which some bots skip. */
+.amf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* Replaces the form after a successful submit. */
+.amf-thanks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    min-height: 100%;
+    padding: clamp(22px, 3vw, 34px);
+    border: 1px solid var(--amf-border);
+    border-radius: 22px;
+    background: var(--amf-panel);
+    outline: none;
+}
+.amf-thanks__title {
+    margin: 0;
+    font-size: clamp(22px, 2.4vw, 28px);
+    font-weight: 700;
+    color: #fff;
+}
+.amf-thanks__title::before { content: "\2713"; margin-right: 10px; color: var(--amf-accent); }
+.amf-thanks__text { margin: 0; font-size: 15px; line-height: 1.6; color: var(--amf-muted); }
 
 /* ---- link columns ---- */
 .amf-cols {

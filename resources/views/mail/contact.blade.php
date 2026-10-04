@@ -18,11 +18,10 @@
                         </td>
                     </tr>
 
-                    {{-- @dd($name. $email, $message) --}}
                     <tr>
                         <td style="padding: 30px;">
-                            <p style="margin-top: 0;">You've received a new message from the contact form. Here are the
-                                details:</p>
+                            <p style="margin-top: 0;">You've received a new message from the {{ ($source ?? '') === 'footer' ? '"Pitch us your idea" form' : 'contact page form' }}.
+                                Reply to this email to answer {{ $name }} directly.</p>
 
                             <table width="100%" style="margin-top: 20px;">
                                 <tr>
@@ -33,16 +32,24 @@
                                     <td style="font-weight: bold; padding: 10px 0;">Email:</td>
                                     <td style="padding: 10px 0;">{{ $email }}</td>
                                 </tr>
+                                @if ($phone !== '')
                                 <tr>
                                     <td style="font-weight: bold; padding: 10px 0;">Phone:</td>
-                                    {{-- @dd($message_form) --}}
                                     <td style="padding: 10px 0; white-space: pre-line;">{{ $phone }}</td>
                                 </tr>
+                                @endif
+                                @if (($products = implode(', ', json_decode($service, true) ?: [])) !== '')
                                 <tr>
                                     <td style="font-weight: bold; padding: 10px 0;">Products:</td>
-                                    {{-- @dd($message_form) --}}
-                                    <td style="padding: 10px 0; white-space: pre-line;">{{ implode(', ', json_decode($service, true) ?: []) ?: '—' }}</td>
+                                    <td style="padding: 10px 0; white-space: pre-line;">{{ $products }}</td>
                                 </tr>
+                                @endif
+                                @if (($subjectLine ?? '') !== '')
+                                <tr>
+                                    <td style="font-weight: bold; padding: 10px 0;">Subject:</td>
+                                    <td style="padding: 10px 0;">{{ $subjectLine }}</td>
+                                </tr>
+                                @endif
                                 <tr style="background-color: #f9f9f9;">
                                     <td style="font-weight: bold; padding: 10px 0; vertical-align: top;">Message:</td>
                                     <td style="padding: 10px 0; white-space: pre-line;">{{ $messageText !== '' ? $messageText : '—' }}</td>
@@ -56,7 +63,7 @@
                     <tr>
                         <td
                             style="padding: 20px; background-color: #f0f0f0; text-align: center; font-size: 13px; color: #888;">
-                            &copy; {{ now()->year }} Your Company Name. All rights reserved.
+                            &copy; {{ now()->year }} Ad Magister Pvt. Ltd.
                         </td>
                     </tr>
                 </table>

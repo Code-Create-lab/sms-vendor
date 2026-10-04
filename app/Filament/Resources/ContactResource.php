@@ -30,9 +30,18 @@ class ContactResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('message')
-                    ->required()
-                    ->maxLength(255),
+                Forms\Components\TextInput::make('phone')
+                    ->tel()
+                    ->maxLength(20),
+                Forms\Components\TextInput::make('subject')
+                    ->maxLength(190),
+                Forms\Components\Select::make('source')
+                    ->options(['contact' => 'Contact page', 'footer' => 'Footer enquiry'])
+                    ->required(),
+                Forms\Components\Textarea::make('message')
+                    ->rows(5)
+                    ->maxLength(2000)
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -44,12 +53,20 @@ class ContactResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('phone')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('source')
+                    ->badge()
+                    ->formatStateUsing(fn (string $state) => $state === 'footer' ? 'Footer enquiry' : 'Contact page'),
+                Tables\Columns\TextColumn::make('subject')
+                    ->searchable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('message')
+                    ->limit(60)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
