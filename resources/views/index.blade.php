@@ -141,23 +141,55 @@
     </section>
 
     {{-- ============================ MARQUEE ============================ --}}
-    {{-- Decorative ticker — the same capabilities are listed accessibly in the
-         channels grid below, so this is hidden from assistive tech. --}}
-    <div class="da-marquee" aria-hidden="true">
-        @php
-            $daTicker = ['Bulk SMS', 'RCS Business Messaging', 'Voice &amp; IVR',
-                'WhatsApp Business API', 'Digital marketing', 'DLT-compliant routes',
-                'Real-time delivery reports', 'REST API in an afternoon'];
-        @endphp
-        <div class="da-marquee__track">
-            {{-- listed twice so the -50% translate loops seamlessly --}}
-            @foreach (array_merge($daTicker, $daTicker) as $item)
-                <span class="da-marquee__item">{!! $item !!}</span>
-            @endforeach
+    {{-- Client logo ticker, right-to-left. Logos come from the client list on
+         bulksmsdelhincr.com/our-clients.php and live in public/images/clients.
+         The track renders the list twice so the -50% translate loops
+         seamlessly; the second copy is hidden from assistive tech. Must stay a
+         <section>: main.js wraps every <section> into .page-layout, and a
+         top-level <div> would be left behind at the bottom of the page. --}}
+    @php
+        $daClients = [
+            'Acteon' => 'acteon.jpg', 'Adarsh Interiors' => 'adarsh-interior.png',
+            'AJ Corporate' => 'ajcorporate.png', 'Arcis' => 'arcis.png',
+            'Ashapurna Buildcon' => 'ashapurna.jpg', 'Auric' => 'auric.png',
+            'Balaji Honda' => 'balaji-honda.png', 'Bikers Cafe' => 'bikers.png',
+            'Broze' => 'broze.jpg', 'Chef Burger' => 'chef-burger.jpg',
+            'DealsDray' => 'dealsdray.png', 'Delhi Heights' => 'delhi-heights.png',
+            'Echosoft' => 'echospft.png', 'Elite Landbase' => 'elite.png',
+            'eMpi Institutions' => 'empi.png', 'Empyrean' => 'empyrean.jpg',
+            'Evolving Career' => 'evolving-career.jpg', 'FreshToHome' => 'freshtohome.png',
+            'Fujifilm SonoSite' => 'fujifilm.png', 'Geistlich' => 'gestlich.jpg',
+            "Gold's Gym" => 'gold-gym.png', 'Greenambit' => 'greenambit.png',
+            'i-Money' => 'imoney.png', 'Jawed Habib' => 'jawed-habib.png',
+            'LoanDost' => 'loandost.png', 'Magadh' => 'magadh.jpg',
+            'Manya' => 'manya.jpg', 'Nukkad Wala' => 'nukkadwala.png',
+            'Ocus Group' => 'ocus-group.jpg', 'OYO' => 'oyo.png',
+            'Safeway Ayurvedic' => 'safeway.jpg', 'Satin' => 'satin.jpg',
+            'SecureNow' => 'securenow.png', 'Shipra Seeds' => 'shipra.png',
+            'Tanishq' => 'tanishq.png', 'Tirupati Sugars' => 'tirupati.jpg',
+            'Truepower Earthings' => 'truepower.jpg', 'Vedika Pharma' => 'vedika.png',
+            'VPromote Media' => 'vpromotemedia.png', 'VP Spaces' => 'vpspace.png',
+        ];
+    @endphp
+    <section class="da-marquee" aria-label="Our clients">
+        <p class="da-marquee__label">Trusted by brands across India</p>
+        <div class="da-marquee__viewport">
+            <div class="da-marquee__track">
+                @foreach ([false, true] as $daDupe)
+                    <ul class="da-marquee__list" @if ($daDupe) aria-hidden="true" @endif>
+                        @foreach ($daClients as $name => $file)
+                            <li class="da-marquee__card">
+                                <img src="{{ asset('images/clients/' . $file) }}" alt="{{ $daDupe ? '' : $name }}"
+                                     width="200" height="200" loading="lazy" decoding="async">
+                            </li>
+                        @endforeach
+                    </ul>
+                @endforeach
+            </div>
         </div>
-    </div>
+    </section>
 
-    {{-- =========================== CHANNELS =========================== --}}
+    {{-- ============================ CHANNELS =========================== --}}
     <section class="da-section da-section--alt" id="channels">
         <div class="da-shell">
 

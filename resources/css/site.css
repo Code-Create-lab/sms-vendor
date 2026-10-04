@@ -831,44 +831,87 @@
 }
 
 /* ==================================================================
-   Marquee — infinite scrolling capability ticker
+   Marquee — client logo ticker (right-to-left)
    ------------------------------------------------------------------
-   Track holds the item list twice; translating by -50% loops seamlessly.
+   Modelled on karix.com's .marquee-card: a quiet caption over a single
+   row of logos. Track holds the logo list twice; translating by -50%
+   loops seamlessly. The source logos are 200x200 squares on mixed
+   backgrounds (white, black, transparent), so each sits in a uniform
+   white card to keep the row even.
    ================================================================== */
 .da-marquee {
-    position: relative;
-    overflow: hidden;
-    padding-block: var(--da-s4);
+    padding-block: var(--da-s8);
     border-block: 1px solid var(--da-border);
-    background: var(--da-surface);
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    background: var(--da-surface-2);
+}
+
+.da-marquee__label {
+    margin: 0 0 var(--da-s5);
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--da-muted);
+}
+
+.da-marquee__viewport {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
 }
 
 .da-marquee__track {
     display: flex;
     width: max-content;
-    gap: var(--da-s10);
-    padding-left: var(--da-s10);
-    animation: da-scroll 34s linear infinite;
+    animation: da-scroll 70s linear infinite;
 }
-.da-marquee:hover .da-marquee__track { animation-play-state: paused; }
+.da-marquee__viewport:hover .da-marquee__track { animation-play-state: paused; }
 
-.da-marquee__item {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--da-s3);
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--da-ink-2);
-    white-space: nowrap;
+.da-marquee__list {
+    display: flex;
+    gap: var(--da-s5);
+    margin: 0;
+    padding: 0 var(--da-s5) 0 0; /* trailing gap = item gap, so the seam is invisible */
+    list-style: none;
 }
-.da-marquee__item::before {
-    content: "";
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--da-accent), var(--da-brand-bright));
+
+.da-marquee__card {
     flex: none;
+    display: grid;
+    place-items: center;
+    width: 112px;
+    height: 112px;
+    padding: var(--da-s2);
+    border: 1px solid var(--da-border);
+    border-radius: var(--da-r-md);
+    background: var(--da-surface);
+    box-shadow: var(--da-e1);
+    overflow: hidden;
+    transition: transform var(--da-dur) var(--da-ease), box-shadow var(--da-dur) var(--da-ease);
+}
+.da-marquee__card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--da-e2);
+}
+.da-marquee__card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+@media (max-width: 640px) {
+    .da-marquee { padding-block: var(--da-s6); }
+    .da-marquee__list { gap: var(--da-s3); padding-right: var(--da-s3); }
+    .da-marquee__card { width: 88px; height: 88px; padding: 6px; }
+}
+
+/* The global reduced-motion rule shortens every animation to ~0ms, which
+   would make an infinite ticker flicker. Stop it and let people swipe. */
+@media (prefers-reduced-motion: reduce) {
+    .da .da-marquee__track { animation: none !important; }
+    .da-marquee__viewport { overflow-x: auto; }
 }
 
 @keyframes da-scroll {
