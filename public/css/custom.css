@@ -1378,7 +1378,7 @@ body {
     border: 1px solid var(--amf-border-strong);
     border-radius: 12px;
     background: rgba(5, 12, 32, .35);
-    color: var(--amf-ink);
+    color: var(--amf-ink) !important;
     font: inherit;
     font-size: 15px;
     transition: border-color .2s var(--amf-ease), box-shadow .2s var(--amf-ease), background .2s var(--amf-ease);
