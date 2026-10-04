@@ -231,7 +231,7 @@
                     </a>
                 </div>
 
-                <p class="mnav__addr">Ad Magister Pvt. Ltd. &middot; Noida 201301</p>
+                <p class="mnav__addr">Ad Magister Pvt. Ltd. &middot; Gaur City 2, Noida 201009</p>
             </div>
         </div>
     </div>

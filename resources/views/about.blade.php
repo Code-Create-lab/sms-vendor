@@ -97,7 +97,7 @@
         ];
 
         // Kept in sync with layouts/footer.blade.php.
-        $abtAddress = '307, A-43, Sector-63, Noida-201301';
+        $abtAddress = ['Office No. 101, 1st Floor', 'Bhavishya India Tower', 'Gaur City 2, Noida,', 'Ghaziabad, Uttar Pradesh 201009'];
         $abtPhone   = '+91 9718055559';
         $abtPhoneTel = '+919718055559';
         $abtEmail   = 'info@admagister.com';
@@ -308,7 +308,7 @@
                     <span class="abt-office__label">Head office</span>
                     <span class="abt-office__line">
                         <i class="bi bi-geo-alt" aria-hidden="true"></i>
-                        <span>{{ $abtAddress }}</span>
+                        <span>{!! implode('<br>', array_map('e', $abtAddress)) !!}</span>
                     </span>
                     <span class="abt-office__line">
                         <i class="bi bi-envelope" aria-hidden="true"></i>

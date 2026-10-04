@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Contact Us')
-@section('description', 'Talk to Ad Magister about bulk SMS, RCS, Voice or WhatsApp campaigns. Call +91 9718055559 or email info@admagister.com. Office in Sector 63, Noida.')
+@section('description', 'Talk to Ad Magister about bulk SMS, RCS, Voice or WhatsApp campaigns. Call +91 9718055559 or email info@admagister.com. Office in Gaur City 2, Noida.')
 @section('og_image', 'og/contact.jpg')
 @section('content')
 
@@ -28,7 +28,7 @@
 
         $cntOffice = [
             'name'    => 'Ad Magister &mdash; Noida',
-            'address' => '307, A-43, Sector-63, Noida-201301',
+            'address' => ['Office No. 101, 1st Floor', 'Bhavishya India Tower', 'Gaur City 2, Noida,', 'Ghaziabad, Uttar Pradesh 201009'],
             'phone'   => '+91 9718055559',
             'phoneTel'=> '+919718055559',
             'email'   => 'info@admagister.com',
@@ -38,7 +38,7 @@
            Melbourne place id and embedded a Delhi-wide view — both theme
            leftovers. Both now derive from one query string, so the pin, the
            embed and the printed address cannot drift apart. */
-        $cntMapQuery = urlencode('A-43, Sector 63, Noida, Uttar Pradesh 201301');
+        $cntMapQuery = urlencode('Bhavishya India Tower, Gaur City 2, Ghaziabad, Uttar Pradesh 201009');
         $cntMapsLink = 'https://maps.google.com/maps?q=' . $cntMapQuery;
         $cntMapEmbed = 'https://www.google.com/maps?q=' . $cntMapQuery . '&output=embed';
     @endphp
@@ -106,7 +106,7 @@
 
                     <span class="cnt-office__line">
                         <i class="bi bi-geo-alt" aria-hidden="true"></i>
-                        <span>{{ $cntOffice['address'] }}</span>
+                        <span>{!! implode('<br>', array_map('e', $cntOffice['address'])) !!}</span>
                     </span>
 
                     {{-- Was a Cloudflare-obfuscated address that decoded to the theme

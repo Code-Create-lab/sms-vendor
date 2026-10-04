@@ -12,7 +12,7 @@
      | Layout mirrors the "footer-elementor-inner" pattern: a big "Let's
      | collaborate" CTA on top, then link columns, then a bottom bar.
      */
-    $amfAddress = '307, A-43, Sector-63, Noida-201301';
+    $amfAddress = ['Office No. 101, 1st Floor', 'Bhavishya India Tower', 'Gaur City 2, Noida,', 'Ghaziabad, Uttar Pradesh 201009'];
     $amfPhone   = '+91 9718055559';
     $amfPhoneTel = '+919718055559';
     $amfEmail   = 'info@admagister.com';
@@ -135,7 +135,7 @@
                 <ul class="amf-contact">
                     <li>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                        <span>{{ $amfAddress }}</span>
+                        <span>{!! implode('<br>', array_map('e', $amfAddress)) !!}</span>
                     </li>
                     <li>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>

@@ -16,7 +16,7 @@
                 'blocks' => [
                     'This website is operated by Ad Magister Pvt. Ltd.',
                     ['list' => [
-                        'Registered office: 307, A-43, Sector-63, Noida-201301, Uttar Pradesh, India',
+                        'Registered office: Office No. 101, 1st Floor, Bhavishya India Tower, Gaur City 2, Noida, Ghaziabad, Uttar Pradesh 201009, India',
                         'Email: info@admagister.com',
                         'Phone: +91 9718055559',
                     ]],
