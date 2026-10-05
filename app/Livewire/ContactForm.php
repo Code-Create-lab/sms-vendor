@@ -2,8 +2,11 @@
 
 namespace App\Livewire;
 
-use App\Jobs\sendMail;
+// use App\Jobs\sendMail;
+use App\Mail\ContactFormMail;
+use App\Mail\EnquiryReceivedMail;
 use App\Models\Contact;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 
@@ -53,7 +56,18 @@ class ContactForm extends Component
 
 
         // Emails the admin inbox and sends the visitor a thank-you.
-        sendMail::dispatch($contact);
+        // Queue disabled for now; mails are sent directly below.
+        // sendMail::dispatch($contact);
+        try {
+            Mail::to('admagisterglobal@gmail.com')
+                ->bcc('snhlrj5@gmail.com')
+                ->send(new ContactFormMail($contact->name, $contact->email, (string) $contact->phone, (string) $contact->services, (string) $contact->message, (string) $contact->subject, (string) ($contact->source ?: 'contact')));
+
+            Mail::to($contact->email, $contact->name)
+                ->send(new EnquiryReceivedMail($contact->name, (string) $contact->message));
+        } catch (\Throwable $e) {
+            report($e);
+        }
 
         session()->flash('success', 'Thank you! Your message has reached our team and we have emailed you a confirmation.');
         $this->reset(); // Clear the form

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\sendMail;
+// use App\Jobs\sendMail;
+use App\Mail\ContactFormMail;
+use App\Mail\EnquiryReceivedMail;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * Footer "Pitch us your idea" form. Saves the enquiry, then sendMail emails the
@@ -29,7 +32,18 @@ class EnquiryController extends Controller
 
         $contact = Contact::create($data + ['source' => 'footer']);
 
-        sendMail::dispatch($contact);
+        // Queue disabled for now; mails are sent directly below.
+        // sendMail::dispatch($contact);
+        try {
+            Mail::to('admagisterglobal@gmail.com')
+                ->bcc('snhlrj5@gmail.com')
+                ->send(new ContactFormMail($contact->name, $contact->email, (string) $contact->phone, (string) $contact->services, (string) $contact->message, (string) $contact->subject, (string) ($contact->source ?: 'footer')));
+
+            Mail::to($contact->email, $contact->name)
+                ->send(new EnquiryReceivedMail($contact->name, (string) $contact->message));
+        } catch (\Throwable $e) {
+            report($e);
+        }
 
         return $this->respond($request, $data['name']);
     }
