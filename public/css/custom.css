@@ -66,13 +66,13 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    min-height: 64px;
+    min-height: 84px;
     padding-block: 0;
     padding-inline: clamp(16px, 3vw, 36px);
 }
 
 .navbar.hdr .hdr-brand { display: flex; align-items: center; }
-.navbar.hdr .hdr-logo { display: block; height: 40px; width: auto; }
+.navbar.hdr .hdr-logo { display: block; height: 70px; width: auto; }
 
 /* !important is load order, not laziness. responsive.min.css is linked after
    custom.css and hard-sets `.navbar-brand{padding:22px 0}` (44px of vertical
@@ -344,8 +344,8 @@
        (empty, flex:1) column after the hamburger and shoved the hamburger
        left beside the logo. The drawer carries the links on mobile. */
     .navbar.hdr .menu-order { display: none; }
-    .navbar.hdr > .hdr-inner { min-height: 58px; }
-    .navbar.hdr .hdr-logo { height: 34px; }
+    .navbar.hdr > .hdr-inner { min-height: 64px; }
+    .navbar.hdr .hdr-logo { height: 52px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -896,7 +896,7 @@ body {
 }
 
 .mnav__brand { display: inline-flex; min-height: 44px; align-items: center; }
-.mnav__brand img { height: 32px; width: auto; display: block; }
+.mnav__brand img { height: 48px; width: auto; display: block; }
 .mnav__brand:focus-visible { outline: 3px solid var(--nav-bright); outline-offset: 3px; border-radius: 6px; }
 
 .mnav__close {
