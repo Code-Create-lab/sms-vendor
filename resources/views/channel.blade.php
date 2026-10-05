@@ -33,13 +33,13 @@
                 'icon'    => 'bi-chat-dots',
                 'name'    => 'Bulk SMS',
                 'tag'     => 'Widest reach',
-                'summary' => 'Transactional, OTP and promotional traffic on DLT-registered headers,
+                'summary' => 'Service, transactional, OTP and promotional traffic on DLT-registered headers,
                               with per-message delivery receipts.',
                 'body'    => 'SMS still reaches every handset on every network without an app, a data
                               connection or an opt-in to a platform. It is the channel we fall back to
                               when a message simply has to arrive.',
                 'points'  => [
-                    'Separate transactional and promotional routes, so an OTP is never queued behind a campaign',
+                    'Separate routes for service and promotional traffic, so an OTP is not queued behind a campaign',
                     'DLT entity, header and template registration handled for you',
                     'Per-message delivery receipts with operator-level failure reasons',
                     'REST API, SMPP or panel upload — whichever fits your stack',
@@ -53,14 +53,14 @@
                 'tag'     => 'Richest format',
                 'summary' => 'Verified sender, branded cards, carousels and quick-reply buttons —
                               delivered inside the native Messages app.',
-                'body'    => 'RCS upgrades the SMS inbox rather than replacing it. Your brand name and
-                              logo are verified by the operator, so the customer can see who is writing
-                              before they open anything.',
+                'body'    => 'RCS upgrades the SMS inbox rather than replacing it. Once your brand passes
+                              verification, the customer can see who is writing before they open
+                              anything. Features depend on the operator, handset and provider setup.',
                 'points'  => [
                     'Verified sender profile with brand name, logo and colour',
                     'Rich cards, image carousels and quick-reply buttons',
                     'Read receipts and typing indicators for two-way flows',
-                    'Automatic SMS fallback when the handset does not support RCS',
+                    'Optional SMS fallback when the handset does not support RCS',
                 ],
             ],
             [
@@ -73,9 +73,9 @@
                 'summary' => 'Outbound voice broadcasts, missed-call numbers and IVR trees for reach
                               beyond the smartphone base.',
                 // Carried over from the previous revision, lightly tidied.
-                'body'    => 'Voice earns a higher response rate than standard mail while staying as fast
-                              and economical as messaging, and it opens a second line of communication
-                              into parts of your audience that text does not reach.',
+                'body'    => 'Voice is quick to set up and economical to send at scale, and it opens a
+                              second line of communication into parts of your audience that text does
+                              not reach.',
                 'points'  => [
                     'Outbound dialling (OBD) for announcements and reminders',
                     'Missed-call numbers for opt-ins, verification and call-backs',
@@ -95,7 +95,7 @@
                               WhatsApp — a verified business profile, approved templates and a real
                               conversation thread rather than a broadcast.',
                 'points'  => [
-                    'Verified business profile and green-tick application support',
+                    'Business profile set-up and help applying for Meta verification',
                     'Approved message templates for notifications and reminders',
                     'Two-way threads that can hand off to your agents',
                     'Catalogue and product journeys inside the chat',
@@ -138,12 +138,13 @@
                 <div class="col-xl-9 col-lg-10 text-center">
                     <span class="chn-eyebrow">Channels</span>
                     <h1 class="chn-hero__title">
-                        Five channels,
+                        Four messaging channels,
                         <span class="chn-hero__accent">one integration</span>
                     </h1>
                     <p class="chn-hero__lede">
-                        Start on the channel that fits the message, then add the rest without
-                        re-integrating. The same API, console and delivery reporting drive all of them.
+                        Start with SMS, RCS, Voice or WhatsApp, whichever fits the message, then add the
+                        rest without re-integrating. Digital marketing sits alongside them as a service
+                        that brings in the audience your messages reach.
                     </p>
                     <div class="chn-hero__actions">
                         <a href="{{ route('contact') }}" class="chn-btn chn-btn--primary">Talk to sales</a>

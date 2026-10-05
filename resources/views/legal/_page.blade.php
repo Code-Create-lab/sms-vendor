@@ -105,7 +105,7 @@
                     <p>
                         Questions about this page? Email
                         <a href="mailto:info@admagister.com">info@admagister.com</a>
-                        or call <a href="tel:+919718055559">+91 9718055559</a>.
+                        or call <a href="tel:+919718055559">+91 97180 55559</a>.
                     </p>
                 </div>
             </article>

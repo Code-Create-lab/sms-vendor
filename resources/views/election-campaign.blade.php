@@ -46,8 +46,8 @@
                 'icon'  => 'bi-link-45deg',
                 'title' => 'A bridge between party and public',
                 'body'  => 'When you need to put an important message in front of voters, a bulk SMS
-                            campaign acts as the bridge. Reaching each person directly is what builds a
-                            personal bond, and that is what turns an audience into supporters.',
+                            campaign acts as the bridge, reaching each person directly with clear,
+                            factual information.',
             ],
             [
                 'icon'  => 'bi-clock-history',
@@ -73,6 +73,8 @@
         ];
 
         $elcNorms = [
+            'Follow Election Commission of India guidelines, including the Model Code of Conduct and any silence period before polling',
+            'Message only people who have a lawful basis to hear from you, and honour opt-outs',
             'Keep a consistent, standard format from the first message to the last',
             'Write professionally rather than pushing a hard promotional tone',
             'Send in the regional language your voters actually read',
@@ -87,19 +89,19 @@
                 <div class="col-xl-9 col-lg-10 text-center">
                     <span class="elc-eyebrow">Election campaigns</span>
                     <h1 class="elc-hero__title">
-                        Empower your election campaign with the
-                        <span class="elc-hero__accent">supremacy of bulk SMS</span>
+                        Keep voters informed with
+                        <span class="elc-hero__accent">compliant campaign messaging</span>
                     </h1>
                     <p class="elc-hero__lede">
-                        Bulk SMS is the gateway between an organisation and the people it needs to reach.
-                        It sends your message straight to the mobile numbers you select — and in politics,
-                        that direct line is what turns a constituency into supporters.
+                        Bulk SMS is a direct line between an organisation and the people it needs to reach.
+                        It sends your message straight to the mobile numbers you select — so voters hear
+                        about your party, your candidates and the polling details first-hand.
                     </p>
                     <div class="elc-hero__actions">
                         <a href="{{ route('contact') }}" class="elc-btn elc-btn--primary">Get a campaign quote</a>
                         <a href="tel:+919718055559" class="elc-btn elc-btn--ghost">
                             <i class="bi bi-telephone" aria-hidden="true"></i>
-                            +91 9718055559
+                            +91 97180 55559
                         </a>
                     </div>
                 </div>
@@ -120,9 +122,8 @@
                         it does not carry anything like the same delivery reliability.
                     </p>
                     <p class="elc-prose">
-                        That is why almost every business has moved to SMS promotion — and why the same
-                        approach produces dramatic results for political parties looking to put
-                        information in front of ordinary voters.
+                        That is why so many businesses use SMS — and why the same approach works for
+                        political parties looking to put information in front of ordinary voters.
                     </p>
                 </div>
 
@@ -132,14 +133,13 @@
                     <p class="elc-prose">
                         Every party is putting its demands and its agenda to the same electorate. That
                         means taking a decisive step to connect with people and make the value of your
-                        party understood. You already know who believes in you — the winning strategy is
-                        reaching everyone else.
+                        party understood. You already reach the people who follow you — the next step is
+                        reaching voters who have not heard from you yet.
                     </p>
                     <p class="elc-prose">
-                        Every party wants close communication with the whole constituency, and holding
-                        people's attention is what converts them into the support you are counting on. A
-                        cost-efficient bulk SMS campaign is how you reach those voters and speak to each
-                        one individually.
+                        Every party wants close communication with the whole constituency, and keeping
+                        voters informed is a core part of any campaign. A cost-efficient bulk SMS campaign
+                        is how you reach those voters and speak to each one individually.
                     </p>
                 </div>
             </div>
@@ -207,8 +207,8 @@
                     <p class="elc-prose">
                         The impact you have meeting someone in person is the same impact a personal
                         message carries. Since you cannot reach every household door to door, the
-                        practical route is a promotional SMS service — and smartphone ownership now
-                        reaches nearly every individual.
+                        practical route is bulk SMS, which reaches almost any mobile phone, smartphone
+                        or not.
                     </p>
                     <p class="elc-prose">
                         A bulk SMS gateway for political parties sends in the regional language people
@@ -223,12 +223,12 @@
                     <p class="elc-prose">
                         Important information travels by SMS because it reaches people who would not
                         otherwise have heard it. In politics that includes voters who are unaware of your
-                        agenda, or not yet interested enough to vote at all — and who may reconsider.
+                        agenda, or who have not yet decided.
                     </p>
                     <p class="elc-prose">
-                        When a message arrives on behalf of your party it gets recognised, and it leaves a
-                        personal impression that lasts. Sending regularly — party news, an inspirational
-                        message, the voting details — is what pulls the public towards voting for you.
+                        A message sent in your party's name is easy to recognise. Regular, factual
+                        updates — party news, candidate details, polling dates and booth information —
+                        keep voters informed throughout the campaign.
                     </p>
                 </div>
             </div>
@@ -246,8 +246,9 @@
                     </h2>
                     <p class="elc-section__sub elc-section__sub--invert">
                         Your message has to hold a standard format from start to finish, and read as
-                        professional rather than purely promotional. You do not have to work that out
-                        alone — our team helps craft the message so it lands with every recipient.
+                        professional rather than purely promotional, and political messaging must follow
+                        Election Commission of India rules as well as TRAI&rsquo;s. Our team helps craft
+                        the message and register it correctly.
                     </p>
                     <a href="{{ route('dlt-registration') }}" class="elc-btn elc-btn--invert">
                         DLT registration

@@ -18,7 +18,7 @@
                     ['list' => [
                         'Registered office: Office No. 101, 1st Floor, Bhavishya India Tower, Gaur City 2, Ghaziabad, Uttar Pradesh – 201009, India',
                         'Email: info@admagister.com',
-                        'Phone: +91 9718055559',
+                        'Phone: +91 97180 55559',
                     ]],
                 ],
             ],

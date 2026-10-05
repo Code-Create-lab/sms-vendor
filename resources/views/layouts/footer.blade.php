@@ -13,7 +13,7 @@
      | collaborate" CTA on top, then link columns, then a bottom bar.
      */
     $amfAddress = ['Office No. 101, 1st Floor,', 'Bhavishya India Tower, Gaur City 2,', 'Ghaziabad, Uttar Pradesh – 201009, India.'];
-    $amfPhone   = '+91 9718055559';
+    $amfPhone   = '+91 97180 55559';
     $amfPhoneTel = '+919718055559';
     $amfEmail   = 'info@admagister.com';
 

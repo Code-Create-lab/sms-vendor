@@ -23,17 +23,17 @@
         // Hero credibility strip. Sourced from the homepage claims.
         $abtStats = [
             ['value' => '4',      'label' => 'Channels on one platform', 'note' => 'SMS · RCS · Voice · WhatsApp'],
-            ['value' => '99.9%',  'label' => 'Platform uptime target',   'note' => 'Monitored round the clock'],
-            ['value' => '100%',   'label' => 'DLT-registered routes',    'note' => 'Entity, sender ID & templates'],
-            ['value' => '24×7',   'label' => 'Support coverage',         'note' => 'Named contact, not a queue'],
+            ['value' => 'DLT',    'label' => 'Registration support',     'note' => 'Entity, sender ID & templates'],
+            ['value' => 'API',    'label' => 'HTTP API & SMPP',          'note' => 'With delivery callbacks'],
+            ['value' => 'Live',   'label' => 'Delivery reports',         'note' => 'Per-message status & failure reasons'],
         ];
 
         // What we actually sell, in the order a buyer evaluates it.
         $abtPillars = [
             [
                 'title' => 'Routes we own the answer for',
-                'body'  => 'Operator-direct connectivity rather than resold aggregator hops, so when a
-                            message is late there is a delivery receipt that explains why — not a shrug.',
+                'body'  => 'Routes chosen and monitored for delivery quality, so when a message is late
+                            there is a delivery receipt that explains why — not a shrug.',
             ],
             [
                 'title' => 'Compliance handled end to end',
@@ -76,7 +76,7 @@
 
         // Channel cards deep-link into the existing channel page.
         $abtChannels = [
-            ['icon' => 'bi-chat-dots',      'name' => 'Bulk SMS', 'body' => 'Transactional and promotional SMS on DLT-registered headers.'],
+            ['icon' => 'bi-chat-dots',      'name' => 'Bulk SMS', 'body' => 'Service, transactional and promotional SMS on DLT-registered headers.'],
             ['icon' => 'bi-chat-square-text','name' => 'RCS',      'body' => 'Verified sender, rich cards and carousels inside native Messages.'],
             ['icon' => 'bi-telephone',      'name' => 'Voice',    'body' => 'IVR, OBD and missed-call flows for reach beyond the smartphone.'],
             ['icon' => 'bi-whatsapp',       'name' => 'WhatsApp', 'body' => 'Template messaging and two-way conversations on the Business API.'],
@@ -91,14 +91,14 @@
 
         $abtCompliance = [
             'DLT entity, header and template registration managed on your behalf',
-            'Operator-direct routes with per-message delivery receipts',
+            'Per-message delivery receipts with operator failure reasons',
             'Consent and opt-out handling built into every campaign flow',
             'Delivery, failure-reason and spend data exportable to CSV at any time',
         ];
 
         // Kept in sync with layouts/footer.blade.php.
         $abtAddress = ['Office No. 101, 1st Floor,', 'Bhavishya India Tower, Gaur City 2,', 'Ghaziabad, Uttar Pradesh – 201009, India.'];
-        $abtPhone   = '+91 9718055559';
+        $abtPhone   = '+91 97180 55559';
         $abtPhoneTel = '+919718055559';
         $abtEmail   = 'info@admagister.com';
     @endphp
@@ -115,8 +115,8 @@
                     </h1>
                     <p class="abt-hero__lede">
                         Ad Magister is an omni-channel business messaging company based in Noida. We run
-                        SMS, RCS, Voice and WhatsApp campaigns for Indian enterprises on DLT-registered,
-                        operator-direct routes — and we stay accountable for what happens after you press send.
+                        SMS, RCS, Voice and WhatsApp campaigns for Indian enterprises on DLT-registered
+                        routes — and we stay accountable for what happens after you press send.
                     </p>
                     <div class="abt-hero__actions">
                         <a href="{{ route('contact') }}" class="abt-btn abt-btn--primary">Talk to our team</a>

@@ -26,12 +26,9 @@
 
 {{--
     ------------------------------------------------------------------
-    TODO — replace with figures the business can actually stand behind.
-    These are placeholders, not verified metrics:
-      * 99.9% uptime target
-      * 24x7 support
-      * 100% DLT-compliant routes
-    "5 channels" is the only number derived from the product itself.
+    Stats strip: the old 99.9% uptime / 24x7 support / 100% DLT figures were
+    unverified and were removed after the content audit. Only add a number
+    back once the business can evidence it (SLA, monitoring, support rota).
     ------------------------------------------------------------------
 --}}
 
@@ -50,8 +47,8 @@
 
                 <p class="da-lede" data-da-hero>
                     Ad Magister delivers SMS, RCS, Voice and WhatsApp campaigns from one
-                    platform &mdash; with DLT-registered routes, real-time delivery reports
-                    and an API your developers can ship against in an afternoon.
+                    platform &mdash; with DLT-ready workflows, real-time delivery reports
+                    and HTTP API and SMPP integration for your developers.
                 </p>
 
                 <ul class="da-chips" data-da-hero>
@@ -121,20 +118,20 @@
         <div class="da-shell">
             <div class="da-stats" data-da-reveal="stats">
                 <div class="da-stat">
-                    <span class="da-stat__num" data-da-count="5">5</span>
-                    <span class="da-stat__label">Channels under one contract</span>
+                    <span class="da-stat__num" data-da-count="4">4</span>
+                    <span class="da-stat__label">Messaging channels, plus digital marketing</span>
                 </div>
                 <div class="da-stat">
-                    <span class="da-stat__num" data-da-count="99.9" data-da-decimals="1" data-da-suffix="%">99.9%</span>
-                    <span class="da-stat__label">Platform uptime target</span>
+                    <span class="da-stat__num">DLT</span>
+                    <span class="da-stat__label">Entity, header &amp; template registration support</span>
                 </div>
                 <div class="da-stat">
-                    <span class="da-stat__num" data-da-count="24" data-da-suffix="&times;7">24&times;7</span>
-                    <span class="da-stat__label">Campaign &amp; technical support</span>
+                    <span class="da-stat__num">API</span>
+                    <span class="da-stat__label">HTTP API &amp; SMPP integration</span>
                 </div>
                 <div class="da-stat">
-                    <span class="da-stat__num" data-da-count="100" data-da-suffix="%">100%</span>
-                    <span class="da-stat__label">DLT-compliant routing</span>
+                    <span class="da-stat__num">Live</span>
+                    <span class="da-stat__label">Per-message delivery reports</span>
                 </div>
             </div>
         </div>
@@ -385,7 +382,7 @@
                 <div class="da-step">
                     <div class="da-step__num" aria-hidden="true"></div>
                     <h3>Integrate the API</h3>
-                    <p>One endpoint per channel, predictable JSON and webhooks. Sandbox keys on request.</p>
+                    <p>Connect over HTTP API or SMPP, with delivery callbacks. Test access on request.</p>
                 </div>
                 <div class="da-step">
                     <div class="da-step__num" aria-hidden="true"></div>
@@ -498,7 +495,7 @@
                             <h3>DLT &amp; TRAI compliance, done for you</h3>
                             <p>
                                 Header and template registration, scrubbing and consent records
-                                handled at onboarding, so campaigns do not stall at the operator.
+                                set up at onboarding, to reduce the chance of rejection at the operator.
                             </p>
                         </div>
                     </li>
@@ -511,10 +508,10 @@
                             </svg>
                         </span>
                         <div>
-                            <h3>Throughput that holds at peak</h3>
+                            <h3>Planned for peak traffic</h3>
                             <p>
-                                Multiple operator connects with automatic failover, so OTP and
-                                alert traffic keeps moving during festival and result-day spikes.
+                                OTP and alert traffic is kept separate from promotional campaigns,
+                                and capacity is planned with you ahead of festival and result-day spikes.
                             </p>
                         </div>
                     </li>
@@ -527,10 +524,10 @@
                             </svg>
                         </span>
                         <div>
-                            <h3>A REST API worth integrating against</h3>
+                            <h3>API &amp; SMPP integration</h3>
                             <p>
-                                One endpoint per channel, predictable JSON, webhooks for delivery
-                                and inbound replies. Sandbox keys on request.
+                                Send from your website, app, CRM or ERP over HTTP API or SMPP, with
+                                delivery callbacks. Test access and sample code on request.
                             </p>
                         </div>
                     </li>

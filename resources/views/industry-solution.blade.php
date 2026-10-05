@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Industry Messaging Solutions')
-@section('description', 'SMS, RCS, Voice and WhatsApp on operator-direct routes, configured for the alerts, approvals and campaigns your industry actually sends.')
+@section('description', 'SMS, RCS, Voice and WhatsApp on DLT-registered routes, configured for the alerts, approvals and campaigns your industry actually sends.')
 @section('og_image', 'og/industry-solution.jpg')
 @section('content')
 
@@ -14,12 +14,12 @@
             [
                 'no'    => '01',
                 'title' => 'Map the journey',
-                'body'  => 'We list every message your customer already receives, then mark which ones are transactional, promotional or service.',
+                'body'  => 'We list every message your customer already receives, then mark which ones are service, transactional or promotional.',
             ],
             [
                 'no'    => '02',
                 'title' => 'Register & approve',
-                'body'  => 'Sender IDs, DLT entity and template registration handled end to end, so nothing is blocked at the operator.',
+                'body'  => 'Sender IDs, DLT entity and template registration handled end to end, to reduce the chance of rejection at the operator.',
             ],
             [
                 'no'    => '03',
@@ -44,7 +44,7 @@
                         Messaging built around <span class="ind-hero__accent">how your industry works</span>
                     </h1>
                     <p class="ind-hero__lede">
-                        RCS, Bulk SMS, Voice and WhatsApp delivered on operator-direct routes — configured for the
+                        RCS, Bulk SMS, Voice and WhatsApp on DLT-registered routes — configured for the
                         alerts, approvals and campaigns your sector actually sends.
                     </p>
                     <div class="ind-hero__actions">
@@ -57,7 +57,7 @@
             <ul class="ind-trust" aria-label="Why teams choose us">
                 <li class="ind-trust__item">
                     <i class="bi bi-broadcast-pin ind-trust__icon" aria-hidden="true"></i>
-                    <span>Operator-direct routes</span>
+                    <span>Separate service &amp; promo routes</span>
                 </li>
                 <li class="ind-trust__item">
                     <i class="bi bi-file-earmark-check ind-trust__icon" aria-hidden="true"></i>

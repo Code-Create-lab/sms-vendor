@@ -27,7 +27,7 @@
                                 <p style="margin-top: 0; padding: 14px 16px; background-color: #f8fafc; border-left: 3px solid #264a9f; white-space: pre-line;">{{ $messageText }}</p>
                             @endif
 
-                            <p>Need us sooner? Call <a href="tel:+919718055559" style="color: #195dff;">+91 9718055559</a>
+                            <p>Need us sooner? Call <a href="tel:+919718055559" style="color: #195dff;">+91 97180 55559</a>
                                 or reply to this email.</p>
 
                             <p style="margin-bottom: 0;">Team Ad Magister</p>

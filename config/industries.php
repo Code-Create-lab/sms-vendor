@@ -21,7 +21,7 @@ return [
         'color'    => '#2563eb',
         'name'     => 'Banking & Financial Services',
         'short'    => 'Banking & Finance',
-        'summary'  => 'Time-critical alerts that have to land on the first attempt, on operator-direct routes.',
+        'summary'  => 'Time-critical alerts that have to land on the first attempt, on routes kept separate from promotional traffic.',
         'uses'     => ['OTP & 2FA', 'Transaction alerts', 'EMI reminders', 'KYC follow-ups'],
         'channels' => 'SMS · RCS · Voice',
         'products' => ['bulk-sms', 'rcs', 'voice-ivr'],

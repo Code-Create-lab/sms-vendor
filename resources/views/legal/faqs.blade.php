@@ -25,7 +25,7 @@
                 'title' => 'DLT registration',
                 'blocks' => [['faq' => [
                     ['q' => 'What is DLT registration?', 'a' => 'Under TRAI regulations, every business that sends commercial SMS in India must register its entity, sender IDs (headers) and message templates on an operator\'s Distributed Ledger Technology (DLT) platform. Unregistered messages are blocked.'],
-                    ['q' => 'Can you handle DLT registration for me?', 'a' => 'Yes. We help register your entity, headers and templates end to end, so nothing is blocked at the operator.'],
+                    ['q' => 'Can you handle DLT registration for me?', 'a' => 'Yes. We help register your entity, headers and templates end to end, to reduce the chance of rejection at the operator.'],
                     ['q' => 'What documents do I need?', 'a' => 'Typically your company PAN, GST certificate or other business proof, and a letter of authorisation. We\'ll send you the exact list for your business type.'],
                 ]]],
             ],
@@ -53,7 +53,7 @@
             'id' => 'support',
             'title' => 'Support',
             'blocks' => [['faq' => [
-                ['q' => 'How do I reach support?', 'a' => 'Call +91 9718055559 or email info@admagister.com. Existing customers also have a named support contact.'],
+                ['q' => 'How do I reach support?', 'a' => 'Call +91 97180 55559 or email info@admagister.com. Existing customers also have a named support contact.'],
                 ['q' => 'Where can I see delivery reports?', 'a' => 'Every message has a status in your panel, and reports for the last one year are available there. API users also receive delivery callbacks.'],
             ]]],
         ];

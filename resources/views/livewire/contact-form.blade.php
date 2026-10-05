@@ -86,14 +86,14 @@
 
 
             <div class="col-md-12 mb-3">
-                <p class="sr-small-text">We are committed to protecting your privacy...</p>
+                <p class="sr-small-text">We use your details only to respond to your enquiry. See our <a href="{{ route('privacy') }}">Privacy Policy</a>.</p>
             </div>
 
             <div class="col-md-12 mb-3">
                 <div class="sr-consent-wrap">
                     <input wire:model="consent" type="checkbox" id="consent" class="sr-consent-check" />
                     <label for="consent" class="sr-consent-label">
-                        I hereby authorize to send notifications on SMS/ RCS Messages/ Promotional/ Informational messages.
+                        I agree that Ad Magister may contact me about this enquiry by phone, SMS, RCS, WhatsApp or email. I can withdraw this consent at any time.
                     </label>
                 </div>
                 @error('consent')

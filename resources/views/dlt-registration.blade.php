@@ -24,10 +24,13 @@
          |    footer previously carried a placeholder number and has since been
          |    corrected to 9718055559, so the two now agree; the sales/support
          |    split of admagister.com addresses is still worth confirming.
-         |  - The source page cited a 5 Feb 2020 registration deadline. That date
-         |    is long past, so it is presented as background below rather than as
-         |    a live deadline. No fees or turnaround times are stated anywhere on
-         |    this page because the source did not publish any — do not invent them.
+         |  - The source page cited a 5 Feb 2020 registration deadline. It was
+         |    removed after the content audit. No fees or turnaround times are
+         |    stated anywhere on this page because the source did not publish
+         |    any — do not invent them.
+         |  - Header length/format and message categories are deliberately not
+         |    spelled out: they change through TRAI amendments, so the copy
+         |    points readers to a confirmation step instead.
          */
 
         $dltTelemarketer = [
@@ -37,9 +40,10 @@
 
         $dltRegisterUrl = 'https://smartping.live/';
         $dltSupportEmail = 'support@admagister.com';
-        $dltSupportPhone = '9718055559';
+        $dltSupportPhone = '+91 97180 55559';
+        $dltSupportPhoneTel = '+919718055559';
 
-        // The four registration objects every sender needs on the DLT platform.
+        // The core registrations most senders need on the DLT platform.
         $dltStages = [
             [
                 'no' => '01',
@@ -52,22 +56,25 @@
                 'no' => '02',
                 'icon' => 'bi-tag',
                 'title' => 'Header / Sender ID',
-                'body' => 'The six-character sender ID your messages arrive from is registered against
-                           your entity, separately for transactional and promotional traffic.',
+                'body' => 'The sender ID your messages arrive from is registered against your entity.
+                           Its format depends on the message category and current DLT rules, so we
+                           confirm what applies before submitting it.',
             ],
             [
                 'no' => '03',
                 'icon' => 'bi-file-earmark-text',
                 'title' => 'Content templates',
-                'body' => 'Each message format is registered as a template with its variable fields.
-                           Traffic that does not match an approved template is rejected at the operator.',
+                'body' => 'Each message format is registered as a template with its variable fields,
+                           under the right category: promotional, service or transactional. Traffic that
+                           does not match an approved template is rejected at the operator.',
             ],
             [
                 'no' => '04',
                 'icon' => 'bi-patch-check',
-                'title' => 'Operator approval',
-                'body' => 'Once the entity, header and templates are approved, we map them to your
-                           account so your campaigns run on registered routes.',
+                'title' => 'Consent & account mapping',
+                'body' => 'Promotional traffic also has to respect customer consent and preferences.
+                           Once your registrations are approved, we link them to your sending account so
+                           every message carries the right Entity ID, header and template ID.',
             ],
         ];
 
@@ -83,8 +90,9 @@
                 'icon' => 'bi-journal-text',
                 'title' => 'The regulation',
                 'body' => 'The requirement comes from TRAI&rsquo;s Telecom Commercial Communications
-                           Customer Preference Regulations, 2018 (TCCCPR 2018), notified in July 2018 and
-                           enforced by the operators from early 2020 onward.',
+                           Customer Preference Regulations, 2018 (TCCCPR 2018), as updated by later
+                           amendments and directions. Requirements can change, so confirm the current
+                           TRAI and operator rules before a campaign goes live.',
             ],
             [
                 'icon' => 'bi-exclamation-triangle',
@@ -126,9 +134,8 @@
     </section>
 
     {{-- ==================== CLIENT NOTICE (the letter) ==================== --}}
-    {{-- Reproduced from the live page. The "5th Feb 2020" deadline below is the
-         original wording and is now long past — update or remove that sentence
-         before launch rather than leaving a stale date addressed to clients. --}}
+    {{-- Adapted from the live page. Its stale "register before 5th Feb 2020"
+         deadline was replaced with current-process wording. --}}
     <section class="dlt-section">
         <div class="container">
             <div class="row justify-content-center">
@@ -138,27 +145,24 @@
                         <p class="dlt-letter__salutation">Dear Valuable Client,</p>
 
                         <p class="dlt-letter__para">
-                            We thank you for being our valued client and using our SMS services. We are
-                            writing this Mail to give you some information about the registration on DLT
-                            platform.
+                            Thank you for being our valued client and using our SMS services. This note
+                            explains registration on the DLT platform.
                         </p>
 
                         <p class="dlt-letter__para">
-                            Telecom Regulatory Authority of India (TRAI) in its continuous endeavour to
-                            create a clean and transparent system in the Indian telecom industry has
-                            released a new regulation in July 2018 to curb Unsolicited Commercial
-                            Communication (UCC) and enhance mobile subscriber privacy, TCCCPR 18 Telecom
-                            Commercial Communications Customer Preference Regulation 2018. The Regulation
-                            is intended to eliminate spam and fraud which has been a concern for many
-                            years. The regulation has mandated the use of Blockchain technology also known
-                            as Distributed Ledger Technology (DLT) to implement the solution.
+                            To curb Unsolicited Commercial Communication (UCC) and protect mobile
+                            subscribers&rsquo; privacy, the Telecom Regulatory Authority of India (TRAI)
+                            issued the Telecom Commercial Communications Customer Preference Regulations,
+                            2018 (TCCCPR 2018), which have since been updated through amendments and
+                            directions. The regulations require commercial senders to be registered on a
+                            Distributed Ledger Technology (DLT) platform.
                         </p>
 
                         <p class="dlt-letter__para">
-                            We would request to please register as entity before 5th Feb 2020 to avoid any
-                            impact on traffic. After completion of the registration process you need to
-                            provide registered Email-ID to your respective sales manager. So that he will
-                            get the approval from operator to complete the registration process.
+                            If you have not yet registered as an entity, please complete that registration
+                            before sending commercial traffic. Once it is done, share your registered email
+                            ID with your sales manager, who will link your entity, headers and templates to
+                            your sending account.
                         </p>
 
                         <dl class="dlt-credentials__list">
@@ -174,9 +178,9 @@
                         </dl>
 
                         <p class="dlt-letter__para dlt-letter__para--last">
-                            Incase you have any queries please feel free to mail us on
+                            If you have any questions, email us at
                             <a href="mailto:{{ $dltSupportEmail }}">{{ $dltSupportEmail }}</a>
-                            OR Call: <a href="tel:{{ $dltSupportPhone }}">{{ $dltSupportPhone }}</a>
+                            or call <a href="tel:{{ $dltSupportPhoneTel }}">{{ $dltSupportPhone }}</a>.
                         </p>
                     </article>
                 </div>
@@ -214,10 +218,12 @@
             <div class="row">
                 <div class="col-lg-8">
                     <span class="dlt-kicker">What gets registered</span>
-                    <h2 class="dlt-section__title">Four things have to be approved</h2>
+                    <h2 class="dlt-section__title">The core registrations before you send</h2>
                     <p class="dlt-section__sub">
-                        Registration is not a single form. These four objects are approved in order, and
-                        a campaign only delivers once all four line up.
+                        Registration is not a single form. These are the main steps most senders go
+                        through. It is not a complete legal checklist: exact requirements depend on your
+                        message category and the operator, and can change, so we confirm the current
+                        TRAI and operator rules with you before launch.
                     </p>
                 </div>
             </div>
@@ -260,7 +266,7 @@
                             <i class="bi bi-envelope" aria-hidden="true"></i>
                             <span>{{ $dltSupportEmail }}</span>
                         </a>
-                        <a class="dlt-support__line" href="tel:{{ $dltSupportPhone }}">
+                        <a class="dlt-support__line" href="tel:{{ $dltSupportPhoneTel }}">
                             <i class="bi bi-telephone" aria-hidden="true"></i>
                             <span>{{ $dltSupportPhone }}</span>
                         </a>

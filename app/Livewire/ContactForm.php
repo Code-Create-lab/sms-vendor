@@ -23,7 +23,7 @@ class ContactForm extends Component
     #[Validate('nullable|string|max:2000')]
     public $message;
 
-    #[Validate('accepted', message: 'Please authorize to receive notifications.')]
+    #[Validate('accepted', message: 'Please agree so we can contact you about your enquiry.')]
     public $consent = false;
 
     public $selectedLOB = [];
