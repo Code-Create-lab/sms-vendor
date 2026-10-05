@@ -78,6 +78,16 @@
             ],
         ];
 
+        // Operator DLT portals, as supplied by the business.
+        $dltPortals = [
+            ['operator' => 'Jio',            'url' => 'https://trueconnect.jio.com'],
+            ['operator' => 'Videocon',       'url' => 'https://smartping.live/entity/home'],
+            ['operator' => 'Vodafone Idea',  'url' => 'https://www.vilpower.in/login/'],
+            ['operator' => 'Airtel',         'url' => 'https://dltconnect.airtel.in/signup/'],
+            ['operator' => 'BSNL',           'url' => 'https://www.ucc-bsnl.co.in/'],
+            ['operator' => 'MTNL',           'url' => 'https://www.ucc-mtnl.in/'],
+        ];
+
         $dltFacts = [
             [
                 'icon' => 'bi-shield-lock',
@@ -243,8 +253,37 @@
         </div>
     </section>
 
-    {{-- ==================== NEXT STEP ==================== --}}
+    {{-- ==================== OPERATOR PORTALS ==================== --}}
     <section class="dlt-section dlt-section--muted">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <span class="dlt-kicker">Operator portals</span>
+                    <h2 class="dlt-section__title">DLT portals by operator</h2>
+                    <p class="dlt-section__sub">
+                        You register on one operator&rsquo;s DLT portal, and the registration is shared
+                        across operators. Pick any portal below to start.
+                    </p>
+                </div>
+            </div>
+
+            <div class="dlt-grid">
+                @foreach ($dltPortals as $portal)
+                    <a class="dlt-card text-decoration-none" href="{{ $portal['url'] }}" target="_blank" rel="noopener noreferrer">
+                        <span class="dlt-card__icon" aria-hidden="true">
+                            <i class="bi bi-box-arrow-up-right"></i>
+                        </span>
+                        <h3 class="dlt-card__title">DLT Portal {{ $portal['operator'] }}</h3>
+                        <p class="dlt-card__body text-break">{{ preg_replace('#^https?://(www\.)?|/$#', '', $portal['url']) }}</p>
+                        <span class="visually-hidden">(opens in a new tab)</span>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    {{-- ==================== NEXT STEP ==================== --}}
+    <section class="dlt-section">
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6">
