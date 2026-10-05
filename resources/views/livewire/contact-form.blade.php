@@ -102,8 +102,12 @@
             </div>
 
             <div class="col-md-12 text-center text-md-center">
-                <button type="submit" class="sr-submit-btn">
-                    Send Message
+                <button type="submit" class="sr-submit-btn" wire:loading.attr="disabled" wire:target="save">
+                    <span wire:loading.remove wire:target="save">Send Message</span>
+                    <span class="btn-loading" wire:loading.inline-flex wire:target="save">
+                        <span class="btn-spinner" aria-hidden="true"></span>
+                        Sending&hellip;
+                    </span>
                 </button>
             </div>
 

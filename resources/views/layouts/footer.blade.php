@@ -100,7 +100,8 @@
                               placeholder="Channels, volumes, timelines&hellip;" required></textarea>
                 </div>
                 <button type="submit" class="amf-submit">
-                    Send message
+                    <span class="btn-spinner" aria-hidden="true"></span>
+                    <span class="amf-submit__label">Send message</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M5 12h14M13 6l6 6-6 6" />
@@ -253,6 +254,7 @@
             if (form) {
                 var hint = form.querySelector('[data-amf-hint]');
                 var btn = form.querySelector('.amf-submit');
+                var btnLabel = btn.querySelector('.amf-submit__label');
                 var setHint = function (text, isError) {
                     if (!hint) return;
                     hint.textContent = text;
@@ -274,6 +276,7 @@
                     }
 
                     btn.disabled = true;
+                    btnLabel.textContent = 'Sending…';
                     form.setAttribute('aria-busy', 'true');
                     setHint('Sending…');
 
@@ -319,6 +322,7 @@
                     }).then(function () {
                         if (form.isConnected) {
                             btn.disabled = false;
+                            btnLabel.textContent = 'Send message';
                             form.removeAttribute('aria-busy');
                         }
                     });
