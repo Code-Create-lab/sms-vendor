@@ -60,7 +60,8 @@
 
     <!-- favicon icon (asset() so they resolve from any URL depth) -->
 
-    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
 
     {{-- 180×180, the size iOS uses for home-screen icons; built from the logo mark. --}}
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/apple-touch-icon.png') }}">

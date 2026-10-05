@@ -24,11 +24,11 @@ PAGES = {
     "home": ("Omni-channel business messaging",
              "Reach every customer on the channel they already use."),
     "channel": ("Channels",
-                "Five channels, one integration."),
+                "Four messaging channels, one integration."),
     "industry-solution": ("Industry solutions",
                           "Messaging built around how your industry works."),
     "election-campaign": ("Election campaigns",
-                          "Bulk SMS campaigns that reach every constituency."),
+                          "Keep voters informed with compliant campaign messaging."),
     "dlt-registration": ("DLT registration",
                          "TRAI DLT registration, handled end to end."),
     "about": ("About us",
@@ -76,7 +76,9 @@ def wrap(draw, text, font, width):
     return lines
 
 
+# The logo mark is a 256px square; scale it down to chip size.
 logo = Image.open(os.path.join(ROOT, "public", "images", "logo.png")).convert("RGB")
+logo = logo.resize((84, 84), Image.LANCZOS)
 
 for slug, (eyebrow, headline) in PAGES.items():
     im = background()
@@ -84,11 +86,11 @@ for slug, (eyebrow, headline) in PAGES.items():
     x = 80
 
     # logo chip
-    chip_w, chip_h = logo.width + 40, logo.height + 24
+    chip_w, chip_h = logo.width + 24, logo.height + 24
     chip = Image.new("RGB", (chip_w, chip_h), (255, 255, 255))
     mask = Image.new("L", (chip_w, chip_h), 0)
     ImageDraw.Draw(mask).rounded_rectangle((0, 0, chip_w - 1, chip_h - 1), 16, fill=255)
-    chip.paste(logo, (20, 12))
+    chip.paste(logo, (12, 12))
     im.paste(chip, (x, 64), mask)
     d.text((x + chip_w + 22, 64 + chip_h / 2), "Ad Magister", font=bold(34), fill=(255, 255, 255), anchor="lm")
 
