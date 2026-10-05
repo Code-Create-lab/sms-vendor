@@ -17,7 +17,7 @@
                 'id' => 'who-we-are',
                 'title' => 'Who we are',
                 'blocks' => [
-                    'Ad Magister Pvt. Ltd. ("Ad Magister", "we", "us") provides business messaging services, including Bulk SMS, RCS Business Messaging, Voice & IVR, WhatsApp Business API and digital marketing. Our office is at Office No. 101, 1st Floor, Bhavishya India Tower, Gaur City 2, Noida, Ghaziabad, Uttar Pradesh 201009, India.',
+                    'AdMagister Global ("Ad Magister", "we", "us") provides business messaging services, including Bulk SMS, RCS Business Messaging, Voice & IVR, WhatsApp Business API and digital marketing. Our office is at Office No. 101, 1st Floor, Bhavishya India Tower, Gaur City 2, Ghaziabad, Uttar Pradesh – 201009, India.',
                     'This policy explains what personal data we collect through this website and our services, why we collect it, and the choices you have.',
                 ],
             ],
@@ -112,7 +112,7 @@
                 'id' => 'grievance',
                 'title' => 'Grievance officer',
                 'blocks' => [
-                    'If you have a concern about how we handle your personal data, write to our Grievance Officer at info@admagister.com, or by post to Ad Magister Pvt. Ltd., Office No. 101, 1st Floor, Bhavishya India Tower, Gaur City 2, Noida, Ghaziabad, Uttar Pradesh 201009. We will acknowledge your complaint and aim to resolve it within the time required by law.',
+                    'If you have a concern about how we handle your personal data, write to our Grievance Officer at info@admagister.com, or by post to AdMagister Global, Office No. 101, 1st Floor, Bhavishya India Tower, Gaur City 2, Ghaziabad, Uttar Pradesh – 201009, India. We will acknowledge your complaint and aim to resolve it within the time required by law.',
                 ],
             ],
             [

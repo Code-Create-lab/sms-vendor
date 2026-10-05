@@ -231,7 +231,7 @@
                     </a>
                 </div>
 
-                <p class="mnav__addr">Ad Magister Pvt. Ltd. &middot; Gaur City 2, Noida 201009</p>
+                <p class="mnav__addr">AdMagister Global &middot; Office No. 101, 1st Floor, Bhavishya India Tower, Gaur City 2, Ghaziabad, Uttar Pradesh &ndash; 201009, India</p>
             </div>
         </div>
     </div>

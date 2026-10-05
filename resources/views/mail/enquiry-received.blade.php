@@ -36,8 +36,8 @@
                     <tr>
                         <td
                             style="padding: 20px; background-color: #f0f0f0; text-align: center; font-size: 13px; color: #888;">
-                            &copy; {{ now()->year }} Ad Magister Pvt. Ltd. &middot; Office No. 101, 1st Floor, Bhavishya
-                            India Tower, Gaur City 2, Noida, Ghaziabad, Uttar Pradesh 201009
+                            &copy; {{ now()->year }} AdMagister Global &middot; Office No. 101, 1st Floor, Bhavishya
+                            India Tower, Gaur City 2, Ghaziabad, Uttar Pradesh – 201009, India
                         </td>
                     </tr>
                 </table>

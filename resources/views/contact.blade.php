@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Contact Us')
-@section('description', 'Talk to Ad Magister about bulk SMS, RCS, Voice or WhatsApp campaigns. Call +91 9718055559 or email info@admagister.com. Office in Gaur City 2, Noida.')
+@section('description', 'Talk to Ad Magister about bulk SMS, RCS, Voice or WhatsApp campaigns. Call +91 9718055559 or email info@admagister.com. Office in Bhavishya India Tower, Gaur City 2, Ghaziabad, Uttar Pradesh.')
 @section('og_image', 'og/contact.jpg')
 @section('content')
 
@@ -28,7 +28,7 @@
 
         $cntOffice = [
             'name'    => 'Ad Magister &mdash; Noida',
-            'address' => ['Office No. 101, 1st Floor', 'Bhavishya India Tower', 'Gaur City 2, Noida,', 'Ghaziabad, Uttar Pradesh 201009'],
+            'address' => ['Office No. 101, 1st Floor,', 'Bhavishya India Tower, Gaur City 2,', 'Ghaziabad, Uttar Pradesh – 201009, India.'],
             'phone'   => '+91 9718055559',
             'phoneTel'=> '+919718055559',
             'email'   => 'info@admagister.com',

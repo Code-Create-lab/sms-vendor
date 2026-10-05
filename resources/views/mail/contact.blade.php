@@ -63,7 +63,7 @@
                     <tr>
                         <td
                             style="padding: 20px; background-color: #f0f0f0; text-align: center; font-size: 13px; color: #888;">
-                            &copy; {{ now()->year }} Ad Magister Pvt. Ltd.
+                            &copy; {{ now()->year }} AdMagister Global
                         </td>
                     </tr>
                 </table>

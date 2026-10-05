@@ -14,9 +14,9 @@
                 'id' => 'company',
                 'title' => 'Company information',
                 'blocks' => [
-                    'This website is operated by Ad Magister Pvt. Ltd.',
+                    'This website is operated by AdMagister Global.',
                     ['list' => [
-                        'Registered office: Office No. 101, 1st Floor, Bhavishya India Tower, Gaur City 2, Noida, Ghaziabad, Uttar Pradesh 201009, India',
+                        'Registered office: Office No. 101, 1st Floor, Bhavishya India Tower, Gaur City 2, Ghaziabad, Uttar Pradesh – 201009, India',
                         'Email: info@admagister.com',
                         'Phone: +91 9718055559',
                     ]],

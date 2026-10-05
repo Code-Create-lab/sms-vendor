@@ -97,7 +97,7 @@
         ];
 
         // Kept in sync with layouts/footer.blade.php.
-        $abtAddress = ['Office No. 101, 1st Floor', 'Bhavishya India Tower', 'Gaur City 2, Noida,', 'Ghaziabad, Uttar Pradesh 201009'];
+        $abtAddress = ['Office No. 101, 1st Floor,', 'Bhavishya India Tower, Gaur City 2,', 'Ghaziabad, Uttar Pradesh – 201009, India.'];
         $abtPhone   = '+91 9718055559';
         $abtPhoneTel = '+919718055559';
         $abtEmail   = 'info@admagister.com';
