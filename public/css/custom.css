@@ -456,6 +456,38 @@ button#declineCookie {
     }
 }
 
+/* ---- Floating DLT portal tab ----------------------------------------
+   Vertical tab flush against the right edge, centred on the viewport.
+   Same z-index band as the WhatsApp button (under cookie popup + nav). */
+.amf-dlt {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    z-index: 1500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 10px;
+    border-radius: 10px 0 0 10px;
+    background: linear-gradient(180deg, #264a9f, #195dff);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .02em;
+    line-height: 1;
+    text-decoration: none;
+    writing-mode: vertical-rl;
+    transform: translateY(-50%);
+    box-shadow: 0 8px 20px rgba(25, 93, 255, .3);
+    transition: padding .2s ease, background .2s ease;
+}
+.amf-dlt svg { width: 14px; height: 14px; }
+.amf-dlt:hover { color: #fff; padding-left: 14px; background: linear-gradient(180deg, #1e3d8a, #0f4fe8); }
+.amf-dlt:focus-visible { outline: 3px solid #35d3e1; outline-offset: 2px; }
+@media (max-width: 575px) {
+    .amf-dlt { padding: 12px 8px; font-size: 12px; }
+}
+
 /* ---- Floating WhatsApp button --------------------------------------
    Sits under the cookie popup (z 999999) so consent is answered first,
    and under the nav drawer (z 1999) so it never floats over the menu. */

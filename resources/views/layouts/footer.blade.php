@@ -361,6 +361,13 @@
     <span class="amf-wa__tip" aria-hidden="true">Chat with us</span>
 </a>
 
+{{-- Floating DLT portal tab, pinned to the right edge on every page. --}}
+<a class="amf-dlt" href="https://smartping.live/" target="_blank" rel="noopener noreferrer">
+    <span>Open the DLT portal</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3h7v7M21 3l-9 9M19 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5"/></svg>
+    <span class="visually-hidden">(opens in a new tab)</span>
+</a>
+
 {{-- Cookie consent (unchanged behaviour) --}}
 <div class="cookie-popup" id="cookiePopup">
     <div class="cookie-content">
